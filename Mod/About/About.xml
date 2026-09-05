@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>nelim.dustbunnies</packageId>
+  <name>Dust Bunnies 1.6</name>
+  <author>2blockdude, HendraGradeWood - 1.6 port: nelim</author>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <url>https://github.com/vbardales/Rimworld-Dust-Bunnies</url>
+  <incompatibleWith>
+    <li>BlockHen.Animal.DustBunnies</li>
+  </incompatibleWith>
+  <description>Sweep dust off the floor, pile up a hundred of it, and craft yourself a live dust bunny.
+
+Two recipes at the crafting spot, one resource and one animal:
+
+- Gather dust - 250 work, makes 10 dust. No ingredients: it comes off the floor.
+- Make a dust bunny - 800 work, eats 100 dust, and a dust bunny walks off the spot. It is tame the moment it exists, because it is made rather than caught.
+
+The bunny is a tiny grey thing, body size 0.2, trainable to Advanced, and it never eats - its hunger rate is zero. It lives about a year. It is comfortable down to -55 C, it never turns manhunter, and butchering one gives back 50 dust, which is a stuff you can build and tailor with: fabric category, very flammable, and warm.
+
+No DLC, no dependencies. Seven defs, four images and one class.
+
+I am not the author of this mod. The dust bunny, its artwork and its balance are 2blockdude's and HendraGradeWood's - all I did was bring it forward to 1.6, repair what the port turned up, and write the French. Credit goes to them; mistakes in the port are mine.
+
+Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2659958183 - declares 1.1, 1.2 and 1.3 and nothing further, untouched since November 2021.
+
+WHAT THE PORT FIXED
+
+Wildness stopped being a field of RaceProperties and became a StatDef. The old element matches nothing, and RimWorld does not stop for an element that matches nothing - it logs one line and carries on with the field unset. The stat's default is -1, clamped to 0, so a dust bunny left in the old form would have been perfectly tame instead of very slightly wild. It is now under statBases, where 1.6 wants it.
+
+The recipe worker held its PawnKindDef in a static field initialised inline. That runs the first time anything touches the class, at a moment the mod does not control, and a failure there surfaces as a TypeInitializationException with the real cause two levels down. It is a [DefOf] now, bound by the game once the def database is complete.
+
+Every game call the worker makes was checked against 1.6 by reflection before recompiling, because a RecipeWorker whose signature moved does not fail at load - it fails when the recipe runs, long after.
+
+REMOVAL
+
+If 2blockdude or HendraGradeWood asks for this to be taken down, it comes down immediately and without discussion.
+
+If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
+
+The port work was done with the help of an AI assistant (Claude, by Anthropic), under human direction and in-game testing.</description>
+  <loadAfter>
+    <li>Ludeon.RimWorld</li>
+  </loadAfter>
+</ModMetaData>

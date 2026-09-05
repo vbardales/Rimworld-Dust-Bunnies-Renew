@@ -1,0 +1,36 @@
+# Two separate reasons for this file, and only the first is about git:
+#
+#   - The monorepo's own .gitignore covers all of this, but `git subtree split` exports this
+#     folder alone. The root's rules do not travel with it.
+#   - Steam does not read .gitignore at all. SteamUGC.SetItemContent takes the junction's target
+#     directory as it stands on disk, with no filtering, so anything sitting in the published
+#     folder is published. That is what `Mod/` is for: the junction points there, and everything
+#     else in this folder - Art/, Source/, the docs, this file - stays out of reach by
+#     construction.
+
+# Build intermediates. Source/Directory.Build.props already sends them to ../../.build/, so the
+# two entries below are belt and braces against a build run with the props file bypassed - which
+# would drop a 6 MB publicised Assembly-CSharp.dll inside the mod.
+.build/
+Source/obj/
+Source/bin/
+
+# Claude Code session worktrees and local settings: each worktree is a full copy of the
+# monorepo, and they are never shared.
+.claude/
+
+# Showcase notes: French working notes, deleted once Preview.png and ModIcon.png are done.
+PROMPT_*.md
+
+# Development environments.
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.csproj.user
+
+# System.
+Thumbs.db
+desktop.ini
+.DS_Store

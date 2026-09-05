@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- EN: dust -->
+  <Dust.label>poussière</Dust.label>
+  <!-- EN: Old dusty dust. Made from dust. -->
+  <Dust.description>De la vieille poussière poussiéreuse. Faite de poussière.</Dust.description>
+
+  <!--
+    No stuffProps.stuffAdjective here, deliberately. ThingDef.LabelAsStuff falls back to the
+    label when the adjective is empty, and the two are the same word in French - "pantalon en
+    poussière" either way. Dalmatian leather needed the key because its label is "fourrure de
+    dalmatien"; this one does not.
+  -->
+
+</LanguageData>

@@ -1,0 +1,54 @@
+MIT License
+
+Copyright (c) 2026 nelim
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+---------------------------------------------------------------------------
+SCOPE OF THE ABOVE
+
+The MIT licence above covers only what the 1.6 port added:
+
+  - the two corrections: wildness moved from a race property to the Wildness
+    stat, and the recipe worker's def lookup moved out of a static field
+    initialiser into a [DefOf] class
+  - the rewritten C# in Source/, which is a reimplementation against the 1.6
+    API rather than a copy of the original assembly
+  - the French translation
+  - About/ModIcon.png, which is a crop of the mod's own bunny sprite - the
+    framing is the port's, the art is not
+  - the packaging and the documentation
+
+IT DOES NOT COVER THE ORIGINAL MOD. The dust bunny, the dust, their stats,
+their balance and the four images are 2blockdude's and HendraGradeWood's work,
+reused here:
+
+  https://steamcommunity.com/sharedfiles/filedetails/?id=2659958183
+  https://github.com/blockdude/csharp-rimworld-dust-bunnies
+
+They never declared a licence for it, so none is granted here and none can be.
+It is redistributed under the usual practice for abandoned mods - explicit
+credit, a link to the original, and removal on request. About/Preview.png is
+theirs as it stands.
+
+If 2blockdude or HendraGradeWood asks for this to be taken down, it comes
+down. Immediately, and without discussion.
+
+ATTRIBUTION.md records what was taken and what was changed.

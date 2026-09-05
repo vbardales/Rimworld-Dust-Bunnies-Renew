@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!--
+    jobStrings are third person present in French, the way vanilla writes them
+    ("Extrait le moût du houblon."), not the infinitive the English uses.
+  -->
+
+  <!-- EN: gather dust -->
+  <GatherDust.label>récolter de la poussière</GatherDust.label>
+  <!-- EN: Gather up dust to make dust. -->
+  <GatherDust.description>Ramasser de la poussière pour faire de la poussière.</GatherDust.description>
+  <!-- EN: Gathering dust. -->
+  <GatherDust.jobString>Récolte de la poussière.</GatherDust.jobString>
+
+  <!-- EN: make a dust bunny -->
+  <MakeDustBunny.label>fabriquer un mouton de poussière</MakeDustBunny.label>
+  <!-- EN: Make a dust bunny. Made from dust. -->
+  <MakeDustBunny.description>Fabriquer un mouton de poussière. Fait de poussière.</MakeDustBunny.description>
+  <!-- EN: Making a dust bunny. -->
+  <MakeDustBunny.jobString>Fabrique un mouton de poussière.</MakeDustBunny.jobString>
+
+</LanguageData>

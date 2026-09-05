@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!--
+    "Mouton de poussière" is what the thing is actually called in French, and it keeps the
+    joke: a mouton is both the dust under the bed and the animal in the field, so "fait de
+    mouton" lands the same way "made from bunny" does.
+  -->
+  <!-- EN: dust bunny -->
+  <DustBunny.label>mouton de poussière</DustBunny.label>
+  <!-- EN: Little dust bunny. Made from dust. Made from bunny. -->
+  <DustBunny.description>Petit mouton de poussière. Fait de poussière. Fait de mouton.</DustBunny.description>
+
+  <!--
+    The bite tool carries no label of its own - Tool.LabelCap falls back to the body part group,
+    which is already translated. Only the head tool names itself.
+  -->
+  <!-- EN: head -->
+  <DustBunny.tools.head.label>tête</DustBunny.tools.head.label>
+
+</LanguageData>
