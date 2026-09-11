@@ -50,7 +50,7 @@ left implicit, being the defaults.
 
 ### Changed
 
-- `packageId` changed from `BlockHen.Animal.DustBunnies` to `nelim.dustbunnies`.
+- `packageId` changed from `BlockHen.Animal.DustBunnies` to `nelim.dustbunniesrenew`.
 - `<supportedVersions>` set to 1.6.
 - The `1.1/`, `1.2/` and `1.3/` version folders collapsed to one copy at the root. The mod
   declared its content in per-version directories with no `LoadFolders.xml`; the XML in all three
