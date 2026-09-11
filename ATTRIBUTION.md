@@ -48,11 +48,18 @@ The dessicated corpse of a dust bunny is therefore drawn exactly like a live one
 creature that is a clump of dust, is arguably correct and is in any case theirs to decide. It is
 recorded rather than fixed: repainting it would be making art, not porting a mod.
 
-`About/ModIcon.png` is new, and is not new art: it is the opaque 91×83 of their own sprite,
-squared around its centre with an 8 % margin and scaled to 128 px. The full file is 256×256 of
-which the bunny occupies barely a ninth, off centre; handed over as it stands it would draw as a
-grey speck at the ~32 px the mod list actually uses. `Art/Make-ModIcon.ps1` is the script that cut
-it, kept so the crop can be redone rather than guessed at.
+**No `About/ModIcon.png` ships,** and the reason belongs in this file rather than a style note.
+One was cut from their own sprite — the opaque 91×83 squared around its centre and scaled to
+128 px. It was withdrawn on 2026-09-11, and two rules reach it. The first is the one that matters
+here: **an icon cut from the source mod is the source authors' art standing in for the identity of
+the port**, and the identity is the one thing a port should carry itself. Everything else in this
+folder is honestly theirs and says so; the icon was the single place where their work would have
+been doing the port's own talking. The second is that the repository's icons are all one mascot, a
+round winking head with the mod's subject beside it, and a detoured grey bunny is not that.
+
+`Art/Make-ModIcon.ps1` is kept, so the crop is one command away if the mascot is not ready before
+publication. `About/Preview.png` is a different case and is untouched: it is theirs, it is what
+the mod shipped, and the LICENSE names it as theirs.
 
 ## The C# was rewritten, not copied
 

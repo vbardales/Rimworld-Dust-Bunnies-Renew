@@ -61,10 +61,6 @@ left implicit, being the defaults.
 
 - `Languages/French/`, 12 keys. The animal is a *mouton de poussière* — the actual French term,
   and it keeps the joke, a *mouton* being both the dust under the bed and the animal in the field.
-- `About/ModIcon.png`, the opaque 91×83 of the mod's own sprite squared around its centre and
-  scaled to 128 px. The source file is 256×256 of which the bunny occupies barely a ninth, off
-  centre, and would have drawn as a speck at the ~32 px the mod list uses.
-  `Art/Make-ModIcon.ps1` is kept so the crop can be redone.
 - `<incompatibleWith>BlockHen.Animal.DustBunnies</incompatibleWith>`: the `defName`s are
   unchanged, so the two cannot load together.
 
@@ -75,6 +71,14 @@ left implicit, being the defaults.
   template the file was started from.
 - An empty `<race>` element on the concrete `DustBunny` `ThingDef` whose only content was a
   commented-out `<useMeatFrom>Hare</useMeatFrom>`.
+- `About/ModIcon.png`, which was the opaque 91×83 of the mod's own bunny sprite squared around its
+  centre and scaled to 128 px. Two rules reach it, and either would be enough. An icon cut from the
+  source mod is the source authors' art standing in for the identity of the port, and the identity
+  is the one thing a port should carry itself. And the repository's icon style is a round winking
+  mascot with the subject of the mod beside it, which a detoured grey bunny is not. A replacement
+  is pending; until then the mod ships with no icon, which RimWorld allows — about forty mods in
+  this repository are in the same state. `Art/Make-ModIcon.ps1` is kept, so the crop is one command
+  away if the mascot is not ready first. `Preview.png` is untouched and stays theirs.
 
 ### Unchanged
 

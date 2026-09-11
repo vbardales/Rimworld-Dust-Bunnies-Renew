@@ -32,9 +32,10 @@ The MIT licence above covers only what the 1.6 port added:
   - the rewritten C# in Source/, which is a reimplementation against the 1.6
     API rather than a copy of the original assembly
   - the French translation
-  - About/ModIcon.png, which is a crop of the mod's own bunny sprite - the
-    framing is the port's, the art is not
   - the packaging and the documentation
+
+No mod icon ships. Art/Make-ModIcon.ps1, which cuts one from the mod's own
+bunny sprite, is the port's work and is covered; the sprite it cuts is not.
 
 IT DOES NOT COVER THE ORIGINAL MOD. The dust bunny, the dust, their stats,
 their balance and the four images are 2blockdude's and HendraGradeWood's work,
