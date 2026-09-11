@@ -26,6 +26,17 @@ First release. Port of 2blockdude's and HendraGradeWood's **Dust Bunnies** to Ri
   Vanilla writes jobStrings as ordinary sentences, and English is what every other language falls
   back to.
 
+- Three claims the port's own documentation made about dust and got wrong, found on 2026-09-12 by
+  writing the in-game scenarios and reading the numbers instead of repeating them. None of them
+  came from 2blockdude or HendraGradeWood; all three were in `About.xml`, whose description is sent
+  to the Workshop exactly once. Dust was called **warm**: its cold insulation is 0.9, against
+  cloth's 18 and a vanilla floor of 2.5, which makes it the worst insulator in the game rather than
+  a warm one. It was called **very flammable**: `Flammability` 1.0 is wood's, and as a stuff its
+  factor of 1.0 is *below* cloth's 1.2. And butchering was said to give back **50 dust**, which is
+  the `LeatherAmount` stat base and not the yield — `StatPart_BodySize` scales it by the animal's
+  0.2 and the stat's `postProcessCurve` lifts the result back to about 18. The loop loses heavily,
+  which is the interesting fact the wrong number was hiding.
+
 ### Verified against 1.6 rather than recompiled blind
 
 A `RecipeWorker` whose signature has moved does not fail at load — nothing touches it until a

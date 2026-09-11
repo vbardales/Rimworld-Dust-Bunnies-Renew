@@ -14,7 +14,7 @@ was last pushed on 2021-11-21. The page is still online; the mod is abandoned, n
 ## What the mod does
 
 Sweep dust off the floor, pile up a hundred of it, and craft a live dust bunny. Two recipes at the
-crafting spot, one resource, one animal — seven defs, four images, one C# class. No DLC, no
+crafting spot, one resource, one animal — seven defs, four texture images, one C# class. No DLC, no
 dependencies.
 
 | recipe | work | in | out |
@@ -39,13 +39,20 @@ The animal:
 | wildness | 0.1 |
 | life expectancy | 1 year |
 | genders | none |
-| leather | `Dust`, 50 per butchering — so the loop closes |
+| leather | `Dust`, 50 in the def and about 18 in the hand — see below |
 
 It never turns manhunter, on damage or on a failed taming. Traders carry it (`AnimalCommon`).
 
-Dust is a **stuff**: `Fabric` category, insulation 0.9 against cold, `Flammability` 1.0, and 3 %
-of normal hit points. You can build and tailor with it. It is also very cheap and rots fast
-(`DeteriorationRate` 2).
+Dust is a **stuff**: `Fabric` category, `Flammability` 1.0 and 3 % of normal hit points. You can
+build and tailor with it, and you should not. Its cold insulation is **0.9**, against cloth's 18
+and a vanilla floor of 2.5 — the worst insulator in the game, by a factor of nearly three under
+the lowest stuff there is. Its heat insulation is 0. It is very cheap, and it deteriorates half as
+fast as cloth rather than faster (`DeteriorationRate` 2 against 4).
+
+The 50 in the table above is the `LeatherAmount` stat base, not the yield. `StatPart_BodySize`
+scales it by the animal's 0.2 and the stat's `postProcessCurve` lifts the result back, landing
+near **18** before difficulty and the carefully-slaughtered factor. So the loop does not close: a
+hundred dust makes one bunny, and the bunny gives well under a fifth of it back.
 
 Available in English and French.
 
@@ -131,7 +138,7 @@ any reload.
 ### What did not change
 
 Every stat, tool, litter curve, life stage, draw size, sound and trade tag; both recipes' costs
-and work amounts; the four images. Including the parts that look like oversights and are not a
+and work amounts; the four texture images. Including the parts that look like oversights and are not a
 port's to decide: `baseHungerRate` 0, `lifeExpectancy` 1, a `litterSizeCurve` and a
 `gestationPeriodDays` that never apply because `mateMtbHours` is 0, and an `ecoSystemWeight` on an
 animal that belongs to no biome and can only be crafted.
