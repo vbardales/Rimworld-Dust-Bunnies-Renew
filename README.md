@@ -153,7 +153,7 @@ No collision, so no rename. A rename is permanent in a way a port is not.
 
 ## Five files, four images
 
-`About/Preview.png`, `Textures/DustBunny/Bunny/Dust_Bunny_east.png` and
+`Textures/DustBunny/Bunny/Dust_Bunny_east.png` and
 `Textures/DustBunny/Bunny/Dessicated_Dust_Bunny.png` are the same 256×256 file, identical by MD5.
 So a dead, dessicated dust bunny is drawn exactly like a living one — which for a clump of dust is
 arguably right, and is in any case theirs to decide. Recorded, not repainted.
@@ -169,7 +169,8 @@ since 2021.
 DustBunniesRenew/
   Mod/      <- what goes on the Workshop; the NTFS junction into RimWorld/Mods points here
   Source/   <- C#, never published
-  Art/      <- files the game never loads, never published
+  Art/      <- full-resolution originals of the two About/ images, never published
+  _tools/   <- the page that engraves the title onto the showcase, never published
 ```
 
 `Source/Directory.Build.props` sends build intermediates to `../.build/`. That is not

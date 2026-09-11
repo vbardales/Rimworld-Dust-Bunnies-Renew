@@ -39,27 +39,39 @@ DLC, no research, no patch.
 | `DustBunny` | `PawnKindDef` | its spawn entry |
 
 Its stats, tools, litter curve, life stage, sounds, trade tags and draw sizes are 2blockdude's and
-HendraGradeWood's, unchanged. So are the images, byte for byte, and `About/Preview.png`.
+HendraGradeWood's, unchanged. So are the textures, byte for byte.
 
-**The mod ships five texture files but only four distinct images.** `Preview.png`,
+**The mod ships five texture files but only four distinct images.**
 `Textures/DustBunny/Bunny/Dust_Bunny_east.png` and
 `Textures/DustBunny/Bunny/Dessicated_Dust_Bunny.png` are the same 256×256 file, identical by MD5.
 The dessicated corpse of a dust bunny is therefore drawn exactly like a live one — which, for a
 creature that is a clump of dust, is arguably correct and is in any case theirs to decide. It is
 recorded rather than fixed: repainting it would be making art, not porting a mod.
 
-**No `About/ModIcon.png` ships,** and the reason belongs in this file rather than a style note.
-One was cut from their own sprite — the opaque 91×83 squared around its centre and scaled to
-128 px. It was withdrawn on 2026-09-11, and two rules reach it. The first is the one that matters
-here: **an icon cut from the source mod is the source authors' art standing in for the identity of
-the port**, and the identity is the one thing a port should carry itself. Everything else in this
-folder is honestly theirs and says so; the icon was the single place where their work would have
-been doing the port's own talking. The second is that the repository's icons are all one mascot, a
-round winking head with the mod's subject beside it, and a detoured grey bunny is not that.
+**Neither image under `About/` is theirs,** and the reason belongs in this file rather than a
+style note.
 
-`Art/Make-ModIcon.ps1` is kept, so the crop is one command away if the mascot is not ready before
-publication. `About/Preview.png` is a different case and is untouched: it is theirs, it is what
-the mod shipped, and the LICENSE names it as theirs.
+An icon was once cut from their own sprite — the opaque 91×83 squared around its centre and scaled
+to 128 px. It was withdrawn on 2026-09-11, and two rules reach it. The first is the one that
+matters here: **an icon cut from the source mod is the source authors' art standing in for the
+identity of the port**, and the identity is the one thing a port should carry itself. Everything
+else in this folder is honestly theirs and says so; the icon was the single place where their work
+would have been doing the port's own talking. The second is that the repository's icons are all one
+mascot, a round winking head, and a detoured grey bunny is not that.
+
+`About/Preview.png` had the same defect and was slower to show it. What shipped in 2021 was not a
+showcase at all: it was the bunny sprite itself, the same 256×256 file as
+`Dust_Bunny_east.png` down to the MD5, sitting transparent in a square. Keeping it would have been
+the icon's mistake a second time, at four times the size.
+
+Both were replaced on 2026-09-11 by images made for this port, and **neither is derived from the
+original art** — no pixel of the bunny sprite is in either one. The mascot is the repository's own,
+recoloured grey for this mod; the showcase is a workshop floor drawn from scratch. The
+full-resolution originals are under `Art/`, and the engraving page that lays the title over the
+showcase is `_tools/preview.html`.
+
+`Art/Make-ModIcon.ps1`, which performed the withdrawn crop, is deleted with them. It was kept only
+as a fallback for as long as the mascot did not exist.
 
 ## The C# was rewritten, not copied
 

@@ -19,7 +19,7 @@ Two recipes at the crafting spot, one resource and one animal:
 
 The bunny is a tiny grey thing, body size 0.2, trainable to Advanced, and it never eats - its hunger rate is zero. It lives about a year. It is comfortable down to -55 C, it never turns manhunter, and butchering one gives back 50 dust, which is a stuff you can build and tailor with: fabric category, very flammable, and warm.
 
-No DLC, no dependencies. Seven defs, four images and one class.
+No DLC, no dependencies. Seven defs, four texture images and one class.
 
 I am not the author of this mod. The dust bunny, its artwork and its balance are 2blockdude's and HendraGradeWood's - all I did was bring it forward to 1.6, repair what the port turned up, and write the French. Credit goes to them; mistakes in the port are mine.
 

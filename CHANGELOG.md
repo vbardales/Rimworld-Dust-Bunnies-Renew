@@ -63,6 +63,14 @@ left implicit, being the defaults.
   and it keeps the joke, a *mouton* being both the dust under the bed and the animal in the field.
 - `<incompatibleWith>BlockHen.Animal.DustBunnies</incompatibleWith>`: the `defName`s are
   unchanged, so the two cannot load together.
+- `About/ModIcon.png` and `About/Preview.png`, both made for this port and neither derived from
+  the original art. The icon is the repository's mascot, recoloured grey because the creature is:
+  here the mascot's head *is* the dust bunny rather than holding it, since a second grey round mass
+  beside the head would merge with it at the 32 pixels the icon is actually drawn at. The showcase
+  is a workshop floor at 896×504 — the swept heaps in the cold half, the creature in the lantern
+  pool, because grey on grey on brown has no colour left to separate it with and only light will
+  do. Full-resolution originals under `Art/`, and the page that engraves the title in
+  `_tools/preview.html`.
 
 ### Removed
 
@@ -72,18 +80,20 @@ left implicit, being the defaults.
 - An empty `<race>` element on the concrete `DustBunny` `ThingDef` whose only content was a
   commented-out `<useMeatFrom>Hare</useMeatFrom>`.
 - `About/ModIcon.png`, which was the opaque 91×83 of the mod's own bunny sprite squared around its
-  centre and scaled to 128 px. Two rules reach it, and either would be enough. An icon cut from the
-  source mod is the source authors' art standing in for the identity of the port, and the identity
-  is the one thing a port should carry itself. And the repository's icon style is a round winking
-  mascot with the subject of the mod beside it, which a detoured grey bunny is not. A replacement
-  is pending; until then the mod ships with no icon, which RimWorld allows — about forty mods in
-  this repository are in the same state. `Art/Make-ModIcon.ps1` is kept, so the crop is one command
-  away if the mascot is not ready first. `Preview.png` is untouched and stays theirs.
+  centre and scaled to 128 px, and `Art/Make-ModIcon.ps1`, the script that cut it. Two rules reach
+  the crop, and either would be enough. An icon cut from the source mod is the source authors' art
+  standing in for the identity of the port, and the identity is the one thing a port should carry
+  itself. And the repository's icon style is a round winking mascot, which a detoured grey bunny is
+  not. See **Added** for what ships instead.
+- `About/Preview.png` as it shipped in 2021, which was not a showcase but the bunny sprite itself —
+  the same 256×256 file as `Dust_Bunny_east.png`, down to the MD5, transparent inside a square.
+  The Workshop page would have shown a 91-pixel bunny on whatever colour the reader's Steam client
+  paints behind it.
 
 ### Unchanged
 
 - Every stat, tool, litter curve, life stage, draw size, sound and trade tag; both recipes' costs
-  and work amounts; the four images.
+  and work amounts; the four texture images.
 - The balance, including the parts that look like oversights and are not the port's to decide:
   `baseHungerRate` 0, `lifeExpectancy` 1, `mateMtbHours` 0 alongside a `litterSizeCurve` and a
   `gestationPeriodDays` that therefore never apply, and `ecoSystemWeight` on an animal that
@@ -91,5 +101,6 @@ left implicit, being the defaults.
 - All six `defName`s. Checked against Core, every DLC, all 10 352 subscribed Workshop mods and
   this repository: the only hit is an `AllergyDef` named `Dust` in *Allergies*
   (`phil42.allergies`), which is a different def type and so a different `DefDatabase`.
-- `About/Preview.png`, 2blockdude's and HendraGradeWood's own — and byte-identical to the bunny
-  sprite and to the dessicated-corpse texture, which is how the mod shipped.
+- The five files under `Textures/`, 2blockdude's and HendraGradeWood's own — `Dust_Bunny_east.png`
+  and `Dessicated_Dust_Bunny.png` byte-identical to each other, which is how the mod shipped. A
+  dead dust bunny is drawn exactly like a live one, and for a clump of dust that is arguably right.

@@ -33,21 +33,22 @@ The MIT licence above covers only what the 1.6 port added:
     API rather than a copy of the original assembly
   - the French translation
   - the packaging and the documentation
-
-No mod icon ships. Art/Make-ModIcon.ps1, which cuts one from the mod's own
-bunny sprite, is the port's work and is covered; the sprite it cuts is not.
+  - About/ModIcon.png and About/Preview.png, and their full-resolution
+    originals under Art/. Both were made for this port and neither is derived
+    from the original art: no pixel of the bunny sprite is in either one.
 
 IT DOES NOT COVER THE ORIGINAL MOD. The dust bunny, the dust, their stats,
-their balance and the four images are 2blockdude's and HendraGradeWood's work,
-reused here:
+their balance and the four texture images are 2blockdude's and
+HendraGradeWood's work, reused here:
 
   https://steamcommunity.com/sharedfiles/filedetails/?id=2659958183
   https://github.com/blockdude/csharp-rimworld-dust-bunnies
 
 They never declared a licence for it, so none is granted here and none can be.
 It is redistributed under the usual practice for abandoned mods - explicit
-credit, a link to the original, and removal on request. About/Preview.png is
-theirs as it stands.
+credit, a link to the original, and removal on request. The five files under
+Textures/ are theirs as they stand; the two images under About/ are not theirs
+and never were.
 
 If 2blockdude or HendraGradeWood asks for this to be taken down, it comes
 down. Immediately, and without discussion.
