@@ -1,4 +1,4 @@
-# Dust Bunnies 1.6
+# Dust Bunnies Renew
 
 Port of **2blockdude's and HendraGradeWood's Dust Bunnies** to RimWorld 1.6.
 
