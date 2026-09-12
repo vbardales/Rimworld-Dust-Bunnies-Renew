@@ -1,65 +1,66 @@
 ---
 mod:        Dust Bunnies Renew
 packageId:  nelim.dustbunniesrenew
-depot:      Rimworld-Dust-Bunnies-Renew
-visibilite: public
-detache:    oui
-etape:      done
+repo:       Rimworld-Dust-Bunnies-Renew
+visibility: public
+detached:   yes
+stage:      done
 licence:    silent
-licence_ou: quatre endroits ; le dépôt lié rend license: null
-vitrine:    complete
-teste_le:
+licence_at: four places; the linked repository reports license: null
+showcase:   complete
+tested_on:
 workshop:
-reste:
-  - non_verifie: la recette qui fait naître l'animal, seul endroit où le C# du mod s'exécute
-  - non_verifie: l'entraînement, la bête restant au stade AnimalBaby à vie
-  - non_verifie: les seize autres scénarios de _tools/FUNCTIONAL-SCENARIOS.md
+remaining:
+  - unverified: the recipe that makes the animal, the only place the mod's own code runs
+  - unverified: training, the creature staying at the AnimalBaby life stage for life
+  - unverified: the sixteen other scenarios in _tools/FUNCTIONAL-SCENARIOS.md
 session:    local_49e74fa8-1876-4ba3-92c3-10edeb90216f
-maj:        2026-09-12, session du mod
+updated:    2026-09-12, the mod's own session
 ---
 
-# Dust Bunnies Renew — etat
+# Dust Bunnies Renew — status
 
-Fiche d'etat, lue par une passe sur tous les mods plutot qu'en interrogeant les fils un a un.
-Elle vit a la racine, jamais dans `Mod/`, donc Steam ne la recoit pas.
+Read by a sweep across every mod, rather than by asking each thread in turn. It lives at the
+root, never inside `Mod/`, so Steam never receives it.
 
-Les champs deduits du disque le 2026-09-12 ont ete verifies un a un et sont justes. Les trois
-que le releve ne pouvait pas remplir sont tranches ici.
+The fields read off the disk on 2026-09-12 were checked one by one and are right. The three the
+sweep could not fill are settled here.
 
-- **`etape`** — `done` confirme, au sens ou le travail est fini et non au sens ou il est publie :
-  les deux corrections du portage, le C# reecrit, le francais, la vitrine et les scenarios sont
-  en place, et le depot n'a plus rien en attente. Vingt et un des vingt-deux mods marques `done`
-  du depot sont dans le meme etat, sans item Workshop.
-- **`teste_le`** — vide, et la ligne posee d'office par le releve dit vrai : **ce mod n'a jamais
-  ete charge par RimWorld**, ni dans sa forme d'origine depuis 2021 ni dans ce portage.
-- **`reste`** — les trois lignes sont du non verifie, pas du casse. Aucun defaut connu non
-  corrige ; ce qui ressemble a des oublis dans les defs — `mateMtbHours` 0 a cote d'une
-  `litterSizeCurve`, un `ecoSystemWeight` sur un animal qui n'appartient a aucun biome, un
-  cadavre desseche dessine comme un vivant — a ete constate, documente et laisse tel quel,
-  parce que c'est leur equilibrage et non celui du portage.
+- **`stage`** — `done` confirmed, in the sense that the work is finished rather than that it is
+  published: the port's two corrections, the rewritten C#, the French, the showcase and the
+  scenarios are all in place, and nothing is outstanding in the repository. Twenty of the
+  twenty-one mods marked `done` across the repositories have no Workshop item either, so the word
+  already carries that meaning.
+- **`tested_on`** — empty, and the line the sweep puts there by default is true for once:
+  **RimWorld has never loaded this mod**, neither in its original form since 2021 nor in this
+  port.
+- **`remaining`** — three lines of unverified, no line of broken. No known fault left unfixed:
+  what looks unfinished in the defs — `mateMtbHours` 0 beside a `litterSizeCurve`, an
+  `ecoSystemWeight` on an animal that belongs to no biome, a dessicated corpse drawn like a live
+  one — was recorded, documented and left alone, because that is the original's balance and not
+  the port's to decide.
 
-**Pourquoi la premiere ligne de `reste` passe devant les autres.** Tout le mod est une methode de
-`RecipeWorker`, et **rien ne l'appelle avant qu'un colon termine la bill** : ni le chargement, ni
-la mise en file, ni le debut du travail. Un `workerClass` qui ne se resout pas laisse le champ a
-null sans tuer la def, donc la recette consommerait les cent poussieres, ferait ses 800 ticks,
-finirait le travail et ne produirait rien — et tout le reste du mod continuerait de bien se tenir.
-Chaque appel au jeu a ete verifie par reflexion contre la 1.6 avant d'ecrire une ligne, ce qui
-rend la panne improbable, mais la reflexion prouve qu'une methode existe encore avec cette forme,
-pas que le jeu fait encore la chose.
+**Why the first line comes before the others.** The whole mod is one `RecipeWorker` method, and
+**nothing calls it until a colonist finishes the bill** — not loading, not queueing, not starting
+the work. A `workerClass` that fails to resolve leaves the field null without killing the def, so
+the recipe would consume the hundred dust, run its 800 ticks, end the job and produce nothing,
+while every other observable behaviour of the mod stayed intact. Every call it makes was checked
+against 1.6 by reflection before a line was written, which makes that failure unlikely, but
+reflection proves a method still exists with that shape, not that the game still does the thing.
 
-Pas de jeu de tests hors jeu a cote, et c'est delibere : il n'y a rien a executer sans carte,
-colon et bill.
+There is no out-of-game suite beside it, and that is deliberate: there is nothing to run without
+a map, a colonist and a bill.
 
-`_tools/FUNCTIONAL-SCENARIOS.md` reste la source : dix-huit scenarios, un seul point a observer
-chacun, la ligne de `Player.log` qui dit de quelle panne il s'agit, et ce qu'ils ne couvrent pas.
-Cette fiche n'en garde que le solde.
+`_tools/FUNCTIONAL-SCENARIOS.md` is the source: eighteen scenarios, one thing to watch each, the
+`Player.log` line that says which failure it was, and what they cannot cover. This card keeps only
+the balance.
 
-**Dernier releve de chiffres, le 2026-09-12.** Ecrire ces scenarios a trouve trois affirmations
-fausses dans la documentation du portage — poussiere dite chaude alors qu'elle est le pire isolant
-du jeu, dite tres inflammable alors que son facteur est sous celui du tissu, et une decoupe
-annoncee a 50 poussieres pour un rendement reel d'environ 18. Corrigees dans l'`About.xml`, le
-README et le CHANGELOG. La description Workshop ne partant qu'a la creation de l'item, la fenetre
-pour ce genre de correction se ferme a la publication.
+**Last figures checked, 2026-09-12.** Writing those scenarios turned up three false claims in the
+port's own documentation — dust called warm when it is the worst insulator in the game, called
+very flammable when its factor sits below cloth's, and butchering announced at 50 dust for a real
+yield near 18. All three corrected in `About.xml`, the README and the CHANGELOG. The Workshop
+description is sent only when the item is created, so the window for that kind of correction
+closes at publication.
 
-Vocabulaire de `licence` : `open` licence explicite, `silent` aucune licence et source morte,
-`alive` aucune licence mais source vivante, `forbidden` refus ecrit, `original` rien de repris.
+`licence` vocabulary: `open` an explicit licence, `silent` no licence and a dead source,
+`alive` no licence but a living source, `forbidden` a written refusal, `original` nothing reused.
