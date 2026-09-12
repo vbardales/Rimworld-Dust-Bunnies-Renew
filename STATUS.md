@@ -69,4 +69,5 @@ description is sent only when the item is created, so the window for that kind o
 closes at publication.
 
 `licence` vocabulary: `open` an explicit licence, `silent` no licence and a dead source,
-`alive` no licence but a living source, `forbidden` a written refusal, `original` nothing reused.
+`alive` no licence but a living source, `forbidden` a written refusal, `original` owing nothing
+to anyone — not a name, not an idea traceable to one mod, not a value derived from its assets.
