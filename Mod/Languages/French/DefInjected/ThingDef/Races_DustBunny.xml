@@ -12,8 +12,8 @@
   <DustBunny.description>Petit mouton de poussière. Fait de poussière. Fait de mouton.</DustBunny.description>
 
   <!--
-    The bite tool carries no label of its own - Tool.LabelCap falls back to the body part group,
-    which is already translated. Only the head tool names itself.
+    The bite tool carries no label of its own and references the vanilla Teeth body part
+    group, which is already translated. Only the head tool names itself.
   -->
   <!-- EN: head -->
   <DustBunny.tools.head.label>tête</DustBunny.tools.head.label>

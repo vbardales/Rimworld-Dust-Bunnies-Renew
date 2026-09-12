@@ -252,12 +252,23 @@ angles would mean something else is supplying textures.
 
 ---
 
-## 16. French
+## 16. English and French translation gate
 
-**Do.** Switch the language to French and restart. Look at the animal, the dust and both bills.
+**Do.** Run this scenario first in English, then switch to French and restart. Look at
+the animal and dust information cards, both recipe descriptions and bill labels,
+and the colonist's job text while each recipe runs. Inspect the head and bite attack
+wording, a dust-made garment's material name, and a dust bunny corpse. Try the
+target-count rejection from scenario 7 in each language.
 
 **Expect.** *mouton de poussière* for the animal, *poussière* for the resource, and both recipe
-labels and job strings in French. Twelve keys, and the whole mod is covered by them.
+labels, descriptions and job strings in French. The head tool reads *tête*.
+In English, expect *dust bunny*, *dust*, *head* and English recipe text.
+The 12 owned text paths are inventoried in STATUS.md; generated material, corpse
+and rejection text must also use the selected language without raw keys, accidental
+English fallback, broken grammar, formatting errors or clipping.
+
+Record separate English and French PASS/FAIL results, game version, active mods,
+date and log path. Static resource checks do not count as running this scenario.
 
 **Watch for in `Player.log`.** `Duplicate def-injected translation key` or a def-injection report
 naming this mod. Either means a key is misspelled or aimed at a def that no longer exists.

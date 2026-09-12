@@ -1,4 +1,7 @@
 ---
+localization: complete
+translation_en: complete
+translation_fr: complete
 mod:          Dust Bunnies Renew (unofficial)
 packageId:    nelim.dustbunniesrenew
 repo:         Rimworld-Dust-Bunnies-Renew
@@ -18,12 +21,70 @@ showcase:     complete
 tested_on:    automated checks against installed RimWorld 1.6; no recorded in-game run
 workshop:
 remaining:
+  - "unverified: Run scenario 16 in English and French; check descriptions, jobs, attacks, material and corpse names, bill rejection, formatting and clipping."
   - Run and record manual scenarios 0-17, especially recipe completion and training.
   - Confirm Workshop publication status before filling workshop.
 updated:      2026-09-13
 ---
 
 # Dust Bunnies Renew — status
+
+## Translation audit — 2026-09-13
+
+Applied the translation gate from the parent workspace's PUBLISHING.md and
+TRANSLATIONS.md to revision `17565c2df433d6d4cad7df584c8990e99965b5e9`
+and the current working files. All three fields certify static readiness only;
+the existing stage is preserved and bilingual gameplay remains unverified.
+
+Scope: all three XML files under `Mod/Defs`, all four French DefInjected files,
+both C# source files and the published folder layout. There is no LoadFolders.xml,
+version-specific content, conditional patch, optional integration, custom settings,
+Keyed text or mod-owned grammar resource. The recipe worker only generates and
+spawns a pawn; it adds no UI text, messages or dynamically constructed keys.
+
+| Owned text source / injection path | English source | French coverage |
+|---|---|---|
+| ThingDef `DustBunny.label`, `.description` | Both concrete Def values | 2 entries |
+| ThingDef `DustBunny.tools.head.label` | `head`, inherited from `BaseDustBunny` | 1 entry |
+| PawnKindDef `DustBunny.label` | Concrete Def value | 1 entry |
+| ThingDef `Dust.label`, `.description` | Both concrete Def values | 2 entries |
+| RecipeDef `GatherDust.label`, `.description`, `.jobString` | All three Def values | 3 entries |
+| RecipeDef `MakeDustBunny.label`, `.description`, `.jobString` | All three Def values | 3 entries |
+
+Total: 12 owned text paths, each with nonempty English source and French translation.
+English uses native Def fallback; an English DefInjected copy is unnecessary.
+Reviewed the French meaning and terminology, including the dust-bunny wordplay and
+third-person job strings. Owned texts have no format parameters, grammar tokens,
+rich-text tags or intentional multiline formatting to synchronize.
+
+Engine-generated text uses the localized Def values: dust as a material uses
+`ThingDef.LabelAsStuff`, whose installed assembly getter falls back to `label` when
+`stuffAdjective` is empty. The unlabeled bite references the vanilla `Teeth` body
+part group; the explicitly named head tool is covered above. Core French includes
+`Teeth.label` (`dents`) and `HeadAttackTool.label` (`tête`). Core owns the corpse
+templates (`CorpseLabel`, `CorpseDesc`) and the productless-recipe rejection
+(`RecipeCannotHaveTargetCount`); their English and French resources were checked
+in installed Core English files and `French (Français).tar`. These resources are
+not copied into the mod. Generated wording and grammar still require scenario 16.
+
+Exclusions: identifiers, texture paths, sound/Def references, the developer-only
+`devNote`, C# comments, About metadata, licences and repository documentation are
+not player-facing translation resources. No localization defect was found.
+
+Verification performed:
+
+- `pwsh -NoProfile -File _tools/Test-Mod.ps1 -SkipBuild`: PASS; 8 XML files parse,
+  fields/references/classes and the existing compiled recipe hook pass.
+- Its local `Check-DefInjected.ps1`: 12 keys, 0 errors, no unverified targets.
+  This validates paths; the source inventory above establishes coverage separately.
+- XML resource inspection: 12 unique, nonempty French entries, no placeholders
+  or rich-text markup. Manually compared the inventory with the English Def values.
+- Installed assembly inspection with `ilspycmd` (`DOTNET_ROLL_FORWARD=Major`)
+  confirmed the material-label fallback. No DLL rebuild was needed or claimed.
+
+Repeat this audit after changes to text, UI code, Defs, patches or language resources;
+reset affected status fields to `unchecked` until revalidated. Run scenario 16 in
+both languages before claiming in-game translation validation.
 
 ## Delivery checkpoint — 2026-09-13
 
