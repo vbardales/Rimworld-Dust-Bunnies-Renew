@@ -1,21 +1,22 @@
 ---
-mod:        Dust Bunnies Renew
-packageId:  nelim.dustbunniesrenew
-repo:       Rimworld-Dust-Bunnies-Renew
-visibility: public
-detached:   yes
-stage:      done
-licence:    silent
-licence_at: four places; the linked repository reports license: null
-showcase:   complete
+mod:          Dust Bunnies Renew
+packageId:    nelim.dustbunniesrenew
+repo:         Rimworld-Dust-Bunnies-Renew
+visibility:   public
+detached:     yes
+stage:        done
+licence:      silent
+licence_at:   four places; the linked repository reports license: null
+dependencies: none
+showcase:     complete
 tested_on:
 workshop:
 remaining:
   - unverified: the recipe that makes the animal, the only place the mod's own code runs
   - unverified: training, the creature staying at the AnimalBaby life stage for life
   - unverified: the sixteen other scenarios in _tools/FUNCTIONAL-SCENARIOS.md
-session:    local_49e74fa8-1876-4ba3-92c3-10edeb90216f
-updated:    2026-09-12, the mod's own session
+session:      local_49e74fa8-1876-4ba3-92c3-10edeb90216f
+updated:      2026-09-12, the mod's own session
 ---
 
 # Dust Bunnies Renew — status
@@ -34,6 +35,11 @@ sweep could not fill are settled here.
 - **`tested_on`** — empty, and the line the sweep puts there by default is true for once:
   **RimWorld has never loaded this mod**, neither in its original form since 2021 nor in this
   port.
+- **`dependencies`** — `none`, and it is the easy kind of none: the About declares no
+  `modDependencies` and its only `loadAfter` is `Ludeon.RimWorld`, so there is no non-vanilla
+  entry to go and check. The field matters because an undeclared dependency is not cosmetic — on
+  2026-09-11 Reequilibrage animaux took 47 vanilla animals down with it, Muffalo included, because
+  a class it injects belongs to a mod that was neither declared nor loaded.
 - **`remaining`** — three lines of unverified, no line of broken. No known fault left unfixed:
   what looks unfinished in the defs — `mateMtbHours` 0 beside a `litterSizeCurve`, an
   `ecoSystemWeight` on an animal that belongs to no biome, a dessicated corpse drawn like a live
