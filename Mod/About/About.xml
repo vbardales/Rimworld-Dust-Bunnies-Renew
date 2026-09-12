@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <packageId>nelim.dustbunniesrenew</packageId>
-  <name>Dust Bunnies Renew</name>
+  <name>Dust Bunnies Renew (unofficial)</name>
   <author>2blockdude, HendraGradeWood - 1.6 port: nelim</author>
   <supportedVersions>
     <li>1.6</li>
@@ -10,7 +10,11 @@
   <incompatibleWith>
     <li>BlockHen.Animal.DustBunnies</li>
   </incompatibleWith>
-  <description>Sweep dust off the floor, pile up a hundred of it, and craft yourself a live dust bunny.
+  <description>UNOFFICIAL. This mod is published without the original author's explicit consent. If the original author contacts me to request its removal, I undertake to take it down promptly.
+
+GitHub: https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew
+
+Sweep dust off the floor, pile up a hundred of it, and craft yourself a live dust bunny.
 
 Two recipes at the crafting spot, one resource and one animal:
 
@@ -39,7 +43,7 @@ If 2blockdude or HendraGradeWood asks for this to be taken down, it comes down i
 
 If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
 
-The port work was done with the help of an AI assistant (Claude, by Anthropic), under human direction and in-game testing.</description>
+The port work was done with the help of an AI assistant (Claude, by Anthropic), under human direction. In-game validation of this port is pending.</description>
   <loadAfter>
     <li>Ludeon.RimWorld</li>
   </loadAfter>

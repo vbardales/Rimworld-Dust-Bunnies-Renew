@@ -1,17 +1,13 @@
 # Functional scenarios, to be played in game
 
-This mod has never been run by RimWorld. Not once, in either its original form or this port.
+No in-game run of this port is recorded. All 18 scenarios below are **NOT RUN**.
+Record date, RimWorld version, active DLC/mods, scenario ID, PASS/FAIL, observations and
+Player.log location after each run; update STATUS.md with the outcome.
 
-There is no out-of-game suite next door, and for this mod that gap is the point rather than an
-omission. The whole of it is one `RecipeWorker` method that spawns a pawn, and **nothing touches
-that method until a colonist finishes the bill**. It is not called at load, not called when the
-recipe is added to a bill stack, not called when the work begins. A port recompiled blind would
-load cleanly, show both recipes, let them be queued, and fail hours later. Reflection was used to
-check every call it makes against 1.6 before a line was written, which is why it is expected to
-work — but reflection checks that a method still exists with that shape, not that the game still
-does the thing.
-
-So these scenarios are the only real test this mod has, and scenario 4 is the one they exist for.
+The automated suite is `pwsh -NoProfile -File _tools/Test-Mod.ps1`. It checks XML and the
+compiled API hook, but cannot prove that completing a bill spawns a pawn. Scenario 4 is
+therefore the first functional priority after loading. Expected results below are hypotheses
+to verify in RimWorld, not evidence that the tests passed.
 
 **Setup for everything below.** Development mode on. A small colony with a **crafting spot** and
 one colonist whose Crafting is enabled and not disabled by a trait. Time controls at 3x for the
@@ -137,6 +133,8 @@ tamed: it is made, so it takes the faction of whoever made it.
 **How it fails.** A bunny that spawns wild means `billDoer.Faction` came through null — which
 happens if the bill was somehow done by a pawn with no faction.
 
+**Then.** Save, quit to the main menu and reload. Confirm the bunny still belongs to the colony, dust stacks and queued bills persist, and no new mod errors appear in Player.log.
+
 ## 6. Wildness reads 10%, not 0%
 
 **Do.** Open the bunny's information card.
@@ -232,7 +230,7 @@ map at world generation or in a wildlife wave, because the race belongs to no bi
 
 **Do.** Use development mode to age a bunny past one year, or keep one for a full year.
 
-**Expect.** Death of old age. `lifeExpectancy` is 1.
+**Expect.** The information card reports a life expectancy of 1 year. Record aging effects over time; this value is not a guaranteed death timer at the first birthday.
 
 **Then.** Look at the corpse.
 
@@ -269,13 +267,11 @@ naming this mod. Either means a key is misspelled or aimed at a def that no long
 **Do.** Enable both this mod and 2blockdude's original (Workshop 2659958183), if it is still
 subscribed.
 
-**Expect.** RimWorld refuses the combination and says so in the mod list, because `About.xml`
+**Expect.** RimWorld reports the incompatibility in the mod list, because `About.xml`
 names `BlockHen.Animal.DustBunnies` in `<incompatibleWith>`.
 
 **Why it matters.** Every `defName` is unchanged — `DustBunny`, `Dust`, `GatherDust`,
-`MakeDustBunny` and the rest. Loading both would not crash; the later one would silently overwrite
-the earlier, which is worse. If the game lets them both load, the incompatibility declaration is
-not being read, and `Adding duplicate` will be in the log.
+`MakeDustBunny` and the rest. Do not proceed with both enabled. Record the warning; the metadata is not a guarantee that the game prevents loading. Duplicate definitions are an invalid test configuration.
 
 ---
 

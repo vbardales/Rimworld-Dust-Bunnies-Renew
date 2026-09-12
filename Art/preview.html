@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Dust Bunnies Renew — Preview composition</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body, h1, p { margin: 0; padding: 0; }
+  body { width: 896px; height: 504px; overflow: hidden; position: relative;
+    font-family: "Segoe UI", system-ui, sans-serif; }
+  .scene, .veil { position: absolute; inset: 0; }
+  .scene { background: url('Preview.png') center / cover no-repeat; }
+  /* Hold the wood-coloured veil behind all text before fading toward the subject. */
+  .veil { background: radial-gradient(ellipse 800px 650px at top left,
+    rgb(var(--veilRGB) / .94) 0%, rgb(var(--veilRGB) / .90) 45%,
+    rgb(var(--veilRGB) / 0) 100%); }
+  .plate { position: absolute; left: 50px; top: 54px;
+    color: var(--inkPrimary); text-shadow: 0 3px 10px rgba(0,0,0,.75); }
+  h1 { font-size: 46px; font-weight: 600; line-height: 1.1; letter-spacing: 0; }
+  h1 .suffix { font-size: .65em; color: var(--inkSecondary); }
+  .tag { margin-top: 8px; font-size: 24px; font-weight: 400; line-height: 1.1;
+    letter-spacing: .2px; color: var(--inkSecondary); }
+  .rule { width: 58px; height: 3px; margin: 20px 0 16px; background: var(--accent); }
+  .summary { width: 430px; font-size: 21px; font-weight: 400; line-height: 1.45;
+    letter-spacing: 0; color: var(--inkPrimary); }
+  .badge { position: absolute; right: 0; top: 0; width: 80px; height: 80px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%); background: var(--accent); }
+  .version { position: absolute; left: 869px; top: 27px;
+    transform: translate(-50%, -50%) rotate(45deg); color: var(--badgeInk);
+    font-size: 26px; font-weight: 700; line-height: 1; text-shadow: none; }
+</style>
+<div class="scene"></div><div class="veil"></div>
+<div class="plate">
+  <h1><span class="strong">Dust Bunnies</span><br><span class="suffix">Renew</span></h1>
+  <p class="tag">(unofficial)</p>
+  <div class="rule"></div>
+  <p class="summary">Sweep the floor, pile up the fluff, and the fluff gets up and walks.</p>
+</div>
+<div class="badge"></div><span class="version"></span>
+<script>
+window.previewReady = (async () => {
+  const palette = await (await fetch('preview-palette.json')).json();
+  for (const [key, value] of Object.entries(palette)) document.documentElement.style.setProperty('--' + key, value);
+  document.documentElement.style.setProperty('--veilRGB', palette.veil.slice(1).match(/../g).map(v => parseInt(v,16)).join(' '));
+  const about = new DOMParser().parseFromString(await (await fetch('../Mod/About/About.xml')).text(), 'application/xml');
+  const versions = [...about.querySelectorAll('supportedVersions > li')].map(n=>n.textContent.trim())
+    .filter(v=>/^\d+\.\d+(?:\.\d+)?$/.test(v)).sort((a,b)=> {
+      const aa=a.split('.').map(Number), bb=b.split('.').map(Number);
+      for(let i=0;i<Math.max(aa.length,bb.length);i++) { const diff=(bb[i]||0)-(aa[i]||0); if(diff) return diff; } return 0;
+    });
+  if (!versions.length) throw Error('No stable supported version');
+  document.querySelector('.version').textContent = versions[0];
+  const source = new Image(); source.src = 'Preview.png'; await source.decode();
+  await document.fonts.ready;
+  return {palette, version: versions[0]};
+})();
+</script>
+</html>

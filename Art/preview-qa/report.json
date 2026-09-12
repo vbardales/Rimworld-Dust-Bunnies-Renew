@@ -1,0 +1,116 @@
+{
+  "size": [
+    896,
+    504
+  ],
+  "version": "1.6",
+  "fonts": {
+    ".strong": [
+      {
+        "familyName": "Segoe UI Semibold",
+        "postScriptName": "SegoeUI-Semibold",
+        "isCustomFont": false,
+        "glyphCount": 12
+      }
+    ],
+    ".suffix": [
+      {
+        "familyName": "Segoe UI Semibold",
+        "postScriptName": "SegoeUI-Semibold",
+        "isCustomFont": false,
+        "glyphCount": 5
+      }
+    ],
+    ".tag": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 12
+      }
+    ],
+    ".summary": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI",
+        "isCustomFont": false,
+        "glyphCount": 67
+      }
+    ],
+    ".version": [
+      {
+        "familyName": "Segoe UI",
+        "postScriptName": "SegoeUI-Bold",
+        "isCustomFont": false,
+        "glyphCount": 3
+      }
+    ]
+  },
+  "contrast": {
+    ".strong": {
+      "minimum": 11.894411912085522,
+      "at": [
+        321,
+        63
+      ]
+    },
+    ".suffix": {
+      "minimum": 6.986924149435567,
+      "at": [
+        75,
+        155
+      ]
+    },
+    ".tag": {
+      "minimum": 6.616709122680619,
+      "at": [
+        473,
+        163
+      ]
+    },
+    ".summary": {
+      "minimum": 9.414513439379258,
+      "at": [
+        468,
+        263
+      ]
+    },
+    ".version": {
+      "minimum": 14.200113294297841,
+      "at": null
+    }
+  },
+  "bounds": {
+    ".strong": {
+      "x": 50,
+      "y": 48,
+      "width": 273.53125,
+      "height": 62
+    },
+    ".suffix": {
+      "x": 50,
+      "y": 116.59375,
+      "width": 89.65625,
+      "height": 40
+    },
+    ".tag": {
+      "x": 50,
+      "y": 163.1875,
+      "width": 430,
+      "height": 26.390625
+    },
+    ".summary": {
+      "x": 50,
+      "y": 228.578125,
+      "width": 430,
+      "height": 60.875
+    },
+    ".version": {
+      "x": 846.7371826171875,
+      "y": 4.737185001373291,
+      "width": 44.525634765625,
+      "height": 44.52562856674194
+    }
+  },
+  "bytes": 205118
+}

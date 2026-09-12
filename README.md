@@ -1,4 +1,6 @@
-# Dust Bunnies Renew
+# Dust Bunnies Renew (unofficial)
+
+UNOFFICIAL. This mod is published without the original author's explicit consent. If the original author contacts me to request its removal, I undertake to take it down promptly.
 
 Port of **2blockdude's and HendraGradeWood's Dust Bunnies** to RimWorld 1.6.
 
@@ -154,7 +156,7 @@ checked rather than assumed:
   (`phil42.allergies`) declares a `P42_Allergies.AllergyDef` named `Dust`; `DefDatabase` is
   generic per def type, so an `AllergyDef` and a `ThingDef` may share a name freely. Every other
   hit is the source mod's own three version folders.
-- **Every other mod in this repository** — nothing.
+- **Other mods in the former monorepo (historical scan)** — nothing. This repository now contains only this mod.
 
 No collision, so no rename. A rename is permanent in a way a port is not.
 
@@ -176,8 +178,8 @@ since 2021.
 DustBunniesRenew/
   Mod/      <- what goes on the Workshop; the NTFS junction into RimWorld/Mods points here
   Source/   <- C#, never published
-  Art/      <- full-resolution originals of the two About/ images, never published
-  _tools/   <- the page that engraves the title onto the showcase, never published
+  Art/      <- originals, Preview HTML/palette/renderer and visual QA, never published
+  _tools/   <- validation scripts and functional scenarios, never published
 ```
 
 `Source/Directory.Build.props` sends build intermediates to `../.build/`. That is not
@@ -196,17 +198,21 @@ RimWorld installation is needed to compile. No Harmony: the mod patches nothing.
 
 ## Verification
 
-Checked with the repository's static checks, against RimWorld 1.6 alone:
+Run the repository-local suite (PowerShell 7, .NET SDK and RimWorld 1.6 required):
 
-```bash
-pwsh -File ../scripts/Check-XmlFields.ps1   -ModPath Mod
-pwsh -File ../scripts/Check-DefRefs.ps1     -ModPath Mod -Brief
-pwsh -File ../scripts/Check-XmlClasses.ps1  -ModPath Mod -SourceDirs Source -TypeLists rw16_types.txt
-pwsh -File ../scripts/Check-DefInjected.ps1 -TransMod Mod
+```powershell
+pwsh -NoProfile -File _tools/Test-Mod.ps1
+# For another game installation:
+pwsh -NoProfile -File _tools/Test-Mod.ps1 -GameRoot 'D:\Games\RimWorld'
 ```
 
-Every element maps to a 1.6 field, every def reference and `ParentName` resolves, both referenced
-C# types exist, and all 12 translation keys land on something the injector can reach.
+It builds the DLL, parses all mod XML, checks fields and def references against the game,
+checks French injection paths and XML class names, and verifies the compiled recipe override.
+The checkers live in `_tools/checks/`; no monorepo or sibling scripts are required.
+`-SkipBuild` checks the existing DLL only. These checks do not execute pawn spawning.
+
+See [_tools/FUNCTIONAL-SCENARIOS.md](_tools/FUNCTIONAL-SCENARIOS.md) for the 18 manual
+in-game scenarios, and [STATUS.md](STATUS.md) for the latest verified results and limitations.
 
 ## Credits
 
@@ -215,5 +221,4 @@ C# types exist, and all 12 translation keys land on something the injector can r
 
 See [ATTRIBUTION.md](ATTRIBUTION.md) for the licence position and what exactly was carried over.
 
-The port work was done with the help of an AI assistant (Claude, by Anthropic), under human
-direction and in-game testing.
+The port work was done with the help of an AI assistant (Claude, by Anthropic), under human direction. In-game validation of this port is pending.

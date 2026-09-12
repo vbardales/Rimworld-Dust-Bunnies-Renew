@@ -23,6 +23,37 @@ This is the usual convention for ports on the RimWorld Workshop: republished wit
 name** and **removal on request, without argument**. The `<author>` field reads
 `2blockdude, HendraGradeWood - 1.6 port: nelim`, and the removal clause is in the description.
 
+## Explicit licence and visibility recheck — 2026-09-12
+
+Decision: **mod licence classification `silent`; mod visibility classification `public`**,
+under the project's PUBLISHING.md rule for abandoned sources without permission or a recorded
+prohibition. The (unofficial) suffix and notice remain necessary under that rule.
+This classification does not turn silence into author consent.
+
+Evidence checked directly during this audit:
+
+- Original installed Workshop item `2659958183`: recursive file listing has no licence file;
+  its About.xml description contains only a short feature statement, with no reuse terms.
+  Text searches of the installed XML/text files found no permission or prohibition.
+- [Original Steam page](https://steamcommunity.com/sharedfiles/filedetails/?id=2659958183):
+  the live description and all nine comments were read, including both author replies.
+  They discuss gameplay and training; none grants or prohibits redistribution or continuation.
+  The listed last update is November 21, 2021.
+- [Original GitHub repository](https://github.com/blockdude/csharp-rimworld-dust-bunnies):
+  recursive main-branch tree has no licence file; README provides author/date and a short
+  feature description, with no reuse terms. The API reports `license: null` and
+  `pushed_at: 2021-11-21T20:16:42Z`.
+- [Port repository](https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew): API confirms
+  `private: false`, `visibility: public`. This is repository visibility, not a rights grant
+  for the inherited mod or evidence of a published continuation on Steam.
+- Local LICENSE and Mod/LICENSE are identical. Their MIT grant explicitly covers only
+  the port additions, excluding the inherited original content.
+
+Consequently, the whole mod is not `open` and not `original`. No explicit refusal was found
+that would justify `forbidden`. The absence of mod updates since 2021 supports `silent`
+rather than `alive`; it does not establish the authors' personal availability. No author
+was contacted, no permission was obtained, and no publication or visibility change was made.
+
 ## What was carried over
 
 Everything the mod defined — seven defs, four distinct images and one C# class. No dependency, no
