@@ -2,6 +2,7 @@
 localization: complete
 translation_en: complete
 translation_fr: complete
+settings_audit: not_applicable
 mod:          Dust Bunnies Renew (unofficial)
 packageId:    nelim.dustbunniesrenew
 repo:         Rimworld-Dust-Bunnies-Renew
@@ -12,7 +13,7 @@ visibility_at: GitHub API verified 2026-09-12; Workshop publication not recorded
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex, responsible for this repository and STATUS.md
-stage:        awaiting-manual-tests
+stage:        done
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 port_licence: MIT, limited to port additions described in LICENSE
@@ -21,6 +22,7 @@ showcase:     complete
 tested_on:    automated checks against installed RimWorld 1.6; no recorded in-game run
 workshop:
 remaining:
+  - "unverified: Execute final gameplay validation on a new colony and an existing save, including startup logs, scenarios 0-17 and English/French UI; no gameplay result is claimed."
   - "unverified: Run scenario 16 in English and French; check descriptions, jobs, attacks, material and corpse names, bill rejection, formatting and clipping."
   - Run and record manual scenarios 0-17, especially recipe completion and training.
   - Confirm Workshop publication status before filling workshop.
@@ -28,6 +30,109 @@ updated:      2026-09-13
 ---
 
 # Dust Bunnies Renew — status
+
+## Publication-format correction — 2026-09-13
+
+Fixed the publication-format finding from the audit below in the working tree
+based on `21fbbbe81284694c43c3f26595b60eb12def7a4b`: removed the standalone raw
+GitHub link near the beginning of Mod/About/About.xml and appended the prescribed
+Steam-formatted `Source code on GitHub` link at the end of its description.
+The target matches the metadata URL and the repository verified during the audit.
+
+Validation: parsed all 8 distributed XML files; checked that the description ends
+with exactly one prescribed link and contains no old `GitHub:` line;
+`git diff --check` passed. No source, Def, translation or DLL changed, so existing
+build and localization validations remain applicable. Stage stays `done`; gameplay
+validation remains unverified. Historical findings below describe the pre-fix state.
+No commit, push or Workshop publication was performed.
+
+## Ordered workflow audit — 2026-09-13
+
+**Decision: `awaiting-manual-tests` -> `done`.** Here `done` means ready for final
+functional validation in RimWorld, exactly as defined in the supplied workflow;
+it does not mean `tested`. The former code described the same pending gameplay
+work but did not explicitly establish the settings gate. This audit establishes it.
+The user's transition criteria take precedence over conflicting parent guidance,
+particularly the rule allowing source verification for a mod without settings.
+
+Scope: autonomous repository `C:\Users\nelim\Documents\rimworld\DustBunniesRenew`,
+distributed root `Mod/`. Initial HEAD was `17565c2df433d6d4cad7df584c8990e99965b5e9`;
+initial local changes were STATUS.md, the French ThingDef translation comments and
+`_tools/FUNCTIONAL-SCENARIOS.md`. During the audit another operation committed those
+changes as `21fbbbe81284694c43c3f26595b60eb12def7a4b`. Its diff was inspected: no
+source, binary, image or translated value changed. The final audited revision is
+that commit, plus this STATUS.md update. Existing work and historical results were
+preserved. This audit made no commit, push, publication or image generation.
+
+| Transition / resulting state | Result | Current evidence |
+|---|---|---|
+| dansMonoRepo -> horsMonoRepo | Validated | Own .git directory, top-level path above, no superproject; configured GitHub origin. Live GitHub API: public, private=false, main. Live `git ls-remote origin HEAD` returned initial HEAD 17565c2, proving an existing pushed commit. README, CHANGELOG, LICENSE and ATTRIBUTION exist in English; distributed LICENSE and ATTRIBUTION match root copies by SHA-256. Identity and Renew/unofficial naming are coherent. |
+| horsMonoRepo -> ModIcon generated | Validated | Implementation present with no unfinished development identified; Release build passes and shipped DLL is byte-identical before/after. Directly inspected 128 x 128 PNG icon, 33,652 bytes, with mascot and subject visible. The approximate icon weight guidance is not a hard gate. |
+| ModIcon generated -> Preview generated | Validated | Directly inspected delivered 896 x 504 PNG, 205,118 bytes; illustration source and composition remain in Art/. No concrete camera defect found. No historical generation report or recorded game-screenshot comparison is required. |
+| Preview generated -> preOptions | Validated | English description; exact Renew and unofficial naming; reduced Renew suffix and separate tag; yellow rule/badge visibly distinct from beige-brown secondary ink at full size and 268 px. No linking words need special treatment. |
+| preOptions -> options | Justified not applicable | Settings inventory below: no relevant configuration, no empty settings page and no MainButtons shortcut in sources/Defs. |
+| options -> l10n | Validated | Reviewed all sources/Defs and four French resources against the existing 12-path inventory; nonempty English native Def values and French coverage, including inherited head tool. Check-DefInjected passes with 12 keys and zero errors. No owned code UI strings, parameters or unresolved translation placeholders. |
+| l10n -> preTest | Validated | Source only uses RimWorld/Verse and system APIs; XML references and parents resolve. About declares 1.6, Core loadAfter and original-mod incompatibility. No required third-party runtime dependency, optional integration, LoadFolders, conditional patch or version directory. Krafs.Rimworld.Ref is a build reference, not a player dependency. |
+| preTest -> done | Validated | Existing automated/XML tests executed successfully against installed RimWorld 1.6 and the shipped DLL. Eighteen written functional scenarios include shared setup, actions and expected results. Full pawn generation requires game runtime and is covered by manual scenarios rather than a claimed isolated unit suite. |
+| done -> tested | Unverified | No executed gameplay scenarios or attributable Player.log supplied/produced. New-colony and existing-save runs, English/French UI and logs remain mandatory. |
+
+### Settings audit
+
+Inspected both C# files, project references and every delivered Def. The worker has
+one fixed recipe completion action; the DefOf class only binds the pawn kind.
+Recipe costs/work/yields, animal stats/training/diet/lifespan and material stats are
+the inherited content balance, not a separate user configuration contract. Bills,
+training and animal management use vanilla controls. No concrete unmet settings
+need was identified; exposing these constants would invent a balance editor for
+this small preservation port. No XML configuration file or inherited settings
+integration exists. Searches for ModSettings, SettingsCategory,
+DoSettingsWindowContents, MainButtonDef, MainTabWindow, Scribe and a Mod subclass
+returned no matches, consistent with direct source review.
+
+Thus page, shortcut, editable-value validation, application timing, settings reset
+and settings persistence tests are **not applicable with justification**. RIMMSQOL
+and other customization integrations were **not tested**, and none is claimed.
+Animal/bill save persistence remains part of final gameplay validation, not a
+mod-settings test. This finding establishes `settings_audit: not_applicable`.
+
+### Commands and observed results
+
+- Read parent AGENTS.md, PUBLISHING.md, STYLE_RIMWORLD.md, MOD_SETTINGS.md and
+  TRANSLATIONS.md; inspected actual sources, metadata, docs, images and test scripts.
+- `pwsh -NoProfile -File _tools/Test-Mod.ps1`: initial sandbox attempt could not
+  read the local Microsoft SDK directory (MSB4184). Retried with approved SDK/game
+  access: **exit 0**, Release build 0 warnings/0 errors; 8 XML files parse; no unknown
+  fields, missing/wrong-type Def references or unresolved parents; 12 injection
+  keys, 0 errors; 2 XML C# types resolve; compiled recipe override and DefOf type pass.
+  The first attempt was an environment access failure, not a mod defect.
+- Shipped DLL SHA-256 before and after build:
+  `2D6203280D1B7985DFE2F2FBA6255B046A50BD75D63C90186A59E843A16F580B`.
+- GitHub read checks initially lacked sandbox network/config access; approved
+  read-only retry succeeded. No repository mutation was required.
+- Direct image inspection covered both delivered images and the existing 268 px
+  thumbnail. Art/preview.html uses Art/preview-palette.json; current QA report size
+  matches the delivered Preview. Historical font/contrast measurements remain
+  recorded below; they were not newly rendered or remeasured in this audit.
+- Rights classification remains `silent` under the documented 2026-09-12 source
+  investigation in ATTRIBUTION.md, not a newly obtained permission. MIT is expressly
+  limited to port additions; inherited assets have no invented licence grant.
+  The original Steam comments/upstream licence search was not repeated today.
+
+### Findings outside the transition gates
+
+**Observed publication-format defect:** About.xml has a raw GitHub URL near its
+start and lacks the final `[url=...]Source code on GitHub[/url]` link specified by
+PUBLISHING.md. Correct this before a publication action. The user's explicit
+preOptions criteria require English description and naming, which pass; publication
+itself is outside this supplied chain, so this does not downgrade `done`.
+
+**Next transition:** execute and record scenarios 0-17, explicitly covering a new
+colony and an existing save, save/reload, recipe completion, training, both languages
+and logs. No custom settings/shortcut scenario is applicable. Failures, if any,
+would require the corresponding correction and regression checks; missing gameplay
+evidence alone is not an observed functional defect. Workshop publication remains
+unconfirmed and is not required to reach `tested`. No optional visual correction
+is recommended from this inspection.
 
 ## Translation audit — 2026-09-13
 

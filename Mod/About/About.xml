@@ -12,8 +12,6 @@
   </incompatibleWith>
   <description>UNOFFICIAL. This mod is published without the original author's explicit consent. If the original author contacts me to request its removal, I undertake to take it down promptly.
 
-GitHub: https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew
-
 Sweep dust off the floor, pile up a hundred of it, and craft yourself a live dust bunny.
 
 Two recipes at the crafting spot, one resource and one animal:
@@ -43,7 +41,9 @@ If 2blockdude or HendraGradeWood asks for this to be taken down, it comes down i
 
 If I do not answer within a reasonable time after being contacted, anyone may freely update this or any other of my mods, including publishing a continuation of it. All credit must be preserved.
 
-The port work was done with the help of an AI assistant (Claude, by Anthropic), under human direction. In-game validation of this port is pending.</description>
+The port work was done with the help of an AI assistant (Claude, by Anthropic), under human direction. In-game validation of this port is pending.
+
+[url=https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew]Source code on GitHub[/url]</description>
   <loadAfter>
     <li>Ludeon.RimWorld</li>
   </loadAfter>
