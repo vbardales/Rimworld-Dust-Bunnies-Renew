@@ -2,9 +2,13 @@
 
 All notable changes to this mod are documented here.
 
-## [1.0.0] — 2026-09-05
+## [Unreleased]
 
-First release. Port of 2blockdude's and HendraGradeWood's **Dust Bunnies** to RimWorld 1.6.
+Becomes **1.0.0** when the item goes public. It was dated 2026-09-05 and called a first release
+before anything had been uploaded, which was wrong twice: nothing shipped that day, and the first
+upload is `0.1.0` below.
+
+Port of 2blockdude's and HendraGradeWood's **Dust Bunnies** to RimWorld 1.6.
 
 ### Fixed
 
@@ -67,6 +71,7 @@ left implicit, being the defaults.
   declared its content in per-version directories with no `LoadFolders.xml`; the XML in all three
   was byte-identical, only the assembly differing.
 - `About/PublishedFileId.txt` dropped: it names 2blockdude's and HendraGradeWood's Workshop item.
+  This port's own file, for its own item, arrived with `0.1.0`.
 
 ### Added
 
@@ -115,3 +120,17 @@ left implicit, being the defaults.
 - The five files under `Textures/`, 2blockdude's and HendraGradeWood's own — `Dust_Bunny_east.png`
   and `Dessicated_Dust_Bunny.png` byte-identical to each other, which is how the mod shipped. A
   dead dust bunny is drawn exactly like a live one, and for a clump of dust that is arguably right.
+
+## [0.1.0] — 2026-09-23
+
+Creation of a publishIdFile.
+
+The first upload, made only to create the Workshop item (`3806760430`) and obtain its
+`About/PublishedFileId.txt`. Steam creates every item private, so this is not a release: it says
+nothing about the mod being public, and it was not tested in game.
+
+What it contained: `Mod/` as it stood at commit `1b63e37`, the revision that was sent, and nothing
+else changed since — the commit that adds the ID file is the only one after it. Five `.dds`
+textures the game had written beside the PNGs were on disk, untracked, two hours before the upload;
+if it was made from the working folder they went with it, which cannot be read back from here.
+They are now ignored by git.
