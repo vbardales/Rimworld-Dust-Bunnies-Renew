@@ -34,3 +34,14 @@ PROMPT_*.md
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# DDS textures: not tracked. The game wrote one beside each PNG on 2026-09-23 (5 of them, 0.4 MB).
+# The PNG is the source and is what git holds; the game regenerates the rest. They stay on disk.
+# This keeps them out of git, not out of an upload: one made from the working tree sends the folder
+# as it stands, and this repository has no publish workflow or Mod/.steamignore yet.
+*.dds
+
+# Pickle evidence stays on disk, never in git: captures and Player.log grow without limit.
+# The durable record is one text line per run in docs/runs/ (see TESTING.md, "Evidence to keep").
+Tests/Pickle/Evidence/
+evidence/
