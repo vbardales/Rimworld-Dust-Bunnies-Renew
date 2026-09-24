@@ -11,8 +11,9 @@
 # are what they should be. Only a running game shows that the surgeries reached the animal, and only loading the
 # two mods in this order shows that the order held.
 #
-# No surgery is named. ADS 2 does not define its recipes in its own repository, and their names are not this mod's
-# to know, so the scenario compares. The dust bunny must be offered what a Squirrel is offered: ADS 2 lists the
+# No surgery is named, on purpose. ADS 2 defines them (InstallPegLegAnimal, InstallDentureAnimal and the wooden paw,
+# hoof, hand and foot ones), but a name is what an update can change, so the scenario compares. The dust bunny
+# must be offered what a Squirrel is offered: ADS 2 lists the
 # Squirrel in category 1 and in no other. And a Cat, which it lists in all three, must be offered surgeries the
 # dust bunny is not: the bionics. Both comparisons hold whatever the recipes are called, and both fail saying
 # which surgeries differ.
