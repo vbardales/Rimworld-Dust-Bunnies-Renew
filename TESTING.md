@@ -34,48 +34,51 @@ outside the repository; the script calls `pwsh` by name and does not fall back.
 
 ## What `tested` requires
 
-**`done` is not met.** The collection's workflow, transition 8, asks for the Pickle scenarios to be *written*,
-with their scope justified; running them is left to `tested`. None exists: there is no `Tests/Pickle/` here. What only a
-running game can show is exactly what this mod does, so the scope is not empty: a colonist finishes a bill and
-a live animal appears. Stage is `preTest`.
+**`done` is met**, as of 2026-09-24. The collection's workflow, transition 8, asks for the Pickle scenarios to be *written*,
+with their scope justified; running them is left to `tested`. `Tests/Pickle/` holds 7 features and 7 local steps, and
+its README says what is in Gherkin, what deliberately is not, and why. `Tests/Pickle/Check-Steps.ps1` resolves every
+step line to exactly one step, and was checked against three deliberate faults before being trusted. **The scenarios
+have never been run.**
 
 Then transition 9 (`done` -> `tested`). Three checks, each measured against what exists.
 
 | Check | Where this mod stands |
 |---|---|
-| No scenario left in `@wip`. A shelved scenario is repaired and replayed, or deleted with its reason. | There is no Gherkin, so none. It has to hold at the run, not only in the files, and `-IncludeWip` is never passed. |
-| Every conditional scenario ran. Each `@requires` (optional mod, DLC, companion tool) had its own pass on a map that mounts it, and its report was read. | None is planned. The About declares no dependency and no `loadAfter` beyond Core, and the content needs no DLC. The declared incompatibility is a pass of its own, below, not a conditional scenario. |
-| No manual test left to validate. What is still ticked by hand is either automated and green, or listed as not applicable with its reason. | **Not met: all eighteen are still manual.** The map below says where each one goes. |
+| No scenario left in `@wip`. A shelved scenario is repaired and replayed, or deleted with its reason. | None of the seven features carries `@wip`, and `-IncludeWip` is never passed. It has to hold at the run, not only in the files. |
+| Every conditional scenario ran. Each `@requires` (optional mod, DLC, companion tool) had its own pass on a map that mounts it, and its report was read. | One: `07-original-mod-incompatibility` carries `@requires:BlockHen.Animal.DustBunnies`, and plays only in the third pass, on a map that mounts the original. A report has to show it **played** there and **skipped** elsewhere; skipped in the third pass is not a pass. The About declares no dependency and no `loadAfter` beyond Core, and the content needs no DLC, so nothing else is conditional. |
+| No manual test left to validate. What is still ticked by hand is either automated and green, or listed as not applicable with its reason. | **Not met, and none has run.** The map below assigns each of the eighteen. Open: the four offline assertions are not written, and French clipping in the bill and information dialogs has no capture scenario. |
 
 ### Where each manual check goes
 
-Planned, and none of it written yet. `Pickle` means a feature a running game has to play; `offline` means an
-assertion added to `Test-Mod.ps1`, because whatever can be proved outside the game has to be; `n/a` means the
-scenario would test the engine and not the mod, which the workflow rules out: the mod answers for what it
-declares, and that is read in the sources.
+The suite is written and none of it has run. `Pickle` names the feature in `Tests/Pickle/Mod/Pickle/Features/`
+that covers the check; `offline` means an assertion for `Test-Mod.ps1`, because whatever can be proved outside
+the game has to be, and every one of those is **not yet written**; `n/a` means the scenario would test the engine
+and not the mod, which the workflow rules out: the mod answers for what it declares, and that is read in the
+sources. `Tests/Pickle/README.md` gives the reasoning per feature.
 
-| # | Manual check | Planned disposition |
+| # | Manual check | Disposition |
 |---|---|---|
-| 0 | Loads; the four log strings | Pickle: the startup feature, `no errors were logged`, and `Player.log` read from the launch |
-| 1 | Both recipes on the crafting spot, nowhere else | offline: `recipeUsers` of both recipes is exactly `CraftingSpot` |
-| 2 | *Gather dust* costs nothing but time | Pickle, first half of the chain: the bill completes and dust appears |
-| 3 | Dust is the worst cold insulator and burns as wood | offline, computed from the game's `Data` on each run: its `StuffPower_Insulation_Cold` is below that of every vanilla stuff a garment can be made from (`Fabric`, `Leathery`, `Metallic` or `Woody`; the six stone blocks state none and are `Stony`, so they are excluded by category and not by luck), and its flammability factor below cloth's. The materials are resolved through `ParentName` before comparing, because most inherit the stat. These are claims in the public description, so they are guarded, not restated |
-| 4 | The bill makes an animal | Pickle, and the reason this suite exists: 100 dust in, a live pawn on the colonist's cell |
-| 5 | Tame the moment it exists | Pickle, same feature: the pawn's faction is the colony's |
-| 6 | Wildness reads 10% | offline: `Wildness` sits under `statBases`, which is the port's first correction |
-| 7 | "Do until you have X" is refused | offline: `MakeDustBunny` declares no `<products>`, the trigger. The refusal text is vanilla: n/a |
+| 0 | Loads; the four log strings | Pickle `01-loads`: the recipe's worker class resolved, the `[DefOf]` bound, no error, no warning from the mod. `Player.log` is still read from the launch, because a startup error precedes every scenario |
+| 1 | Both recipes on the crafting spot, nowhere else | offline, not yet written: `recipeUsers` of both recipes is exactly `CraftingSpot` |
+| 2 | *Gather dust* costs nothing but time | Pickle `02-gather-dust`: a bill with no ingredient ends, and exactly ten dust appear |
+| 3 | Dust is the worst cold insulator and burns as wood | offline, not yet written, computed from the game's `Data` on each run: its `StuffPower_Insulation_Cold` is below that of every vanilla stuff a garment can be made from (`Fabric`, `Leathery`, `Metallic` or `Woody`; the six stone blocks state none and are `Stony`, so they are excluded by category and not by luck), and its flammability factor below cloth's. The materials are resolved through `ParentName` before comparing, because most inherit the stat. These are claims in the public description, so they are guarded, not restated |
+| 4 | The bill makes an animal | Pickle `03-make-a-dust-bunny`, first scenario, and the reason this suite exists: 100 dust consumed, exactly one live pawn, and a capture of it |
+| 5 | Tame the moment it exists | Pickle `03`, same scenario: the animal belongs to the colony. `04-save-reload` saves and reloads a queued bill and an animal |
+| 6 | Wildness reads 10% | offline, not yet written: `Wildness` sits under `statBases`, the port's first correction. `03` also reads the stat from the living animal |
+| 7 | "Do until you have X" is refused | offline, not yet written: `MakeDustBunny` declares no `<products>`, the trigger. The refusal text is vanilla: n/a |
 | 8 | Never eats | n/a: vanilla reads `baseHungerRate`, declared and unchanged since 2021 |
-| 9 | Trains, up to Advanced | Pickle, tail of the feature in 4: the training tab offers it on an animal that never leaves the `AnimalBaby` stage. This is a suspicion in the scenario text, not a verified fact |
+| 9 | Trains, up to Advanced | Pickle `03`, third scenario: guard and attack can be assigned to the living animal. Haul and rescue are refused as too small, which is vanilla arithmetic on `minBodySize` 0.40 and 0.65: n/a. Scenario 9 had wrongly expected them |
 | 10 | Comfortable down to -55 °C | n/a: a declared stat, read by vanilla |
-| 11 | Butchering returns dust, no meat | Pickle, if a stat-reading step exists: `LeatherAmount` on the spawned pawn, which is about 6: the body size of a living animal is 0.2 times its `AnimalBaby` factor of 0.2, so 0.04. The def's own card says about 18 because it has no life stage, so assert against the pawn and never against the def. Otherwise the claim comes out of the description |
+| 11 | Butchering returns dust, no meat | Pickle `03`, second scenario: the living animal's `LeatherAmount` is between 5 and 6.5, its body size 0.04. **Read from the pawn, not the def**: the def's card says about 18. Butchering rounds that stat at random and is vanilla: n/a |
 | 12 | Never arrives manhunter | n/a: vanilla reads `canArriveManhunter`, declared |
 | 13 | Never breeds | n/a: vanilla reads `mateMtbHours`, declared |
 | 14 | Dies of old age; the corpse looks alive | n/a: vanilla reads `lifeExpectancy`; the identical corpse texture is recorded in `ATTRIBUTION.md` |
 | 15 | The sprite is always rotated | n/a: `Graphic_Multi` with one face is engine behaviour, recorded in the README |
-| 16 | English and French | Pickle, one pass per language (below); paths are already checked offline by `Check-DefInjected` |
-| 17 | The original must not load alongside | Pickle, the incompatibility pass (below). The game removes the earlier def and logs nothing, so the scenario asserts who owns the def, not a log line. Whether the game *warns* is the engine's, and is not tested |
+| 16 | English and French | Pickle `05-labels-en` and `06-labels-fr`, one pass per language, on the loaded defs. The corpse and material names the engine builds from those values are its templates: n/a. **Clipping in the bill and information dialogs in French is not covered**: it needs a `@review` capture in the French pass, and none is written yet |
+| 17 | The original must not load alongside | Pickle `07-original-mod-incompatibility`, the incompatibility pass (below). Whether the game *warns* is the engine's, and is not tested |
+| 5, tail | Save, quit, reload: the bunny, the dust and the queued bills persist | Pickle `04-save-reload`: a queued bill and an animal survive a round trip. The **made** animal's faction across a reload is not asserted: the animal there is spawned by kind, and faction persistence is vanilla's |
 
-Nothing above was decided by running anything. It is the plan to confirm when the suite exists.
+Nothing above was confirmed by running anything. It is the plan the first run settles.
 
 ## Passes this mod needs
 
@@ -88,14 +91,13 @@ mod set and one language each.
    corpse names the engine builds from the mod's Def values. The language is chosen at launch, never switched
    during a run.
 3. **Incompatibility with the original mod** (`BlockHen.Animal.DustBunnies`, Workshop 2659958183, present on
-   disk with its `1.1`, `1.2` and `1.3` folders): a named set, `wsl-deps.incompat-BlockHen.Animal.DustBunnies.map`.
-   The question is whether the declaration is still true. The symptom is **silence**: both mods define the same
-   `defName`s, and `DefDatabase.AddAllInMods` removes the earlier def and adds the later one without a log line,
-   so a scenario that waits for a duplicate-def error waits for something the game never writes. It asserts
-   that both mods are loaded, fixes their order, and asserts which mod owns `DustBunny`. The catalogue of steps
-   available here has no step for the owner of a def; look in the Pickle repository's `Docs/steps.md` before
-   writing one, since a companion step reading the def's content pack would be the missing piece. It is replayed
-   when the original moves, not on every publication.
+   disk with its `1.1`, `1.2` and `1.3` folders): `wsl-deps.incompat-original.map`. The question is whether the
+   declaration is still true. The symptom is **silence**: both mods define the same `defName`s, and
+   `DefDatabase.AddAllInMods` removes the earlier def and adds the later one without a log line, so a scenario
+   that waits for a duplicate-def error waits for something the game never writes. `07` asserts that both mods
+   are loaded, that this one loads after the original, and that this one owns `MakeDustBunny`, `GatherDust` and
+   `Dust`, with Pickle's own `def ... is defined by mod ...` step. It is replayed when the original moves, not on
+   every publication. The original has not yet been downloaded to the WSL install.
 
 The machine is shared and a run takes a ticket in a queue. A session watches its own ticket with a read-only
 poll of the launcher's status script, never with a cron and never by launching, stopping or reserving anything:
@@ -129,17 +131,17 @@ deleting, and **never delete a report that `STATUS.md` or a tracked file points 
 What is worth keeping for this mod, once it has runs:
 
 - the **English pass**: its summary and `Player.log` (startup and the recipe completion), and **one** capture
-  of the bunny standing on the crafting spot after the bill completes. That is the one image that shows the
+  of the bunny standing on the crafting spot after the bill completes, `dust bunny made at the crafting spot`, taken by
+  the first scenario of `03`. That is the one image that shows the
   mod working, and the only one a person has to read;
 - the **French pass**: its summary and `Player.log`, and nothing else. The labels are asserted, so their proof
   is the report;
-- the **incompatibility pass**: its summary, and the step outcome that names which mod owned `DustBunny`. There is no log line to keep, because the symptom is silence. Keep it until the original mod is updated: it is the sole proof of that check.
+- the **incompatibility pass**: its summary, and the step outcome that names which mod owned `MakeDustBunny`. There is no log line to keep, because the symptom is silence. Keep it until the original mod is updated: it is the sole proof of that check.
 
 Nothing else takes a capture. The two `Preview` and `ModIcon` images are the owner's and are not test evidence.
 
-The script that minifies captures, `Minify-Evidence.ps1`, is not in this repository yet. Two sibling mods
-of the same collection carry it under `Tests/Pickle/` (`ACertainSeriesCreaturesAndHairRenew` and
-`FieldworkCompanions`); take it with the first Pickle scenario, not before.
+`Tests/Pickle/Minify-Evidence.ps1` shrinks a copied report in place: screenshots become JPEG (quality 80, at most
+1280 px), and `report.html` and `messages.ndjson` go.
 
 ## Manual validation
 

@@ -184,7 +184,11 @@ hunger rate, and a colony of these would starve.
 
 **Do.** Open the bunny's **Training** tab.
 
-**Expect.** Obedience, Release, Rescue and Haul all offered. `trainability` is Advanced.
+**Expect.** Guard (`Obedience`) and attack (`Release`) can be assigned. `trainability` is Advanced.
+
+**Haul and rescue are shown and refused, and that is not a defect.** They carry `minBodySize` 0.40 and 0.65
+and the game reads the body size of the living pawn, which is 0.04, so the tab says the animal is too
+small. It would be too small at its base 0.2 as well: the original never offered them either.
 
 **Watch for.** An absent or empty tab. The most likely reason is the life stage: the race declares
 exactly one, `AnimalBaby` at minimum age 0, so a dust bunny is **permanently a baby** and never

@@ -13,25 +13,66 @@ visibility_at: GitHub API verified 2026-09-24 (public, main); Workshop item 3806
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-stage:        preTest
+stage:        done
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 port_licence: MIT, limited to port additions described in LICENSE
 dependencies: none
 showcase:     complete
-tested_on:    no in-game run recorded; the automated suite last ran 2026-09-24 at 1b63e37, exit 0
+tested_on:    no in-game run recorded; the automated suite last ran 2026-09-24 at 806686b, exit 0
 workshop:     3806760430
 remaining:
-  - "unverified: [done gate] Pickle features written for what only a running game can show: startup, the recipe completion that spawns a live colony pawn, the French pass and the incompatibility pass, with their scope justified. None exists: there is no Tests/Pickle/. Planned in TESTING.md."
-  - "unverified: [done gate] Test-Mod.ps1 extended offline for the checks TESTING.md assigns to it: scenarios 1, 3, 6 and 7."
-  - "unverified: [tested gate] All eighteen manual scenarios each automated and green, or listed not applicable with a reason; today all eighteen are manual. The planned map is in TESTING.md and is not yet confirmed."
-  - "unverified: [tested gate] Three Pickle passes green: English, French, and incompatibility with BlockHen.Animal.DustBunnies. exitReason read before the counts, scenarios played against features discovered, @review captures opened and looked at, startup logs read."
-  - "unverified: [tested gate] New colony and existing save, save and reload of the animal and its bill, English and French clipping, raw keys and fallback text (scenario 16)."
+  - "unverified: [tested gate] The four offline assertions TESTING.md assigns to Test-Mod.ps1 (scenarios 1, 3, 6 and 7), the only cover for those four manual scenarios: not written."
+  - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
+  - "unverified: [tested gate] All seven Pickle features run, in three passes: English, French, and the original mod beside this one. exitReason read before the counts, scenarios played against discovered, 07 played in the third pass and skipped in the others, the @review capture opened and looked at, startup logs read."
+  - "unverified: [tested gate] The nine assumptions at the end of Tests/Pickle/README.md, which the first run confirms or breaks."
+  - "unverified: [tested gate] A new colony and an existing save. The fixture colony was saved without the mod, so 04 is the second; the first needs a new game."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Only Virginie can correct it, by hand on the Steam page; About.xml and the docs are already right."
 updated:      2026-09-24
 ---
 
 # Dust Bunnies Renew — status
+
+## Pickle features written â 2026-09-24 (Claude Sonnet 5)
+
+**Decision: `preTest` -> `done`.** The one criterion that held `done` back was the Pickle scenarios, written with
+their scope justified, and they now exist. Every other criterion of transition 8 was already established, and
+running the scenarios is `done -> tested`'s, not this transition's. This entry supersedes the `preTest` decision of
+the audit below; that entry stays as written, because what it found was true when it found it.
+
+`Tests/Pickle/` holds seven features with 79 step lines and seven local steps in `Source/DustBunnySteps.cs`, and a
+README that says what is in Gherkin, what deliberately is not, and why. The features: startup (the recipe's worker
+class resolved, the `[DefOf]` bound), gathering dust, **making a dust bunny** (a hundred dust consumed, one live
+pawn, the colony's, a capture; the living animal's body size, yield, wildness and training), save and reload, the
+labels in English and in French on the loaded defs, and the incompatibility with the original mod.
+
+Checked outside the game, and only that:
+
+- the steps build against the installed 1.6 game and the installed Pickle, 0 warnings and 0 errors;
+- `Tests/Pickle/Check-Steps.ps1` exits 0: every step line resolves to exactly one step, every local pattern compiles
+  and every local step is used. It was seen to fail on a copy outside the repository with a step that does not
+  exist, an unescaped parenthesis in a pattern and a pattern that collides with one of Pickle's: exit 1 each, and the
+  untouched suite exit 0;
+- `_tools/Test-Mod.ps1` exits 0 again and the shipped DLL is unchanged.
+
+**Nothing was run in the game, and no scenario is claimed to pass.** The nine assumptions a first run settles are
+listed at the end of `Tests/Pickle/README.md`. The original mod has not been downloaded to the WSL install, so the
+third pass cannot stage yet.
+
+**Found while writing them.** The animal cannot be trained to haul or to rescue: those carry `minBodySize` 0.40 and
+0.65, the game reads the living pawn's 0.04, and it would be too small at its base 0.2 as well. Scenario 9 had
+expected them and is corrected; the suite asserts guard and attack. Pickle's own `def ... is defined by mod ...` step
+exists, so the incompatibility pass asserts who owns the defs and needs no step of ours; `TESTING.md` had said no such
+step was known.
+
+**Reserve, outside this mod.** The `Ancient Buildings` and `Ancient Chinese Beast` incompatibility features assert
+that the game **logs** a duplicate. `DefDatabase.AddAllInMods` removes the earlier def before adding the later, so no
+duplicate error is reached on that path. Neither feature has run. Worth one look by whoever holds them; nothing was
+changed there.
+
+**Next transition, `done -> tested`.** Write the four offline assertions, add a French capture for the dialogs'
+clipping, download the original mod to the WSL install, then run the three passes through the shared queue and read
+their reports and the capture. `TESTING.md` has the passes and the evidence to keep.
 
 ## Workflow audit — 2026-09-24 (Claude Sonnet 5)
 
