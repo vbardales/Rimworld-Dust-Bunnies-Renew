@@ -33,6 +33,21 @@ updated:      2026-09-24
 
 # Dust Bunnies Renew — status
 
+## Three initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)
+
+Filed at 16:52 with TicketDispatcher, on revision `8ebb42d584de12c5be088b2c426399898d353920` (pushed, tree clean), one
+request per pass and each an **initial** request that plays every scenario of its pass. Nothing has run yet, and this
+session watches nothing: TicketDispatcher wakes it at the start, at the end and with `RUN_DONE`.
+
+| Pass | Request | Filter and map | Evidence |
+|---|---|---|---|
+| English, minimal set | `20260924-165202-390-506b` | `Dust Bunnies Renew - Pickle tests,!@fr-only` | `Tests/Pickle/Evidence/2026-09-24-english` |
+| French, minimal set | `20260924-165202-869-d71d` | `Dust Bunnies Renew - Pickle tests,!@en-only,!@slow` | `Tests/Pickle/Evidence/2026-09-24-french` |
+| Original mod beside this one | `20260924-165203-308-7a77` | `07-original-mod-incompatibility`, `wsl-deps.incompat-original.map` | `Tests/Pickle/Evidence/2026-09-24-incompat` |
+
+The fourth pass, Animal Prosthetics 2, is **not filed**: ADS 2 is not on the machine and fetching it needs the owner's
+word. A result read from these reports is what `tested` is made of; until it is read, `tested_on` says no run.
+
 ## Native support for Animal Prosthetics 2 — 2026-09-24 (Claude Sonnet 5)
 
 **Stage stays `done`.** Asked for on the day: the mod enrols the dust bunny in A Dog Said... Animal Prosthetics 2
