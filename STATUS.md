@@ -17,20 +17,54 @@ stage:        done
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 port_licence: MIT, limited to port additions described in LICENSE
-dependencies: none
+dependencies: none required; optional integration with SamBucher.ADogSaidAnimalProsthetics2, declared as loadBefore
 showcase:     complete
 tested_on:    no in-game run recorded; the automated suite, claims check included, last ran 2026-09-24, exit 0
 workshop:     3806760430
 remaining:
   - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
-  - "unverified: [tested gate] All seven Pickle features run, in three passes: English, French, and the original mod beside this one. exitReason read before the counts, scenarios played against discovered, 07 played in the third pass and skipped in the others, the @review capture opened and looked at, startup logs read."
-  - "unverified: [tested gate] The nine assumptions at the end of Tests/Pickle/README.md, which the first run confirms or breaks."
+  - "unverified: [tested gate] All eight Pickle features run, in four passes: English, French, the original mod beside this one, and Animal Prosthetics 2 beside it. The fourth cannot stage until ADS 2 is on the machine, which is a download that needs the owner's word. exitReason read before the counts, scenarios played against discovered, 07 played in the third pass and skipped in the others, the @review capture opened and looked at, startup logs read."
+  - "unverified: [tested gate] The ten assumptions at the end of Tests/Pickle/README.md, which the first run confirms or breaks."
   - "unverified: [tested gate] A new colony and an existing save. The fixture colony was saved without the mod, so 04 is the second; the first needs a new game."
+  - "unverified: [tested gate] The choice of ADS 2 category 1 for the dust bunny is mine and unconfirmed; the Steam page carries no mention of the integration until it is added by hand."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Only Virginie can correct it, by hand on the Steam page; About.xml and the docs are already right."
 updated:      2026-09-24
 ---
 
 # Dust Bunnies Renew — status
+
+## Native support for Animal Prosthetics 2 — 2026-09-24 (Claude Sonnet 5)
+
+**Stage stays `done`.** Asked for on the day: the mod enrols the dust bunny in A Dog Said... Animal Prosthetics 2
+itself, so no separate patch mod is needed. `Mod/Patches/ADogSaidAnimalProsthetics2.xml` adds `DustBunny` to
+`ADS_Cat1` only, behind a `PatchOperationConditional` on that def, and `About.xml` says `loadBefore`
+`SamBucher.ADogSaidAnimalProsthetics2` and does not list it as a dependency. The transition-7 criterion, dependencies
+declared and load order coherent, was re-read against this and holds: nothing is required, and the one optional
+integration is declared as an order, not as a need.
+
+**Checked against ADS 2's own source**, read remotely from `SamuelBucher/A-Dog-Said-Animal-Prosthetics-2` without
+saving anything, not against my notes of it. Package `SamBucher.ADogSaidAnimalProsthetics2`, version 1.3.7, no hard
+dependency; the three abstract `ADS_Cat1/2/3` recipes and their `recipeUsers` lists; its `z_Category_Patches.xml` copying
+them onto the surgery bases with `PatchOperationAddOrMergeCopy`, once, so the order is the integration; and a variant
+of that copy for XML Extensions, which reads the same `ADS_Cat1` list. Category 1 is the broadest list, every animal is
+in it, and only the large and trainable climb to 2 and 3. A Squirrel and a Rat are in category 1 and no other, which is
+the dust bunny's place: a peg leg or a denture.
+
+**Offline, and seen to fail.** `Check-Claims.ps1` asserts the patch and the declaration: one operation, conditional on
+`ADS_Cat1`, no `MayRequire` on it, no `<nomatch>`, category 1 only, exactly `DustBunny`, `loadBefore` in the About and no
+hard dependency. Nine mutations, nine real detections with the matching message, the intact mod exit 0. The first run of
+that harness reported nine `exit 1` that were a parse error in the script, not detections; it now flags an exit 1 with no
+`FAIL` line as a crash, and the nine above were counted only after that fix. `Test-Mod.ps1` exits 0 with nine XML files.
+
+**In Gherkin, written and never run.** `08-animal-prosthetics-2` (`@requires`) asserts the load order, then that the dust
+bunny is offered the same surgeries as a Squirrel and that a Cat is offered some it is not. It names no recipe, because ADS
+2 does not define its recipes in its own repository. Nine local steps now, 85 step lines, all resolved.
+
+**It cannot stage.** ADS 2 is on neither the Windows Workshop nor the WSL cache, and the staging script stops on an item it
+cannot find. Fetching it is a download that needs the owner's word.
+
+**Two things to keep straight.** The choice of category 1 is mine and is to be confirmed. And the Steam description was
+frozen at creation, so the new "Optional: with A Dog Said..." line reaches the page only by hand.
 
 ## Offline claims written — 2026-09-24 (Claude Sonnet 5)
 
@@ -55,7 +89,7 @@ their scope justified, and they now exist. Every other criterion of transition 8
 running the scenarios is `done -> tested`'s, not this transition's. This entry supersedes the `preTest` decision of
 the audit below; that entry stays as written, because what it found was true when it found it.
 
-`Tests/Pickle/` holds seven features with 79 step lines and seven local steps in `Source/DustBunnySteps.cs`, and a
+`Tests/Pickle/` held seven features with 79 step lines and seven local steps in `Source/DustBunnySteps.cs`, and a
 README that says what is in Gherkin, what deliberately is not, and why. The features: startup (the recipe's worker
 class resolved, the `[DefOf]` bound), gathering dust, **making a dust bunny** (a hundred dust consumed, one live
 pawn, the colony's, a capture; the living animal's body size, yield, wildness and training), save and reload, the

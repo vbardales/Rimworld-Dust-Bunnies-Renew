@@ -17,11 +17,11 @@ game's own assemblies and data, and exits non-zero on the first failure. `-SkipB
 and must not be reported as a fresh build. Its four checkers are copies under `_tools/checks/`, so nothing
 outside this repository is needed.
 
-Coverage: the Release build; all eight XML files parse; `packageId`, the `(unofficial)` suffix and the GitHub
+Coverage: the Release build; all nine XML files parse; `packageId`, the `(unofficial)` suffix and the GitHub
 link; every XML field against the game's own field list; every def reference, its type and every abstract
 parent; the twelve French DefInjected keys; the two C# types the XML names; and, on the shipped DLL, that the
 recipe worker derives from `RecipeWorker`, overrides the game's completion hook, and that the `DefOf` field is
-a `PawnKindDef`; and the claims the description makes (`_tools/checks/Check-Claims.ps1`): both recipes at the crafting spot only, no `<products>` on `MakeDustBunny`, wildness under `statBases`, dust the worst cold insulator of every material a garment can be made from, no more flammable than cloth and as wood, and the butchering yield computed the way the game does it. These are the XML tests and the automated tests of this mod: there is no separate suite.
+a `PawnKindDef`; and the claims the description makes (`_tools/checks/Check-Claims.ps1`): both recipes at the crafting spot only, no `<products>` on `MakeDustBunny`, wildness under `statBases`, dust the worst cold insulator of every material a garment can be made from, no more flammable than cloth and as wood, and the butchering yield computed the way the game does it; and the enrolment in A Dog Said... Animal Prosthetics 2: one conditional operation on `ADS_Cat1` that enrols `DustBunny` in category 1 only, no `MayRequire` on the operation, no `<nomatch>`, `loadBefore` in the About and no hard dependency. These are the XML tests and the automated tests of this mod: there is no separate suite.
 
 They do not run pawn generation, and no isolated C# suite is claimed: the worker needs a map, a pawn and a
 bill. That is what the scenarios below are for.
@@ -45,7 +45,7 @@ Then transition 9 (`done` -> `tested`). Three checks, each measured against what
 | Check | Where this mod stands |
 |---|---|
 | No scenario left in `@wip`. A shelved scenario is repaired and replayed, or deleted with its reason. | None of the seven features carries `@wip`, and `-IncludeWip` is never passed. It has to hold at the run, not only in the files. |
-| Every conditional scenario ran. Each `@requires` (optional mod, DLC, companion tool) had its own pass on a map that mounts it, and its report was read. | One: `07-original-mod-incompatibility` carries `@requires:BlockHen.Animal.DustBunnies`, and plays only in the third pass, on a map that mounts the original. A report has to show it **played** there and **skipped** elsewhere; skipped in the third pass is not a pass. The About declares no dependency and no `loadAfter` beyond Core, and the content needs no DLC, so nothing else is conditional. |
+| Every conditional scenario ran. Each `@requires` (optional mod, DLC, companion tool) had its own pass on a map that mounts it, and its report was read. | Two. `07-original-mod-incompatibility` carries `@requires:BlockHen.Animal.DustBunnies`, and plays only in the third pass, on a map that mounts the original. A report has to show it **played** there and **skipped** elsewhere; skipped in the third pass is not a pass. `08-animal-prosthetics-2` carries `@requires:SamBucher.ADogSaidAnimalProsthetics2` and plays only in the fourth pass, under the same rule. The About declares no hard dependency, and the content needs no DLC, so nothing else is conditional. |
 | No manual test left to validate. What is still ticked by hand is either automated and green, or listed as not applicable with its reason. | **Not met, and none has run.** The map below assigns each of the eighteen. Open: French clipping in the bill and information dialogs has no capture scenario. |
 
 ### Where each manual check goes
@@ -76,17 +76,18 @@ sources. `Tests/Pickle/README.md` gives the reasoning per feature.
 | 15 | The sprite is always rotated | n/a: `Graphic_Multi` with one face is engine behaviour, recorded in the README |
 | 16 | English and French | Pickle `05-labels-en` and `06-labels-fr`, one pass per language, on the loaded defs. The corpse and material names the engine builds from those values are its templates: n/a. **Clipping in the bill and information dialogs in French is not covered**: it needs a `@review` capture in the French pass, and none is written yet |
 | 17 | The original must not load alongside | Pickle `07-original-mod-incompatibility`, the incompatibility pass (below). Whether the game *warns* is the engine's, and is not tested |
+| 18 | ADS 2: the dust bunny is offered a peg leg and a denture, and nothing above category 1 | The enrolment is declared and guarded offline, in `Check-Claims.ps1`. That the surgeries really reach a dust bunny, and that the patch ran before ADS 2 copied its lists, is a running-game fact: Pickle `08-animal-prosthetics-2`, the fourth pass. It compares with a Squirrel (ADS 2 lists it in category 1 only) and with a Cat (all three), so it names no recipe. It cannot stage yet: ADS 2 is not on this machine |
 | 5, tail | Save, quit, reload: the bunny, the dust and the queued bills persist | Pickle `04-save-reload`: a queued bill and an animal survive a round trip. The **made** animal's faction across a reload is not asserted: the animal there is spawned by kind, and faction persistence is vanilla's |
 
 Nothing in the Pickle rows was confirmed by running anything: it is the plan the first run settles. The offline rows run on every `Test-Mod.ps1`.
 
 ## Passes this mod needs
 
-A mod whose TESTING.md does not say how many passes it needs is tried, not tested. This one needs three, one
+A mod whose TESTING.md does not say how many passes it needs is tried, not tested. This one needs four, one
 mod set and one language each.
 
-1. **English, without optional mods**: the minimal set the launcher mounts by default. There are no optional
-   mods to add, since the About declares none, so no "with optionals" pass applies.
+1. **English, without optional mods**: the minimal set the launcher mounts by default. The one optional
+   integration, ADS 2, has its own pass below, so nothing else is added to this one.
 2. **French** (`-Language French`): the labels, job strings and generated text, including the material and
    corpse names the engine builds from the mod's Def values. The language is chosen at launch, never switched
    during a run.
@@ -98,11 +99,18 @@ mod set and one language each.
    are loaded, that this one loads after the original, and that this one owns `MakeDustBunny`, `GatherDust` and
    `Dust`, with Pickle's own `def ... is defined by mod ...` step. It is replayed when the original moves, not on
    every publication. The original is subscribed in the Windows Workshop, which the staging script reads first, so nothing has to be downloaded.
+4. **With A Dog Said... Animal Prosthetics 2** (`SamBucher.ADogSaidAnimalProsthetics2`, Workshop 3238353862, source
+   at `SamuelBucher/A-Dog-Said-Animal-Prosthetics-2`): the optional integration this mod declares, with
+   `wsl-deps.avec-ads2.map`. It declares no hard dependency, so its line is the whole set. `08` asserts the load
+   order first, this mod before ADS 2, because ADS 2 copies its category lists once; then that the dust bunny is
+   offered what a Squirrel is and less than a Cat. It is **written, and cannot stage**: ADS 2 is on neither the
+   Windows Workshop nor the WSL cache, and fetching it is a download that needs the owner's word.
 
-The machine is shared and a run takes a ticket in a queue. A session watches its own ticket with a read-only
-poll of the launcher's status script, never with a cron and never by launching, stopping or reserving anything:
-a heartbeat under Codex, the `Monitor` tool under Claude Code, which expires after 30 minutes at most, so a
-long queue means re-arming it. No ticket exists for this mod today.
+The machine is shared, so a run is a ticket. Tickets are filed with TicketDispatcher (documented in its
+`WELCOME.md`, which is the owner's and lives outside this repository), and **it follows them**: this mod's session
+sets up no watcher, no `Monitor` and no cron of its own. Tickets are small, three rather than one big one. An
+**exploration or fix** ticket plays as few scenarios as possible; an **initial or final** ticket plays every
+scenario of its pass. The three passes above are three initial tickets. No ticket exists for this mod today.
 
 ## Evidence to keep
 

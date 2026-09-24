@@ -1,0 +1,11 @@
+# Pass "avec-ads2": A Dog Said... Animal Prosthetics 2 beside this mod.
+#
+# SamBucher.ADogSaidAnimalProsthetics2, Workshop 3238353862, by SamBucher, which supports 1.4, 1.5 and 1.6. It
+# declares no hard dependency, so this one line is the whole set. This mod says loadBefore for it, and 08 asserts
+# that order before it asserts anything else: ADS 2 copies its category lists once, so a patch that loads after it
+# lands in a list nobody reads.
+#
+# It is NOT on this machine: not in the Windows Workshop and not in the WSL cache, and the staging script stops on
+# an item it cannot find. Fetching it is a download, which needs the owner's word (scripts/download-workshop-wsl.sh
+# 3238353862, through the machine lock). Until then this pass cannot stage.
+SamBucher.ADogSaidAnimalProsthetics2   3238353862

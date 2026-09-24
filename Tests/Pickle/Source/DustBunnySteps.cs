@@ -139,5 +139,48 @@ namespace DustBunnies.PickleSteps
             ctx.Assert(thing.label == expected, $"the ThingDef {KindDefName} is labelled \"{thing.label}\", expected \"{expected}\"");
             ctx.Assert(kind.label == expected, $"the PawnKindDef {KindDefName} is labelled \"{kind.label}\", expected \"{expected}\"");
         }
+
+        private static ThingDef AnimalDef(PickleContext ctx, string defName)
+        {
+            var def = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
+            ctx.Assert(def != null, $"no ThingDef named {defName}");
+            ctx.Assert(def.race != null, $"{defName} is not a race");
+            return def;
+        }
+
+        /// <summary>The defNames of the surgeries an animal def is offered, sorted so two lists compare.</summary>
+        private static List<string> Surgeries(ThingDef animal)
+        {
+            return animal.AllRecipes.Where(r => r.IsSurgery).Select(r => r.defName).OrderBy(n => n).ToList();
+        }
+
+        /// <summary>
+        /// A Dog Said... Animal Prosthetics 2 files every animal in category lists, and adds surgeries by
+        /// listing an animal in a recipe's recipeUsers. No surgery is named here on purpose: the recipes come
+        /// from elsewhere and their names are not this mod's to know. The assertion compares what the dust
+        /// bunny is offered with what a reference animal of the category it should be in is offered, so it
+        /// holds whatever ADS 2 calls its recipes, and it fails saying which surgeries differ.
+        /// </summary>
+        [Then("Dust Bunnies Renew: the dust bunny is offered the same surgeries as the {string}")]
+        public void SameSurgeriesAs(PickleContext ctx, string referenceDefName)
+        {
+            var mine = Surgeries(AnimalDef(ctx, KindDefName));
+            var theirs = Surgeries(AnimalDef(ctx, referenceDefName));
+            ctx.Assert(mine.Count > 0,
+                "the dust bunny is offered no surgery at all: ADS 2 is not loaded, or this mod's patch ran after ADS 2 copied its lists");
+            ctx.Assert(mine.SequenceEqual(theirs),
+                $"the dust bunny is offered {mine.Count} surgeries and the {referenceDefName} {theirs.Count}. Only the dust bunny: [{string.Join(", ", mine.Except(theirs))}]. Only the {referenceDefName}: [{string.Join(", ", theirs.Except(mine))}]");
+        }
+
+        /// <summary>The other half: a category-1 animal is not offered what only a category-3 animal is.</summary>
+        [Then("Dust Bunnies Renew: the {string} is offered surgeries the dust bunny is not")]
+        public void OfferedMoreThan(PickleContext ctx, string biggerDefName)
+        {
+            var mine = Surgeries(AnimalDef(ctx, KindDefName));
+            var bigger = Surgeries(AnimalDef(ctx, biggerDefName));
+            var extra = bigger.Except(mine).ToList();
+            ctx.Assert(extra.Count > 0,
+                $"the {biggerDefName} is offered no surgery the dust bunny is not: the dust bunny got the whole of the {biggerDefName}'s category, and bionics on it were not the intent");
+        }
     }
 }
