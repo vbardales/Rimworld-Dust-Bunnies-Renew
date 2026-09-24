@@ -27,6 +27,7 @@ if (-not $about.ModMetaData.description.Contains('https://github.com/vbardales/R
 Run-Check 'Check-XmlFields' @('-ModPath', $mod, '-Managed', $managed, '-ExtraAssemblies', "$mod/Assemblies/DustBunnies.dll")
 Run-Check 'Check-DefRefs' @('-ModPath', $mod, '-Managed', $managed, '-GameData', $data, '-Brief')
 Run-Check 'Check-DefInjected' @('-TransMod', $mod, '-Managed', $managed, '-GameData', $data)
+Run-Check 'Check-Claims' @('-ModPath', $mod, '-GameData', $data)
 
 # Resolve the XML worker against the shipped DLL, not merely its source text.
 Get-ChildItem "$managed/UnityEngine*.dll" | ForEach-Object { $null = [Reflection.Assembly]::LoadFrom($_.FullName) }
@@ -46,4 +47,4 @@ $typeList = Join-Path $root '.build/test-types.txt'
 New-Item -ItemType Directory -Force (Split-Path $typeList) | Out-Null
 $types.FullName | Set-Content $typeList
 Run-Check 'Check-XmlClasses' @('-ModPath', $mod, '-TypeLists', $typeList, '-SourceDirs', "$root/Source")
-Write-Host "PASS: $($xmlFiles.Count) XML files, fields, references, translations, XML classes and compiled recipe hook. In-game scenarios remain separate."
+Write-Host "PASS: $($xmlFiles.Count) XML files, fields, references, translations, the claims the description makes, XML classes and compiled recipe hook. In-game scenarios remain separate."
