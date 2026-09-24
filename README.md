@@ -62,6 +62,28 @@ back.
 
 Available in English and French.
 
+### A Dog Said... Animal Prosthetics 2
+
+Optional and native: the mod enrols the dust bunny itself, so nobody needs a separate patch mod.
+`Mod/Patches/ADogSaidAnimalProsthetics2.xml` adds `DustBunny` to the `recipeUsers` of `ADS_Cat1`, the abstract
+recipe ADS 2 uses for **category 1, small critters**: a peg leg or a denture, nothing more. It is not in
+categories 2 and 3 on purpose. It is trainable, but it is a clump of lint of body size 0.04 in play, and a
+bionic arm on it would not be the joke.
+
+Two things make it work, and both are in the files rather than in a note:
+
+- **The patch is conditional.** It is a `PatchOperationConditional` on `ADS_Cat1`, a def that exists only when
+  ADS 2 is loaded, with no `<nomatch>`: without ADS 2 it selects nothing and reports success without a line in
+  the log. `MayRequire` on the operation would not do this, because nothing reads that attribute there.
+- **The order is declared.** ADS 2 copies its category lists once, in its own last patch, so an `<li>` added
+  after that lands in a list nobody reads any more. `About.xml` says `loadBefore`
+  `SamBucher.ADogSaidAnimalProsthetics2`, which is not a dependency: nothing is required and nothing changes
+  without it.
+
+`_tools/checks/Check-Claims.ps1` asserts both, and was seen to fail on nine mutations of the patch and the About.
+Whether the surgeries actually appear on a living dust bunny is a running-game fact, and is not yet tested: it
+needs ADS 2 mounted, which is a pass of its own in `TESTING.md`.
+
 Content mod: removing it mid-save destroys any dust bunny already in the colony.
 
 ## What changed in the 1.6 port

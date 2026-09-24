@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Enrols the dust bunny in A Dog Said... Animal Prosthetics 2 (SamBucher.ADogSaidAnimalProsthetics2).
+
+	     ADS 2 does not name recipes one by one. It keeps three abstract RecipeDefs, ADS_Cat1 (medieval
+	     replacements: peg legs, dentures), ADS_Cat2 (+ simple prosthetics) and ADS_Cat3 (+ bionics), and its
+	     own last patch, Patches/z_Category_Patches.xml, copies their recipeUsers onto the real surgery bases
+	     with PatchOperationAddOrMergeCopy. Adding an animal means adding one <li> to those lists.
+
+	     CATEGORY 1 ONLY. ADS 2 puts small critters in category 1, livestock and animals that cannot be
+	     trained in category 2, and pack animals and trainable pets in category 3, and the lists are
+	     cumulative. A dust bunny is trainable, but it is a clump of lint of body size 0.04 in play, so it
+	     is a small critter first: a peg leg is a joke that works, a bionic arm on it is not.
+
+	     ORDER MATTERS. The copy takes the list as it is at that instant, so an <li> added after it lands in
+	     a list nobody reads any more. ADS 2's own compatibility patches are safe because file names sort
+	     inside one mod; a patch in another mod is not. That is why About.xml says loadBefore
+	     SamBucher.ADogSaidAnimalProsthetics2: Verse.LoadedModManager.ApplyPatches runs the active mods in
+	     load order, so this patch has to come first.
+
+	     The guard is PatchOperationConditional on ADS_Cat1. Without ADS 2 the xpath selects nothing, no
+	     <nomatch> is declared, and the operation reports success without a line in the log.
+
+	     NOT MayRequire. MayRequire on an <Operation> is read by nothing: Verse.PatchOperation has no such
+	     field and ModContentPack.LoadPatches never reads the attribute, so the operation would apply whether
+	     ADS 2 is loaded or not. It is honoured on a def node, on a <li> and on an ordinary field element,
+	     which is what makes the wrong form look like the right one. -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/RecipeDef[@Name="ADS_Cat1"]</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs/RecipeDef[@Name="ADS_Cat1"]/recipeUsers</xpath>
+			<value>
+				<li>DustBunny</li>
+			</value>
+		</match>
+	</Operation>
+
+</Patch>

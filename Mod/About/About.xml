@@ -23,6 +23,8 @@ The bunny is a tiny grey thing, base body size 0.2 (0.04 in play, because it nev
 
 No DLC, no dependencies. Seven defs, four texture images and one class.
 
+Optional: with A Dog Said... Animal Prosthetics 2 the dust bunny is enrolled in its first category, small critters, so it can receive a peg leg. Nothing is required and nothing changes without it.
+
 I am not the author of this mod. The dust bunny, its artwork and its balance are 2blockdude's and HendraGradeWood's - all I did was bring it forward to 1.6, repair what the port turned up, and write the French. Credit goes to them; mistakes in the port are mine.
 
 Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2659958183 - declares 1.1, 1.2 and 1.3 and nothing further, untouched since November 2021.
@@ -47,4 +49,7 @@ The port work was done with the help of an AI assistant (Claude, by Anthropic), 
   <loadAfter>
     <li>Ludeon.RimWorld</li>
   </loadAfter>
+  <loadBefore>
+    <li>SamBucher.ADogSaidAnimalProsthetics2</li>
+  </loadBefore>
 </ModMetaData>
