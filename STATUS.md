@@ -50,7 +50,7 @@ the mod under test after them, so ADS 2 always loaded first. Nothing of the scen
 surgeries were not compared. `wsl-deps.avec-ads2.map` now names this mod's own packageId with `path:` above the ADS 2
 line, which puts the mod first (`Tests/Pickle/README.md`, the map). What the pass proves is the behaviour once the order
 holds; that `loadBefore` produces that order in the game's own sort is not proved by any run, only its declaration
-offline. A ticket was filed for the pass again once the map was fixed.
+offline. The pass was filed again once the map was fixed: `20260925-000505-300-d50c` (`::the dust bunny is offered what a squirrel is, and less than a cat`).
 
 The `@review` capture "dust bunny made at the crafting spot" was opened: a colony animal beside the crafting spot.
 
@@ -69,7 +69,7 @@ The `@review` capture "dust bunny made at the crafting spot" was opened: a colon
 The other startup error, `Pickle tests did not load any content`, is the companion mod holding only an assembly and
 features; other suites log the same.
 
-Still to run: three small fix tickets, two filed after the fixes at 8bc4401: `20260924-234137-945-43b6` (`::the living dust bunny can be trained to guard and to attack`) and `20260924-234139-085-828c` (`::the living dust bunny has the size and the yield the description gives`, which now also asserts `ToxicResistance`).
+Still to run: three small fix tickets, the ADS 2 one above and two filed after the fixes at 8bc4401: `20260924-234137-945-43b6` (`::the living dust bunny can be trained to guard and to attack`) and `20260924-234139-085-828c` (`::the living dust bunny has the size and the yield the description gives`, which now also asserts `ToxicResistance`).
 Nothing here changes `tested`, which stays unmet.
 
 ## Four initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)
