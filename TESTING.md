@@ -21,7 +21,7 @@ Coverage: the Release build; all eight XML files parse; `packageId`, the `(unoff
 link; every XML field against the game's own field list; every def reference, its type and every abstract
 parent; the twelve French DefInjected keys; the two C# types the XML names; and, on the shipped DLL, that the
 recipe worker derives from `RecipeWorker`, overrides the game's completion hook, and that the `DefOf` field is
-a `PawnKindDef`. These are the XML tests and the automated tests of this mod: there is no separate suite.
+a `PawnKindDef`; and the claims the description makes (`_tools/checks/Check-Claims.ps1`): both recipes at the crafting spot only, no `<products>` on `MakeDustBunny`, wildness under `statBases`, dust the worst cold insulator of every material a garment can be made from, no more flammable than cloth and as wood, and the butchering yield computed the way the game does it. These are the XML tests and the automated tests of this mod: there is no separate suite.
 
 They do not run pawn generation, and no isolated C# suite is claimed: the worker needs a map, a pawn and a
 bill. That is what the scenarios below are for.
@@ -46,30 +46,30 @@ Then transition 9 (`done` -> `tested`). Three checks, each measured against what
 |---|---|
 | No scenario left in `@wip`. A shelved scenario is repaired and replayed, or deleted with its reason. | None of the seven features carries `@wip`, and `-IncludeWip` is never passed. It has to hold at the run, not only in the files. |
 | Every conditional scenario ran. Each `@requires` (optional mod, DLC, companion tool) had its own pass on a map that mounts it, and its report was read. | One: `07-original-mod-incompatibility` carries `@requires:BlockHen.Animal.DustBunnies`, and plays only in the third pass, on a map that mounts the original. A report has to show it **played** there and **skipped** elsewhere; skipped in the third pass is not a pass. The About declares no dependency and no `loadAfter` beyond Core, and the content needs no DLC, so nothing else is conditional. |
-| No manual test left to validate. What is still ticked by hand is either automated and green, or listed as not applicable with its reason. | **Not met, and none has run.** The map below assigns each of the eighteen. Open: the four offline assertions are not written, and French clipping in the bill and information dialogs has no capture scenario. |
+| No manual test left to validate. What is still ticked by hand is either automated and green, or listed as not applicable with its reason. | **Not met, and none has run.** The map below assigns each of the eighteen. Open: French clipping in the bill and information dialogs has no capture scenario. |
 
 ### Where each manual check goes
 
 The suite is written and none of it has run. `Pickle` names the feature in `Tests/Pickle/Mod/Pickle/Features/`
 that covers the check; `offline` means an assertion for `Test-Mod.ps1`, because whatever can be proved outside
-the game has to be, and every one of those is **not yet written**; `n/a` means the scenario would test the engine
+the game has to be, and they are written, in `_tools/checks/Check-Claims.ps1`; `n/a` means the scenario would test the engine
 and not the mod, which the workflow rules out: the mod answers for what it declares, and that is read in the
 sources. `Tests/Pickle/README.md` gives the reasoning per feature.
 
 | # | Manual check | Disposition |
 |---|---|---|
 | 0 | Loads; the four log strings | Pickle `01-loads`: the recipe's worker class resolved, the `[DefOf]` bound, no error, no warning from the mod. `Player.log` is still read from the launch, because a startup error precedes every scenario |
-| 1 | Both recipes on the crafting spot, nowhere else | offline, not yet written: `recipeUsers` of both recipes is exactly `CraftingSpot` |
+| 1 | Both recipes on the crafting spot, nowhere else | offline, `Check-Claims.ps1`: `recipeUsers` of both recipes is exactly `CraftingSpot` |
 | 2 | *Gather dust* costs nothing but time | Pickle `02-gather-dust`: a bill with no ingredient ends, and exactly ten dust appear |
-| 3 | Dust is the worst cold insulator and burns as wood | offline, not yet written, computed from the game's `Data` on each run: its `StuffPower_Insulation_Cold` is below that of every vanilla stuff a garment can be made from (`Fabric`, `Leathery`, `Metallic` or `Woody`; the six stone blocks state none and are `Stony`, so they are excluded by category and not by luck), and its flammability factor below cloth's. The materials are resolved through `ParentName` before comparing, because most inherit the stat. These are claims in the public description, so they are guarded, not restated |
+| 3 | Dust is the worst cold insulator and burns as wood | offline, `Check-Claims.ps1`, computed from the game's `Data` on each run: its `StuffPower_Insulation_Cold` is below that of every vanilla stuff a garment can be made from (`Fabric`, `Leathery`, `Metallic` or `Woody`; the six stone blocks state none and are `Stony`, so they are excluded by category and not by luck), and its flammability factor below cloth's. The materials are resolved through `ParentName` before comparing, because most inherit the stat. These are claims in the public description, so they are guarded, not restated |
 | 4 | The bill makes an animal | Pickle `03-make-a-dust-bunny`, first scenario, and the reason this suite exists: 100 dust consumed, exactly one live pawn, and a capture of it |
 | 5 | Tame the moment it exists | Pickle `03`, same scenario: the animal belongs to the colony. `04-save-reload` saves and reloads a queued bill and an animal |
-| 6 | Wildness reads 10% | offline, not yet written: `Wildness` sits under `statBases`, the port's first correction. `03` also reads the stat from the living animal |
-| 7 | "Do until you have X" is refused | offline, not yet written: `MakeDustBunny` declares no `<products>`, the trigger. The refusal text is vanilla: n/a |
+| 6 | Wildness reads 10% | offline, `Check-Claims.ps1`: `Wildness` sits under `statBases`, the port's first correction. `03` also reads the stat from the living animal |
+| 7 | "Do until you have X" is refused | offline, `Check-Claims.ps1`: `MakeDustBunny` declares no `<products>`, the trigger. The refusal text is vanilla: n/a |
 | 8 | Never eats | n/a: vanilla reads `baseHungerRate`, declared and unchanged since 2021 |
 | 9 | Trains, up to Advanced | Pickle `03`, third scenario: guard and attack can be assigned to the living animal. Haul and rescue are refused as too small, which is vanilla arithmetic on `minBodySize` 0.40 and 0.65: n/a. Scenario 9 had wrongly expected them |
 | 10 | Comfortable down to -55 °C | n/a: a declared stat, read by vanilla |
-| 11 | Butchering returns dust, no meat | Pickle `03`, second scenario: the living animal's `LeatherAmount` is between 5 and 6.5, its body size 0.04. **Read from the pawn, not the def**: the def's card says about 18. Butchering rounds that stat at random and is vanilla: n/a |
+| 11 | Butchering returns dust, no meat | Pickle `03`, second scenario: the living animal's `LeatherAmount` is between 5 and 6.5, its body size 0.04. **Read from the pawn, not the def**: the def's card says about 18. `Check-Claims.ps1` also computes the yield offline from the game's data, the way the game does, so the description's figure is guarded without a game. Butchering rounds that stat at random and is vanilla: n/a |
 | 12 | Never arrives manhunter | n/a: vanilla reads `canArriveManhunter`, declared |
 | 13 | Never breeds | n/a: vanilla reads `mateMtbHours`, declared |
 | 14 | Dies of old age; the corpse looks alive | n/a: vanilla reads `lifeExpectancy`; the identical corpse texture is recorded in `ATTRIBUTION.md` |
@@ -78,7 +78,7 @@ sources. `Tests/Pickle/README.md` gives the reasoning per feature.
 | 17 | The original must not load alongside | Pickle `07-original-mod-incompatibility`, the incompatibility pass (below). Whether the game *warns* is the engine's, and is not tested |
 | 5, tail | Save, quit, reload: the bunny, the dust and the queued bills persist | Pickle `04-save-reload`: a queued bill and an animal survive a round trip. The **made** animal's faction across a reload is not asserted: the animal there is spawned by kind, and faction persistence is vanilla's |
 
-Nothing above was confirmed by running anything. It is the plan the first run settles.
+Nothing in the Pickle rows was confirmed by running anything: it is the plan the first run settles. The offline rows run on every `Test-Mod.ps1`.
 
 ## Passes this mod needs
 

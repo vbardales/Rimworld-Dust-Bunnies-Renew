@@ -19,10 +19,9 @@ licence_at:   original files, About, Steam description and all 9 comments, GitHu
 port_licence: MIT, limited to port additions described in LICENSE
 dependencies: none
 showcase:     complete
-tested_on:    no in-game run recorded; the automated suite last ran 2026-09-24 at 806686b, exit 0
+tested_on:    no in-game run recorded; the automated suite, claims check included, last ran 2026-09-24, exit 0
 workshop:     3806760430
 remaining:
-  - "unverified: [tested gate] The four offline assertions TESTING.md assigns to Test-Mod.ps1 (scenarios 1, 3, 6 and 7), the only cover for those four manual scenarios: not written."
   - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
   - "unverified: [tested gate] All seven Pickle features run, in three passes: English, French, and the original mod beside this one. exitReason read before the counts, scenarios played against discovered, 07 played in the third pass and skipped in the others, the @review capture opened and looked at, startup logs read."
   - "unverified: [tested gate] The nine assumptions at the end of Tests/Pickle/README.md, which the first run confirms or breaks."
@@ -33,7 +32,23 @@ updated:      2026-09-24
 
 # Dust Bunnies Renew — status
 
-## Pickle features written â 2026-09-24 (Claude Sonnet 5)
+## Offline claims written — 2026-09-24 (Claude Sonnet 5)
+
+`_tools/checks/Check-Claims.ps1`, run by `Test-Mod.ps1`, asserts the four checks `TESTING.md` had assigned to the
+offline suite (scenarios 1, 3, 6 and 7) and the yield of the butchering, which is the figure the description got
+wrong: both recipes at the crafting spot only; no `<products>` on `MakeDustBunny`; wildness under `statBases` and
+nowhere in `<race>`; dust the worst cold insulator of every material a garment can be made from (46 stuffs read from
+the game, the lowest 2.5), no more flammable than cloth and as flammable as wood; and a body size of 0.04 and a yield
+of about 5.6, computed the way the game does it from the race's only life stage.
+
+**Seen to fail**, on a copy of `Mod/Defs` outside the repository, one mutation per claim: nine mutations, nine exit 1
+with the matching message, and the untouched mod exit 0. `Test-Mod.ps1` exits 0 with it wired in and the shipped DLL
+is unchanged. Nothing here ran in the game.
+
+This closes the offline work `remaining` carried. What is left for `tested` is the French capture, the download of
+the original mod, the three passes and the read of their reports.
+
+## Pickle features written — 2026-09-24 (Claude Sonnet 5)
 
 **Decision: `preTest` -> `done`.** The one criterion that held `done` back was the Pickle scenarios, written with
 their scope justified, and they now exist. Every other criterion of transition 8 was already established, and
@@ -70,7 +85,7 @@ that the game **logs** a duplicate. `DefDatabase.AddAllInMods` removes the earli
 duplicate error is reached on that path. Neither feature has run. Worth one look by whoever holds them; nothing was
 changed there.
 
-**Next transition, `done -> tested`.** Write the four offline assertions, add a French capture for the dialogs'
+**Next transition, `done -> tested`.** Add a French capture for the dialogs'
 clipping, download the original mod to the WSL install, then run the three passes through the shared queue and read
 their reports and the capture. `TESTING.md` has the passes and the evidence to keep.
 

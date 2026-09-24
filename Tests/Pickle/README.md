@@ -32,7 +32,7 @@ A check the game does not need to run, or that only tests the game, does not bel
 
 | Check | Where it went | Why |
 |---|---|---|
-| Both recipes offered at the crafting spot and nowhere else; dust worse than every stuff a garment can be made from; wildness under `statBases`; the recipe having no `<products>` | `../../_tools/Test-Mod.ps1`, **not yet written** | Each is a fact about the XML and the game's own data, so it is read offline. They are the only cover for four manual scenarios, so they are the offline work of `tested`, listed in `../../STATUS.md` |
+| Both recipes offered at the crafting spot and nowhere else; dust worse than every stuff a garment can be made from; wildness under `statBases`; the recipe having no `<products>` | `../../_tools/checks/Check-Claims.ps1`, run by `Test-Mod.ps1` | Each is a fact about the XML and the game's own data, so it is read offline. Each was seen to fail on a mutated copy of the defs |
 | Never eats, comfortable to -55 °C, never manhunter, never breeds, dies of old age, corpse looks alive, the sprite always turned | none | Each is a declared value that vanilla code reads: replaying it tests the game, not the mod. The declarations are read in the sources |
 | Haul and rescue training refused | none | `TrainableDef.minBodySize` is 0.40 and 0.65, and the animal is 0.2 at its largest: vanilla arithmetic. `03` asserts what the animal **can** do, which is what a player will try |
 | "Do until you have X" refused | none | The refusal is vanilla's `CanCountProducts` on a recipe with no products; the mod's part is having none, which is read offline |
