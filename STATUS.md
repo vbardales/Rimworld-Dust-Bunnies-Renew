@@ -45,8 +45,8 @@ of about 5.6, computed the way the game does it from the race's only life stage.
 with the matching message, and the untouched mod exit 0. `Test-Mod.ps1` exits 0 with it wired in and the shipped DLL
 is unchanged. Nothing here ran in the game.
 
-This closes the offline work `remaining` carried. What is left for `tested` is the French capture, the download of
-the original mod, the three passes and the read of their reports.
+This closes the offline work `remaining` carried. What is left for `tested` is the French capture, the three passes and
+the read of their reports.
 
 ## Pickle features written — 2026-09-24 (Claude Sonnet 5)
 
@@ -71,8 +71,8 @@ Checked outside the game, and only that:
 - `_tools/Test-Mod.ps1` exits 0 again and the shipped DLL is unchanged.
 
 **Nothing was run in the game, and no scenario is claimed to pass.** The nine assumptions a first run settles are
-listed at the end of `Tests/Pickle/README.md`. The original mod has not been downloaded to the WSL install, so the
-third pass cannot stage yet.
+listed at the end of `Tests/Pickle/README.md`. The original mod is subscribed in the Windows Workshop, which the
+staging script reads first, so the third pass can stage; the WSL cache being empty does not matter.
 
 **Found while writing them.** The animal cannot be trained to haul or to rescue: those carry `minBodySize` 0.40 and
 0.65, the game reads the living pawn's 0.04, and it would be too small at its base 0.2 as well. Scenario 9 had
@@ -86,7 +86,7 @@ duplicate error is reached on that path. Neither feature has run. Worth one look
 changed there.
 
 **Next transition, `done -> tested`.** Add a French capture for the dialogs'
-clipping, download the original mod to the WSL install, then run the three passes through the shared queue and read
+clipping, then run the three passes through the shared queue and read
 their reports and the capture. `TESTING.md` has the passes and the evidence to keep.
 
 ## Workflow audit — 2026-09-24 (Claude Sonnet 5)

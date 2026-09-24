@@ -97,7 +97,7 @@ mod set and one language each.
    that waits for a duplicate-def error waits for something the game never writes. `07` asserts that both mods
    are loaded, that this one loads after the original, and that this one owns `MakeDustBunny`, `GatherDust` and
    `Dust`, with Pickle's own `def ... is defined by mod ...` step. It is replayed when the original moves, not on
-   every publication. The original has not yet been downloaded to the WSL install.
+   every publication. The original is subscribed in the Windows Workshop, which the staging script reads first, so nothing has to be downloaded.
 
 The machine is shared and a run takes a ticket in a queue. A session watches its own ticket with a read-only
 poll of the launcher's status script, never with a cron and never by launching, stopping or reserving anything:

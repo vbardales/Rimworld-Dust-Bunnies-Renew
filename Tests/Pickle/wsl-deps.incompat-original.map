@@ -9,7 +9,8 @@
 # The original is listed here so that it is staged before the mod under test; the scenario asserts the order
 # ("loads after") before it asserts the owner, and fails naming the order if the staging put them the other way.
 #
-# The item has to be in the WSL install's Workshop cache before this pass can stage it. That is a download, so it
-# goes through Use-Wsl.ps1 like any other work on the machine (PickleTools/Headless/README.md, "The lock is about
-# the machine"). It has not been downloaded.
+# Nothing has to be downloaded. The staging script reads the Windows Workshop first, and the original is subscribed
+# there with its 1.1, 1.2 and 1.3 folders (checked on 2026-09-24 by listing the folder, not by staging). The other
+# Dust Bunnies in the Workshop, Crow's Crows.DustBunny (3480725900), is a different mod with no def in common and is
+# not part of this pass.
 BlockHen.Animal.DustBunnies   2659958183

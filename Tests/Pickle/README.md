@@ -121,5 +121,5 @@ None of this was seen running. These are the assumptions a green first run confi
    first is read from `Pawn.BodySize`, whose source was checked; the others follow from it.
 7. `-Language French` resolves the `French` language folder, and the two accented strings are compared exactly.
 8. `wsl-deps.incompat-original.map` stages the original **before** the mod under test, and the original's
-   1.3 folder loads under 1.6. It has not been downloaded to the WSL install.
+   1.3 folder loads under 1.6. It is subscribed in the Windows Workshop, which the staging script reads first; whether staging really places it before this mod is what the scenario's "loads after" line asserts.
 9. `@allow-errors` is enough for whatever the original's assembly, built for 1.3, logs on its own account.
