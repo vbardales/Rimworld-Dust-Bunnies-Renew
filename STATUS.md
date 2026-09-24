@@ -19,7 +19,7 @@ licence_at:   original files, About, Steam description and all 9 comments, GitHu
 port_licence: MIT, limited to port additions described in LICENSE
 dependencies: none required; optional integration with SamBucher.ADogSaidAnimalProsthetics2, declared as loadBefore
 showcase:     complete
-tested_on:    no in-game run recorded; the automated suite, claims check included, last ran 2026-09-24, exit 0
+tested_on:    2026-09-24, three in-game Pickle passes (English 7/10, French 5/8, incompatibility 1/1); two defects found and fixed, not re-run; ADS 2 pass pending; the automated suite last ran 2026-09-24, exit 0
 workshop:     3806760430
 remaining:
   - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
@@ -32,6 +32,37 @@ updated:      2026-09-24
 ---
 
 # Dust Bunnies Renew — status
+
+## First in-game runs, and two fixes — 2026-09-24 (Claude Sonnet 5)
+
+Three of the four filed requests came back; the fourth (Animal Prosthetics 2) was still queued when this was written.
+`exitReason` read first each time.
+
+| Request | Pass | Result |
+|---|---|---|
+| `20260924-165202-390-506b` | English, minimal set | 10 discovered: 7 passed, 1 failed, 2 skipped by requirement (07, 08). exit 1 |
+| `20260924-165202-869-d71d` | French, minimal set | 8: 5 passed, 1 failed, 2 skipped. exit 1 |
+| `20260924-165203-308-7a77` | original mod beside this one | 1 of 1 passed: the mod that loads last owns the defs. exit 0 |
+
+The `@review` capture "dust bunny made at the crafting spot" was opened: a colony animal beside the crafting spot.
+
+**Two findings, both fixed and not yet re-run.**
+- **A defect of the mod.** Every start logged `No RimWorld.StatDef named ToxicSensitivity`: the stat is gone in 1.6, so its
+  value was dropped and the dust bunny was not immune to toxic buildup as its source intended. `Races_DustBunny.xml` now
+  writes `ToxicResistance` 1.0. `no errors were logged` passed anyway, because the error is raised before any scenario:
+  Pickle counted it as "2 errors logged outside any scenario". `Check-Claims` has a seventh section that fails when a
+  `statBases` stat is not defined by the game (mutation seen to fail, the fixed mod passes), and feature 03's stat
+  scenario asserts `ToxicResistance` 0.99 to 1.01.
+- **A defect of my test.** "can be trained" failed in both passes on `the dust bunny has no training tracker`. My
+  hypothesis, not yet verified in game: the generic spawn step leaves a wild animal, and only a colony animal has a
+  tracker. A local step `the dust bunny joins the colony` now runs first, and the refusal message says whether the
+  animal is the colony's. Nothing is known yet about the animal's trainability itself.
+
+The other startup error, `Pickle tests did not load any content`, is the companion mod holding only an assembly and
+features; other suites log the same.
+
+Still to run: the ADS 2 pass, then one small fix ticket for `::the living dust bunny can be trained` and the stat scenario.
+Nothing here changes `tested`, which stays unmet.
 
 ## Four initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)
 

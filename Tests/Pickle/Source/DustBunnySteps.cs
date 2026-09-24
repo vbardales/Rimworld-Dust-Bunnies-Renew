@@ -98,6 +98,20 @@ namespace DustBunnies.PickleSteps
                 $"body size is {size:F3}: life stage {stage.defName} factor {stage.bodySizeFactor} x base {bunny.RaceProps.baseBodySize}; expected {low} to {high}");
         }
 
+        /// <summary>
+        /// The generic spawn step leaves a wild animal, and the game gives a training tracker only to an animal
+        /// of the colony, so a scenario that spawns a bunny to train it has to make it the colony's first. This
+        /// is what the bill does for a made bunny, through the worker passing the doer's faction.
+        /// </summary>
+        [When("Dust Bunnies Renew: the dust bunny joins the colony")]
+        public void JoinsColony(PickleContext ctx)
+        {
+            var bunny = TheBunny(ctx);
+            bunny.SetFaction(Faction.OfPlayer);
+            ctx.Assert(bunny.Faction == Faction.OfPlayer && bunny.training != null,
+                $"{Describe(bunny)} did not become the colony's, or has no training tracker after it did");
+        }
+
         [Then("Dust Bunnies Renew: the dust bunny stat {string} is between {float} and {float}")]
         public void StatBetween(PickleContext ctx, string statDefName, float low, float high)
         {
@@ -119,7 +133,8 @@ namespace DustBunnies.PickleSteps
             var trainable = DefDatabase<TrainableDef>.GetNamedSilentFail(trainableDefName);
             ctx.Assert(trainable != null, $"no TrainableDef named {trainableDefName}");
             var bunny = TheBunny(ctx);
-            ctx.Require(bunny.training != null, "the dust bunny has no training tracker");
+            ctx.Require(bunny.training != null,
+                $"the dust bunny has no training tracker, and {Describe(bunny)}: only an animal of the colony has one");
             AcceptanceReport report = bunny.training.CanAssignToTrain(trainable, out bool visible);
             ctx.Assert(report.Accepted,
                 $"training {trainableDefName} is refused (shown to the player: {visible}): {report.Reason}");

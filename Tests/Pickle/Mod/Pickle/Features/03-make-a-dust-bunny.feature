@@ -40,11 +40,13 @@ Feature: making a dust bunny, and what the made animal is
     Then Dust Bunnies Renew: the dust bunny body size is between 0.039 and 0.041
     And Dust Bunnies Renew: the dust bunny stat "LeatherAmount" is between 5 and 6.5
     And Dust Bunnies Renew: the dust bunny stat "Wildness" is between 0.09 and 0.11
+    And Dust Bunnies Renew: the dust bunny stat "ToxicResistance" is between 0.99 and 1.01
     And no errors were logged
 
   Scenario: the living dust bunny can be trained to guard and to attack
     Given the save "test-colony" is loaded
     And I spawn a "DustBunny" pawn at (140, 155)
+    And Dust Bunnies Renew: the dust bunny joins the colony
     Then Dust Bunnies Renew: the dust bunny can be assigned training "Obedience"
     And Dust Bunnies Renew: the dust bunny can be assigned training "Release"
     And no errors were logged

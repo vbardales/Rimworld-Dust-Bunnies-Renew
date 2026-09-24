@@ -10,7 +10,8 @@
       <Flammability>1.0</Flammability>
       <LeatherAmount>50</LeatherAmount>
       <MeatAmount>0</MeatAmount>
-      <ToxicSensitivity>0.0</ToxicSensitivity>
+      <!-- 1.6: ToxicSensitivity is gone. ToxicResistance is its mirror (1 = immune), and 0.0 sensitivity was immunity. -->
+      <ToxicResistance>1.0</ToxicResistance>
       <!-- 1.6: wildness is the Wildness stat, no longer a field of RaceProperties. -->
       <Wildness>0.1</Wildness>
     </statBases>

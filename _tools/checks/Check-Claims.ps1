@@ -259,6 +259,23 @@ else {
         }
     }
 }
+# ------------------------------------------ 7: every stat the mod's ThingDefs write is a stat the game defines
+
+# A stat the game no longer defines is not refused at load: its value is dropped and one error is logged, before any
+# scenario, where "no errors were logged" does not see it. ToxicSensitivity (gone in 1.6) went through this way.
+$unknownStats = @()
+foreach ($n in $modNodes) {
+    if ($n.LocalName -ne 'ThingDef') { continue }
+    foreach ($group in 'statBases', 'equippedStatOffsets') {
+        foreach ($s in $n.SelectNodes("$group/*")) {
+            if (-not $statDefs.ContainsKey($s.LocalName)) { $unknownStats += "$($n.defName)$($n.GetAttribute('Name')).$group.$($s.LocalName)" }
+        }
+    }
+}
+if ($statDefs.Count -eq 0) { Fail 'read no StatDef from the game data: the path is wrong or its layout changed' }
+elseif ($unknownStats.Count) { Fail "stats the game does not define: $($unknownStats -join ', ')" }
+else { Pass "every stat written under statBases exists in the game ($($statDefs.Count) defined)" }
+
 $aboutXml = Load-Xml (Join-Path $ModPath 'About\About.xml')
 $before = @($aboutXml.SelectNodes('/ModMetaData/loadBefore/li') | ForEach-Object { $_.InnerText.Trim() })
 $hard = @($aboutXml.SelectNodes('/ModMetaData/modDependencies/li/packageId') | ForEach-Object { $_.InnerText.Trim() })

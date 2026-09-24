@@ -12,6 +12,14 @@ Port of 2blockdude's and HendraGradeWood's **Dust Bunnies** to RimWorld 1.6.
 
 ### Fixed
 
+- `BaseDustBunny`: `<ToxicSensitivity>0.0</ToxicSensitivity>` replaced by
+  `<ToxicResistance>1.0</ToxicResistance>`. `ToxicSensitivity` is not a `StatDef` in 1.6; the loader
+  logged `Could not resolve cross-reference: No RimWorld.StatDef named ToxicSensitivity` at every
+  start and dropped the value, so the dust bunny was **not** immune to toxic buildup, which the
+  original's zero sensitivity meant it to be. `ToxicResistance` is the stat that replaced it, one
+  meaning immune. Found by the first in-game Pickle run on 2026-09-24. Behaviour change: the animal is
+  now immune to toxic buildup, as its source intended.
+
 - `BaseDustBunny`: `<wildness>0.1</wildness>` under `<race>` replaced by `<Wildness>0.1</Wildness>`
   under `<statBases>`. Wildness stopped being a field of `RaceProperties` and became a `StatDef`;
   the old element matches no field, so the loader logs one line and carries on with it unset. The

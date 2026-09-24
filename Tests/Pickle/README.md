@@ -45,7 +45,7 @@ A check the game does not need to run, or that only tests the game, does not bel
 
 ## The local steps
 
-`Source/DustBunnySteps.cs`, 9 steps, all prefixed `Dust Bunnies Renew:` because Pickle matches on text alone
+`Source/DustBunnySteps.cs`, 10 steps, all prefixed `Dust Bunnies Renew:` because Pickle matches on text alone
 across every suite loaded. Each exists because no stock or shared step does it:
 
 - **the `[DefOf]` bound**, by reflection so this companion needs no reference to the mod's assembly;
@@ -54,6 +54,7 @@ across every suite loaded. Each exists because no stock or shared step does it:
   wild animal standing beside the colonist;
 - **body size and a stat, between two bounds**, read from the living pawn;
 - **whether training is allowed**, with the game's own reason when it is refused;
+- **the bunny joining the colony**, because the generic spawn step leaves a wild animal and only a colony animal has a training tracker;
 - **the animal's label on both its defs**, since the player reads either;
 - **which surgeries an animal is offered, compared with a reference animal's**, and the reverse: a category-3
   animal is offered some the dust bunny is not. Two steps, and by design they name no recipe.

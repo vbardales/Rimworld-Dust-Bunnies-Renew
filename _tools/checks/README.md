@@ -27,6 +27,12 @@ stat's default, 0. The yield is the base body size times the body size factor of
 `LeatherAmount`, through the stat's `postProcessCurve`: about 5.6 for a body size of 0.04. Read off the def
 instead, it says about 18, which is the figure the description once claimed.
 
+Section 7, added after the first in-game run: every stat a ThingDef of the mod writes under `statBases` must be a
+`StatDef` the game defines. A stat the game no longer knows is not refused at load, its value is dropped and one
+error is logged before any scenario, where `no errors were logged` does not see it: `ToxicSensitivity` (gone in
+1.6) went through this way. Seen to fail on 2026-09-24 with the old line put back on a copy of `Mod/Defs`: exit 1,
+`stats the game does not define: BaseDustBunny.statBases.ToxicSensitivity`; the fixed mod exits 0.
+
 Seen to fail on 2026-09-24, on a copy of `Mod/Defs` outside the repository, one mutation each: a second bench in
 `recipeUsers`; `<products>` added to `MakeDustBunny`; `<wildness>` put back in `<race>`; `Wildness` removed from
 `statBases`; dust's cold insulation set to 3; its flammability factor set to 1.3; its flammability set to 1.2; the
