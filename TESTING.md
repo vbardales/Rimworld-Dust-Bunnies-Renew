@@ -34,8 +34,8 @@ outside the repository; the script calls `pwsh` by name and does not fall back.
 
 ## What `tested` requires
 
-**`done` is not met.** `../AUDIT.md`, transition 8, asks for the Pickle scenarios to be *written*, with their
-scope justified; running them is left to `tested`. None exists: there is no `Tests/Pickle/` here. What only a
+**`done` is not met.** The collection's workflow, transition 8, asks for the Pickle scenarios to be *written*,
+with their scope justified; running them is left to `tested`. None exists: there is no `Tests/Pickle/` here. What only a
 running game can show is exactly what this mod does, so the scope is not empty: a colonist finishes a bill and
 a live animal appears. Stage is `preTest`.
 
@@ -51,15 +51,15 @@ Then transition 9 (`done` -> `tested`). Three checks, each measured against what
 
 Planned, and none of it written yet. `Pickle` means a feature a running game has to play; `offline` means an
 assertion added to `Test-Mod.ps1`, because whatever can be proved outside the game has to be; `n/a` means the
-scenario would test the engine and not the mod (`../AUDIT.md`, "On ne teste pas le jeu"): the mod answers for
-what it declares, and that is read in the sources.
+scenario would test the engine and not the mod, which the workflow rules out: the mod answers for what it
+declares, and that is read in the sources.
 
 | # | Manual check | Planned disposition |
 |---|---|---|
 | 0 | Loads; the four log strings | Pickle: the startup feature, `no errors were logged`, and `Player.log` read from the launch |
 | 1 | Both recipes on the crafting spot, nowhere else | offline: `recipeUsers` of both recipes is exactly `CraftingSpot` |
 | 2 | *Gather dust* costs nothing but time | Pickle, first half of the chain: the bill completes and dust appears |
-| 3 | Dust is the worst cold insulator and burns as wood | offline, computed from the game's `Data` on each run: its `StuffPower_Insulation_Cold` is below every vanilla stuff's, and its flammability factor below cloth's. These are claims in the public description, so they are guarded, not restated |
+| 3 | Dust is the worst cold insulator and burns as wood | offline, computed from the game's `Data` on each run: its `StuffPower_Insulation_Cold` is below that of every vanilla stuff a garment can be made from (`Fabric`, `Leathery`, `Metallic` or `Woody`; the six stone blocks state none and are `Stony`, so they are excluded by category and not by luck), and its flammability factor below cloth's. The materials are resolved through `ParentName` before comparing, because most inherit the stat. These are claims in the public description, so they are guarded, not restated |
 | 4 | The bill makes an animal | Pickle, and the reason this suite exists: 100 dust in, a live pawn on the colonist's cell |
 | 5 | Tame the moment it exists | Pickle, same feature: the pawn's faction is the colony's |
 | 6 | Wildness reads 10% | offline: `Wildness` sits under `statBases`, which is the port's first correction |
@@ -67,13 +67,13 @@ what it declares, and that is read in the sources.
 | 8 | Never eats | n/a: vanilla reads `baseHungerRate`, declared and unchanged since 2021 |
 | 9 | Trains, up to Advanced | Pickle, tail of the feature in 4: the training tab offers it on an animal that never leaves the `AnimalBaby` stage. This is a suspicion in the scenario text, not a verified fact |
 | 10 | Comfortable down to -55 °C | n/a: a declared stat, read by vanilla |
-| 11 | Butchering returns dust, no meat | Pickle, if a stat-reading step exists: `LeatherAmount` on the spawned pawn, which the description puts near 18. Otherwise the claim comes out of the description |
+| 11 | Butchering returns dust, no meat | Pickle, if a stat-reading step exists: `LeatherAmount` on the spawned pawn, which is about 6: the body size of a living animal is 0.2 times its `AnimalBaby` factor of 0.2, so 0.04. The def's own card says about 18 because it has no life stage, so assert against the pawn and never against the def. Otherwise the claim comes out of the description |
 | 12 | Never arrives manhunter | n/a: vanilla reads `canArriveManhunter`, declared |
 | 13 | Never breeds | n/a: vanilla reads `mateMtbHours`, declared |
 | 14 | Dies of old age; the corpse looks alive | n/a: vanilla reads `lifeExpectancy`; the identical corpse texture is recorded in `ATTRIBUTION.md` |
 | 15 | The sprite is always rotated | n/a: `Graphic_Multi` with one face is engine behaviour, recorded in the README |
 | 16 | English and French | Pickle, one pass per language (below); paths are already checked offline by `Check-DefInjected` |
-| 17 | The original cannot load alongside | Pickle, the incompatibility pass (below). Whether the game *warns* is the engine's, and is not tested |
+| 17 | The original must not load alongside | Pickle, the incompatibility pass (below). The game removes the earlier def and logs nothing, so the scenario asserts who owns the def, not a log line. Whether the game *warns* is the engine's, and is not tested |
 
 Nothing above was decided by running anything. It is the plan to confirm when the suite exists.
 
@@ -89,22 +89,26 @@ mod set and one language each.
    during a run.
 3. **Incompatibility with the original mod** (`BlockHen.Animal.DustBunnies`, Workshop 2659958183, present on
    disk with its `1.1`, `1.2` and `1.3` folders): a named set, `wsl-deps.incompat-BlockHen.Animal.DustBunnies.map`.
-   The question is whether the declaration is still true, so the scenario asserts the symptom instead of waiting
-   for a red: both mods define the same `defName`s, so the log must show the duplicate-def error, under
-   `@allow-errors`. It is replayed when the original moves, not on every publication.
+   The question is whether the declaration is still true. The symptom is **silence**: both mods define the same
+   `defName`s, and `DefDatabase.AddAllInMods` removes the earlier def and adds the later one without a log line,
+   so a scenario that waits for a duplicate-def error waits for something the game never writes. It asserts
+   that both mods are loaded, fixes their order, and asserts which mod owns `DustBunny`. The catalogue of steps
+   available here has no step for the owner of a def; look in the Pickle repository's `Docs/steps.md` before
+   writing one, since a companion step reading the def's content pack would be the missing piece. It is replayed
+   when the original moves, not on every publication.
 
-The machine is shared and a run takes a ticket in the queue. A Claude Code session watches its ticket with the
-`Monitor` tool on a read-only poll of `scripts/Pickle-Status.ps1`, which is what a heartbeat is under Codex
-(`../AUDIT.md`), and never with a cron. A `Monitor` expires after 30 minutes at most, so a long queue means
-re-arming it. No ticket exists for this mod today.
+The machine is shared and a run takes a ticket in a queue. A session watches its own ticket with a read-only
+poll of the launcher's status script, never with a cron and never by launching, stopping or reserving anything:
+a heartbeat under Codex, the `Monitor` tool under Claude Code, which expires after 30 minutes at most, so a
+long queue means re-arming it. No ticket exists for this mod today.
 
 ## Evidence to keep
 
 Raw Pickle reports live on disk in `Tests/Pickle/Evidence/<date>-<pass>/`, which `.gitignore` excludes:
 captures and `Player.log` grow without limit. Pass `-EvidenceDir` to the launcher so the report is copied
 there before the lock is released, then check `exitReason` and the played and discovered counts in each copy.
-The rules are the collection's (`../AGENTS.md`, "Test evidence"; `../PickleTools/TESTING.md`, "What to keep
-after a test, and what to delete").
+The rules are the collection's, and are stated here in full so that nothing depends on a file outside this
+repository.
 
 | Keep, per pass | Why |
 |---|---|
@@ -129,14 +133,13 @@ What is worth keeping for this mod, once it has runs:
   mod working, and the only one a person has to read;
 - the **French pass**: its summary and `Player.log`, and nothing else. The labels are asserted, so their proof
   is the report;
-- the **incompatibility pass**: its summary and the log lines that show the duplicate-def symptom. Keep it
-  until the original mod is updated: it is the sole proof of that check.
+- the **incompatibility pass**: its summary, and the step outcome that names which mod owned `DustBunny`. There is no log line to keep, because the symptom is silence. Keep it until the original mod is updated: it is the sole proof of that check.
 
 Nothing else takes a capture. The two `Preview` and `ModIcon` images are the owner's and are not test evidence.
 
-The script that minifies captures, `Minify-Evidence.ps1`, is not in this repository yet. The collection's copy
-is under `Tests/Pickle/` in `ACertainSeriesCreaturesAndHairRenew` and `FieldworkCompanions`; take it with the
-first Pickle scenario, not before.
+The script that minifies captures, `Minify-Evidence.ps1`, is not in this repository yet. Two sibling mods
+of the same collection carry it under `Tests/Pickle/` (`ACertainSeriesCreaturesAndHairRenew` and
+`FieldworkCompanions`); take it with the first Pickle scenario, not before.
 
 ## Manual validation
 

@@ -27,6 +27,7 @@ remaining:
   - "unverified: [tested gate] All eighteen manual scenarios each automated and green, or listed not applicable with a reason; today all eighteen are manual. The planned map is in TESTING.md and is not yet confirmed."
   - "unverified: [tested gate] Three Pickle passes green: English, French, and incompatibility with BlockHen.Animal.DustBunnies. exitReason read before the counts, scenarios played against features discovered, @review captures opened and looked at, startup logs read."
   - "unverified: [tested gate] New colony and existing save, save and reload of the animal and its bill, English and French clipping, raw keys and fallback text (scenario 16)."
+  - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Only Virginie can correct it, by hand on the Steam page; About.xml and the docs are already right."
 updated:      2026-09-24
 ---
 
@@ -51,13 +52,13 @@ untracked `.dds` beside the PNGs. Both were kept and then resolved by commits: `
 | -> Preview generated | Validated | Viewed: 896 x 504, 205,118 bytes, under 1 MB; no clipping or overlap, the bunny unobscured |
 | -> preOptions | Validated | Viewed at full size: the yellow rule and `1.6` badge are clearly separate from the beige-brown `Renew` and `(unofficial)`. English description; ` Renew` and ` (unofficial)` as PUBLISHING.md prescribes for a public `silent` port |
 | -> options | Justified not applicable | No match in `Source/` or `Defs/` for `ModSettings`, `SettingsCategory`, `DoSettingsWindowContents`, `MainButtonDef`, `MainTabWindow`, `Scribe` or a `Mod` subclass: no page and no shortcut. Inventory in the 2026-09-13 entry. No customization mod was tested, and none is claimed |
-| -> l10n | Validated | `Mod/Defs`, `Mod/Languages` and `Source/` are unchanged since the 2026-09-13 audit (`git diff 21fbbbe HEAD` is empty). `Check-DefInjected` today: 12 keys, 0 errors. English is the Defs' own value |
+| -> l10n | Validated | `Mod/Defs`, `Mod/Languages` and `Source/` are unchanged since the 2026-09-13 audit (`git diff 21fbbbe HEAD -- Mod/Defs Mod/Languages Source` is empty; the whole-tree diff is not, since `About.xml` and both LICENSE files changed). `Check-DefInjected` today: 12 keys, 0 errors. English is the Defs' own value |
 | -> preTest | Validated | The only reference is `Krafs.Rimworld.Ref`, at build time. About declares 1.6, `loadAfter` Core and `incompatibleWith BlockHen.Animal.DustBunnies`; no dependency, `LoadFolders` or conditional patch |
 | preTest -> done | **Not established** | Scenarios written: 18. Automated and XML tests written, run and green at the delivered revision (below). **Pickle tests written, with their scope justified: none.** There is no `Tests/Pickle/` |
 | done -> tested | Unverified | Nothing was run in game |
 
 **Why `done` no longer holds.** The 2026-09-13 entry validated `preTest -> done` on the automated suite and the
-written scenarios, and said pawn generation is "covered by manual scenarios". Transition 8 as `../AUDIT.md`
+written scenarios, and said pawn generation is "covered by manual scenarios". Transition 8 as the workflow
 now states it, with the 2026-09-21 explicitation, asks for the Pickle scenarios to be *written* and their scope
 justified, and the scope here is not empty: what a colonist finishing a bill does is exactly what only a running
 game can show. Manual scenarios do not satisfy it, and transition 9 then asks for no manual test left. This is
@@ -94,6 +95,26 @@ planned); no manual test left, each of the eighteen automated and green or liste
 carry them; that cannot be read back from here, and an upload from a tree without them leaves them out.
 `Test-Mod.ps1` could fall back to `powershell.exe` when `pwsh` is missing.
 
+**Corrections after a review, same day.** A review of the commits above found three figures of mine wrong and a
+plan that could not work, and all are fixed. Verified against the game's own code and data, not from memory.
+
+- **Butchering yields about 6 dust, not about 18.** `Pawn.BodySize` is the life stage's `bodySizeFactor` times
+  the race's base size. The only life stage is `AnimalBaby`, factor 0.2, so the animal is 0.04 and not 0.2:
+  `LeatherAmount` 50 becomes 2 and the stat's curve lifts it to about 5.6. The 18 was read off the *def's*
+  information card, which has no life stage. The body size is 0.04 in play for the same reason.
+- **Dust is the worst insulator of any material a garment can be made from, not "in the game".** Of 53 stuffs,
+  the six stone blocks state no cold insulation and default to 0, but they are `Stony`, and the apparel files
+  accept only `Fabric`, `Leathery`, `Metallic` and `Woody`. The lowest vanilla stuff that states one is 2.5.
+- **The incompatibility pass cannot wait for a duplicate-def error.** `DefDatabase.AddAllInMods` removes the
+  earlier def and adds the later one, so the game logs nothing. The pass now asserts who owns `DustBunny`, and
+  says that no step for that is known to exist.
+- Also fixed: the CHANGELOG said the ID-file commit was the only one after `1b63e37`; this file quoted a
+  whole-tree diff that was only empty when path-limited; and `TESTING.md` linked to files outside the
+  repository. `CHANGELOG.md`, `README.md`, `TESTING.md`, `_tools/FUNCTIONAL-SCENARIOS.md` and the description in
+  `About.xml` now carry the corrected figures. This is a change under `Mod/` after `0.1.0`, so
+  the sentence above that nothing under `Mod/` changed describes the audit, not the corrections.
+
+The suite was rerun after the `About.xml` edit: exit 0, and the shipped DLL is byte-identical again.
 ## Publication-format correction — 2026-09-13
 
 Fixed the publication-format finding from the audit below in the working tree
