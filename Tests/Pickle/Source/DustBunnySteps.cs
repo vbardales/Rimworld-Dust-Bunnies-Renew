@@ -156,8 +156,8 @@ namespace DustBunnies.PickleSteps
 
         /// <summary>
         /// A Dog Said... Animal Prosthetics 2 files every animal in category lists, and adds surgeries by
-        /// listing an animal in a recipe's recipeUsers. No surgery is named here on purpose: the recipes come
-        /// from elsewhere and their names are not this mod's to know. The assertion compares what the dust
+        /// listing an animal in a recipe's recipeUsers. No surgery is named here on purpose: ADS 2 defines them
+        /// (InstallPegLegAnimal and its siblings), but a name is what an update can change. The assertion compares what the dust
         /// bunny is offered with what a reference animal of the category it should be in is offered, so it
         /// holds whatever ADS 2 calls its recipes, and it fails saying which surgeries differ.
         /// </summary>

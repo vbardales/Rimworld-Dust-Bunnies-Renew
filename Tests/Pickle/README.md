@@ -25,7 +25,7 @@ until a colonist finishes a bill.
 | `04-save-reload` | A queued bill for the mod's recipe, and a made animal, survive a save and a reload | Scribe behaviour. The fixture colony was saved without this mod, so it is also the mod added to an existing colony |
 | `05-labels-en`, `06-labels-fr` | The animal, the material and both recipes read as the language of the pass says, **on the loaded defs** | A language folder the game does not find is silent, above all on Linux. The English feature adds nothing about the English text, which is the XML itself: it is the control that a pass claiming English really ran in English, as the French one is for French |
 | `07-original-mod-incompatibility` (`@requires`) | With the original mod staged beside it, the mod that loads last owns `MakeDustBunny`, `GatherDust` and `Dust` | The declared `incompatibleWith` is a claim about the other mod, and it ages. Only loading both says whether it is still true |
-| `08-animal-prosthetics-2` (`@requires`) | With A Dog Said... Animal Prosthetics 2 staged, this mod loads before it, the dust bunny is offered the surgeries a Squirrel is (ADS 2's category 1 only), and a Cat is offered surgeries it is not | ADS 2 copies its category lists once, so the **order** is the whole integration, and only loading both in that order shows it held. No surgery is named: the recipes are not defined in ADS 2's repository, so the scenario compares |
+| `08-animal-prosthetics-2` (`@requires`) | With A Dog Said... Animal Prosthetics 2 staged, this mod loads before it, the dust bunny is offered the surgeries a Squirrel is (ADS 2's category 1 only), and a Cat is offered surgeries it is not | ADS 2 copies its category lists once, so the **order** is the whole integration, and only loading both in that order shows it held. No surgery is named on purpose. ADS 2 defines them (`InstallPegLegAnimal`, `InstallDentureAnimal`, `InstallWoodenPawAnimal` and the hoof, hand and foot ones, in its `HediffDefs/Prosthetics_*.xml`), but a comparison with a reference animal holds whatever the recipes are called, now or after an update |
 
 ## What is deliberately not in Gherkin
 
@@ -56,7 +56,7 @@ across every suite loaded. Each exists because no stock or shared step does it:
 - **whether training is allowed**, with the game's own reason when it is refused;
 - **the animal's label on both its defs**, since the player reads either;
 - **which surgeries an animal is offered, compared with a reference animal's**, and the reverse: a category-3
-  animal is offered some the dust bunny is not. Two steps, and no recipe is named.
+  animal is offered some the dust bunny is not. Two steps, and by design they name no recipe.
 
 Build with `dotnet build Tests/Pickle/Source/DustBunniesRenew.PickleSteps.csproj -c Release`. The output is
 `Mod/Pickle/Assemblies/`, which is tracked, and the intermediates go to `.build/`, which is not. Rebuild before
@@ -64,28 +64,32 @@ every run: Pickle loads step DLLs when the game starts.
 
 ## Passes
 
-Three passes: the minimal set in English, the minimal set in French, and the original mod beside this one. The
-mod declares no dependency and no `loadAfter` beyond Core, so the minimal set needs no map: without `-DepMap`
-the launcher stages Core, the DLCs, Pickle, Harmony, RimLogging and the mod. The incompatibility pass has its own
-map, `wsl-deps.incompat-original.map`.
+Four passes: the minimal set in English, the minimal set in French, the original mod beside this one, and A Dog
+Said... Animal Prosthetics 2 beside it. The mod declares no hard dependency and no `loadAfter` beyond Core, so the
+minimal set needs no map: without `-DepMap` the launcher stages Core, the DLCs, Pickle, Harmony, RimLogging and the
+mod. The two passes with another mod each have their own map, `wsl-deps.incompat-original.map` and
+`wsl-deps.avec-ads2.map`.
 
 Tags decide what runs where: `@en-only` and `@fr-only` follow the language of the labels they name, and `@slow`
 (`02` and the first scenario of `03`) is played once, in English, because none of it depends on the language.
-`07` carries `@requires:BlockHen.Animal.DustBunnies`, so it is skipped everywhere but the third pass, and a report
-has to show it skipped there, not passed. From the collection root, one at a time, each through the shared queue:
-
-```powershell
-powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod DustBunniesRenew -Language English -Filter 'Dust Bunnies Renew - Pickle tests,!@fr-only' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-english
-powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod DustBunniesRenew -Language French -Filter 'Dust Bunnies Renew - Pickle tests,!@en-only,!@slow' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-french
-powershell.exe -ExecutionPolicy Bypass -File scripts/Run-PickleWsl.ps1 -Mod DustBunniesRenew -DepMap wsl-deps.incompat-original.map -Language English -Filter '07-original-mod-incompatibility' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-incompat
-```
+`07` carries `@requires:BlockHen.Animal.DustBunnies` and `08` carries `@requires:SamBucher.ADogSaidAnimalProsthetics2`,
+so each is skipped everywhere but its own pass, and a report has to show it skipped elsewhere and played there.
 
 A run is a ticket, filed with TicketDispatcher, which follows it: this mod's session watches nothing itself, and
-never starts the launcher by hand. Three small tickets rather than one big one. An exploration or fix ticket
-plays as few scenarios as possible; an initial or final ticket plays every scenario of its pass, and the three
-passes above are three initial tickets. A fourth pass, with A Dog Said... Animal Prosthetics 2 mounted, is planned
-and not ready: see `../../TESTING.md`. Read `exitReason` before the counts, and compare the scenarios played with the scenarios discovered for
-the filter.
+never starts the launcher by hand. A request carries **no revision**: the mod is staged from the working tree at the
+moment its ticket plays, so the tree stays untouched between filing and the last `RUN_DONE`. Small tickets, one per
+pass. An exploration or fix ticket plays as few scenarios as possible (`-Filter '::<scenario>'`); an initial or final
+ticket plays every scenario of its pass, and the four below are four initial tickets. From the collection root:
+
+```powershell
+$submit = 'Rimworld-Ticket-Dispatcher\scripts\Submit-PickleRun.ps1'   # -Owner is this session's id, from get_session
+powershell.exe -ExecutionPolicy Bypass -File $submit -Mod DustBunniesRenew -Owner local_<id> -Label '<what>' -Language English -Filter 'Dust Bunnies Renew - Pickle tests,!@fr-only' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-english
+powershell.exe -ExecutionPolicy Bypass -File $submit -Mod DustBunniesRenew -Owner local_<id> -Label '<what>' -Language French -Filter 'Dust Bunnies Renew - Pickle tests,!@en-only,!@slow' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-french
+powershell.exe -ExecutionPolicy Bypass -File $submit -Mod DustBunniesRenew -Owner local_<id> -Label '<what>' -Language English -DepMap wsl-deps.incompat-original.map -Filter '07-original-mod-incompatibility' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-incompat
+powershell.exe -ExecutionPolicy Bypass -File $submit -Mod DustBunniesRenew -Owner local_<id> -Label '<what>' -Language English -DepMap wsl-deps.avec-ads2.map -Filter '08-animal-prosthetics-2' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-ads2
+```
+
+Read `exitReason` before the counts, and compare the scenarios played with the scenarios discovered for the filter.
 
 ## Before queuing
 
@@ -130,4 +134,6 @@ None of this was seen running. These are the assumptions a green first run confi
 9. `@allow-errors` is enough for whatever the original's assembly, built for 1.3, logs on its own account.
 10. In `08`, the surgeries ADS 2 adds are in `ThingDef.AllRecipes` of the dust bunny at the main menu, and a
     recipe is a surgery by `RecipeDef.IsSurgery`. The staged ADS 2 lists a Squirrel in category 1 only and a Cat in
-    all three: read on 2026-09-24 from version 1.3.7 of its source, which is not necessarily the staged build.
+    all three: read on 2026-09-24 from version 1.3.7 of its source, and the staged build is the same version. The
+    copy fetched into the WSL cache that day reports 1.3.7 too, and was checked: Squirrel and Rat appear only under
+    `ADS_Cat1`, Cat under all three.

@@ -76,7 +76,7 @@ sources. `Tests/Pickle/README.md` gives the reasoning per feature.
 | 15 | The sprite is always rotated | n/a: `Graphic_Multi` with one face is engine behaviour, recorded in the README |
 | 16 | English and French | Pickle `05-labels-en` and `06-labels-fr`, one pass per language, on the loaded defs. The corpse and material names the engine builds from those values are its templates: n/a. **Clipping in the bill and information dialogs in French is not covered**: it needs a `@review` capture in the French pass, and none is written yet |
 | 17 | The original must not load alongside | Pickle `07-original-mod-incompatibility`, the incompatibility pass (below). Whether the game *warns* is the engine's, and is not tested |
-| 18 | ADS 2: the dust bunny is offered a peg leg and a denture, and nothing above category 1 | The enrolment is declared and guarded offline, in `Check-Claims.ps1`. That the surgeries really reach a dust bunny, and that the patch ran before ADS 2 copied its lists, is a running-game fact: Pickle `08-animal-prosthetics-2`, the fourth pass. It compares with a Squirrel (ADS 2 lists it in category 1 only) and with a Cat (all three), so it names no recipe. It cannot stage yet: ADS 2 is not on this machine |
+| 18 | ADS 2: the dust bunny is offered a peg leg and a denture, and nothing above category 1 | The enrolment is declared and guarded offline, in `Check-Claims.ps1`. That the surgeries really reach a dust bunny, and that the patch ran before ADS 2 copied its lists, is a running-game fact: Pickle `08-animal-prosthetics-2`, the fourth pass. It compares with a Squirrel (ADS 2 lists it in category 1 only) and with a Cat (all three), so it names no recipe: ADS 2 does define them, `InstallPegLegAnimal` and its siblings, but a comparison holds whatever they are called. ADS 2 is in the WSL cache since 2026-09-24 and the pass is filed |
 | 5, tail | Save, quit, reload: the bunny, the dust and the queued bills persist | Pickle `04-save-reload`: a queued bill and an animal survive a round trip. The **made** animal's faction across a reload is not asserted: the animal there is spawned by kind, and faction persistence is vanilla's |
 
 Nothing in the Pickle rows was confirmed by running anything: it is the plan the first run settles. The offline rows run on every `Test-Mod.ps1`.
@@ -103,14 +103,16 @@ mod set and one language each.
    at `SamuelBucher/A-Dog-Said-Animal-Prosthetics-2`): the optional integration this mod declares, with
    `wsl-deps.avec-ads2.map`. It declares no hard dependency, so its line is the whole set. `08` asserts the load
    order first, this mod before ADS 2, because ADS 2 copies its category lists once; then that the dust bunny is
-   offered what a Squirrel is and less than a Cat. It is **written, and cannot stage**: ADS 2 is on neither the
-   Windows Workshop nor the WSL cache, and fetching it is a download that needs the owner's word.
+   offered what a Squirrel is and less than a Cat. It is **written and filed**. ADS 2 is
+   not in the Windows Workshop; it was fetched into the WSL cache on 2026-09-24, at the owner's request, through
+   the machine lock, and the staging script reads that cache as its second place.
 
 The machine is shared, so a run is a ticket. Tickets are filed with TicketDispatcher (documented in its
 `WELCOME.md`, which is the owner's and lives outside this repository), and **it follows them**: this mod's session
 sets up no watcher, no `Monitor` and no cron of its own. Tickets are small, three rather than one big one. An
 **exploration or fix** ticket plays as few scenarios as possible; an **initial or final** ticket plays every
-scenario of its pass. The three passes above are three initial tickets. No ticket exists for this mod today.
+scenario of its pass. The four passes above are four initial tickets, filed on 2026-09-24; a request carries no revision, so the mod
+stays untouched between filing and the last `RUN_DONE`.
 
 ## Evidence to keep
 

@@ -23,7 +23,7 @@ tested_on:    no in-game run recorded; the automated suite, claims check include
 workshop:     3806760430
 remaining:
   - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
-  - "unverified: [tested gate] All eight Pickle features run, in four passes: English, French, the original mod beside this one, and Animal Prosthetics 2 beside it. The fourth cannot stage until ADS 2 is on the machine, which is a download that needs the owner's word. exitReason read before the counts, scenarios played against discovered, 07 played in the third pass and skipped in the others, the @review capture opened and looked at, startup logs read."
+  - "unverified: [tested gate] All eight Pickle features run, in four passes: English, French, the original mod beside this one, and Animal Prosthetics 2 beside it. All four are filed. exitReason read before the counts, scenarios played against discovered, 07 played in the third pass and skipped in the others, the @review capture opened and looked at, startup logs read."
   - "unverified: [tested gate] The ten assumptions at the end of Tests/Pickle/README.md, which the first run confirms or breaks."
   - "unverified: [tested gate] A new colony and an existing save. The fixture colony was saved without the mod, so 04 is the second; the first needs a new game."
   - "unverified: [tested gate] The choice of ADS 2 category 1 for the dust bunny is mine and unconfirmed; the Steam page carries no mention of the integration until it is added by hand."
@@ -33,20 +33,27 @@ updated:      2026-09-24
 
 # Dust Bunnies Renew — status
 
-## Three initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)
+## Four initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)
 
-Filed at 16:52 with TicketDispatcher, on revision `8ebb42d584de12c5be088b2c426399898d353920` (pushed, tree clean), one
-request per pass and each an **initial** request that plays every scenario of its pass. Nothing has run yet, and this
-session watches nothing: TicketDispatcher wakes it at the start, at the end and with `RUN_DONE`.
+Filed between 16:52 and 16:58 with TicketDispatcher, one request per pass and each an **initial** request that plays
+every scenario of its pass. Nothing has run yet, and this session watches nothing: TicketDispatcher wakes it at the
+start, at the end and with `RUN_DONE`.
+
+**A request carries no revision.** The mod is staged from the working tree at the moment its ticket plays, which can
+be hours after filing. The tree was at `8ebb42d584de12c5be088b2c426399898d353920` when the requests were filed
+(pushed, clean), and only documentation has changed since, so what runs is that mod. The one exception is this
+correction pass, which touches comments and prose and the feature file's leading comment lines, which Gherkin ignores.
 
 | Pass | Request | Filter and map | Evidence |
 |---|---|---|---|
 | English, minimal set | `20260924-165202-390-506b` | `Dust Bunnies Renew - Pickle tests,!@fr-only` | `Tests/Pickle/Evidence/2026-09-24-english` |
 | French, minimal set | `20260924-165202-869-d71d` | `Dust Bunnies Renew - Pickle tests,!@en-only,!@slow` | `Tests/Pickle/Evidence/2026-09-24-french` |
 | Original mod beside this one | `20260924-165203-308-7a77` | `07-original-mod-incompatibility`, `wsl-deps.incompat-original.map` | `Tests/Pickle/Evidence/2026-09-24-incompat` |
+| Animal Prosthetics 2 beside it | `20260924-165810-057-f694` | `08-animal-prosthetics-2`, `wsl-deps.avec-ads2.map` | `Tests/Pickle/Evidence/2026-09-24-ads2` |
 
-The fourth pass, Animal Prosthetics 2, is **not filed**: ADS 2 is not on the machine and fetching it needs the owner's
-word. A result read from these reports is what `tested` is made of; until it is read, `tested_on` says no run.
+The fourth was filed once ADS 2 was on the machine: the owner asked for it on 2026-09-24 and it was fetched into the WSL
+cache through the machine lock (`steamcmd`, version 1.3.7, `packageId` as expected). A result read from these reports is
+what `tested` is made of; until it is read, `tested_on` says no run.
 
 ## Native support for Animal Prosthetics 2 — 2026-09-24 (Claude Sonnet 5)
 
@@ -72,11 +79,16 @@ that harness reported nine `exit 1` that were a parse error in the script, not d
 `FAIL` line as a crash, and the nine above were counted only after that fix. `Test-Mod.ps1` exits 0 with nine XML files.
 
 **In Gherkin, written and never run.** `08-animal-prosthetics-2` (`@requires`) asserts the load order, then that the dust
-bunny is offered the same surgeries as a Squirrel and that a Cat is offered some it is not. It names no recipe, because ADS
-2 does not define its recipes in its own repository. Nine local steps now, 85 step lines, all resolved.
+bunny is offered the same surgeries as a Squirrel and that a Cat is offered some it is not. It names no recipe on
+purpose: ADS 2 does define them (`InstallPegLegAnimal`, `InstallDentureAnimal`, `InstallWoodenPawAnimal` and the hoof,
+hand and foot ones, in its `HediffDefs/Prosthetics_*.xml`), and a comparison holds whatever they are called. An earlier
+version of this entry said ADS 2 did not define its recipes in its own repository; that was wrong, and came from
+filtering the repository's file list by name, which does not say what a file contains. Nine local steps now, 85 step
+lines, all resolved.
 
-**It cannot stage.** ADS 2 is on neither the Windows Workshop nor the WSL cache, and the staging script stops on an item it
-cannot find. Fetching it is a download that needs the owner's word.
+**It can stage since 2026-09-24.** ADS 2 was fetched into the WSL cache at the owner's request, through the machine
+lock, and the staging script reads that cache as its second place. The copy reports version 1.3.7, the version read
+from the source, and was checked: Squirrel and Rat appear only under `ADS_Cat1`, Cat under all three.
 
 **Two things to keep straight.** The choice of category 1 is mine and is to be confirmed. And the Steam description was
 frozen at creation, so the new "Optional: with A Dog Said..." line reaches the page only by hand.
