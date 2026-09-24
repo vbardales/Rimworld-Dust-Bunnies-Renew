@@ -231,6 +231,41 @@ if ($race) {
     }
 }
 
+# ------------------------------------ 6: the enrolment in A Dog Said... Animal Prosthetics 2, as declared
+
+$adsId = 'SamBucher.ADogSaidAnimalProsthetics2'
+$adsPatch = Join-Path $ModPath 'Patches\ADogSaidAnimalProsthetics2.xml'
+if (-not (Test-Path -LiteralPath $adsPatch)) { Fail "the ADS 2 enrolment patch is missing: $adsPatch" }
+else {
+    $ops = @((Load-Xml $adsPatch).SelectNodes('/Patch/Operation'))
+    if ($ops.Count -ne 1) { Fail "the ADS 2 patch must hold exactly one Operation, it holds $($ops.Count)" }
+    else {
+        $op = $ops[0]
+        $guard = $op.SelectSingleNode('xpath')
+        $match = $op.SelectSingleNode('match')
+        if ($op.GetAttribute('Class') -cne 'PatchOperationConditional') { Fail 'the ADS 2 patch is not a PatchOperationConditional: without ADS 2 an unguarded add would log an error' }
+        elseif ($op.HasAttribute('MayRequire') -or $op.HasAttribute('MayRequireAnyOf')) { Fail 'MayRequire on an Operation is read by nothing: the patch would apply with or without ADS 2' }
+        elseif ($op.SelectSingleNode('nomatch')) { Fail 'the ADS 2 patch declares a <nomatch>: without ADS 2 it would do something instead of nothing' }
+        elseif (-not $guard -or $guard.InnerText.Trim() -cne '/Defs/RecipeDef[@Name="ADS_Cat1"]') { Fail 'the ADS 2 patch is not guarded on ADS_Cat1, the def that only exists when ADS 2 is loaded' }
+        elseif (-not $match -or $match.GetAttribute('Class') -cne 'PatchOperationAdd') { Fail 'the ADS 2 patch does not add anything when it matches' }
+        else {
+            $target = $match.SelectSingleNode('xpath').InnerText
+            $cats = @([regex]::Matches($target, '@Name="(ADS_Cat\d)"') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique)
+            $users = @($match.SelectNodes('value/li') | ForEach-Object { $_.InnerText.Trim() })
+            if ($cats.Count -ne 1 -or $cats[0] -cne 'ADS_Cat1') { Fail "the dust bunny is enrolled in [$($cats -join ', ')], not in ADS_Cat1 only: it is a small critter, and bionics on a clump of lint are not the joke" }
+            elseif ($users.Count -ne 1 -or $users[0] -cne 'DustBunny') { Fail "the ADS 2 patch enrols [$($users -join ', ')], expected exactly DustBunny" }
+            elseif (-not (Mod-Def 'ThingDef' 'DustBunny')) { Fail 'the ADS 2 patch names DustBunny, which the mod does not define' }
+            else { Pass 'the dust bunny is enrolled in ADS 2 category 1 only, behind a condition that does nothing without ADS 2' }
+        }
+    }
+}
+$aboutXml = Load-Xml (Join-Path $ModPath 'About\About.xml')
+$before = @($aboutXml.SelectNodes('/ModMetaData/loadBefore/li') | ForEach-Object { $_.InnerText.Trim() })
+$hard = @($aboutXml.SelectNodes('/ModMetaData/modDependencies/li/packageId') | ForEach-Object { $_.InnerText.Trim() })
+if ($before -notcontains $adsId) { Fail "About.xml does not say loadBefore ${adsId}: ADS 2 copies its category lists once, so a patch that loads after it lands in a list nobody reads" }
+elseif ($hard -contains $adsId) { Fail "About.xml lists $adsId as a hard dependency: the integration is optional" }
+else { Pass "About.xml puts this mod before $adsId, and does not require it" }
+
 Write-Host ''
 if ($script:failures -gt 0) { Write-Host "$($script:failures) CLAIM(S) DO NOT HOLD" -ForegroundColor Red; exit 1 }
 Write-Host 'EVERY CLAIM HOLDS' -ForegroundColor Green
