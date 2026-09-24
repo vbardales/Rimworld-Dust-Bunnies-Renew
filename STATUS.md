@@ -33,9 +33,9 @@ updated:      2026-09-24
 
 # Dust Bunnies Renew — status
 
-## First in-game runs, and two fixes — 2026-09-24 (Claude Sonnet 5)
+## First in-game runs, and three fixes — 2026-09-24 (Claude Sonnet 5)
 
-Three of the four filed requests came back; the fourth (Animal Prosthetics 2) was still queued when this was written.
+The four filed requests have come back.
 `exitReason` read first each time.
 
 | Request | Pass | Result |
@@ -43,6 +43,14 @@ Three of the four filed requests came back; the fourth (Animal Prosthetics 2) wa
 | `20260924-165202-390-506b` | English, minimal set | 10 discovered: 7 passed, 1 failed, 2 skipped by requirement (07, 08). exit 1 |
 | `20260924-165202-869-d71d` | French, minimal set | 8: 5 passed, 1 failed, 2 skipped. exit 1 |
 | `20260924-165203-308-7a77` | original mod beside this one | 1 of 1 passed: the mod that loads last owns the defs. exit 0 |
+| `20260924-165810-057-f694` | Animal Prosthetics 2 beside this one | 1 of 1 failed on its first line: `should load before`, load order read `... Pickle, ADS 2, Dust Bunnies Renew ...`. exit 1 |
+
+**The ADS 2 failure is the harness's order, not the mod's.** The staging activates a map's mods in the map's order and
+the mod under test after them, so ADS 2 always loaded first. Nothing of the scenario past its first line ran: the
+surgeries were not compared. `wsl-deps.avec-ads2.map` now names this mod's own packageId with `path:` above the ADS 2
+line, which puts the mod first (`Tests/Pickle/README.md`, the map). What the pass proves is the behaviour once the order
+holds; that `loadBefore` produces that order in the game's own sort is not proved by any run, only its declaration
+offline. A ticket was filed for the pass again once the map was fixed.
 
 The `@review` capture "dust bunny made at the crafting spot" was opened: a colony animal beside the crafting spot.
 
@@ -61,7 +69,7 @@ The `@review` capture "dust bunny made at the crafting spot" was opened: a colon
 The other startup error, `Pickle tests did not load any content`, is the companion mod holding only an assembly and
 features; other suites log the same.
 
-Still to run: the ADS 2 pass (`20260924-165810-057-f694`), then two small fix tickets, filed after the fixes at 8bc4401: `20260924-234137-945-43b6` (`::the living dust bunny can be trained to guard and to attack`) and `20260924-234139-085-828c` (`::the living dust bunny has the size and the yield the description gives`, which now also asserts `ToxicResistance`).
+Still to run: three small fix tickets, two filed after the fixes at 8bc4401: `20260924-234137-945-43b6` (`::the living dust bunny can be trained to guard and to attack`) and `20260924-234139-085-828c` (`::the living dust bunny has the size and the yield the description gives`, which now also asserts `ToxicResistance`).
 Nothing here changes `tested`, which stays unmet.
 
 ## Four initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)

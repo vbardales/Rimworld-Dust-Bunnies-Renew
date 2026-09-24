@@ -69,7 +69,7 @@ Four passes: the minimal set in English, the minimal set in French, the original
 Said... Animal Prosthetics 2 beside it. The mod declares no hard dependency and no `loadAfter` beyond Core, so the
 minimal set needs no map: without `-DepMap` the launcher stages Core, the DLCs, Pickle, Harmony, RimLogging and the
 mod. The two passes with another mod each have their own map, `wsl-deps.incompat-original.map` and
-`wsl-deps.avec-ads2.map`.
+`wsl-deps.avec-ads2.map`. That map names this mod's own packageId with `path:` above the ADS 2 line: the staging activates a map's mods in its order and the mod under test last, so ADS 2 alone would load first, which the first run of the pass read (see the map).
 
 Tags decide what runs where: `@en-only` and `@fr-only` follow the language of the labels they name, and `@slow`
 (`02` and the first scenario of `03`) is played once, in English, because none of it depends on the language.

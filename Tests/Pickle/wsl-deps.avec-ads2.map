@@ -8,4 +8,14 @@
 # It is in the WSL cache since 2026-09-24, version 1.3.7, the same as the source this mod was written against. It was
 # fetched with scripts/download-workshop-wsl.sh through the machine lock, at the owner's request, and it is not in
 # the Windows Workshop: the staging script finds it as its second place, ~/workshop-cache.
+# ORDER. The staging activates the mods a map names in the order of the map, and only then the mod under test, so
+# ADS 2 alone would load BEFORE this mod: the first run of this pass (2026-09-24) read exactly that, and 08 failed on
+# its first line, "should load before", with ADS 2 ahead of Dust Bunnies Renew. Naming this mod's own packageId with
+# path: activates it at this position instead ("overlay replaces" in the staging output), which is the order the
+# game's own sort gives from About.xml's loadBefore. Written by hand above the ADS 2 line, so it has to stay above.
+#
+# What this does and does not prove. The pass proves the order, once it is given, does what the mod needs. That
+# About.xml asks for that order is proved offline, by Check-Claims. That the game's sort would produce it from
+# that declaration is not proved by any run here: it would need the sort itself.
+nelim.dustbunniesrenew   path:DustBunniesRenew/Mod
 SamBucher.ADogSaidAnimalProsthetics2   3238353862
