@@ -31,15 +31,21 @@ Port of 2blockdude's and HendraGradeWood's **Dust Bunnies** to RimWorld 1.6.
   back to.
 
 - Three claims the port's own documentation made about dust and got wrong, found on 2026-09-12 by
-  writing the in-game scenarios and reading the numbers instead of repeating them. None of them
-  came from 2blockdude or HendraGradeWood; all three were in `About.xml`, whose description is sent
-  to the Workshop exactly once. Dust was called **warm**: its cold insulation is 0.9, against
-  cloth's 18 and a vanilla floor of 2.5, which makes it the worst insulator in the game rather than
-  a warm one. It was called **very flammable**: `Flammability` 1.0 is wood's, and as a stuff its
-  factor of 1.0 is *below* cloth's 1.2. And butchering was said to give back **50 dust**, which is
-  the `LeatherAmount` stat base and not the yield — `StatPart_BodySize` scales it by the animal's
-  0.2 and the stat's `postProcessCurve` lifts the result back to about 18. The loop loses heavily,
-  which is the interesting fact the wrong number was hiding.
+  writing the in-game scenarios and reading the numbers instead of repeating them. Two of the three
+  corrections were themselves wrong until 2026-09-24. None came from 2blockdude or HendraGradeWood;
+  all were in `About.xml`, whose description is sent to the Workshop exactly once. Dust was called
+  **warm**: its cold insulation is 0.9 against cloth's 18, and no material a garment can be made
+  from states less than 2.5, so it is the worst insulator of any of them. The first correction said
+  "the worst insulator in the game", which the six stone-block stuffs contradict: they state none
+  and default to 0, but they are Stony and no garment accepts stone. It was called **very
+  flammable**: `Flammability` 1.0 is wood's, and as a stuff its factor of 1.0 is *below* cloth's
+  1.2. And butchering was said to give back **50 dust**, which is the `LeatherAmount` stat base and
+  not the yield. The first correction said about 18, which is what the information card of the *def*
+  shows, because a def has no life stage. A living dust bunny has one, `AnimalBaby`, with a body
+  size factor of 0.2, so its body size is 0.04: 2 before the stat's `postProcessCurve` and about 6
+  after it. The loop loses heavily, a hundred dust in and about a sixteenth of it back, which is
+  the interesting fact the wrong numbers were hiding.
+- The description also gave the body size as 0.2, which is the base; in play it is 0.04.
 
 ### Verified against 1.6 rather than recompiled blind
 
@@ -78,7 +84,7 @@ left implicit, being the defaults.
 - `Languages/French/`, 12 keys. The animal is a *mouton de poussière* — the actual French term,
   and it keeps the joke, a *mouton* being both the dust under the bed and the animal in the field.
 - `<incompatibleWith>BlockHen.Animal.DustBunnies</incompatibleWith>`: the `defName`s are
-  unchanged, so the two cannot load together.
+  unchanged, so the two must not be loaded together: they load, and whichever comes last silently replaces the other's defs.
 - `About/ModIcon.png` and `About/Preview.png`, both made for this port and neither derived from
   the original art. The icon is the repository's mascot, recoloured grey because the creature is:
   here the mascot's head *is* the dust bunny rather than holding it, since a second grey round mass
@@ -129,8 +135,10 @@ The first upload, made only to create the Workshop item (`3806760430`) and obtai
 `About/PublishedFileId.txt`. Steam creates every item private, so this is not a release: it says
 nothing about the mod being public, and it was not tested in game.
 
-What it contained: `Mod/` as it stood at commit `1b63e37`, the revision that was sent, and nothing
-else changed since — the commit that adds the ID file is the only one after it. Five `.dds`
-textures the game had written beside the PNGs were on disk, untracked, two hours before the upload;
-if it was made from the working folder they went with it, which cannot be read back from here.
-They are now ignored by git.
+What it contained: `Mod/` as it stood at commit `1b63e37`, the revision that was sent, plus the
+`About/PublishedFileId.txt` that the upload itself generated. Whatever has changed under `Mod/` since
+is in Unreleased above, not in this version.
+
+Five `.dds` textures the game had written beside the PNGs were on disk, untracked, two hours before
+the upload; if it was made from the working folder they went with it, which cannot be read back from
+here. They are now ignored by git.

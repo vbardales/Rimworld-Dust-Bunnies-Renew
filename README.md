@@ -32,7 +32,7 @@ The animal:
 
 | | |
 |---|---|
-| body size | 0.2 (yorkshire terrier 0.2, husky 0.86) |
+| body size | 0.2 in the def, 0.04 in play: the only life stage is `AnimalBaby`, whose factor is 0.2 |
 | move speed | 6.0 |
 | market value | 10 |
 | comfortable to | −55 °C |
@@ -41,20 +41,24 @@ The animal:
 | wildness | 0.1 |
 | life expectancy | 1 year |
 | genders | none |
-| leather | `Dust`, 50 in the def and about 18 in the hand — see below |
+| leather | `Dust`, 50 in the def and about 6 in the hand — see below |
 
 It never turns manhunter, on damage or on a failed taming. Traders carry it (`AnimalCommon`).
 
 Dust is a **stuff**: `Fabric` category, `Flammability` 1.0 and 3 % of normal hit points. You can
 build and tailor with it, and you should not. Its cold insulation is **0.9**, against cloth's 18
-and a vanilla floor of 2.5 — the worst insulator in the game, by a factor of nearly three under
-the lowest stuff there is. Its heat insulation is 0. It is very cheap, and it deteriorates half as
+and a vanilla floor of 2.5 — the worst insulator of any material a garment can be made from, by a
+factor of nearly three under the lowest one. Only the six stone-block stuffs state none, and they
+are Stony, which no garment accepts. Its heat insulation is 0. It is very cheap, and it deteriorates half as
 fast as cloth rather than faster (`DeteriorationRate` 2 against 4).
 
 The 50 in the table above is the `LeatherAmount` stat base, not the yield. `StatPart_BodySize`
-scales it by the animal's 0.2 and the stat's `postProcessCurve` lifts the result back, landing
-near **18** before difficulty and the carefully-slaughtered factor. So the loop does not close: a
-hundred dust makes one bunny, and the bunny gives well under a fifth of it back.
+scales it by the body size of the living animal, and that is 0.2 times its life stage's factor of
+0.2, so 0.04: 2 before the stat's `postProcessCurve`, about **6** after it, before difficulty and the
+carefully-slaughtered factor. The information card of the *def* says about 18, because it has no
+life stage and uses the base 0.2; the animal says about 6, and the animal is what is butchered. So
+the loop does not close: a hundred dust makes one bunny, and the bunny gives about a sixteenth of it
+back.
 
 Available in English and French.
 

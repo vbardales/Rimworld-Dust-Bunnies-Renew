@@ -18,7 +18,8 @@ slow ones. Most scenarios read either the bill dialog on the crafting spot or th
 information card, the `i` tab, where wildness, comfortable temperature and leather amount all sit.
 
 Every quantity below is the value in the def, so a mismatch is a finding either way: either the
-game no longer reads that field, or the def was changed and this file was not.
+game no longer reads that field, or the def was changed and this file was not. The exception is
+anything that depends on the animal's life stage, which a def does not have: see scenario 11.
 
 ---
 
@@ -28,7 +29,7 @@ game no longer reads that field, or the def was changed and this file was not.
 
 **Expect.** No red text at startup. Both recipes present.
 
-**Watch for in `Player.log`.** Four lines, each a different failure:
+**Watch for in `Player.log`.** Three lines, each a different failure, and one silence:
 
 - `Could not find type named` naming `DustBunnies.Recipe_SpawnDustBunny` — the assembly did not
   load, or the namespace moved. This is the dangerous one, because a `workerClass` that fails to
@@ -39,9 +40,11 @@ game no longer reads that field, or the def was changed and this file was not.
 - `Tried to use an uninitialized DefOf of type` — something touched `DustBunniesDefOf` before the
   database was complete. The port exists partly to make this impossible; if it comes back, the
   static initialiser has crept back in.
-- `Adding duplicate` with ` name: DustBunny` — the original mod is loaded alongside this one. It
-  should be impossible: `About.xml` declares `<incompatibleWith>BlockHen.Animal.DustBunnies`. See
-  scenario 17.
+- **No line at all** is what the original mod loaded alongside this one looks like, which is why it
+  is not a line to watch for. `DefDatabase.AddAllInMods` removes the earlier def of a name and adds
+  the later one without saying so; the `Adding duplicate` error in `Add` sits on a path that call
+  never takes, and only a clash inside one mod is reported. `About.xml` declares
+  `<incompatibleWith>BlockHen.Animal.DustBunnies`; see scenario 17.
 
 **If it fails here, stop.** Everything below assumes the recipes and the def are live.
 
@@ -89,8 +92,9 @@ and most of them are worse by an order of magnitude:
 | Sharp armour | 0.002 | 0.36 | — |
 | Hit points factor | 0.03 | 1 | — |
 
-**Dust is the worst insulator in the game**, by a factor of nearly three under the lowest vanilla
-stuff there is. A parka made of it is not a parka. That is almost certainly the joke rather than
+**Dust is the worst insulator of any material a garment can be made from**, by a factor of nearly
+three under the lowest vanilla one. Only the six stone-block stuffs state no cold insulation at all,
+and they are Stony, which no garment accepts. A parka made of dust is not a parka. That is almost certainly the joke rather than
 an oversight — the stuff is swept off the floor and costs nothing — and it is theirs either way.
 
 **It is also the one claim `About.xml` used to get wrong.** The description called dust *warm*
@@ -201,16 +205,21 @@ concrete def overriding the abstract base's −30.
 
 **Expect.** Dust, and nothing else. `MeatAmount` is 0, `leatherDef` is Dust.
 
-**Expect roughly 18 dust, not 50.** The def sets `LeatherAmount` to 50, but that is the stat's
-base value and not the yield: `StatPart_BodySize` scales it by the animal's 0.2, and the stat's
-`postProcessCurve` then lifts the result back up, landing near 18 before difficulty and the
-carefully-slaughtered factor touch it. **Read the information card's leather amount line before
-butchering** and check the yield against that, never against the number in the def.
+**Expect about 6 dust, not 50 and not 18.** The def sets `LeatherAmount` to 50, but that is the
+stat's base value and not the yield. `StatPart_BodySize` scales it by the body size of the living
+animal, which is 0.2 times its life stage's factor of 0.2, so 0.04. That makes 2, and the stat's
+`postProcessCurve` lifts it to about 5.6 before difficulty and the carefully-slaughtered factor
+touch it. The butchered amount is that value rounded at random, so 5 or 6.
 
-**Why it matters.** It sets the exchange rate of the whole mod. 100 dust in, one bunny, and well
-under a fifth of it back out — so the loop loses heavily and a colony cannot farm dust through
-bunnies. `About.xml` claimed a flat 50 until 2026-09-12, which would have made the loop look four
-times kinder than it is.
+**Two cards, two numbers.** The information card of the *def*, opened before any bunny exists, has
+no life stage and uses the base body size of 0.2, so it says about 18. The card of a living bunny
+says about 6. Check the yield against the living one, never against the def's card and never
+against the 50.
+
+**Why it matters.** It sets the exchange rate of the whole mod. 100 dust in, one bunny, and about a
+sixteenth of it back out — so the loop loses heavily and a colony cannot farm dust through bunnies.
+`About.xml` claimed a flat 50 until 2026-09-12 and about 18 until 2026-09-24. Both ignored the life
+stage, and the second was read off the def's card.
 
 ## 12. It never arrives angry, and never turns up wild
 
@@ -276,16 +285,24 @@ date and log path. Static resource checks do not count as running this scenario.
 **Watch for in `Player.log`.** `Duplicate def-injected translation key` or a def-injection report
 naming this mod. Either means a key is misspelled or aimed at a def that no longer exists.
 
-## 17. The original cannot load alongside
+## 17. The original must not load alongside
 
 **Do.** Enable both this mod and 2blockdude's original (Workshop 2659958183), if it is still
 subscribed.
 
 **Expect.** RimWorld reports the incompatibility in the mod list, because `About.xml`
-names `BlockHen.Animal.DustBunnies` in `<incompatibleWith>`.
+names `BlockHen.Animal.DustBunnies` in `<incompatibleWith>`. That report is the engine's, and it is
+not what is being tested.
+
+**Then, in a test colony only,** load both anyway. **Expect silence:** no error names the clash. The
+game removes the earlier def of a name and adds the later one, so whichever of the two loads last
+owns `DustBunny`, `Dust`, `GatherDust` and `MakeDustBunny`, and the other's version is gone. The
+owner is the mod that comes last in the mod list, and nothing in the log or the game says so.
 
 **Why it matters.** Every `defName` is unchanged — `DustBunny`, `Dust`, `GatherDust`,
-`MakeDustBunny` and the rest. Do not proceed with both enabled. Record the warning; the metadata is not a guarantee that the game prevents loading. Duplicate definitions are an invalid test configuration.
+`MakeDustBunny` and the rest — so the declaration is the only thing between a player and a def that
+changes under them without a word. Whether it is still true is worth looking at. Never run a colony
+you care about with both enabled.
 
 ---
 
