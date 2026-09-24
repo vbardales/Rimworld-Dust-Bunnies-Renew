@@ -49,7 +49,7 @@ The `@review` capture "dust bunny made at the crafting spot" was opened: a colon
 **Two findings, both fixed and not yet re-run.**
 - **A defect of the mod.** Every start logged `No RimWorld.StatDef named ToxicSensitivity`: the stat is gone in 1.6, so its
   value was dropped and the dust bunny was not immune to toxic buildup as its source intended. `Races_DustBunny.xml` now
-  writes `ToxicResistance` 1.0. `no errors were logged` passed anyway, because the error is raised before any scenario:
+  writes `ToxicResistance` 1.0 (immunity kept, confirmed by Virginie on 2026-09-24). `no errors were logged` passed anyway, because the error is raised before any scenario:
   Pickle counted it as "2 errors logged outside any scenario". `Check-Claims` has a seventh section that fails when a
   `statBases` stat is not defined by the game (mutation seen to fail, the fixed mod passes), and feature 03's stat
   scenario asserts `ToxicResistance` 0.99 to 1.01.
