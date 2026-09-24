@@ -9,27 +9,90 @@ repo:         Rimworld-Dust-Bunnies-Renew
 remote:       https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew.git
 visibility:   public
 mod_visibility: public
-visibility_at: GitHub API verified 2026-09-12; Workshop publication not recorded
+visibility_at: GitHub API verified 2026-09-24 (public, main); Workshop item 3806760430 created by the 0.1.0 prepublication on 2026-09-23, which Steam creates private; the switch to public is not recorded
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
-maintainer:   Codex, responsible for this repository and STATUS.md
-stage:        done
+maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
+stage:        preTest
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 port_licence: MIT, limited to port additions described in LICENSE
 dependencies: none
 showcase:     complete
-tested_on:    automated checks against installed RimWorld 1.6; no recorded in-game run
-workshop:
+tested_on:    no in-game run recorded; the automated suite last ran 2026-09-24 at 1b63e37, exit 0
+workshop:     3806760430
 remaining:
-  - "unverified: Execute final gameplay validation on a new colony and an existing save, including startup logs, scenarios 0-17 and English/French UI; no gameplay result is claimed."
-  - "unverified: Run scenario 16 in English and French; check descriptions, jobs, attacks, material and corpse names, bill rejection, formatting and clipping."
-  - Run and record manual scenarios 0-17, especially recipe completion and training.
-  - Confirm Workshop publication status before filling workshop.
-updated:      2026-09-13
+  - "unverified: [done gate] Pickle features written for what only a running game can show: startup, the recipe completion that spawns a live colony pawn, the French pass and the incompatibility pass, with their scope justified. None exists: there is no Tests/Pickle/. Planned in TESTING.md."
+  - "unverified: [done gate] Test-Mod.ps1 extended offline for the checks TESTING.md assigns to it: scenarios 1, 3, 6 and 7."
+  - "unverified: [tested gate] All eighteen manual scenarios each automated and green, or listed not applicable with a reason; today all eighteen are manual. The planned map is in TESTING.md and is not yet confirmed."
+  - "unverified: [tested gate] Three Pickle passes green: English, French, and incompatibility with BlockHen.Animal.DustBunnies. exitReason read before the counts, scenarios played against features discovered, @review captures opened and looked at, startup logs read."
+  - "unverified: [tested gate] New colony and existing save, save and reload of the animal and its bill, English and French clipping, raw keys and fallback text (scenario 16)."
+updated:      2026-09-24
 ---
 
 # Dust Bunnies Renew — status
+
+## Workflow audit — 2026-09-24 (Claude Sonnet 5)
+
+**Decision: `done` -> `preTest`.** `stage` uses the workflow's own state names, so `preTest` is the chain's
+`preTest`: every transition up to `l10n -> preTest` holds, and `preTest -> done` is not established. The
+entries below are history and are kept as written; where they say `done`, this entry supersedes them.
+
+Audited revision `1b63e375d313e1931a7be7e178a1275d633d040d`; `origin/main` was equal to HEAD. Local changes
+at the start: the untracked `Mod/About/PublishedFileId.txt` (3806760430, written 2026-09-23 16:31) and five
+untracked `.dds` beside the PNGs. Both were kept and then resolved by commits: `5b68897` the ID file alone,
+`b96b391` the `.gitignore`, `a19f679` the CHANGELOG, then `TESTING.md` and this file. Nothing under `Mod/`,
+`Source/`, the images or the DLL changed. No game was launched, no Pickle run queued, nothing published.
+
+| Transition | Result | Evidence |
+|---|---|---|
+| dansMonoRepo -> horsMonoRepo | Validated | Own `.git`; `git ls-remote origin HEAD` equals local HEAD; `gh repo view`: PUBLIC, `main`. README, ATTRIBUTION, LICENSE, CHANGELOG in English; `Mod/LICENSE` and `Mod/ATTRIBUTION.md` byte-identical to the root copies (`cmp`). `nelim.dustbunniesrenew`, `Dust Bunnies Renew (unofficial)`, `Rimworld-Dust-Bunnies-Renew` and `DustBunniesRenew/` agree. `silent` / public rests on the 2026-09-12 source investigation below; not repeated today |
+| -> ModIcon generated | Validated | `Test-Mod.ps1` rebuilds with 0 warnings and 0 errors and the shipped DLL is byte-identical before and after. Icon viewed: 128 x 128, 33,652 bytes, the mascot with the creature readable. Not generated, modified or replaced |
+| -> Preview generated | Validated | Viewed: 896 x 504, 205,118 bytes, under 1 MB; no clipping or overlap, the bunny unobscured |
+| -> preOptions | Validated | Viewed at full size: the yellow rule and `1.6` badge are clearly separate from the beige-brown `Renew` and `(unofficial)`. English description; ` Renew` and ` (unofficial)` as PUBLISHING.md prescribes for a public `silent` port |
+| -> options | Justified not applicable | No match in `Source/` or `Defs/` for `ModSettings`, `SettingsCategory`, `DoSettingsWindowContents`, `MainButtonDef`, `MainTabWindow`, `Scribe` or a `Mod` subclass: no page and no shortcut. Inventory in the 2026-09-13 entry. No customization mod was tested, and none is claimed |
+| -> l10n | Validated | `Mod/Defs`, `Mod/Languages` and `Source/` are unchanged since the 2026-09-13 audit (`git diff 21fbbbe HEAD` is empty). `Check-DefInjected` today: 12 keys, 0 errors. English is the Defs' own value |
+| -> preTest | Validated | The only reference is `Krafs.Rimworld.Ref`, at build time. About declares 1.6, `loadAfter` Core and `incompatibleWith BlockHen.Animal.DustBunnies`; no dependency, `LoadFolders` or conditional patch |
+| preTest -> done | **Not established** | Scenarios written: 18. Automated and XML tests written, run and green at the delivered revision (below). **Pickle tests written, with their scope justified: none.** There is no `Tests/Pickle/` |
+| done -> tested | Unverified | Nothing was run in game |
+
+**Why `done` no longer holds.** The 2026-09-13 entry validated `preTest -> done` on the automated suite and the
+written scenarios, and said pawn generation is "covered by manual scenarios". Transition 8 as `../AUDIT.md`
+now states it, with the 2026-09-21 explicitation, asks for the Pickle scenarios to be *written* and their scope
+justified, and the scope here is not empty: what a colonist finishing a bill does is exactly what only a running
+game can show. Manual scenarios do not satisfy it, and transition 9 then asks for no manual test left. This is
+a verification not yet established, not a defect of the mod.
+
+**Commands and results**
+
+- `_tools/Test-Mod.ps1`: **exit 0**. Release build 0 warnings, 0 errors; 8 XML files; no unknown field; no
+  missing reference, wrong type or unresolved parent; 12 keys, 0 errors; 2 C# types resolved; the recipe worker
+  derives from `RecipeWorker` and overrides the completion hook; the `DefOf` field is a `PawnKindDef`.
+  PowerShell 7 is not installed on this machine and the script calls `pwsh` by name, so it ran under Windows
+  PowerShell 5.1 through a temporary `pwsh` shim kept outside the repository.
+- SHA-256 of `Mod/Assemblies/DustBunnies.dll` before and after the rebuild:
+  `2D6203280D1B7985DFE2F2FBA6255B046A50BD75D63C90186A59E843A16F580B`, identical.
+- `git ls-remote`, `gh repo view`, `cmp` on the two document copies, `grep` for the settings symbols above,
+  and a direct look at both images.
+- `scripts/Pickle-Status.ps1`, read-only: 22 tickets waiting and a WSL run in progress for another mod. **No
+  ticket exists for this mod**, and nothing in `scripts/` or `PickleTools/` refers to it, so there was nothing
+  to watch and no `Monitor` was armed.
+
+**Settled by this audit.** The Workshop item exists (`workshop: 3806760430`), created private by the `0.1.0`
+prepublication; the CHANGELOG opens with `0.1.0` and keeps the port's notes as `Unreleased`, which becomes
+`1.0.0` with `published`. `.dds` files are ignored and were never tracked; `Tests/Pickle/Evidence/` and
+`evidence/` are ignored ahead of any run. `TESTING.md` is new: the planned disposition of the eighteen manual
+scenarios, the three passes this mod needs, and the proofs to keep.
+
+**Next transition, `preTest -> done`.** Write the Pickle features the plan in `TESTING.md` assigns to a running
+game (startup; gather then make, ending on a live colony pawn; the French pass; the incompatibility pass), state
+their scope, and add the offline assertions for scenarios 1, 3, 6 and 7 to `Test-Mod.ps1`. Their execution is
+`tested`'s. `tested` then needs the three checks below: no `@wip`; every conditional scenario run (none is
+planned); no manual test left, each of the eighteen automated and green or listed not applicable with its reason.
+
+**Reserves, optional.** The five `.dds` files were on disk two hours before the upload, so the `0.1.0` item may
+carry them; that cannot be read back from here, and an upload from a tree without them leaves them out.
+`Test-Mod.ps1` could fall back to `powershell.exe` when `pwsh` is missing.
 
 ## Publication-format correction — 2026-09-13
 
