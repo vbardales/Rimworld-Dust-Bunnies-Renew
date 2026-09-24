@@ -9,6 +9,9 @@ compiled API hook, but cannot prove that completing a bill spawns a pawn. Scenar
 therefore the first functional priority after loading. Expected results below are hypotheses
 to verify in RimWorld, not evidence that the tests passed.
 
+Where each scenario is planned to go — a Pickle feature, an offline assertion, or not applicable with
+its reason — is in [`../TESTING.md`](../TESTING.md).
+
 **Setup for everything below.** Development mode on. A small colony with a **crafting spot** and
 one colonist whose Crafting is enabled and not disabled by a trait. Time controls at 3x for the
 slow ones. Most scenarios read either the bill dialog on the crafting spot or the animal's
