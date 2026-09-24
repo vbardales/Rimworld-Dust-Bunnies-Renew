@@ -61,7 +61,7 @@ The `@review` capture "dust bunny made at the crafting spot" was opened: a colon
 The other startup error, `Pickle tests did not load any content`, is the companion mod holding only an assembly and
 features; other suites log the same.
 
-Still to run: the ADS 2 pass, then one small fix ticket for `::the living dust bunny can be trained` and the stat scenario.
+Still to run: the ADS 2 pass (`20260924-165810-057-f694`), then two small fix tickets, filed after the fixes at 8bc4401: `20260924-234137-945-43b6` (`::the living dust bunny can be trained to guard and to attack`) and `20260924-234139-085-828c` (`::the living dust bunny has the size and the yield the description gives`, which now also asserts `ToxicResistance`).
 Nothing here changes `tested`, which stays unmet.
 
 ## Four initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)
