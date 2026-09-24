@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Step definitions for the Pickle suite in ../Mod/Pickle/Features. Only Pickle loads this assembly:
+    it lives in the companion test mod, never in the Mod/ folder that goes to the Workshop.
+
+    The references are the installed game and the installed Pickle, so a step that names an API the
+    game has since renamed fails here at build, not in the middle of a run on the shared machine.
+    Nothing is copied next to the output (Private=false): the game and Pickle supply their own.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>DustBunniesRenew.PickleSteps</AssemblyName>
+    <RootNamespace>DustBunnies.PickleSteps</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <Deterministic>true</Deterministic>
+    <DebugType>none</DebugType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <OutputPath>..\Mod\Pickle\Assemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RimWorldManaged>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\</RimWorldManaged>
+    <PickleAssemblies>C:\Program Files (x86)\Steam\steamapps\workshop\content\294100\3791648678\Assemblies\</PickleAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp"><HintPath>$(RimWorldManaged)Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(RimWorldManaged)UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="RimWorks.Pickle"><HintPath>$(PickleAssemblies)RimWorks.Pickle.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="RimWorks.Pickle.Core"><HintPath>$(PickleAssemblies)RimWorks.Pickle.Core.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,15 @@
+# Pass "incompat-original": the original mod this one declares itself incompatible with, alone beside it.
+#
+# BlockHen.Animal.DustBunnies, Workshop 2659958183 - Dust Bunnies by 2blockdude and HendraGradeWood, which declares
+# 1.1, 1.2 and 1.3 and nothing further. About.xml names it in incompatibleWith because the two define the same
+# defNames. RimWorld does not refuse two mods that do: it keeps one copy and the mod that loads last owns it. This
+# pass stages both and plays 07-original-mod-incompatibility, which asserts that ownership, so a green run says the
+# incompatibility is still true.
+#
+# The original is listed here so that it is staged before the mod under test; the scenario asserts the order
+# ("loads after") before it asserts the owner, and fails naming the order if the staging put them the other way.
+#
+# The item has to be in the WSL install's Workshop cache before this pass can stage it. That is a download, so it
+# goes through Use-Wsl.ps1 like any other work on the machine (PickleTools/Headless/README.md, "The lock is about
+# the machine"). It has not been downloaded.
+BlockHen.Animal.DustBunnies   2659958183
