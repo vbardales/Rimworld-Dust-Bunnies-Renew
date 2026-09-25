@@ -106,6 +106,12 @@ mod set and one language each.
    offered what a Squirrel is and less than a Cat. It is **written and filed**. ADS 2 is
    not in the Windows Workshop; it was fetched into the WSL cache on 2026-09-24, at the owner's request, through
    the machine lock, and the staging script reads that cache as its second place.
+5. **With [XND] Nocturnal Animals (Continued)** (`Mlie.XNDNocturnalAnimals`, Workshop 2269731409): the second optional
+   integration, with `wsl-deps.avec-nocturnal.map`. It declares no hard dependency beyond Harmony, which every staging
+   has. `09` reads the `NocturnalAnimals.ExtendedRaceProperties` extension off the dust bunny's `ThingDef` and asserts
+   `bodyClock` is `Nocturnal`. That the extension is **absent and silent** without the mod is not a scenario: it is what
+   the startup log of every other pass shows, and it is read there (the error that `no errors were logged` cannot see is
+   raised before any scenario). It is a small ticket, since only this feature plays.
 
 The machine is shared, so a run is a ticket. Tickets are filed with TicketDispatcher (documented in its
 `WELCOME.md`, which is the owner's and lives outside this repository), and **it follows them**: this mod's session

@@ -160,7 +160,10 @@ foreach ($f in Get-ChildItem $ModPath -Filter *.xml -Recurse -File) {
     try { [xml]$x = Get-Content -LiteralPath $f.FullName -Raw -Encoding UTF8 } catch { continue }
     foreach ($el in $x.SelectNodes('//*')) {
         $vals = @()
-        $c = $el.GetAttribute('Class'); if ($c) { $vals += $c }
+        # A class behind MayRequire of another mod (not a DLC) is that mod's: it does not exist here, and the game skips the
+        # element before it looks the class up. Check-Claims asserts what this mod writes for such an element.
+        $c = $el.GetAttribute('Class'); $may = $el.GetAttribute('MayRequire')
+        if ($c -and -not ($may -and $may -notmatch '^Ludeon.')) { $vals += $c }
         if ($ClassTags -contains $el.LocalName -and $el.ChildNodes.Count -eq 1 -and $el.FirstChild.NodeType -eq 'Text') {
             $vals += $el.InnerText.Trim()
         }

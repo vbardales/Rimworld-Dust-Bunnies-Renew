@@ -17,12 +17,13 @@ stage:        done
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 port_licence: MIT, limited to port additions described in LICENSE
-dependencies: none required; optional integration with SamBucher.ADogSaidAnimalProsthetics2, declared as loadBefore
+dependencies: none required; optional integrations with SamBucher.ADogSaidAnimalProsthetics2 (loadBefore) and Mlie.XNDNocturnalAnimals (MayRequire on an extension)
 showcase:     complete
 tested_on:    2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; not yet met: French capture, new colony, ADS category 1 confirmation
 workshop:     3806760430
 remaining:
   - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
+  - "unverified: [tested gate] Nocturnal Animals: that 1.6 honours MayRequire on a modExtensions item, and feature 09 in its pass (two tickets, see the section of 2026-09-25)."
   - "unverified: [tested gate] A new colony and an existing save. The fixture colony was saved without the mod, so 04 is the second; the first needs a new game."
   - "unverified: [tested gate] The choice of ADS 2 category 1 for the dust bunny is mine and unconfirmed; the Steam page carries no mention of the integration until it is added by hand."
   - "unverified: [prepublished gate] PUBLICATION.md does not exist. The description needs the AUDIT.md sections (IF I GO QUIET, AI-GENERATED, THANKS with the author of ADS 2 credited, the ATTRIBUTION and licence line) and Workshop links on the mod names it cites; About.xml still says in-game validation is pending. See docs/PROTOCOLS-READ.md."
@@ -31,6 +32,24 @@ updated:      2026-09-25
 ---
 
 # Dust Bunnies Renew — status
+
+## Nocturnal Animals, native — 2026-09-25 (Claude Sonnet 5)
+
+Virginie chose **Nocturnal** for the dust bunny (BACKLOG.md, item 1). With `Mlie.XNDNocturnalAnimals` (Workshop 2269731409)
+loaded, the `DustBunny` `ThingDef` carries the `NocturnalAnimals.ExtendedRaceProperties` extension that mod reads, `bodyClock`
+`Nocturnal`, behind `MayRequire="Mlie.XNDNocturnalAnimals"`: an item behind `MayRequire` is skipped before its class is
+looked up, so nothing is logged without the mod. Not a dependency, no load order. The class and its field were read from the
+installed assembly (`bodyClock`, enum `Diurnal`, `Nocturnal`, `Crepuscular`, `Cathemeral`).
+
+Offline: `Check-Claims` section 8 (the extension, its `MayRequire`, the clock, no dependency), seen to fail on three mutations
+(no `MayRequire`, `Diurnal`, no extension), the intact mod passes. `Check-XmlFields` and `Check-XmlClasses` now leave an
+item behind another mod's `MayRequire` alone, since its class does not exist here: without that the suite failed on the
+optional class. `Test-Mod.ps1` passes. In the game: feature `09-nocturnal-animals`, a local step for the clock, pass map
+`wsl-deps.avec-nocturnal.map`. **Not yet run, and one thing is unverified: that 1.6 honours `MayRequire` on a `modExtensions`
+list item.** Vanilla uses it on list items that carry a `Class`, but always for a class Core has. The proof is two small tickets:
+feature `09` with the map, and one scenario of the bare English pass, whose `Player.log` must hold no class or XML error
+for the extension. `ATTRIBUTION.md` (and its copy), `README.md`, `CHANGELOG.md`, `TESTING.md`, `About.xml` are updated.
+Better Crossbreeding stays open in BACKLOG.md as a design decision.
 
 ## Documentation read again — 2026-09-25 (Claude Sonnet 5)
 

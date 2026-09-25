@@ -1,0 +1,7 @@
+# Pass "avec-nocturnal": [XND] Nocturnal Animals (Continued) beside this mod.
+#
+# Mlie.XNDNocturnalAnimals, Workshop 2269731409, by XeoNovaDan (continued by Mlie), which supports 1.6. Its only
+# dependency is Harmony, already in every staging. This mod declares no dependency on it: the dust bunny's extension is
+# behind MayRequire. It is in the Windows Workshop, which the staging reads first. No order is needed, an extension is
+# read off the def once every assembly is loaded.
+Mlie.XNDNocturnalAnimals   2269731409

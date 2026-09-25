@@ -283,6 +283,17 @@ if ($before -notcontains $adsId) { Fail "About.xml does not say loadBefore ${ads
 elseif ($hard -contains $adsId) { Fail "About.xml lists $adsId as a hard dependency: the integration is optional" }
 else { Pass "About.xml puts this mod before $adsId, and does not require it" }
 
+# ------------------------------------------ 8: the dust bunny is nocturnal with [XND] Nocturnal Animals, and only then
+
+$nocId = 'Mlie.XNDNocturnalAnimals'
+$nocBunny = Mod-Def 'ThingDef' 'DustBunny'
+$nocExt = @(if ($nocBunny) { $nocBunny.SelectNodes('modExtensions/li[@Class="NocturnalAnimals.ExtendedRaceProperties"]') })
+if ($nocExt.Count -ne 1) { Fail "the DustBunny ThingDef must carry exactly one NocturnalAnimals.ExtendedRaceProperties extension, it carries $($nocExt.Count)" }
+elseif ($nocExt[0].GetAttribute('MayRequire') -cne $nocId) { Fail "the Nocturnal Animals extension must carry MayRequire=`"${nocId}`": without it the class is looked up when the mod is absent and an error is logged at every start" }
+elseif ($nocExt[0].SelectSingleNode('bodyClock').InnerText.Trim() -cne 'Nocturnal') { Fail "the dust bunny's bodyClock is '$($nocExt[0].SelectSingleNode('bodyClock').InnerText.Trim())', Virginie chose Nocturnal (2026-09-25)" }
+elseif ($hard -contains $nocId) { Fail "About.xml lists $nocId as a hard dependency: the integration is optional" }
+else { Pass "the dust bunny is Nocturnal behind MayRequire $nocId, and About.xml does not require it" }
+
 Write-Host ''
 if ($script:failures -gt 0) { Write-Host "$($script:failures) CLAIM(S) DO NOT HOLD" -ForegroundColor Red; exit 1 }
 Write-Host 'EVERY CLAIM HOLDS' -ForegroundColor Green

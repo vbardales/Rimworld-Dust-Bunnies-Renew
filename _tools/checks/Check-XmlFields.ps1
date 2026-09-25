@@ -250,6 +250,10 @@ function Walk($node, [Type]$t, [string]$path) {
                 $lt = $elem
                 $cls = $li.GetAttribute('Class')
                 if ($cls) { $short = $cls.Split('.')[-1]; if ($byName.ContainsKey($short)) { $lt = $byName[$short] } }
+                # An item behind MayRequire whose class the game does not have belongs to the optional mod it names:
+                # its fields cannot be checked here (the element would be read against the base type and every field
+                # reported missing). Check-Claims asserts what this mod writes for such an item.
+                if ($li.GetAttribute('MayRequire') -and $cls -and -not $byName.ContainsKey($cls.Split('.')[-1])) { continue }
                 Walk $li $lt "$path/$n/li"
             }
             continue

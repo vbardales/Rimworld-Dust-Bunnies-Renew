@@ -88,6 +88,14 @@
     <statBases>
       <ComfyTemperatureMin>-55</ComfyTemperatureMin>
     </statBases>
+    <modExtensions>
+      <!-- Optional: with [XND] Nocturnal Animals (Continued) loaded, the dust bunny is awake at night. MayRequire is
+           read on a list item, so without that mod the item is skipped before its class is looked up, and
+           nothing is logged; it is not a dependency. Without the mod the animal is diurnal, the vanilla behaviour. -->
+      <li MayRequire="Mlie.XNDNocturnalAnimals" Class="NocturnalAnimals.ExtendedRaceProperties">
+        <bodyClock>Nocturnal</bodyClock>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <PawnKindDef ParentName="DustBunnyBase">

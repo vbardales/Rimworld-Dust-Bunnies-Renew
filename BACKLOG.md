@@ -2,34 +2,21 @@
 
 Work that is decided or proposed and not done. Nothing here is in the published mod. Newest first.
 
-## 1. Nocturnal Animals (Continued) — feasible, one decision needed
+## 1. Nocturnal Animals (Continued) — done in the tree on 2026-09-25, not yet played in the game
 
-[XND] Nocturnal Animals (Continued), `Mlie.XNDNocturnalAnimals`, Workshop 2269731409 (continuation of XeoNovaDan's
-2004368312). Read on 2026-09-25 from the installed copy, which declares 1.6.
+Decided by Virginie on 2026-09-25: **Nocturnal**. Written: the extension on the `DustBunny` `ThingDef` with
+`MayRequire="Mlie.XNDNocturnalAnimals"` (`Mod/Defs/ThingDefs_Races/Races_DustBunny.xml`), an eighth section of
+`Check-Claims` (seen to fail on three mutations), feature `09-nocturnal-animals` with its step and the pass map
+`wsl-deps.avec-nocturnal.map`. Documented in `README.md`, `CHANGELOG.md`, `ATTRIBUTION.md`, `TESTING.md`.
 
-**How it works.** An animal opts in with a mod extension on its `ThingDef`, and without one it is diurnal, the vanilla
-behaviour. The mod's own patches are of this form:
+**Still open:** the two tickets (feature `09` with the map, and the bare English pass to read the startup log for a class
+error), and the answer to the one thing not verified, that 1.6 honours `MayRequire` on a `modExtensions` list item. If it
+does not, the fallback is a patch guarded by `PatchOperationFindMod`, which takes the mod's name, not its packageId.
+`THANKS` and a thank-you comment for XeoNovaDan and Mlie are due at `prepublished` (PUBLISHING.md).
 
-```xml
-<li Class="NocturnalAnimals.ExtendedRaceProperties"><bodyClock>Nocturnal</bodyClock></li>
-```
-
-`bodyClock` is `Diurnal`, `Nocturnal`, `Crepuscular` or `Cathemeral`. The information card shows it.
-
-**What it would take here.** One line under `modExtensions` of the dust bunny's `ThingDef`, carrying
-`MayRequire="Mlie.XNDNocturnalAnimals"` so that nothing is read, and no error logged, without the mod. That is not a
-dependency and needs no `loadBefore`. **Not verified:** that 1.6 honours `MayRequire` on a `modExtensions` list item, as
-it does on other list items; a patch guarded by `PatchOperationFindMod` (which takes the mod's name, not its packageId)
-is the fallback, and `MayRequire` on an `Operation` is read by nothing.
-
-**Decision needed from Virginie: which clock?** It changes nothing until the mod is loaded, then it changes when a
-dust bunny sleeps. `Nocturnal` suits the animal (they come out when nobody is looking) but is a choice of taste, not a
-fix. `Cathemeral` is the neutral one, and leaving it out keeps it diurnal.
-
-**Tests it needs.** A pass map naming the mod (Workshop 2269731409) and a scenario that reads the extension's
-`bodyClock` on the dust bunny, plus the offline check that the extension carries `MayRequire`. The pass without the mod
-must stay silent (`no errors were logged`). Credit: the author (XeoNovaDan, and Mlie for the continuation) goes in
-`THANKS`, with a Workshop link, and the mod is added to the register of thank-you comments (PUBLISHING.md).
+Reference, read on 2026-09-25 from the installed copy (1.6): an animal opts in with
+`<li Class="NocturnalAnimals.ExtendedRaceProperties"><bodyClock>Nocturnal</bodyClock></li>`; `bodyClock` is `Diurnal`,
+`Nocturnal`, `Crepuscular` or `Cathemeral`; unpatched animals are diurnal.
 
 ## 2. Better Crossbreeding — feasible, but it is a design change, not a compatibility
 

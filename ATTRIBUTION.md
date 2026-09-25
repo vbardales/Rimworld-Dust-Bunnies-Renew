@@ -180,6 +180,14 @@ when ADS 2 is absent. ADS 2 copies its three category lists once, in its last pa
 1.3.7 were read to see how it files animals, and it is neither a dependency nor required. The choice of the
 first category is the port's and has not been confirmed by its author, who was not contacted.
 
+**An optional nocturnal body clock, with Nocturnal Animals.** With
+[[XND] Nocturnal Animals (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2269731409)
+(`Mlie.XNDNocturnalAnimals`, by XeoNovaDan, continued by Mlie, original at Workshop 2004368312) loaded, the dust
+bunny is `Nocturnal`. The mod's `DustBunny` `ThingDef` carries the extension that mod reads, guarded by `MayRequire`
+so that it is skipped without it. The mod's Workshop description and its patches were read, and its assembly was
+inspected for the extension's name and field; nothing of it is copied. It is neither a dependency nor required. The
+choice of `Nocturnal` is the owner's (2026-09-25).
+
 **Two null guards.** `Notify_IterationCompleted` now returns early if the bill doer is null or
 unspawned. Nothing in vanilla calls it that way; the reason to guard is that the alternative is a
 null `Map` handed straight to `GenSpawn`.

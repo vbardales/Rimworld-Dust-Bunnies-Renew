@@ -155,6 +155,28 @@ namespace DustBunnies.PickleSteps
             ctx.Assert(kind.label == expected, $"the PawnKindDef {KindDefName} is labelled \"{kind.label}\", expected \"{expected}\"");
         }
 
+        /// <summary>
+        /// [XND] Nocturnal Animals reads a DefModExtension, NocturnalAnimals.ExtendedRaceProperties, off the ThingDef;
+        /// an animal without one is diurnal. Read by reflection so this companion needs no reference to that mod, and
+        /// the failure says which half broke: the mod's assembly is not loaded, the def carries no extension (the
+        /// MayRequire skipped it although the mod is there), or the clock is another one.
+        /// </summary>
+        [Then("Dust Bunnies Renew: the dust bunny body clock is {string}")]
+        public void BodyClockIs(PickleContext ctx, string expected)
+        {
+            var def = DefDatabase<ThingDef>.GetNamedSilentFail(KindDefName);
+            ctx.Assert(def != null, $"no ThingDef named {KindDefName}");
+            var extType = GenTypes.GetTypeInAnyAssembly("NocturnalAnimals.ExtendedRaceProperties");
+            ctx.Assert(extType != null, "NocturnalAnimals.ExtendedRaceProperties is not loaded: Nocturnal Animals' assembly did not load");
+            var ext = def.modExtensions == null ? null : def.modExtensions.FirstOrDefault(e => e != null && e.GetType() == extType);
+            ctx.Assert(ext != null,
+                $"the dust bunny carries no Nocturnal Animals extension: its extensions are [{string.Join(", ", (def.modExtensions ?? new List<DefModExtension>()).Select(e => e.GetType().Name))}]");
+            var field = extType.GetField("bodyClock");
+            ctx.Assert(field != null, "ExtendedRaceProperties has no field named bodyClock: Nocturnal Animals renamed it");
+            string actual = field.GetValue(ext) == null ? "null" : field.GetValue(ext).ToString();
+            ctx.Assert(actual == expected, $"the dust bunny's body clock is {actual}, expected {expected}");
+        }
+
         private static ThingDef AnimalDef(PickleContext ctx, string defName)
         {
             var def = DefDatabase<ThingDef>.GetNamedSilentFail(defName);

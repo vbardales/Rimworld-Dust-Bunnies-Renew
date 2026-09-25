@@ -84,6 +84,18 @@ Two things make it work, and both are in the files rather than in a note:
 Whether the surgeries actually appear on a living dust bunny is a running-game fact, and is not yet tested: it
 needs ADS 2 mounted, which is a pass of its own in `TESTING.md`.
 
+### [XND] Nocturnal Animals (Continued)
+
+Optional and native: with `Mlie.XNDNocturnalAnimals` loaded the dust bunny is **nocturnal**, awake at night. That mod
+gives an animal a body clock through a `NocturnalAnimals.ExtendedRaceProperties` extension on its `ThingDef`, and an
+animal without one is diurnal, the vanilla behaviour. The dust bunny carries the extension with `MayRequire`, read on
+a list item, so without the mod the item is skipped before its class is looked up and nothing is logged. It is not a
+dependency and needs no load order. The choice of `Nocturnal` is the owner's (2026-09-25).
+
+`_tools/checks/Check-Claims.ps1` asserts the extension, its `MayRequire`, the clock and the absence of a dependency,
+and was seen to fail on three mutations. Whether the extension reaches the running def is what feature `09` plays,
+in its own pass; it is not yet run.
+
 Content mod: removing it mid-save destroys any dust bunny already in the colony.
 
 ## What changed in the 1.6 port

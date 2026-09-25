@@ -97,7 +97,12 @@ left implicit, being the defaults.
   `Patches/ADogSaidAnimalProsthetics2.xml` enrols the dust bunny in its category 1, small critters, so it can
   receive a peg leg or a denture. A `PatchOperationConditional` on `ADS_Cat1` keeps it silent without ADS 2, and
   `About.xml` says `loadBefore` for it, because ADS 2 copies its category lists once and a patch that loads
-  after it lands in a list nobody reads. Optional: not a dependency. Not tested in the game yet.
+  after it lands in a list nobody reads. Optional: not a dependency. Played green in the game on 2026-09-25 (Pickle).
+- Native support for [XND] Nocturnal Animals (Continued) (`Mlie.XNDNocturnalAnimals`): with it loaded, the
+  dust bunny is `Nocturnal`, awake at night, chosen by Virginie on 2026-09-25. The `DustBunny` `ThingDef` carries a
+  `NocturnalAnimals.ExtendedRaceProperties` extension with `MayRequire="Mlie.XNDNocturnalAnimals"`, so the item is
+  skipped, and nothing is logged, without the mod. Optional: not a dependency, and no load order needed. Not tested
+  in the game yet.
 - `About/ModIcon.png` and `About/Preview.png`, both made for this port and neither derived from
   the original art. The icon is the repository's mascot, recoloured grey because the creature is:
   here the mascot's head *is* the dust bunny rather than holding it, since a second grey round mass
