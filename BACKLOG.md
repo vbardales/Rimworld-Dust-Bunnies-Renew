@@ -51,6 +51,8 @@ with PickleTools' NewColony companion. **A new colony is not repeatable, so it i
 
 ## 5. Wording: "small critters" is my gloss, not ADS 2's — to fix after the two Nocturnal tickets return
 
+Category 1 itself is confirmed by Virginie (2026-09-25), knowing what it contains: only the wording changes.
+
 Read on 2026-09-25 from ADS 2's 1.6 source (`Defs/AnimalCategories/Animal_Categories.xml`, `Patches/z_Category_Patches.xml`).
 ADS 2 labels its categories **1: basic replacements**, **2: 1 + simple prosthetics**, **3: 2 + bionics**. Category 1 gives
 `SurgeryInstallMedievalBodyPartAnimalBase` (the wooden parts: `InstallPegLegAnimal`, `InstallWoodenPawAnimal`,

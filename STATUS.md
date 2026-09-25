@@ -25,7 +25,6 @@ remaining:
   - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
   - "unverified: [tested gate] Nocturnal Animals: that 1.6 honours MayRequire on a modExtensions item, and feature 09 in its pass (two tickets, see the section of 2026-09-25)."
   - "unverified: [tested gate] A new colony and an existing save. The fixture colony was saved without the mod, so 04 is the second; the first needs a new game, which is not repeatable and is used sparingly: one scenario, in a pass of its own, played once on the revision to be tested (TESTING.md)."
-  - "unverified: [tested gate] The choice of ADS 2 category 1 for the dust bunny is mine and unconfirmed; the Steam page carries no mention of the integration until it is added by hand."
   - "unverified: [prepublished gate] PUBLICATION.md does not exist. The description needs the AUDIT.md sections (IF I GO QUIET, AI-GENERATED, THANKS with the author of ADS 2 credited, the ATTRIBUTION and licence line) and Workshop links on the mod names it cites; About.xml still says in-game validation is pending. See docs/PROTOCOLS-READ.md."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 updated:      2026-09-25
@@ -172,7 +171,7 @@ lines, all resolved.
 lock, and the staging script reads that cache as its second place. The copy reports version 1.3.7, the version read
 from the source, and was checked: Squirrel and Rat appear only under `ADS_Cat1`, Cat under all three.
 
-**Two things to keep straight.** The choice of category 1 is mine and is to be confirmed. And the Steam description was
+**Two things to keep straight.** The choice of category 1 was mine and was confirmed by Virginie on 2026-09-25, knowing what it contains. And the Steam description was
 frozen at creation, so the new "Optional: with A Dog Said..." line reaches the page only by hand.
 
 ## Offline claims written — 2026-09-24 (Claude Sonnet 5)
