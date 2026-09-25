@@ -113,12 +113,12 @@ mod set and one language each.
    the startup log of every other pass shows, and it is read there (the error that `no errors were logged` cannot see is
    raised before any scenario). It is a small ticket, since only this feature plays.
 
-**A new colony is used sparingly.** Starting a new colony from the main menu (PickleTools' NewColony companion, the step
-`a new colony is started`) is **not repeatable**, so it is not a step to put in a scenario that is replayed after every
-fix (Virginie, 2026-09-25). It has one purpose here, the `tested` criterion "a new game and an existing save": one
-scenario, in one pass of its own, played once on the revision to be tested and again only when something it covers has
-changed. It is never part of a fix ticket or of the bare passes, and it is never filtered in by accident: it carries its
-own tag and its own map. Everything else runs on the `test-colony` fixture, which is the repeatable way.
+**No new game is created** (Virginie, 2026-09-25). The `tested` criterion "a new game and an existing save" is met by the
+existing save alone: loading a game saved **without** this mod, with the mod added, which is what the shared `test-colony`
+fixture does in every scenario that loads it (`02` to `04`, and the training and size scenarios). A new colony is not
+repeatable, and this mod adds content only: no game component, no world or map generation, no settings, and the dust bunny is in
+no biome and is made, not generated, so a new game would exercise nothing a loaded one does not. PickleTools' NewColony
+companion is therefore not staged by any pass of this suite.
 
 **Fixtures: a save made with this mod may be kept** (Virginie, 2026-09-25). A saved game that has this mod in it, for example
 one with a dust bunny in the colony and a bill queued, is a fixture like any other and can be committed with the suite, in

@@ -41,8 +41,7 @@ loss of the dust cost is accepted knowingly.
 
 ## 3. Automated `tested` criteria still open
 
-A French `@review` capture of the bill and information dialogs (scenario 16), and a new colony beside the existing save,
-with PickleTools' NewColony companion. **A new colony is not repeatable, so it is used sparingly**: one scenario, in a pass of its own, played once on the revision to be tested (Virginie, 2026-09-25). See `TESTING.md` and `STATUS.md`, `remaining`.
+A French `@review` capture of the bill and information dialogs (scenario 16). The "new game" half of the old criterion is settled: no new game is created, loading a save made without the mod is enough (Virginie, 2026-09-25). See `TESTING.md` and `STATUS.md`, `remaining`.
 
 ## 4. Before `prepublished`
 

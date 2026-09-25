@@ -78,9 +78,9 @@ Tags decide what runs where: `@en-only` and `@fr-only` follow the language of th
 `07` carries `@requires:BlockHen.Animal.DustBunnies` and `08` carries `@requires:SamBucher.ADogSaidAnimalProsthetics2` and `09` carries `@requires:Mlie.XNDNocturnalAnimals`,
 so each is skipped everywhere but its own pass, and a report has to show it skipped elsewhere and played there.
 
-**A new colony is not repeatable, so it is used sparingly** (Virginie, 2026-09-25): the NewColony step is for the one scenario that covers the `tested` criterion "a new game", in a pass of its own, played once on the revision to be tested. Never in a fix ticket, never in a bare pass. See `TESTING.md`.
+**No new game is created** (Virginie, 2026-09-25): loading a game saved without this mod, with the mod added, is enough, and a new colony is not repeatable. See `TESTING.md`.
 
-Fixtures made with this mod may be kept (Virginie, 2026-09-25): a save with a dust bunny and a queued bill can live in `Mod/Pickle/Fixtures/`, small, with its provenance written in `TESTING.md`. It is the repeatable counterpart of the new colony.
+Fixtures made with this mod may be kept (Virginie, 2026-09-25): a save with a dust bunny and a queued bill can live in `Mod/Pickle/Fixtures/`, small, with its provenance written in `TESTING.md`. A way to cover a save that already carries the mod, repeatably.
 
 
 A run is a ticket, filed with TicketDispatcher, which follows it: this mod's session watches nothing itself, and
