@@ -246,7 +246,7 @@ keeps one copy of the defs at the root and one assembly built against 1.6.
 
 The port, its tests and its documentation were written with **Claude** (Anthropic) and **Codex** (OpenAI),
 under human direction and review. The tests run in the game with **Pickle** and **RimLogging**, by RimWorks,
-which are development tools only and never a dependency of the distributed mod.
+which are development tools only and never a dependency of the distributed mod. One pass also stages **Pickle Tools** (Nelim, Workshop 3806142401, a private item), its screenshot-mode companion, for the French review captures; it is development only too.
 
 ## Adoption
 

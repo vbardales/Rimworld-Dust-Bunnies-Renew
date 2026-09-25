@@ -177,6 +177,42 @@ namespace DustBunnies.PickleSteps
             ctx.Assert(actual == expected, $"the dust bunny's body clock is {actual}, expected {expected}");
         }
 
+        /// <summary>
+        /// The real bill dialog, on the bench that holds a bill for the recipe, for a review capture. Opened
+        /// programmatically: Pickle can click a button by its label but has no step to reach a bench's bill tab, and
+        /// what the capture is for is what the dialog reads, not the way to it.
+        /// </summary>
+        [When("Dust Bunnies Renew: the bill dialog for {string} is open")]
+        public void BillDialogOpen(PickleContext ctx, string recipeDefName)
+        {
+            Bill_Production bill = null;
+            Thing bench = null;
+            foreach (var thing in Map(ctx).listerThings.AllThings)
+            {
+                var giver = thing as IBillGiver;
+                if (giver == null) continue;
+                var found = giver.BillStack.Bills.OfType<Bill_Production>()
+                    .FirstOrDefault(b => b.recipe != null && b.recipe.defName == recipeDefName);
+                if (found == null) continue;
+                bill = found;
+                bench = thing;
+                break;
+            }
+            ctx.Assert(bill != null, $"no bench holds a bill for {recipeDefName}");
+            Find.WindowStack.Add(new Dialog_BillConfig(bill, bench.Position));
+            ctx.Assert(Find.WindowStack.IsOpen<Dialog_BillConfig>(), "the bill dialog did not open");
+        }
+
+        /// <summary>The information card of a def, as the player opens it from a list or a bench, for a capture.</summary>
+        [When("Dust Bunnies Renew: the information card of {string} is open")]
+        public void InfoCardOpen(PickleContext ctx, string thingDefName)
+        {
+            var def = DefDatabase<ThingDef>.GetNamedSilentFail(thingDefName);
+            ctx.Assert(def != null, $"no ThingDef named {thingDefName}");
+            Find.WindowStack.Add(new Dialog_InfoCard(def, null, null));
+            ctx.Assert(Find.WindowStack.IsOpen<Dialog_InfoCard>(), "the information card did not open");
+        }
+
         private static ThingDef AnimalDef(PickleContext ctx, string defName)
         {
             var def = DefDatabase<ThingDef>.GetNamedSilentFail(defName);

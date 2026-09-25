@@ -74,7 +74,7 @@ sources. `Tests/Pickle/README.md` gives the reasoning per feature.
 | 13 | Never breeds | n/a: vanilla reads `mateMtbHours`, declared |
 | 14 | Dies of old age; the corpse looks alive | n/a: vanilla reads `lifeExpectancy`; the identical corpse texture is recorded in `ATTRIBUTION.md` |
 | 15 | The sprite is always rotated | n/a: `Graphic_Multi` with one face is engine behaviour, recorded in the README |
-| 16 | English and French | Pickle `05-labels-en` and `06-labels-fr`, one pass per language, on the loaded defs. The corpse and material names the engine builds from those values are its templates: n/a. **Clipping in the bill and information dialogs in French is not covered**: it needs a `@review` capture in the French pass, and none is written yet |
+| 16 | English and French | Pickle `05-labels-en` and `06-labels-fr`, one pass per language, on the loaded defs. The corpse and material names the engine builds from those values are its templates: n/a. Clipping in the bill and information dialogs in French: `10-french-dialogs`, a `@review` capture of the bill dialog and of the information cards of the dust bunny and of the dust, in its own French pass (`wsl-deps.captures-fr.map`). **Written; the captures still have to be run and looked at** |
 | 17 | The original must not load alongside | Pickle `07-original-mod-incompatibility`, the incompatibility pass (below). Whether the game *warns* is the engine's, and is not tested |
 | 18 | ADS 2: the dust bunny is offered a peg leg and a denture, and nothing above category 1 | The enrolment is declared and guarded offline, in `Check-Claims.ps1`. That the surgeries really reach a dust bunny, and that the patch ran before ADS 2 copied its lists, is a running-game fact: Pickle `08-animal-prosthetics-2`, the fourth pass. It compares with a Squirrel (ADS 2 lists it in category 1 only) and with a Cat (all three), so it names no recipe: ADS 2 does define them, `InstallPegLegAnimal` and its siblings, but a comparison holds whatever they are called. ADS 2 is in the WSL cache since 2026-09-24 and the pass is filed |
 | 5, tail | Save, quit, reload: the bunny, the dust and the queued bills persist | Pickle `04-save-reload`: a queued bill and an animal survive a round trip. The **made** animal's faction across a reload is not asserted: the animal there is spawned by kind, and faction persistence is vanilla's |
@@ -112,6 +112,12 @@ mod set and one language each.
    `bodyClock` is `Nocturnal`. That the extension is **absent and silent** without the mod is not a scenario: it is what
    the startup log of every other pass shows, and it is read there (the error that `no errors were logged` cannot see is
    raised before any scenario). It is a small ticket, since only this feature plays.
+6. **The French review captures** (`wsl-deps.captures-fr.map`, `-Language French`): PickleTools' ScreenshotMode, a development
+   tool that hides the HUD and Pickle's panels around an open dialog, is staged by `path:`; it is never a dependency of the
+   mod. `10-french-dialogs` opens the bill dialog of `MakeDustBunny` and the information cards of the dust bunny and of the
+   dust, and captures each. Developer mode stays on, so a missing key shows as the game's accented fallback. It asserts that
+   each dialog opened and nothing about the picture: **the three captures must be opened and looked at** for raw keys,
+   fallback text and clipping. One small ticket.
 
 **No new game is created** (Virginie, 2026-09-25). The `tested` criterion "a new game and an existing save" is met by the
 existing save alone: loading a game saved **without** this mod, with the mod added, which is what the shared `test-colony`

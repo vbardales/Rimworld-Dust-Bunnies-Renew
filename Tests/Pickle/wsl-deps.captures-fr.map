@@ -1,0 +1,5 @@
+# Pass "captures-fr": the review captures of the dialogs, in French.
+#
+# PickleTools' ScreenshotMode, development only and never a dependency of the mod: it hides the HUD and Pickle's own
+# panels around an open dialog. Its own dependency is Pickle, in every staging. No other mod, no order needed.
+nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod

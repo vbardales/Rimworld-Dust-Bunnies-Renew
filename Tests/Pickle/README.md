@@ -27,6 +27,7 @@ until a colonist finishes a bill.
 | `07-original-mod-incompatibility` (`@requires`) | With the original mod staged beside it, the mod that loads last owns `MakeDustBunny`, `GatherDust` and `Dust` | The declared `incompatibleWith` is a claim about the other mod, and it ages. Only loading both says whether it is still true |
 | `08-animal-prosthetics-2` (`@requires`) | With A Dog Said... Animal Prosthetics 2 staged, this mod loads before it, the dust bunny is offered the surgeries a Squirrel is (ADS 2's category 1 only), and a Cat is offered surgeries it is not | ADS 2 copies its category lists once, so the **order** is the whole integration, and only loading both in that order shows it held. No surgery is named on purpose. ADS 2 defines them (`InstallPegLegAnimal`, `InstallDentureAnimal`, `InstallWoodenPawAnimal` and the hoof, hand and foot ones, in its `HediffDefs/Prosthetics_*.xml`), but a comparison with a reference animal holds whatever the recipes are called, now or after an update |
 | `09-nocturnal-animals` (`@requires`) | With [XND] Nocturnal Animals (Continued) staged, the dust bunny's `ThingDef` carries the extension it reads, with the clock `Nocturnal` | The extension is behind `MayRequire`, which only a game that parses the XML shows to work with the mod present; without it, the startup log of the other passes shows the item skipped and silent |
+| `10-french-dialogs` (`@requires`, `@fr-only`, `@review`) | The bill dialog of the recipe and the information cards of the dust bunny and of the dust, captured in French with PickleTools' ScreenshotMode | Clipping, raw keys and fallback text are visible only on a running screen; the scenario asserts that each dialog opened, and a person has to open the three pictures |
 
 ## What is deliberately not in Gherkin
 
@@ -46,7 +47,7 @@ A check the game does not need to run, or that only tests the game, does not bel
 
 ## The local steps
 
-`Source/DustBunnySteps.cs`, 11 steps, all prefixed `Dust Bunnies Renew:` because Pickle matches on text alone
+`Source/DustBunnySteps.cs`, 13 steps, all prefixed `Dust Bunnies Renew:` because Pickle matches on text alone
 across every suite loaded. Each exists because no stock or shared step does it:
 
 - **the `[DefOf]` bound**, by reflection so this companion needs no reference to the mod's assembly;
@@ -58,6 +59,7 @@ across every suite loaded. Each exists because no stock or shared step does it:
 - **the bunny joining the colony**, because the generic spawn step leaves a wild animal and only a colony animal has a training tracker;
 - **the animal's label on both its defs**, since the player reads either;
 - **the body clock Nocturnal Animals reads off the def**, by reflection, saying which half broke: its assembly, the extension, or the clock;
+- **the real bill dialog and the information card of a def**, opened by a step, since Pickle reaches a bench's bill tab by no step and the capture is about what the dialog reads;
 - **which surgeries an animal is offered, compared with a reference animal's**, and the reverse: a category-3
   animal is offered some the dust bunny is not. Two steps, and by design they name no recipe.
 
@@ -67,15 +69,15 @@ every run: Pickle loads step DLLs when the game starts.
 
 ## Passes
 
-Five passes: the minimal set in English, the minimal set in French, the original mod beside this one, A Dog
-Said... Animal Prosthetics 2 beside it, and Nocturnal Animals beside it (`wsl-deps.avec-nocturnal.map`). The mod declares no hard dependency and no `loadAfter` beyond Core, so the
+Six passes: the minimal set in English, the minimal set in French, the original mod beside this one, A Dog
+Said... Animal Prosthetics 2 beside it, Nocturnal Animals beside it (`wsl-deps.avec-nocturnal.map`), and the French review captures (`wsl-deps.captures-fr.map`, PickleTools' ScreenshotMode). The mod declares no hard dependency and no `loadAfter` beyond Core, so the
 minimal set needs no map: without `-DepMap` the launcher stages Core, the DLCs, Pickle, Harmony, RimLogging and the
 mod. The two passes with another mod each have their own map, `wsl-deps.incompat-original.map` and
 `wsl-deps.avec-ads2.map`. That map names this mod's own packageId with `path:` above the ADS 2 line: the staging activates a map's mods in its order and the mod under test last, so ADS 2 alone would load first, which the first run of the pass read (see the map).
 
 Tags decide what runs where: `@en-only` and `@fr-only` follow the language of the labels they name, and `@slow`
 (`02` and the first scenario of `03`) is played once, in English, because none of it depends on the language.
-`07` carries `@requires:BlockHen.Animal.DustBunnies` and `08` carries `@requires:SamBucher.ADogSaidAnimalProsthetics2` and `09` carries `@requires:Mlie.XNDNocturnalAnimals`,
+`07` carries `@requires:BlockHen.Animal.DustBunnies` and `08` carries `@requires:SamBucher.ADogSaidAnimalProsthetics2` and `09` carries `@requires:Mlie.XNDNocturnalAnimals` and `10` carries `@requires:nelim.pickletools.screenshotmode`,
 so each is skipped everywhere but its own pass, and a report has to show it skipped elsewhere and played there.
 
 **No new game is created** (Virginie, 2026-09-25): loading a game saved without this mod, with the mod added, is enough, and a new colony is not repeatable. See `TESTING.md`.
@@ -96,6 +98,7 @@ powershell.exe -ExecutionPolicy Bypass -File $submit -Mod DustBunniesRenew -Owne
 powershell.exe -ExecutionPolicy Bypass -File $submit -Mod DustBunniesRenew -Owner local_<id> -Label '<what>' -Language English -DepMap wsl-deps.incompat-original.map -Filter '07-original-mod-incompatibility' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-incompat
 powershell.exe -ExecutionPolicy Bypass -File $submit -Mod DustBunniesRenew -Owner local_<id> -Label '<what>' -Language English -DepMap wsl-deps.avec-ads2.map -Filter '08-animal-prosthetics-2' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-ads2
 powershell.exe -ExecutionPolicy Bypass -File $submit -Mod DustBunniesRenew -Owner local_<id> -Label '<what> <sha>' -Language English -DepMap wsl-deps.avec-nocturnal.map -Filter '09-nocturnal-animals' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-nocturnal
+powershell.exe -ExecutionPolicy Bypass -File $submit -Mod DustBunniesRenew -Owner local_<id> -Label '<what> <sha>' -Language French -DepMap wsl-deps.captures-fr.map -Filter '10-french-dialogs' -EvidenceDir DustBunniesRenew/Tests/Pickle/Evidence/<date>-captures-fr
 ```
 
 Read `exitReason` before the counts, and compare the scenarios played with the scenarios discovered for the filter.
