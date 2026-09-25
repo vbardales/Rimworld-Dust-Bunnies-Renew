@@ -49,6 +49,15 @@ with PickleTools' NewColony companion. **A new colony is not repeatable, so it i
 `PUBLICATION.md`; a description with the sections AUDIT.md lists and Workshop links on the cited mods; correct
 `About.xml` ("In-game validation of this port is pending"). See `docs/PROTOCOLS-READ.md`.
 
+**The description will have one source** (message from the CI/CD session, 2026-09-25, "no action now"; Rimworld-Release-Admin
+`f196148`, `docs/OPERATIONS.md` "Changing where the Steam description comes from"; PUBLISHING.md `16f3c59` of the protocols
+repository; not read here yet, only the message). At the next publication, or when Virginie asks: the description is written once,
+in Markdown, in a fenced `markdown` block under `## Steam description` of `PUBLICATION.md`, ending with
+`[Source code on GitHub](URL)`, without a code fence inside it; the CI converts it to BBCode and generates the `<description>` of
+`About.xml` from it, and a dry-run stops if they differ. So `PUBLICATION.md` has to be written that way, and the hand-kept
+description of `About.xml` goes. The change note starts with the version on its first line (`[b]1.0.0[/b]`). No `.github/` edit by
+hand. A change of source changes the SHA and needs a new dry-run.
+
 ## 5. Wording: "small critters" was my gloss, not ADS 2's — fixed on 2026-09-25
 
 Category 1 itself is confirmed by Virginie (2026-09-25), knowing what it contains: only the wording changes.
