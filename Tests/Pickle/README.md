@@ -80,6 +80,8 @@ so each is skipped everywhere but its own pass, and a report has to show it skip
 
 **A new colony is not repeatable, so it is used sparingly** (Virginie, 2026-09-25): the NewColony step is for the one scenario that covers the `tested` criterion "a new game", in a pass of its own, played once on the revision to be tested. Never in a fix ticket, never in a bare pass. See `TESTING.md`.
 
+Fixtures made with this mod may be kept (Virginie, 2026-09-25): a save with a dust bunny and a queued bill can live in `Mod/Pickle/Fixtures/`, small, with its provenance written in `TESTING.md`. It is the repeatable counterpart of the new colony.
+
 
 A run is a ticket, filed with TicketDispatcher, which follows it: this mod's session watches nothing itself, and
 never starts the launcher by hand. A request carries **no revision**: the mod is staged from the working tree at the
