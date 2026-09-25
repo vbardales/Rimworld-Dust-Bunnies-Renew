@@ -42,9 +42,21 @@ loss of the dust cost is accepted knowingly.
 ## 3. Automated `tested` criteria still open
 
 A French `@review` capture of the bill and information dialogs (scenario 16), and a new colony beside the existing save,
-with PickleTools' NewColony companion. See `STATUS.md`, `remaining`.
+with PickleTools' NewColony companion. **A new colony is not repeatable, so it is used sparingly**: one scenario, in a pass of its own, played once on the revision to be tested (Virginie, 2026-09-25). See `TESTING.md` and `STATUS.md`, `remaining`.
 
 ## 4. Before `prepublished`
 
 `PUBLICATION.md`; a description with the sections AUDIT.md lists and Workshop links on the cited mods; correct
 `About.xml` ("In-game validation of this port is pending"). See `docs/PROTOCOLS-READ.md`.
+
+## 5. Wording: "small critters" is my gloss, not ADS 2's — to fix after the two Nocturnal tickets return
+
+Read on 2026-09-25 from ADS 2's 1.6 source (`Defs/AnimalCategories/Animal_Categories.xml`, `Patches/z_Category_Patches.xml`).
+ADS 2 labels its categories **1: basic replacements**, **2: 1 + simple prosthetics**, **3: 2 + bionics**. Category 1 gives
+`SurgeryInstallMedievalBodyPartAnimalBase` (the wooden parts: `InstallPegLegAnimal`, `InstallWoodenPawAnimal`,
+`InstallWoodenHoofAnimal`, `InstallWoodenHandAnimal`, a wooden foot) and `InstallDentureAnimal`. It is the **broadest** list,
+114 animals in it (a Squirrel, a Rat, but also cows, chickens, elephants and cats), and the tiers above it add the simple
+prosthetics and then the bionics. So "category 1, small critters" in `README.md`, `CHANGELOG.md`, `ATTRIBUTION.md`,
+`About.xml`, `Mod/Patches/ADogSaidAnimalProsthetics2.xml` and the message of `Check-Claims` section 6 says something ADS 2
+does not: category 1 is the smallest set of surgeries, not the smallest animals. Reword to "its first category, basic
+replacements: a peg leg or a wooden limb, and a denture". Touches `Mod/`, so it waits until no ticket is in flight.

@@ -113,6 +113,13 @@ mod set and one language each.
    the startup log of every other pass shows, and it is read there (the error that `no errors were logged` cannot see is
    raised before any scenario). It is a small ticket, since only this feature plays.
 
+**A new colony is used sparingly.** Starting a new colony from the main menu (PickleTools' NewColony companion, the step
+`a new colony is started`) is **not repeatable**, so it is not a step to put in a scenario that is replayed after every
+fix (Virginie, 2026-09-25). It has one purpose here, the `tested` criterion "a new game and an existing save": one
+scenario, in one pass of its own, played once on the revision to be tested and again only when something it covers has
+changed. It is never part of a fix ticket or of the bare passes, and it is never filtered in by accident: it carries its
+own tag and its own map. Everything else runs on the `test-colony` fixture, which is the repeatable way.
+
 The machine is shared, so a run is a ticket. Tickets are filed with TicketDispatcher (documented in its
 `WELCOME.md`, which is the owner's and lives outside this repository), and **it follows them**: this mod's session
 sets up no watcher, no `Monitor` and no cron of its own. Tickets are small, three rather than one big one. An
