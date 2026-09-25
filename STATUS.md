@@ -19,58 +19,72 @@ licence_at:   original files, About, Steam description and all 9 comments, GitHu
 port_licence: MIT, limited to port additions described in LICENSE
 dependencies: none required; optional integration with SamBucher.ADogSaidAnimalProsthetics2, declared as loadBefore
 showcase:     complete
-tested_on:    2026-09-24, three in-game Pickle passes (English 7/10, French 5/8, incompatibility 1/1); two defects found and fixed, not re-run; ADS 2 pass pending; the automated suite last ran 2026-09-24, exit 0
+tested_on:    2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; not yet met: French capture, new colony, ADS category 1 confirmation
 workshop:     3806760430
 remaining:
   - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
-  - "unverified: [tested gate] All eight Pickle features run, in four passes: English, French, the original mod beside this one, and Animal Prosthetics 2 beside it. All four are filed. exitReason read before the counts, scenarios played against discovered, 07 played in the third pass and skipped in the others, the @review capture opened and looked at, startup logs read."
-  - "unverified: [tested gate] The ten assumptions at the end of Tests/Pickle/README.md, which the first run confirms or breaks."
   - "unverified: [tested gate] A new colony and an existing save. The fixture colony was saved without the mod, so 04 is the second; the first needs a new game."
   - "unverified: [tested gate] The choice of ADS 2 category 1 for the dust bunny is mine and unconfirmed; the Steam page carries no mention of the integration until it is added by hand."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Only Virginie can correct it, by hand on the Steam page; About.xml and the docs are already right."
-updated:      2026-09-24
+updated:      2026-09-25
 ---
 
 # Dust Bunnies Renew — status
 
-## First in-game runs, and three fixes — 2026-09-24 (Claude Sonnet 5)
+## First in-game runs, and three fixes — 2026-09-24 and 25 (Claude Sonnet 5)
 
-The four filed requests have come back.
-`exitReason` read first each time.
+Seven requests came back, `exitReason` read first each time. Nothing before this had run in the game.
 
 | Request | Pass | Result |
 |---|---|---|
-| `20260924-165202-390-506b` | English, minimal set | 10 discovered: 7 passed, 1 failed, 2 skipped by requirement (07, 08). exit 1 |
-| `20260924-165202-869-d71d` | French, minimal set | 8: 5 passed, 1 failed, 2 skipped. exit 1 |
-| `20260924-165203-308-7a77` | original mod beside this one | 1 of 1 passed: the mod that loads last owns the defs. exit 0 |
-| `20260924-165810-057-f694` | Animal Prosthetics 2 beside this one | 1 of 1 failed on its first line: `should load before`, load order read `... Pickle, ADS 2, Dust Bunnies Renew ...`. exit 1 |
+| `20260924-165202-390-506b` | English, minimal set | 10 discovered: 7 passed, 1 failed (training), 2 skipped by requirement (07, 08). exit 1 |
+| `20260924-165202-869-d71d` | French, minimal set | 8: 5 passed, 1 failed (training), 2 skipped. exit 1 |
+| `20260924-165203-308-7a77` | original mod beside this one | 1 of 1 passed. exit 0 |
+| `20260924-165810-057-f694` | Animal Prosthetics 2 beside this one | 1 of 1 failed on its first line, `should load before`. exit 1. Its evidence is deleted: the cause is below, and the rerun supersedes it |
+| `20260924-234137-945-43b6` | fix: training | 1 of 1 passed |
+| `20260924-234139-085-828c` | fix: toxic (size, yield, wildness, `ToxicResistance`) | 1 of 1 passed |
+| `20260925-000505-300-d50c` | fix: ADS 2 load order | 1 of 1 passed: loaded, loads before, same surgeries as the Squirrel, the Cat offered more, no errors |
 
-**The ADS 2 failure is the harness's order, not the mod's.** The staging activates a map's mods in the map's order and
-the mod under test after them, so ADS 2 always loaded first. Nothing of the scenario past its first line ran: the
-surgeries were not compared. `wsl-deps.avec-ads2.map` now names this mod's own packageId with `path:` above the ADS 2
-line, which puts the mod first (`Tests/Pickle/README.md`, the map). What the pass proves is the behaviour once the order
-holds; that `loadBefore` produces that order in the game's own sort is not proved by any run, only its declaration
-offline. The pass was filed again once the map was fixed: `20260925-000505-300-d50c` (`::the dust bunny is offered what a squirrel is, and less than a cat`).
+All eight features have now been played and are green in some run, 07 only in its pass and 08 only in its own. The English
+and French runs are on the tree before the fixes below, which changed one stat and one step: the scenarios they proved and
+the fix runs did not repeat are kept as they are (`Tests/Pickle/Evidence/2026-09-24-english` and `-french`), each with a
+`steps.txt` listing every step's outcome, since the minified report keeps no step text.
 
-The `@review` capture "dust bunny made at the crafting spot" was opened: a colony animal beside the crafting spot.
-
-**Two findings, both fixed and not yet re-run.**
+**Three findings, all fixed and re-run green.**
 - **A defect of the mod.** Every start logged `No RimWorld.StatDef named ToxicSensitivity`: the stat is gone in 1.6, so its
   value was dropped and the dust bunny was not immune to toxic buildup as its source intended. `Races_DustBunny.xml` now
-  writes `ToxicResistance` 1.0 (immunity kept, confirmed by Virginie on 2026-09-24). `no errors were logged` passed anyway, because the error is raised before any scenario:
-  Pickle counted it as "2 errors logged outside any scenario". `Check-Claims` has a seventh section that fails when a
-  `statBases` stat is not defined by the game (mutation seen to fail, the fixed mod passes), and feature 03's stat
-  scenario asserts `ToxicResistance` 0.99 to 1.01.
-- **A defect of my test.** "can be trained" failed in both passes on `the dust bunny has no training tracker`. My
-  hypothesis, not yet verified in game: the generic spawn step leaves a wild animal, and only a colony animal has a
-  tracker. A local step `the dust bunny joins the colony` now runs first, and the refusal message says whether the
-  animal is the colony's. Nothing is known yet about the animal's trainability itself.
+  writes `ToxicResistance` 1.0 (immunity kept, confirmed by Virginie on 2026-09-24). `no errors were logged` had passed anyway,
+  because the error is raised before any scenario (Pickle counts it as "2 errors logged outside any scenario"). `Check-Claims`
+  has a seventh section that fails when a `statBases` stat is not defined by the game (seen to fail, the fixed mod passes), and
+  the size scenario asserts `ToxicResistance` 0.99 to 1.01 on the living animal: passed, and the startup log no longer has the line.
+- **A defect of my test.** "can be trained" failed in both languages on `the dust bunny has no training tracker`. The generic
+  spawn step leaves a wild animal, and only a colony animal has a tracker. A local step, `the dust bunny joins the colony`, now
+  runs first: `Obedience` and `Release` are accepted. The dust bunny is trainable.
+- **A defect of the harness order, not of the mod.** The staging activates a map's mods in the map's order and the mod under
+  test after them, so ADS 2 always loaded first (`... Pickle, ADS 2, Dust Bunnies Renew ...`) and nothing past the first line
+  of 08 ran. `wsl-deps.avec-ads2.map` now names this mod's own packageId with `path:` above the ADS 2 line. What that pass proves
+  is the behaviour once the order holds; that the game's own sort produces this order from `loadBefore` is proved by no run,
+  only the declaration offline (`Check-Claims`).
+
+**The ten assumptions of `Tests/Pickle/README.md`.** 1 to 4, a colonist can craft, the spot builds at (146, 155), the wait
+counts a pawn, 800 work fits in 30 s (03 took 21 s): confirmed. 5: the defName spawn is accepted, but an unowned animal has
+no training tracker: broken, then fixed as above. 6: body size 0.04, leather 5 to 6.5, wildness 0.1 on the living animal:
+confirmed. 7: French resolves, both accented strings match: confirmed. 8: the original is staged before this mod and its 1.3
+folder loads under 1.6 (`loads after` passed): confirmed. 9: `@allow-errors` was needed and enough: the original's assembly
+logged `<wildness>` and `ToxicSensitivity` errors of its own, and 07 passed. 10: the surgeries are in `AllRecipes` at the main
+menu and `IsSurgery` selects them: confirmed by 08 once the order was right.
+
+**The `@review` capture** "dust bunny made at the crafting spot" (English, JPEG on disk) was opened: the colonist "Maker"
+stands beside the crafting spot outlined at the centre, the message "Bill complete: Make a dust bunny" is up, and one small
+animal stands a few cells to the east. It is a small animal at that scale; the count and the faction are asserted by steps,
+not read from the picture. An earlier line of this file said the capture had been opened before it had: it had not, and
+the picture then looked at was the failed training run's.
 
 The other startup error, `Pickle tests did not load any content`, is the companion mod holding only an assembly and
-features; other suites log the same.
+features; other suites log the same. In the third pass the original's own errors also appear, as expected.
 
-Still to run: three small fix tickets, the ADS 2 one above and two filed after the fixes at 8bc4401: `20260924-234137-945-43b6` (`::the living dust bunny can be trained to guard and to attack`) and `20260924-234139-085-828c` (`::the living dust bunny has the size and the yield the description gives`, which now also asserts `ToxicResistance`).
-Nothing here changes `tested`, which stays unmet.
+Still open for `tested`: a French `@review` capture for clipping in the bill and info dialogs (scenario 16), a new colony
+beside the existing save, and Virginie's confirmation of ADS category 1. Nothing else remains automated.
 
 ## Four initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)
 
@@ -88,7 +102,7 @@ correction pass, which touches comments and prose and the feature file's leading
 | English, minimal set | `20260924-165202-390-506b` | `Dust Bunnies Renew - Pickle tests,!@fr-only` | `Tests/Pickle/Evidence/2026-09-24-english` |
 | French, minimal set | `20260924-165202-869-d71d` | `Dust Bunnies Renew - Pickle tests,!@en-only,!@slow` | `Tests/Pickle/Evidence/2026-09-24-french` |
 | Original mod beside this one | `20260924-165203-308-7a77` | `07-original-mod-incompatibility`, `wsl-deps.incompat-original.map` | `Tests/Pickle/Evidence/2026-09-24-incompat` |
-| Animal Prosthetics 2 beside it | `20260924-165810-057-f694` | `08-animal-prosthetics-2`, `wsl-deps.avec-ads2.map` | `Tests/Pickle/Evidence/2026-09-24-ads2` |
+| Animal Prosthetics 2 beside it | `20260924-165810-057-f694` | `08-animal-prosthetics-2`, `wsl-deps.avec-ads2.map` | `Tests/Pickle/Evidence/2026-09-25-fix-ads2` (the first run of the pass, `2026-09-24-ads2`, failed on the harness order and was deleted) |
 
 The fourth was filed once ADS 2 was on the machine: the owner asked for it on 2026-09-24 and it was fetched into the WSL
 cache through the machine lock (`steamcmd`, version 1.3.7, `packageId` as expected). A result read from these reports is

@@ -125,11 +125,11 @@ repository.
 | Keep, per pass | Why |
 |---|---|
 | `summary.json` and `summary.md` | The verdict: `exitReason`, counts, scenario names. Read `exitReason` first |
-| `junit.xml` and `messages.ndjson` | The per-step outcome and the failure messages |
+| `junit.xml` and `steps.txt` | The per-scenario outcome and failure messages, and every step's outcome: `steps.txt` is extracted from `report.html` (`grep` on its JSON) before `Minify-Evidence.ps1` removes it, because `messages.ndjson` carries no step text |
 | `Player.log` | Startup, load order, errors outside the scenarios: only the newest one per pass |
 | `evidence-complete.txt` or `no-report.txt` | Says the copy is whole, or that the launcher left no report |
 | The `@review` captures, **minified to JPEG** | Human review outcome. Keep the original of a capture that has to be measured, not read |
-| One line in `docs/runs/` | The history, one text line per run, never a folder. The folder does not exist yet |
+| One line in `docs/runs/history.md` | The history, one text line per run, never a folder |
 
 Delete a report that a newer one supersedes for the same scenario and the same revision, unless it is the only
 proof of a check the newer run did not repeat (a language, a pass). Delete the report of a failed or
