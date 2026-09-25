@@ -252,7 +252,7 @@ else {
             $target = $match.SelectSingleNode('xpath').InnerText
             $cats = @([regex]::Matches($target, '@Name="(ADS_Cat\d)"') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique)
             $users = @($match.SelectNodes('value/li') | ForEach-Object { $_.InnerText.Trim() })
-            if ($cats.Count -ne 1 -or $cats[0] -cne 'ADS_Cat1') { Fail "the dust bunny is enrolled in [$($cats -join ', ')], not in ADS_Cat1 only: it is a small critter, and bionics on a clump of lint are not the joke" }
+            if ($cats.Count -ne 1 -or $cats[0] -cne 'ADS_Cat1') { Fail "the dust bunny is enrolled in [$($cats -join ', ')], not in ADS_Cat1 only: it is a clump of lint: categories 2 and 3 add simple prosthetics and bionics, which are not the joke" }
             elseif ($users.Count -ne 1 -or $users[0] -cne 'DustBunny') { Fail "the ADS 2 patch enrols [$($users -join ', ')], expected exactly DustBunny" }
             elseif (-not (Mod-Def 'ThingDef' 'DustBunny')) { Fail 'the ADS 2 patch names DustBunny, which the mod does not define' }
             else { Pass 'the dust bunny is enrolled in ADS 2 category 1 only, behind a condition that does nothing without ADS 2' }

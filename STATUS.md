@@ -23,7 +23,6 @@ tested_on:    2026-09-24 and 25, seven in-game Pickle runs: all eight features p
 workshop:     3806760430
 remaining:
   - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
-  - "unverified: [tested gate] Nocturnal Animals: that 1.6 honours MayRequire on a modExtensions item, and feature 09 in its pass (two tickets, see the section of 2026-09-25)."
   - "unverified: [tested gate] A new colony and an existing save. The fixture colony was saved without the mod, so 04 is the second; the first needs a new game, which is not repeatable and is used sparingly: one scenario, in a pass of its own, played once on the revision to be tested (TESTING.md)."
   - "unverified: [prepublished gate] PUBLICATION.md does not exist. The description needs the AUDIT.md sections (IF I GO QUIET, AI-GENERATED, THANKS with the author of ADS 2 credited, the ATTRIBUTION and licence line) and Workshop links on the mod names it cites; About.xml still says in-game validation is pending. See docs/PROTOCOLS-READ.md."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
@@ -49,6 +48,17 @@ list item.** Vanilla uses it on list items that carry a `Class`, but always for 
 feature `09` with the map (`20260925-185222-363-3128`), and one scenario of the bare English pass (`20260925-185228-539-bc21`), whose `Player.log` must hold no class or XML error
 for the extension. `ATTRIBUTION.md` (and its copy), `README.md`, `CHANGELOG.md`, `TESTING.md`, `About.xml` are updated.
 Better Crossbreeding stays open in BACKLOG.md as a design decision.
+
+**Result, 2026-09-25 (tickets `3128` and `bc21`, tree `52f756f`, both green).** Feature `09` passed with Nocturnal Animals staged:
+the extension reads `Nocturnal`. The bare English pass has no error about the extension, its class or an XML field in its
+startup log, only the companion's benign one: **`MayRequire` on a `modExtensions` list item is honoured by 1.6**, the item is
+skipped silently without the mod. The unverified item is closed. The evidence is in `2026-09-25-nocturnal` and
+`2026-09-25-bare-startup`, minified, with their `steps.txt`.
+
+**Wording fixed after the runs.** "Category 1, small critters" was my gloss: ADS 2 labels category 1 "basic replacements" and it
+is the tier every animal it lists is in. README, CHANGELOG, ATTRIBUTION (and its copy, identical), About.xml, the patch's
+comment and the message of `Check-Claims` now say so. Those edits touch `Mod/About/About.xml`, `Mod/ATTRIBUTION.md` and a
+comment of the patch, so the tree differs from `52f756f` by text and comments only; no def, no patch operation, no assembly.
 
 ## Documentation read again — 2026-09-25 (Claude Sonnet 5)
 

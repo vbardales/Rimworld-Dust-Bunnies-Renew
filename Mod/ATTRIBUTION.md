@@ -172,8 +172,8 @@ found it (2026-09-24).
 [A Dog Said... Animal Prosthetics 2](https://steamcommunity.com/sharedfiles/filedetails/?id=3238353862)
 (`SamBucher.ADogSaidAnimalProsthetics2`, by SamBucher, source at
 [SamuelBucher/A-Dog-Said-Animal-Prosthetics-2](https://github.com/SamuelBucher/A-Dog-Said-Animal-Prosthetics-2))
-loaded, the dust bunny is offered the surgeries of its first category, small critters, the one the
-Squirrel and the Rat are in. The mod's own patch, `Mod/Patches/ADogSaidAnimalProsthetics2.xml`, adds
+loaded, the dust bunny is offered the surgeries of its first category, basic replacements (the wooden parts and a denture), the one every animal it lists is in, the Squirrel and the Rat among
+them. The mod's own patch, `Mod/Patches/ADogSaidAnimalProsthetics2.xml`, adds
 `DustBunny` to the `recipeUsers` of its abstract `ADS_Cat1` recipes, behind a condition that finds nothing
 when ADS 2 is absent. ADS 2 copies its three category lists once, in its last patch, so `About.xml` says
 `loadBefore` for it. Nothing of ADS 2 is copied into this mod: its source and a downloaded copy of version

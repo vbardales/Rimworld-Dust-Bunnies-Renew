@@ -8,10 +8,10 @@
 	     own last patch, Patches/z_Category_Patches.xml, copies their recipeUsers onto the real surgery bases
 	     with PatchOperationAddOrMergeCopy. Adding an animal means adding one <li> to those lists.
 
-	     CATEGORY 1 ONLY. ADS 2 puts small critters in category 1, livestock and animals that cannot be
-	     trained in category 2, and pack animals and trainable pets in category 3, and the lists are
-	     cumulative. A dust bunny is trainable, but it is a clump of lint of body size 0.04 in play, so it
-	     is a small critter first: a peg leg is a joke that works, a bionic arm on it is not.
+	     CATEGORY 1 ONLY. ADS 2 labels its categories "1: basic replacements", "2: 1 + simple prosthetics" and
+	     "3: 2 + bionics". Category 1 is the broadest list, every animal ADS 2 knows is in it, and the larger
+	     and trainable ones are also listed in 2 and 3. A dust bunny is trainable, but it is a clump of lint
+	     of body size 0.04 in play: a peg leg or a denture is a joke that works, a bionic arm on it is not.
 
 	     ORDER MATTERS. The copy takes the list as it is at that instant, so an <li> added after it lands in
 	     a list nobody reads any more. ADS 2's own compatibility patches are safe because file names sort

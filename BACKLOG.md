@@ -2,14 +2,14 @@
 
 Work that is decided or proposed and not done. Nothing here is in the published mod. Newest first.
 
-## 1. Nocturnal Animals (Continued) — done in the tree on 2026-09-25, not yet played in the game
+## 1. Nocturnal Animals (Continued) — done and played green on 2026-09-25
 
 Decided by Virginie on 2026-09-25: **Nocturnal**. Written: the extension on the `DustBunny` `ThingDef` with
 `MayRequire="Mlie.XNDNocturnalAnimals"` (`Mod/Defs/ThingDefs_Races/Races_DustBunny.xml`), an eighth section of
 `Check-Claims` (seen to fail on three mutations), feature `09-nocturnal-animals` with its step and the pass map
 `wsl-deps.avec-nocturnal.map`. Documented in `README.md`, `CHANGELOG.md`, `ATTRIBUTION.md`, `TESTING.md`.
 
-**Filed on 2026-09-25 on `52f756f`:** `20260925-185222-363-3128` (feature `09` with the map) and `20260925-185228-539-bc21` (one scenario of the bare English pass, to read the startup log for a class
+**Played on 2026-09-25 on `52f756f`, both green:** `20260925-185222-363-3128` (feature `09` with the map) and `20260925-185228-539-bc21` (one scenario of the bare English pass, to read the startup log for a class
 error). They answer the one thing not verified, that 1.6 honours `MayRequire` on a `modExtensions` list item. If it
 does not, the fallback is a patch guarded by `PatchOperationFindMod`, which takes the mod's name, not its packageId.
 `THANKS` and a thank-you comment for XeoNovaDan and Mlie are due at `prepublished` (PUBLISHING.md).
@@ -49,7 +49,7 @@ with PickleTools' NewColony companion. **A new colony is not repeatable, so it i
 `PUBLICATION.md`; a description with the sections AUDIT.md lists and Workshop links on the cited mods; correct
 `About.xml` ("In-game validation of this port is pending"). See `docs/PROTOCOLS-READ.md`.
 
-## 5. Wording: "small critters" is my gloss, not ADS 2's — to fix after the two Nocturnal tickets return
+## 5. Wording: "small critters" was my gloss, not ADS 2's — fixed on 2026-09-25
 
 Category 1 itself is confirmed by Virginie (2026-09-25), knowing what it contains: only the wording changes.
 

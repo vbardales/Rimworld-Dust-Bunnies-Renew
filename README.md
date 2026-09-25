@@ -66,7 +66,7 @@ Available in English and French.
 
 Optional and native: the mod enrols the dust bunny itself, so nobody needs a separate patch mod.
 `Mod/Patches/ADogSaidAnimalProsthetics2.xml` adds `DustBunny` to the `recipeUsers` of `ADS_Cat1`, the abstract
-recipe ADS 2 uses for **category 1, small critters**: a peg leg or a denture, nothing more. It is not in
+recipe ADS 2 uses for **category 1, basic replacements**: a peg leg or another wooden limb, or a denture, nothing more. Every animal ADS 2 lists is in category 1; categories 2 and 3 add simple prosthetics and bionics on top, and the dust bunny is not in
 categories 2 and 3 on purpose. It is trainable, but it is a clump of lint of body size 0.04 in play, and a
 bionic arm on it would not be the joke.
 
@@ -94,7 +94,7 @@ dependency and needs no load order. The choice of `Nocturnal` is the owner's (20
 
 `_tools/checks/Check-Claims.ps1` asserts the extension, its `MayRequire`, the clock and the absence of a dependency,
 and was seen to fail on three mutations. Whether the extension reaches the running def is what feature `09` plays,
-in its own pass; it is not yet run.
+in its own pass, which passed on 2026-09-25 (Pickle).
 
 Content mod: removing it mid-save destroys any dust bunny already in the colony.
 
