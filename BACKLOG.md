@@ -41,7 +41,7 @@ loss of the dust cost is accepted knowingly.
 
 ## 3. Automated `tested` criteria still open
 
-A French `@review` capture of the bill and information dialogs (scenario 16): written on 2026-09-25 as `10-french-dialogs`, filed, and to be opened and looked at when it returns. The "new game" half of the old criterion is settled: no new game is created, loading a save made without the mod is enough (Virginie, 2026-09-25). See `TESTING.md` and `STATUS.md`, `remaining`.
+A French `@review` capture of the bill and information dialogs (scenario 16): written on 2026-09-25 as `10-french-dialogs`, filed as `20260925-233945-315-8015` on `c2f4791`, and to be opened and looked at when it returns. The "new game" half of the old criterion is settled: no new game is created, loading a save made without the mod is enough (Virginie, 2026-09-25). See `TESTING.md` and `STATUS.md`, `remaining`.
 
 ## 4. Before `prepublished`
 

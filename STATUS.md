@@ -120,7 +120,7 @@ the picture then looked at was the failed training run's.
 The other startup error, `Pickle tests did not load any content`, is the companion mod holding only an assembly and
 features; other suites log the same. In the third pass the original's own errors also appear, as expected.
 
-Still open for `tested`: a French `@review` capture for clipping in the bill and info dialogs (scenario 16). Settled on 2026-09-25 by Virginie: category 1 of ADS 2 is kept, and no new game is created, since loading a save made without the mod is enough (TESTING.md).
+Still open for `tested`: a French `@review` capture for clipping in the bill and info dialogs (scenario 16): written as `10-french-dialogs` on `c2f4791`, filed as `20260925-233945-315-8015`, to be opened and looked at when it returns. Settled on 2026-09-25 by Virginie: category 1 of ADS 2 is kept, and no new game is created, since loading a save made without the mod is enough (TESTING.md).
 
 ## Four initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)
 
