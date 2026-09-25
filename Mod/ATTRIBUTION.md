@@ -56,8 +56,9 @@ was contacted, no permission was obtained, and no publication or visibility chan
 
 ## What was carried over
 
-Everything the mod defined — seven defs, four distinct images and one C# class. No dependency, no
-DLC, no research, no patch.
+Everything the mod defined — seven defs, four distinct images and one C# class. The original had no
+dependency, no DLC, no research and no patch; the port adds one optional patch of its own, described
+under "What changed in the port".
 
 | def | type | what it is |
 |---|---|---|
@@ -159,6 +160,26 @@ runs the database is long since built — but a failure there surfaces as a
 the database is reloaded. It is a `[DefOf]` class now: `DefOfHelper.RebindAllDefOfs` binds it once
 the database is complete, and again after any reload.
 
+**A stat that no longer exists.** The original wrote `<ToxicSensitivity>0.0</ToxicSensitivity>` under
+`statBases`. `ToxicSensitivity` is not a `StatDef` in 1.6: the loader logged `No RimWorld.StatDef named
+ToxicSensitivity` at every start and dropped the value, so the animal was not immune to toxic buildup,
+which the original's zero sensitivity meant it to be. `ToxicResistance` is the stat that replaced it, one
+meaning immune, and the port writes `<ToxicResistance>1.0</ToxicResistance>`. This is a port decision
+made to keep the original's intent, and the one place where a stat differs; the first in-game test run
+found it (2026-09-24).
+
+**An optional enrolment in A Dog Said... Animal Prosthetics 2.** With
+[A Dog Said... Animal Prosthetics 2](https://steamcommunity.com/sharedfiles/filedetails/?id=3238353862)
+(`SamBucher.ADogSaidAnimalProsthetics2`, by SamBucher, source at
+[SamuelBucher/A-Dog-Said-Animal-Prosthetics-2](https://github.com/SamuelBucher/A-Dog-Said-Animal-Prosthetics-2))
+loaded, the dust bunny is offered the surgeries of its first category, small critters, the one the
+Squirrel and the Rat are in. The mod's own patch, `Mod/Patches/ADogSaidAnimalProsthetics2.xml`, adds
+`DustBunny` to the `recipeUsers` of its abstract `ADS_Cat1` recipes, behind a condition that finds nothing
+when ADS 2 is absent. ADS 2 copies its three category lists once, in its last patch, so `About.xml` says
+`loadBefore` for it. Nothing of ADS 2 is copied into this mod: its source and a downloaded copy of version
+1.3.7 were read to see how it files animals, and it is neither a dependency nor required. The choice of the
+first category is the port's and has not been confirmed by its author, who was not contacted.
+
 **Two null guards.** `Notify_IterationCompleted` now returns early if the bill doer is null or
 unspawned. Nothing in vanilla calls it that way; the reason to guard is that the alternative is a
 null `Map` handed straight to `GenSpawn`.
@@ -182,9 +203,9 @@ infinitive the English uses. The dust needs no `stuffProps.stuffAdjective`:
 
 ## What did not change
 
-Every stat, every tool, the litter curve, the single life stage, the sounds, the trade tags, the
-draw sizes, the recipe costs and work amounts, and the four images. The balance was not touched
-anywhere — including the parts that look like mistakes and are not the port's to decide:
+Every stat but the toxic one above, every tool, the litter curve, the single life stage, the sounds, the
+trade tags, the draw sizes, the recipe costs and work amounts, and the four images. The balance was not
+touched anywhere else — including the parts that look like mistakes and are not the port's to decide:
 `baseHungerRate` 0 (it never eats), `lifeExpectancy` 1 (it lives a year), `mateMtbHours` 0 with a
 `litterSizeCurve` and a `gestationPeriodDays` that consequently never come into play, and
 `ecoSystemWeight` on an animal that is in no biome and can only be crafted.
@@ -212,6 +233,12 @@ The `1.1/` and `1.2/` version folders. The mod declared its content in per-versi
 with no `LoadFolders.xml`, so RimWorld was loading whichever matched. The three folders held
 **byte-identical** XML — only the assembly differed, being recompiled per version — so the port
 keeps one copy of the defs at the root and one assembly built against 1.6.
+
+## AI assistance and test tools
+
+The port, its tests and its documentation were written with **Claude** (Anthropic) and **Codex** (OpenAI),
+under human direction and review. The tests run in the game with **Pickle** and **RimLogging**, by RimWorks,
+which are development tools only and never a dependency of the distributed mod.
 
 ## Adoption
 

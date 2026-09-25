@@ -25,11 +25,21 @@ remaining:
   - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
   - "unverified: [tested gate] A new colony and an existing save. The fixture colony was saved without the mod, so 04 is the second; the first needs a new game."
   - "unverified: [tested gate] The choice of ADS 2 category 1 for the dust bunny is mine and unconfirmed; the Steam page carries no mention of the integration until it is added by hand."
+  - "unverified: [prepublished gate] PUBLICATION.md does not exist. The description needs the AUDIT.md sections (IF I GO QUIET, AI-GENERATED, THANKS with the author of ADS 2 credited, the ATTRIBUTION and licence line) and Workshop links on the mod names it cites; About.xml still says in-game validation is pending. See docs/PROTOCOLS-READ.md."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Only Virginie can correct it, by hand on the Steam page; About.xml and the docs are already right."
 updated:      2026-09-25
 ---
 
 # Dust Bunnies Renew — status
+
+## Documentation read again — 2026-09-25 (Claude Sonnet 5)
+
+After the compaction of the session, the workspace documents were read again and their versions recorded, with those that
+were of no use, in `docs/PROTOCOLS-READ.md`. Three consequences for this mod. `ATTRIBUTION.md` (and its identical copy in
+`Mod/`) was wrong on two points, "no patch" and "every stat unchanged", and now describes the ADS 2 patch and the toxic
+stat, credits ADS 2 and its author, and names the AI tools and Pickle. The shared tools include **NewColony**, which
+starts a new colony from the main menu, and the steps for a translated dialog capture, so the two remaining `tested`
+criteria can be automated. Tickets from now on carry the tested SHA in their label.
 
 ## First in-game runs, and three fixes — 2026-09-24 and 25 (Claude Sonnet 5)
 
