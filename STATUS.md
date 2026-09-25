@@ -47,7 +47,7 @@ item behind another mod's `MayRequire` alone, since its class does not exist her
 optional class. `Test-Mod.ps1` passes. In the game: feature `09-nocturnal-animals`, a local step for the clock, pass map
 `wsl-deps.avec-nocturnal.map`. **Not yet run, and one thing is unverified: that 1.6 honours `MayRequire` on a `modExtensions`
 list item.** Vanilla uses it on list items that carry a `Class`, but always for a class Core has. The proof is two small tickets:
-feature `09` with the map, and one scenario of the bare English pass, whose `Player.log` must hold no class or XML error
+feature `09` with the map (`20260925-185222-363-3128`), and one scenario of the bare English pass (`20260925-185228-539-bc21`), whose `Player.log` must hold no class or XML error
 for the extension. `ATTRIBUTION.md` (and its copy), `README.md`, `CHANGELOG.md`, `TESTING.md`, `About.xml` are updated.
 Better Crossbreeding stays open in BACKLOG.md as a design decision.
 

@@ -9,8 +9,8 @@ Decided by Virginie on 2026-09-25: **Nocturnal**. Written: the extension on the 
 `Check-Claims` (seen to fail on three mutations), feature `09-nocturnal-animals` with its step and the pass map
 `wsl-deps.avec-nocturnal.map`. Documented in `README.md`, `CHANGELOG.md`, `ATTRIBUTION.md`, `TESTING.md`.
 
-**Still open:** the two tickets (feature `09` with the map, and the bare English pass to read the startup log for a class
-error), and the answer to the one thing not verified, that 1.6 honours `MayRequire` on a `modExtensions` list item. If it
+**Filed on 2026-09-25 on `52f756f`:** `20260925-185222-363-3128` (feature `09` with the map) and `20260925-185228-539-bc21` (one scenario of the bare English pass, to read the startup log for a class
+error). They answer the one thing not verified, that 1.6 honours `MayRequire` on a `modExtensions` list item. If it
 does not, the fallback is a patch guarded by `PatchOperationFindMod`, which takes the mod's name, not its packageId.
 `THANKS` and a thank-you comment for XeoNovaDan and Mlie are due at `prepublished` (PUBLISHING.md).
 
