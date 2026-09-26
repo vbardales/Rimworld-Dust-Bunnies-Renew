@@ -19,13 +19,12 @@ licence_at:   original files, About, Steam description and all 9 comments, GitHu
 port_licence: MIT, limited to port additions described in LICENSE
 dependencies: none required; optional integrations with SamBucher.ADogSaidAnimalProsthetics2 (loadBefore) and Mlie.XNDNocturnalAnimals (MayRequire on an extension)
 showcase:     complete
-tested_on:    2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); not yet met: the French capture
+tested_on:    2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
 remaining:
-  - "unverified: [tested gate] French clipping, raw keys and fallback in the bill and information dialogs (scenario 16): no capture scenario exists, so a person would have to read it by hand, which the gate does not allow. A @review capture in the French pass is the way."
   - "unverified: [prepublished gate] PUBLICATION.md does not exist. The description needs the AUDIT.md sections (IF I GO QUIET, AI-GENERATED, THANKS with the author of ADS 2 credited, the ATTRIBUTION and licence line) and Workshop links on the mod names it cites; About.xml still says in-game validation is pending. See docs/PROTOCOLS-READ.md."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
-updated:      2026-09-25
+updated:      2026-09-26
 ---
 
 # Dust Bunnies Renew — status
@@ -120,7 +119,7 @@ the picture then looked at was the failed training run's.
 The other startup error, `Pickle tests did not load any content`, is the companion mod holding only an assembly and
 features; other suites log the same. In the third pass the original's own errors also appear, as expected.
 
-Still open for `tested`: a French `@review` capture for clipping in the bill and info dialogs (scenario 16): written as `10-french-dialogs` on `c2f4791`, filed as `20260925-233945-315-8015`, to be opened and looked at when it returns. Settled on 2026-09-25 by Virginie: category 1 of ADS 2 is kept, and no new game is created, since loading a save made without the mod is enough (TESTING.md).
+Closed on 2026-09-26: the French `@review` capture (scenario 16, `10-french-dialogs`, ticket `8015`, tree of `c2f4791`) came back green and its three pictures were opened: no clipping, raw key or fallback text in the bill dialog or the two information cards. Settled on 2026-09-25 by Virginie: category 1 of ADS 2 is kept, and no new game is created, since loading a save made without the mod is enough (TESTING.md).
 
 ## Four initial Pickle requests filed — 2026-09-24 (Claude Sonnet 5)
 
