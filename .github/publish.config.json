@@ -1,0 +1,20 @@
+{
+  "templateStamp": "a8ca11cdd9a3",
+  "workshopId": "3806760430",
+  "packageId": "nelim.dustbunniesrenew",
+  "releaseTitle": "Dust Bunnies Renew (unofficial) {version}",
+  "requirePaths": [
+    "Assemblies/DustBunnies.dll"
+  ],
+  "forbidPaths": [],
+  "previewFile": "About/Preview.png",
+  "aboutFromDescription": true,
+  "build": {
+    "project": "Source/DustBunnies.csproj"
+  },
+  "description": {
+    "file": "PUBLICATION.md",
+    "format": "markdown",
+    "heading": "^## Steam description$"
+  }
+}
