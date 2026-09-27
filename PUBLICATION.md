@@ -64,10 +64,13 @@ First upload, to create the Workshop item. Private until tested by subscription.
 
 ## Gallery order
 
-Steam shows the first image large: the most demonstrative goes there, not the prettiest. No
-dedicated capture scenario produces gallery screenshots for this mod (its Pickle captures are
-`@review` proof, not gallery material); the gallery is built by hand from a game in French and
-English before the item goes public. Order:
+Steam shows the first image large: the most demonstrative goes there, not the prettiest.
+Produced by a dedicated Pickle scenario rather than by hand, so it is reproducible after any
+interface change (AUDIT.md, "Captures destinées à la publication"): `11-gallery-captures`,
+`English -DepMap wsl-deps.gallery.map`, using PickleTools' Zen Meadow Screenshot Studio for the
+scale shot and ScreenshotMode for the dialogs, as the French review pass (`10-french-dialogs`)
+already does. It is `@review`: green proves the four captures were taken, not what is on them —
+each one still has to be opened and looked at before upload. Order:
 
 1. The live dust bunny on the floor, next to a colonist, showing scale.
 2. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost.

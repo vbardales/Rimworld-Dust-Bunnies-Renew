@@ -1,0 +1,11 @@
+# Pass "gallery": the Workshop gallery captures (PUBLICATION.md, "Gallery order"), produced by a dedicated
+# scenario instead of by hand, so they are reproducible after any interface change.
+#
+# PickleTools tools, development only and never a dependency of the mod:
+# - ScreenshotStudio, for the paused "zen meadow" fixture and its native-capture presentation mode (the live dust
+#   bunny next to a colonist, showing scale).
+# - ClearScreen, so a window ScreenshotStudio does not own cannot swallow a click while the scene is set up.
+# - ScreenshotMode, for the English bill dialog and information card captures (as the French review pass uses it).
+nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
+nelim.pickletools.clearscreen      path:PickleTools/ClearScreen/Mod
+nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod

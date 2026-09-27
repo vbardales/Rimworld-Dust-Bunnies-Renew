@@ -83,7 +83,7 @@ Nothing in the Pickle rows was confirmed by running anything: it is the plan the
 
 ## Passes this mod needs
 
-A mod whose TESTING.md does not say how many passes it needs is tried, not tested. This one needs four, one
+A mod whose TESTING.md does not say how many passes it needs is tried, not tested. This one needs seven, one
 mod set and one language each.
 
 1. **English, without optional mods**: the minimal set the launcher mounts by default. The one optional
@@ -118,6 +118,14 @@ mod set and one language each.
    dust, and captures each. Developer mode stays on, so a missing key shows as the game's accented fallback. It asserts that
    each dialog opened and nothing about the picture: **the three captures must be opened and looked at** for raw keys,
    fallback text and clipping. One small ticket.
+
+7. **The Workshop gallery captures** (`wsl-deps.gallery.map`, `-Language English`): produced by a scenario instead
+   of by hand (Virginie, 2026-09-27; AUDIT.md, "Captures destinées à la publication"), so they stay reproducible
+   after any interface change. `11-gallery-captures` stages PickleTools' Zen Meadow Screenshot Studio (its saved
+   fixture and native-capture presentation mode) for the live dust bunny next to a colonist, showing scale, and
+   ScreenshotMode for the English bill dialog and information cards, the same mechanism `10-french-dialogs` uses.
+   It is `@review`: green proves the four captures were taken, not what is on them — **still to be opened and
+   looked at**, and their order and what each shows is in `PUBLICATION.md`, "Gallery order". Written, not yet run.
 
 **No new game is created** (Virginie, 2026-09-25). The `tested` criterion "a new game and an existing save" is met by the
 existing save alone: loading a game saved **without** this mod, with the mod added, which is what the shared `test-colony`
