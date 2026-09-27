@@ -13,7 +13,7 @@ visibility_at: GitHub API verified 2026-09-24 (public, main); Workshop item 3806
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-stage:        done
+stage:        tested
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 port_licence: MIT, limited to port additions described in LICENSE
@@ -22,9 +22,11 @@ showcase:     complete
 tested_on:    2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
 remaining:
-  - "unverified: [prepublished gate] PUBLICATION.md does not exist. The description needs the AUDIT.md sections (IF I GO QUIET, AI-GENERATED, THANKS with the author of ADS 2 credited, the ATTRIBUTION and licence line) and Workshop links on the mod names it cites; About.xml still says in-game validation is pending. See docs/PROTOCOLS-READ.md."
+  - "unverified: [prepublished gate] Gallery screenshots (see PUBLICATION.md, `Gallery order`): none exist yet, built by hand before the item goes public, each to be opened and looked at."
+  - "unverified: [prepublished gate] Thank-you comments for A Dog Said... Animal Prosthetics 2 and Nocturnal Animals (both authors): drafted in PUBLICATION.md, but check WORKSHOP_COMMENTS.md first, another mod's draft may post first; post only once this item is public."
+  - "unverified: [prepublished gate] CHANGELOG.md needs its `## [0.1.0]` entry once the Workshop item is (re)created from the current tree, per AUDIT.md §11."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
-updated:      2026-09-26
+updated:      2026-09-27
 ---
 
 # Dust Bunnies Renew — status
