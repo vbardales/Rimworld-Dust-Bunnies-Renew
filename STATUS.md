@@ -16,6 +16,8 @@ maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audi
 stage:        tested
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
+upstream_mod_remotes:
+  - https://github.com/blockdude/csharp-rimworld-dust-bunnies
 port_licence: MIT, limited to port additions described in LICENSE
 dependencies: none required; optional integrations with SamBucher.ADogSaidAnimalProsthetics2 (loadBefore) and Mlie.XNDNocturnalAnimals (MayRequire on an extension)
 showcase:     complete
