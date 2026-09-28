@@ -3,6 +3,14 @@
 A 1.6 port of **Dust Bunnies**, by **2blockdude** and **HendraGradeWood**
 ([2659958183](https://steamcommunity.com/sharedfiles/filedetails/?id=2659958183)).
 
+## Upstream pull request — 2026-09-28
+
+Opened [blockdude/csharp-rimworld-dust-bunnies#1](https://github.com/blockdude/csharp-rimworld-dust-bunnies/pull/1)
+against the source repository: a `1.6/` folder in its own per-version layout (matching `1.1/`,
+`1.2/`, `1.3/`), carrying the three fixes below and nothing else changed. Offered as PUBLISHING.md
+asks, before maintaining this separate port: if the author merges it or answers, this port's
+purpose is served and the two can point at each other; if not, nothing here changes.
+
 ## Status: public
 
 The source mod is **dead** — it declares 1.1, 1.2 and 1.3 and nothing further, and its repository

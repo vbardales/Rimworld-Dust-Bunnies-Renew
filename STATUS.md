@@ -18,6 +18,7 @@ licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 upstream_mod_remotes:
   - https://github.com/blockdude/csharp-rimworld-dust-bunnies
+upstream_pr:  https://github.com/blockdude/csharp-rimworld-dust-bunnies/pull/1 (opened 2026-09-28, 1.6 support + the wildness, ToxicSensitivity and DefOf fixes; unanswered)
 port_licence: MIT, limited to port additions described in LICENSE
 dependencies: none required; optional integrations with SamBucher.ADogSaidAnimalProsthetics2 (loadBefore) and Mlie.XNDNocturnalAnimals (MayRequire on an extension)
 showcase:     complete
