@@ -78,6 +78,31 @@ namespace DustBunnies.PickleSteps
         }
 
         /// <summary>
+        /// Spawns a dust bunny a couple of cells from a named colonist, standable cell found by searching outward,
+        /// instead of a fixed map coordinate: the gallery's first re-take (2026-09-28) picked (155, 99) by guesswork
+        /// and it landed on the colonist's own tile, so the tiny bunny (body size 0.04) was hidden under her sprite
+        /// even after the camera zoomed onto the right cell.
+        /// </summary>
+        [When("Dust Bunnies Renew: a dust bunny is spawned beside the colonist {string}")]
+        public void SpawnBunnyBesideColonist(PickleContext ctx, string colonistName)
+        {
+            var map = Map(ctx);
+            var colonist = map.mapPawns.FreeColonists.FirstOrDefault(p => p.Name != null && p.Name.ToStringShort == colonistName);
+            ctx.Assert(colonist != null, $"no free colonist named {colonistName}");
+            IntVec3 spot = IntVec3.Invalid;
+            foreach (var offset in new[] { new IntVec3(2, 0, 0), new IntVec3(-2, 0, 0), new IntVec3(0, 0, 2), new IntVec3(0, 0, -2), new IntVec3(2, 0, 2) })
+            {
+                var candidate = colonist.Position + offset;
+                if (candidate.Standable(map) && candidate.InBounds(map)) { spot = candidate; break; }
+            }
+            ctx.Assert(spot.IsValid, $"no standable cell within 2 cells of {colonistName} at {colonist.Position}");
+            var kind = DefDatabase<PawnKindDef>.GetNamedSilentFail(KindDefName);
+            ctx.Assert(kind != null, $"no PawnKindDef named {KindDefName}");
+            var bunny = PawnGenerator.GeneratePawn(kind, Faction.OfPlayer);
+            GenSpawn.Spawn(bunny, spot, map, Rot4.Random);
+        }
+
+        /// <summary>
         /// Centres the camera on the one spawned dust bunny and zooms in, for a capture. The animal's only life stage
         /// is AnimalBaby, so it measures 0.04: at the studio's preset zoom it is a grey speck a few pixels wide, and
         /// the first gallery capture (2026-09-28) showed a colonist and no visible animal.

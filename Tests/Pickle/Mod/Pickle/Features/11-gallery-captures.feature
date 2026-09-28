@@ -21,7 +21,7 @@ Feature: the Workshop gallery images
   Scenario: the live dust bunny next to a colonist, showing scale
     Given the save "nelim-zen-meadow-studio" is loaded
     And game speed is paused
-    When I spawn a "DustBunny" pawn at (155, 99)
+    When Dust Bunnies Renew: a dust bunny is spawned beside the colonist "Miel"
     And Nelim's Pickle Tools: I frame the studio "flowers"
     And Dust Bunnies Renew: the camera is centred on the dust bunny at zoom 6
     And Nelim's Pickle Tools: studio presentation mode is enabled
