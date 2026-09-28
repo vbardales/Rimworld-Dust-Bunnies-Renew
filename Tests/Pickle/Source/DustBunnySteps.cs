@@ -78,6 +78,19 @@ namespace DustBunnies.PickleSteps
         }
 
         /// <summary>
+        /// Centres the camera on the one spawned dust bunny and zooms in, for a capture. The animal's only life stage
+        /// is AnimalBaby, so it measures 0.04: at the studio's preset zoom it is a grey speck a few pixels wide, and
+        /// the first gallery capture (2026-09-28) showed a colonist and no visible animal.
+        /// </summary>
+        [When("Dust Bunnies Renew: the camera is centred on the dust bunny at zoom {float}")]
+        public void CameraOnBunny(PickleContext ctx, float rootSize)
+        {
+            var bunny = TheBunny(ctx);
+            Find.CameraDriver.JumpToCurrentMapLoc(bunny.Position);
+            Find.CameraDriver.SetRootSize(rootSize);
+        }
+
+        /// <summary>
         /// A made animal takes the faction of whoever made it: the worker passes the bill doer's faction to
         /// PawnGenerator. A null faction there would leave a wild animal standing beside the colonist.
         /// </summary>

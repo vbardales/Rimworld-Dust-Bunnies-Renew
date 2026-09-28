@@ -23,6 +23,7 @@ Feature: the Workshop gallery images
     And game speed is paused
     When I spawn a "DustBunny" pawn at (155, 99)
     And Nelim's Pickle Tools: I frame the studio "flowers"
+    And Dust Bunnies Renew: the camera is centred on the dust bunny at zoom 6
     And Nelim's Pickle Tools: studio presentation mode is enabled
     And I take a screenshot "the dust bunny in the meadow, scale"
     Then no errors were logged
