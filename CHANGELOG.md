@@ -79,7 +79,7 @@ left implicit, being the defaults.
 
 ### Changed
 
-- `packageId` changed from `BlockHen.Animal.DustBunnies` to `nelim.dustbunniesrenew`.
+- `packageId` changed from `BlockHen.Animal.DustBunnies` to `nelim.dustbunnies` (2026-09-28: `nelim.dustbunniesrenew` until then, and in the private `0.1.0` upload; `Renew` dropped at the owner's request, while the item was still private, so nobody is left with the old id in a mod list; the companion test mod is `nelim.dustbunnies.pickletests`).
 - `<supportedVersions>` set to 1.6.
 - The `1.1/`, `1.2/` and `1.3/` version folders collapsed to one copy at the root. The mod
   declared its content in per-version directories with no `LoadFolders.xml`; the XML in all three

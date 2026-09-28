@@ -25,8 +25,8 @@ Feature: the dust bunny is enrolled in Animal Prosthetics 2, in its first catego
 
   Scenario: the dust bunny is offered what a squirrel is, and less than a cat
     Then mod "SamBucher.ADogSaidAnimalProsthetics2" is loaded
-    And mod "nelim.dustbunniesrenew" is loaded
-    And mod "nelim.dustbunniesrenew" loads before "SamBucher.ADogSaidAnimalProsthetics2"
+    And mod "nelim.dustbunnies" is loaded
+    And mod "nelim.dustbunnies" loads before "SamBucher.ADogSaidAnimalProsthetics2"
     And Dust Bunnies Renew: the dust bunny is offered the same surgeries as the "Squirrel"
     And Dust Bunnies Renew: the "Cat" is offered surgeries the dust bunny is not
     And no errors were logged

@@ -1,7 +1,7 @@
 {
   "templateStamp": "a8ca11cdd9a3",
   "workshopId": "3806760430",
-  "packageId": "nelim.dustbunniesrenew",
+  "packageId": "nelim.dustbunnies",
   "releaseTitle": "Dust Bunnies Renew (unofficial) {version}",
   "requirePaths": [
     "Assemblies/DustBunnies.dll"

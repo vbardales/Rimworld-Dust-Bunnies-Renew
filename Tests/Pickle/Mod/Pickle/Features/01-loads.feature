@@ -9,7 +9,7 @@
 Feature: Dust Bunnies Renew loads in the minimal set
 
   Scenario: the mod and its principal defs load, and the recipe worker resolved
-    Then mod "nelim.dustbunniesrenew" is loaded
+    Then mod "nelim.dustbunnies" is loaded
     And def "DustBunny" of type "ThingDef" exists
     And def "DustBunny" of type "PawnKindDef" exists
     And def "Dust" of type "ThingDef" exists

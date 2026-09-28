@@ -22,8 +22,8 @@ Feature: the declared incompatibility with the original mod is still true
 
   Scenario: with both loaded, the mod that loads last owns the defs
     Then mod "BlockHen.Animal.DustBunnies" is loaded
-    And mod "nelim.dustbunniesrenew" is loaded
-    And mod "nelim.dustbunniesrenew" loads after "BlockHen.Animal.DustBunnies"
-    And def "MakeDustBunny" is defined by mod "nelim.dustbunniesrenew"
-    And def "GatherDust" is defined by mod "nelim.dustbunniesrenew"
-    And def "Dust" is defined by mod "nelim.dustbunniesrenew"
+    And mod "nelim.dustbunnies" is loaded
+    And mod "nelim.dustbunnies" loads after "BlockHen.Animal.DustBunnies"
+    And def "MakeDustBunny" is defined by mod "nelim.dustbunnies"
+    And def "GatherDust" is defined by mod "nelim.dustbunnies"
+    And def "Dust" is defined by mod "nelim.dustbunnies"

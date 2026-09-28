@@ -16,6 +16,6 @@ Feature: the dust bunny is nocturnal when Nocturnal Animals is loaded
 
   Scenario: the dust bunny keeps a nocturnal body clock
     Then mod "Mlie.XNDNocturnalAnimals" is loaded
-    And mod "nelim.dustbunniesrenew" is loaded
+    And mod "nelim.dustbunnies" is loaded
     And Dust Bunnies Renew: the dust bunny body clock is "Nocturnal"
     And no errors were logged

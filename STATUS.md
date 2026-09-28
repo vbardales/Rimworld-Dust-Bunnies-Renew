@@ -4,7 +4,7 @@ translation_en: complete
 translation_fr: complete
 settings_audit: not_applicable
 mod:          Dust Bunnies Renew (unofficial)
-packageId:    nelim.dustbunniesrenew
+packageId:    nelim.dustbunnies
 repo:         Rimworld-Dust-Bunnies-Renew
 remote:       https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew.git
 visibility:   public
@@ -253,7 +253,7 @@ untracked `.dds` beside the PNGs. Both were kept and then resolved by commits: `
 
 | Transition | Result | Evidence |
 |---|---|---|
-| dansMonoRepo -> horsMonoRepo | Validated | Own `.git`; `git ls-remote origin HEAD` equals local HEAD; `gh repo view`: PUBLIC, `main`. README, ATTRIBUTION, LICENSE, CHANGELOG in English; `Mod/LICENSE` and `Mod/ATTRIBUTION.md` byte-identical to the root copies (`cmp`). `nelim.dustbunniesrenew`, `Dust Bunnies Renew (unofficial)`, `Rimworld-Dust-Bunnies-Renew` and `DustBunniesRenew/` agree. `silent` / public rests on the 2026-09-12 source investigation below; not repeated today |
+| dansMonoRepo -> horsMonoRepo | Validated | Own `.git`; `git ls-remote origin HEAD` equals local HEAD; `gh repo view`: PUBLIC, `main`. README, ATTRIBUTION, LICENSE, CHANGELOG in English; `Mod/LICENSE` and `Mod/ATTRIBUTION.md` byte-identical to the root copies (`cmp`). `nelim.dustbunnies`, `Dust Bunnies Renew (unofficial)`, `Rimworld-Dust-Bunnies-Renew` and `DustBunniesRenew/` agree. `silent` / public rests on the 2026-09-12 source investigation below; not repeated today |
 | -> ModIcon generated | Validated | `Test-Mod.ps1` rebuilds with 0 warnings and 0 errors and the shipped DLL is byte-identical before and after. Icon viewed: 128 x 128, 33,652 bytes, the mascot with the creature readable. Not generated, modified or replaced |
 | -> Preview generated | Validated | Viewed: 896 x 504, 205,118 bytes, under 1 MB; no clipping or overlap, the bunny unobscured |
 | -> preOptions | Validated | Viewed at full size: the yellow rule and `1.6` badge are clearly separate from the beige-brown `Renew` and `(unofficial)`. English description; ` Renew` and ` (unofficial)` as PUBLISHING.md prescribes for a public `silent` port |

@@ -20,7 +20,7 @@ if (-not (Test-Path "$managed/Assembly-CSharp.dll")) { throw 'RimWorld installat
 $xmlFiles = @(Get-ChildItem $mod -Recurse -Filter *.xml)
 foreach ($file in $xmlFiles) { $null = [xml](Get-Content $file.FullName -Raw) }
 [xml]$about = Get-Content "$mod/About/About.xml" -Raw
-if ($about.ModMetaData.packageId -cne 'nelim.dustbunniesrenew') { throw 'Unexpected packageId' }
+if ($about.ModMetaData.packageId -cne 'nelim.dustbunnies') { throw 'Unexpected packageId' }
 if (-not $about.ModMetaData.name.EndsWith('(unofficial)')) { throw 'Unofficial suffix missing' }
 if (-not $about.ModMetaData.description.Contains('https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew')) { throw 'GitHub description link missing' }
 

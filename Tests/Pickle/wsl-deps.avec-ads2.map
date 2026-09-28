@@ -17,5 +17,5 @@
 # What this does and does not prove. The pass proves the order, once it is given, does what the mod needs. That
 # About.xml asks for that order is proved offline, by Check-Claims. That the game's sort would produce it from
 # that declaration is not proved by any run here: it would need the sort itself.
-nelim.dustbunniesrenew   path:DustBunniesRenew/Mod
+nelim.dustbunnies   path:DustBunniesRenew/Mod
 SamBucher.ADogSaidAnimalProsthetics2   3238353862
