@@ -24,6 +24,7 @@ workshop:     3806760430
 remaining:
   - "unverified: [prepublished gate] Gallery screenshots (see PUBLICATION.md, `Gallery order`; TESTING.md, pass 7): written as Pickle scenario `11-gallery-captures`, not by hand (Virginie, 2026-09-27), staged with `wsl-deps.gallery.map`; not yet run, and its four captures still to be opened and looked at once it is."
   - "unverified: [prepublished gate] Thank-you comments for A Dog Said... Animal Prosthetics 2 and Nocturnal Animals (both authors): drafted in PUBLICATION.md, but check WORKSHOP_COMMENTS.md first, another mod's draft may post first; post only once this item is public."
+  - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 updated:      2026-09-27
 ---

@@ -91,16 +91,17 @@ before posting either — if it is already `posted` by the time this mod goes pu
 nothing and just note it here.
 
 **A Dog Said... Animal Prosthetics 2** (item `3238353862`), if the registry still shows
-`drafted` when this item goes public:
+`drafted` when this item goes public. Only facts recorded in `ATTRIBUTION.md` and the test
+runs; Virginie reads and adjusts the voice before posting:
 
 ```
-Thanks for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3238353862]A Dog Said... Animal Prosthetics 2[/url] :) Dust Bunnies Renew enrolls the dust bunny in your first category, basic replacements — a little grey thing made of dust getting a peg leg made me laugh when I first saw it work. Thanks for keeping the categories simple enough that a small port could hook into just the first one.
+Thanks for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3238353862]A Dog Said... Animal Prosthetics 2[/url] :) In Dust Bunnies Renew the dust bunny, a little animal crafted from dust, is offered your first category, basic replacements: I read how your mod files animals, put it in the same list as the Squirrel and the Rat, and checked in game that it gets what the Squirrel gets. I chose category 1 myself and haven't asked you, so tell me if you'd rather it went elsewhere.
 ```
 
 **[XND] Nocturnal Animals (Continued)** (item `2269731409`, Mlie), if still `drafted`:
 
 ```
-Thanks for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2269731409]Nocturnal Animals[/url] :) It let Dust Bunnies Renew's little dust bunny keep sweeping at night instead of during the day, which suits a creature made of what accumulates while nobody's looking. One extension, one field, and it just worked.
+Thanks for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2269731409]Nocturnal Animals[/url] :) Dust Bunnies Renew gives its dust bunny your extension with the Nocturnal body clock, only when your mod is loaded, and in game I read it back as Nocturnal. It is optional on my side, nothing needs it. Thank you for keeping XeoNovaDan's mod alive for 1.6.
 ```
 
 **[XND] Nocturnal Animals (the original, XeoNovaDan)** (item `2004368312`), if still `drafted`
@@ -108,7 +109,7 @@ Thanks for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=226973140
 in the registry with that reason instead of posting:
 
 ```
-Thanks for the original Nocturnal Animals :) Dust Bunnies Renew uses it (via Mlie's continuation) to give the dust bunny a nocturnal body clock — a small idea that still holds up.
+Thanks for the original Nocturnal Animals :) Dust Bunnies Renew gives its dust bunny the Nocturnal body clock through the continuation Mlie maintains for 1.6, and it works in game. Your idea is the one it rests on.
 ```
 
 ## Dependencies and DLC
