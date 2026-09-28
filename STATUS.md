@@ -52,7 +52,7 @@ Better Crossbreeding stays open in BACKLOG.md as a design decision.
 **Result, 2026-09-25 (tickets `3128` and `bc21`, tree `52f756f`, both green).** Feature `09` passed with Nocturnal Animals staged:
 the extension reads `Nocturnal`. The bare English pass has no error about the extension, its class or an XML field in its
 startup log, only the companion's benign one: **`MayRequire` on a `modExtensions` list item is honoured by 1.6**, the item is
-skipped silently without the mod. The unverified item is closed. The evidence is in `2026-09-25-nocturnal` and
+skipped silently without the mod. The unverified item is closed. The evidence is in `2026-09-28-rename-nocturnal` (ticket `cfac`, after the packageId rename; `2026-09-25-nocturnal` deleted as superseded) and
 `2026-09-25-bare-startup`, minified, with their `steps.txt`.
 
 **Wording fixed after the runs.** "Category 1, small critters" was my gloss: ADS 2 labels category 1 "basic replacements" and it
@@ -138,8 +138,8 @@ correction pass, which touches comments and prose and the feature file's leading
 |---|---|---|---|
 | English, minimal set | `20260924-165202-390-506b` | `Dust Bunnies Renew - Pickle tests,!@fr-only` | `Tests/Pickle/Evidence/2026-09-24-english` |
 | French, minimal set | `20260924-165202-869-d71d` | `Dust Bunnies Renew - Pickle tests,!@en-only,!@slow` | `Tests/Pickle/Evidence/2026-09-24-french` |
-| Original mod beside this one | `20260924-165203-308-7a77` | `07-original-mod-incompatibility`, `wsl-deps.incompat-original.map` | `Tests/Pickle/Evidence/2026-09-24-incompat` |
-| Animal Prosthetics 2 beside it | `20260924-165810-057-f694` | `08-animal-prosthetics-2`, `wsl-deps.avec-ads2.map` | `Tests/Pickle/Evidence/2026-09-25-fix-ads2` (the first run of the pass, `2026-09-24-ads2`, failed on the harness order and was deleted) |
+| Original mod beside this one | `20260924-165203-308-7a77` | `07-original-mod-incompatibility`, `wsl-deps.incompat-original.map` | `Tests/Pickle/Evidence/2026-09-28-rename-incompat` (re-run 2026-09-28 after the packageId rename, ticket `e43c`; the 2026-09-24 report was deleted as superseded) |
+| Animal Prosthetics 2 beside it | `20260924-165810-057-f694` | `08-animal-prosthetics-2`, `wsl-deps.avec-ads2.map` | `Tests/Pickle/Evidence/2026-09-28-rename-ads2` (re-run 2026-09-28 after the packageId rename, ticket `e03d`; `2026-09-25-fix-ads2` deleted as superseded) (the first run of the pass, `2026-09-24-ads2`, failed on the harness order and was deleted) |
 
 The fourth was filed once ADS 2 was on the machine: the owner asked for it on 2026-09-24 and it was fetched into the WSL
 cache through the machine lock (`steamcmd`, version 1.3.7, `packageId` as expected). A result read from these reports is
