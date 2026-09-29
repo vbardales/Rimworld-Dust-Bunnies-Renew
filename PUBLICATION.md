@@ -70,8 +70,12 @@ interface change (AUDIT.md, "Captures destinées à la publication"): `11-galler
 `English -DepMap wsl-deps.gallery.map`, using PickleTools' Zen Meadow Screenshot Studio for the
 scale shot and ScreenshotMode for the dialogs, as the French review pass (`10-french-dialogs`)
 already does. It is `@review`: green proves the four captures were taken, not what is on them —
-each one still has to be opened and looked at before upload. Order:
+each one still has to be opened and looked at before upload. Order (owner's convention,
+2026-09-29: the first image is numbered 0 and is a copy of `Preview.png`):
 
+0. A copy of `Mod/About/Preview.png`, itself carrying the cut-out `ModIcon.png` popping out of a
+   corner (see `Art/cutout-icon.cjs` and `Art/overlay-icon.cjs`) — the same header image, so the
+   gallery opens on it too.
 1. The live dust bunny on the floor, next to a colonist, showing scale.
 2. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost.
 3. The dust bunny's information card, showing its stats (comfortable to -55 C, immune to toxic
