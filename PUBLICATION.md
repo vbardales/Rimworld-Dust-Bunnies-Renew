@@ -70,20 +70,31 @@ interface change (AUDIT.md, "Captures destinées à la publication"): `11-galler
 `English -DepMap wsl-deps.gallery.map`, using PickleTools' Zen Meadow Screenshot Studio for the
 scale shot and ScreenshotMode for the dialogs, as the French review pass (`10-french-dialogs`)
 already does. It is `@review`: green proves the four captures were taken, not what is on them —
-each one still has to be opened and looked at before upload. Order (owner's convention,
-2026-09-29: the first image is numbered 0 and is a copy of `Preview.png`):
+each one still has to be opened and looked at before upload.
 
-0. A copy of `Mod/About/Preview.png`, itself carrying the cut-out `ModIcon.png` popping out of a
-   corner (see `Art/cutout-icon.cjs` and `Art/overlay-icon.cjs`) — the same header image, so the
-   gallery opens on it too.
+Gallery folder: `Art/Workshop` (`galleryDir` in `.github/publish.config.json`; the dry-run lists
+it as a reminder, SteamCMD never sends it — the CI has one `previewfile` field, the gallery goes
+up by hand on the Steam page). Order (owner's convention, 2026-09-29: the first image is
+numbered 0, a byte-identical copy of `Preview.png`, recopied every time the Preview changes so
+the two never drift):
+
+0. `00-preview.png` — a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
+   flood-filled `ModIcon.png` cut-out (`_tools/cutout-icon.cjs`, `_tools/overlay-icon.cjs`, the
+   reference implementation is `ManyHappyReturns/_tools/cutout-icon.cjs`) popping out of the
+   scene's emptiest corner, bottom-left, tilted +15°, bleeding past the frame. Done; committed.
 1. The live dust bunny on the floor, next to a colonist, showing scale.
 2. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost.
 3. The dust bunny's information card, showing its stats (comfortable to -55 C, immune to toxic
    buildup, never eats).
 4. The dust resource's information card (Fabric stuff, worst insulator).
 
-Each image opened and looked at before upload; none may show developer tools, another mod's
-debug overlay, the Pickle launcher panel, or an empty inventory column.
+**Images 1-4 are not in `Art/Workshop` yet.** `11-gallery-captures` produced them once
+(2026-09-28, ticket `6c8a`): the bill dialog and the two information cards were opened and are
+clean; the scale shot showed no visible bunny and was fixed twice (`3f81`, `e4be`, the second an
+infra crash), refiled as `b340`, still pending. Add `01-` to `04-` once that capture is opened
+and looks right, matching the numbering above; each still has to be opened and looked at, and
+none may show developer tools, another mod's debug overlay, the Pickle launcher panel, or an
+empty inventory column.
 
 ## Thank-you comments
 
