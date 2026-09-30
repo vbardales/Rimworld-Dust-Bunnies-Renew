@@ -1,7 +1,7 @@
 ---
 localization: complete
 translation_en: complete
-translation_fr: complete
+translation_fr: partial
 settings_audit: not_applicable
 mod:          Dust Bunnies Renew (unofficial)
 packageId:    nelim.dustbunnies
@@ -25,14 +25,44 @@ showcase:     complete
 tested_on:    2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
 remaining:
+  - "unverified: French review by Virginie (TRANSLATIONS.md, 2026-09-30, \"Systematic French review by Virginie\"): FRENCH_REVIEW.md generated from the shipped DefInjected XML, all 12 rows resolved; not yet reviewed. translation_fr cannot go to `complete` until she has."
   - "unverified: [prepublished gate] Gallery screenshots (see PUBLICATION.md, `Gallery order`; TESTING.md, pass 7): written as Pickle scenario `11-gallery-captures`, not by hand (Virginie, 2026-09-27), staged with `wsl-deps.gallery.map`; not yet run, and its four captures still to be opened and looked at once it is."
   - "unverified: [prepublished gate] Thank-you comments for A Dog Said... Animal Prosthetics 2 and Nocturnal Animals (both authors): drafted in PUBLICATION.md, but check WORKSHOP_COMMENTS.md first, another mod's draft may post first; post only once this item is public."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
-updated:      2026-09-27
+updated:      2026-09-30
 ---
 
 # Dust Bunnies Renew — status
+
+## Translation audit — 2026-09-30 (French gender-agreement rule; Claude Sonnet 5)
+
+TRANSLATIONS.md §3 added a rule (2026-09-30) requiring every French text that agrees with a
+pawn's gender to go through the three-segment `{PAWN_gender ? masc : fem : neutral}` switch, and
+a systematic review of French by Virginie (this session cannot certify it). Every mod with a
+`Languages/French` folder had `translation_fr` reset to `unchecked`; this mod's is reset here.
+
+Read all four French files in full, no pattern search (`Mod/Languages/French/DefInjected/`:
+`ThingDef/Items_Resource_Dust.xml`, `PawnKindDef/Races_DustBunny.xml`,
+`RecipeDef/Recipes_DustBunny.xml`, `ThingDef/Races_DustBunny.xml`; no `Keyed` folder, no
+mod-owned grammar resource — confirmed by the same 2026-09-13 audit below, unchanged since).
+Twelve keys total. None is a French adjective, past participle or noun that agrees with a pawn:
+the two jobStrings (`GatherDust.jobString`, `MakeDustBunny.jobString`) are third-person-present
+verbs ("Récolte...", "Fabrique..."), which do not inflect by gender in French, and the remaining
+ten are labels and descriptions of the resource and the animal, not of a person. No gender switch
+is missing; nothing to fix.
+
+`FRENCH_REVIEW.md` generated at the mod root by `_tools/Generate-FrenchReview.ps1` (adapted from
+`FoodCourt/_tools/Generate-FrenchReview.ps1`, the reference implementation: this mod's tool
+extends `Resolve-DefField` to follow `ParentName` and to address a list item by its own `<label>`
+text, since `DustBunny.tools.head.label` is inherited from the abstract `BaseDustBunny` and is
+not a numeric list index). All 12 rows resolved; none flagged `?`. Original equals English
+throughout (the source mod was authored in English, stated once at the top of the file rather
+than per row).
+
+`translation_fr` set to `partial`, never `complete`: only Virginie reviews French
+(TRANSLATIONS.md). `localization` and `translation_en` stay `complete` (unaffected by this rule;
+re-verified against the same inventory). Offline suite (`_tools/Test-Mod.ps1`) green.
 
 ## Nocturnal Animals, native — 2026-09-25 (Claude Sonnet 5)
 
