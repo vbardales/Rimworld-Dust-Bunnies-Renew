@@ -20,7 +20,7 @@
     <OutputPath>..\Mod\Pickle\Assemblies\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RimWorldManaged>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\</RimWorldManaged>
-    <PickleAssemblies>C:\Program Files (x86)\Steam\steamapps\workshop\content\294100\3791648678\Assemblies\</PickleAssemblies>
+    <PickleAssemblies>C:\Program Files (x86)\Steam\steamapps\workshop\content\294100\3791648678\1.6\Assemblies\</PickleAssemblies>
   </PropertyGroup>
 
   <ItemGroup>

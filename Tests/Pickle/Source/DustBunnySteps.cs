@@ -107,12 +107,28 @@ namespace DustBunnies.PickleSteps
         /// is AnimalBaby, so it measures 0.04: at the studio's preset zoom it is a grey speck a few pixels wide, and
         /// the first gallery capture (2026-09-28) showed a colonist and no visible animal.
         /// </summary>
+        private static readonly System.Reflection.FieldInfo RootSizeField =
+            typeof(CameraDriver).GetField("rootSize", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        private static readonly System.Reflection.FieldInfo DesiredSizeField =
+            typeof(CameraDriver).GetField("desiredSize", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        /// <summary>
+        /// Centres the camera on the one spawned dust bunny and zooms in, for a capture. The animal's only life stage
+        /// is AnimalBaby, so it measures 0.04: at the studio's preset zoom it is a grey speck a few pixels wide, and
+        /// the first two gallery captures (2026-09-28, 2026-09-29) showed a colonist and no visible animal, or the
+        /// unzoomed studio framing, because SetRootSize only sets a target the camera eases toward over several
+        /// frames: a screenshot taken the same tick still shows the old zoom. The private rootSize field (read by
+        /// every frame that draws) is written directly here, alongside desiredSize, so the zoom is instant.
+        /// </summary>
         [When("Dust Bunnies Renew: the camera is centred on the dust bunny at zoom {float}")]
         public void CameraOnBunny(PickleContext ctx, float rootSize)
         {
             var bunny = TheBunny(ctx);
             Find.CameraDriver.JumpToCurrentMapLoc(bunny.Position);
             Find.CameraDriver.SetRootSize(rootSize);
+            ctx.Assert(RootSizeField != null && DesiredSizeField != null, "CameraDriver has no private rootSize/desiredSize field: the game changed, ask a fresh look at CameraDriver");
+            RootSizeField.SetValue(Find.CameraDriver, rootSize);
+            DesiredSizeField.SetValue(Find.CameraDriver, rootSize);
         }
 
         /// <summary>
