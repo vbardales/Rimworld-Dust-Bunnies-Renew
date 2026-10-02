@@ -23,8 +23,8 @@ Feature: the Workshop gallery images
     And game speed is paused
     When Dust Bunnies Renew: a dust bunny is spawned beside the colonist "Miel"
     And Nelim's Pickle Tools: I frame the studio "flowers"
-    And Dust Bunnies Renew: the camera is centred on the dust bunny at zoom 6
     And Nelim's Pickle Tools: studio presentation mode is enabled
+    And Dust Bunnies Renew: the camera is centred on the dust bunny at zoom 6
     And I take a screenshot "the dust bunny in the meadow, scale"
     Then no errors were logged
 
