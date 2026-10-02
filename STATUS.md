@@ -1,7 +1,7 @@
 ---
 localization: complete
 translation_en: complete
-translation_fr: partial
+translation_fr: complete
 settings_audit: not_applicable
 mod:          Dust Bunnies Renew (unofficial)
 packageId:    nelim.dustbunnies
@@ -26,7 +26,6 @@ showcase:     complete
 tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria met, see the audit entry below); 2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
 remaining:
-  - "unverified: French review by Virginie (TRANSLATIONS.md, 2026-09-30, \"Systematic French review by Virginie\"): FRENCH_REVIEW.md generated from the shipped DefInjected XML, all 12 rows resolved; not yet reviewed. translation_fr cannot go to `complete` until she has."
   - "unverified: [prepublished gate] Gallery: images 2 to 4 (English dialogs) opened 2026-10-02, clean; image 1, the scale shot, still shows no distinguishable bunny (`11-gallery-captures` needs a closer camera, then a ticket). Images 1 to 4 are not in `Art/Gallery` yet; only `0-preview.png` is (see PUBLICATION.md, `Gallery order`)."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
@@ -62,6 +61,11 @@ Checked on the real artifacts, not on this file:
   `# French review - <display name>`, one script for every mod). The mod's own `_tools/Generate-FrenchReview.ps1` is
   deleted. The shared script does not follow `ParentName`, so the `head` row has an empty English cell; it carries a `?` and
   the reason, from `french-review-flags.json`. 12 rows, still awaiting Virginie.
+
+- **French review, 2026-10-02: Virginie, reviewed, validated** ("humour conserve"), `FRENCH_REVIEW.md` of the 12 rows, texts unchanged since
+  revision `52f756f`. One correction requested and done: `DustBunny.tools.head.label` is traced as inherited from the abstract
+  `BaseDustBunny` (English `head`), `tête` is correct. The shared generator does not follow `ParentName`, so its English cell
+  is empty; the `?` flag and `french-review-flags.json` are removed, the trace is this line. `translation_fr: complete`.
 
 Not rechecked, kept from earlier audits: icon and Preview (2026-09-12 and after), dependencies, translations (2026-09-13,
 2026-09-30). Open and unchanged: `translation_fr` stays `partial` until Virginie reviews `FRENCH_REVIEW.md`.
