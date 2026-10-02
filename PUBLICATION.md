@@ -79,21 +79,20 @@ numbered 0, a byte-identical copy of `Preview.png`, recopied every time the Prev
 the two never drift):
 
 0. `0-preview.png` — a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
-   true-alpha `ModIcon-badge.png` derivative in the bottom-left corner, tilted +15° and bleeding past the
-   frame. Its local radial veil uses the palette's veil colour. Done; committed.
+   the ModIcon badge in a corner (placement and veil in `Art/Preview.config.json`, rendered by the shared
+   renderer, see `Art/preview-workflow.md`). Done; committed.
 1. The live dust bunny on the floor, next to a colonist, showing scale.
 2. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost.
 3. The dust bunny's information card, showing its stats (comfortable to -55 C, immune to toxic
    buildup, never eats).
 4. The dust resource's information card (Fabric stuff, worst insulator).
 
-**Images 1-4 are not in `Art/Gallery` yet.** Read on 2026-10-02: the three English dialogs
-(`Tests/Pickle/Evidence/2026-09-28-gallery`) are clean: no developer tool, no overlay, no launcher panel, no empty
-column. Image 1, the latest scale shot (`2026-09-30-gallery-scale4`, a passed run), **does not show the bunny**: a
-colonist ("Miel") alone on a meadow, the bunny a few pixels beside her at 1920 px. `11-gallery-captures` needs a closer
-camera before it can be image 1. Observation for image 3: the card reads "Leather amount 18", the def-level figure (the
-animal yields about 6, as the description says); a reader of the gallery sees 18. Add `1-` to `4-` once all four are
-right, in the numbering above. The `0-` rule (single digit, byte copy of the Preview) is met by `0-preview.png`.
+**State, 2026-10-02.** `Art/Gallery` holds `0-preview.png` and images 2 to 4, cropped to their dialogs from the English
+run (originals in `Tests/Pickle/Evidence/2026-09-28-gallery`); they were opened and are clean. Image 1 is the staged
+photograph of `11-gallery-captures` (owner's rule, 2026-10-02: every gallery capture is staged except the menus): the
+earlier scale shots showed no distinguishable bunny, the zoom being reset after the step. It is not in the folder until a
+run shows the bunny; then add `1-`. Image 3 reads "Leather amount 18", the def-level figure (the animal yields about 6, as
+the description says).
 
 ## Thank-you comments
 

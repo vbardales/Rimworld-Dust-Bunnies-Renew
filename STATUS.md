@@ -26,7 +26,7 @@ showcase:     complete
 tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria met, see the audit entry below); 2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
 remaining:
-  - "unverified: [prepublished gate] Gallery: images 2 to 4 (English dialogs) opened 2026-10-02, clean; image 1, the scale shot, still shows no distinguishable bunny (`11-gallery-captures` needs a closer camera, then a ticket). Images 1 to 4 are not in `Art/Gallery` yet; only `0-preview.png` is (see PUBLICATION.md, `Gallery order`)."
+  - "unverified: [prepublished gate] Gallery: `Art/Gallery` holds `0-preview.png` and images 2 to 4 (cropped English dialogs, opened 2026-10-02, clean); image 1, the staged scale photograph of `11-gallery-captures`, awaits a run that shows the bunny (see PUBLICATION.md, `Gallery order`)."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 updated:      2026-10-02
@@ -701,3 +701,8 @@ delivered preview. The obsolete local QA directory was replaced by the shared re
 configuration/gallery/preview tests pass 17/17, and `_tools/Test-Mod.ps1` rebuilds with zero
 warnings or errors and passes XML, Def-reference, patch and translation checks. Gameplay status
 is unchanged; no push or Workshop publication was performed.
+
+
+## Preview source migration — 2026-10-02
+
+Copy, typography, layout and palette are consolidated in `Art/Preview.config.json`. The canonical inputs are `Art/Preview-source.png`, `Art/echo.png` and `Art/ModIcon-source.png`; the shared renderer writes temporary diagnostics under ignored `Art/.render/`. Existing distributed Preview, gallery and ICO outputs were preserved because they were present and coherent; no render was run for this migration. Superseded JSON files and generated QA intermediates were removed. Nothing published.

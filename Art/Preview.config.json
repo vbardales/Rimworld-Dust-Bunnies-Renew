@@ -2,9 +2,23 @@
   "title": "Dust Bunnies Renew (unofficial)",
   "titleSize": 50,
   "titleParts": [
-    { "text": "Dust Bunnies", "scale": 1 },
-    { "text": "Renew", "scale": 0.65, "font": "ui", "color": "secondary", "breakBefore": true },
-    { "text": "(unofficial)", "scale": 0.65, "font": "ui", "color": "secondary" }
+    {
+      "text": "Dust Bunnies",
+      "scale": 1
+    },
+    {
+      "text": "Renew",
+      "scale": 0.65,
+      "font": "ui",
+      "color": "secondary",
+      "breakBefore": true
+    },
+    {
+      "text": "(unofficial)",
+      "scale": 0.65,
+      "font": "ui",
+      "color": "secondary"
+    }
   ],
   "suffix": "",
   "tag": "",
@@ -13,7 +27,7 @@
   ],
   "layout": "panel",
   "panelAnchor": "top-left",
-  "backgroundFile": "Preview.png",
+  "backgroundFile": "Preview-source.png",
   "backgroundPosition": "center",
   "backgroundSize": "cover",
   "echo": {
@@ -30,7 +44,7 @@
     "flipX": true
   },
   "iconBadge": {
-    "file": "ModIcon-badge.png",
+    "file": "ModIcon-source.png",
     "corner": "bottom-left",
     "width": 180,
     "translate": "-5%, 5%",
@@ -39,5 +53,12 @@
     "veilSize": 275,
     "veilLeft": -55,
     "veilBottom": -61
+  },
+  "palette": {
+    "veil": "#302A24",
+    "inkPrimary": "#F2ECE1",
+    "inkSecondary": "#D6B38A",
+    "accent": "#FFE119",
+    "badgeInk": "#17120E"
   }
 }

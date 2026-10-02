@@ -45,3 +45,6 @@ desktop.ini
 # The durable record is one text line per run in docs/runs/ (see TESTING.md, "Evidence to keep").
 Tests/Pickle/Evidence/
 evidence/
+
+# Reproducible Preview diagnostics generated locally by the shared renderer.
+Art/.render/
