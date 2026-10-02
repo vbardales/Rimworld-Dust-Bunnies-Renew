@@ -65,7 +65,7 @@ Checked on the real artifacts, not on this file:
 - **French review, 2026-10-02: Virginie, reviewed, validated** ("humour conserve"), `FRENCH_REVIEW.md` of the 12 rows, texts unchanged since
   revision `52f756f`. One correction requested and done: `DustBunny.tools.head.label` is traced as inherited from the abstract
   `BaseDustBunny` (English `head`), `tête` is correct. The shared generator does not follow `ParentName`, so its English cell
-  is empty; the `?` flag and `french-review-flags.json` are removed, the trace is this line. `translation_fr: complete`.
+  shows the inherited source through `french-review-english.json` (`head (inherited from BaseDustBunny)`), no `?`. `translation_fr: complete`.
 
 Not rechecked, kept from earlier audits: icon and Preview (2026-09-12 and after), dependencies, translations (2026-09-13,
 2026-09-30). Open and unchanged: `translation_fr` stays `partial` until Virginie reviews `FRENCH_REVIEW.md`.
