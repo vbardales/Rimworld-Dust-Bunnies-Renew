@@ -26,7 +26,7 @@ showcase:     complete
 tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria met, see the audit entry below); 2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
 remaining:
-  - "unverified: [prepublished gate] Gallery: `Art/Gallery` holds `0-preview.png` and images 2 to 4 (cropped English dialogs, opened 2026-10-02, clean); image 1, the staged scale photograph of `11-gallery-captures`, awaits a run that shows the bunny (see PUBLICATION.md, `Gallery order`)."
+  - "unverified: [prepublished gate] Gallery (owner's rule, 2026-10-02: every capture is staged except menus): `Art/Gallery` holds `0-preview.png` and images 2 to 4 (cropped English dialogs, opened 2026-10-02, clean); image 1, the staged scale photograph of `11-gallery-captures`, awaits a run that shows the bunny (see PUBLICATION.md, `Gallery order`)."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 updated:      2026-10-02
@@ -34,7 +34,7 @@ updated:      2026-10-02
 
 # Dust Bunnies Renew — status
 
-## Audit — 2026-10-02 (Claude Sonnet 5; revision `81921e4`, working tree: documentation and evidence only)
+## Audit — 2026-10-02 (Claude Sonnet 5; audited at `81921e4`, later commits touch the gallery scenario, `Art/` and documentation only; `Mod/` is unchanged since `077502e`)
 
 `tested` -> `tested`, no change. `workflow_stage: tested` added (the field was missing; session title `dustbunnies / tested`).
 
@@ -48,8 +48,10 @@ Checked on the real artifacts, not on this file:
 - `tested`: no `@wip` in the eleven features; all five `@requires` features (07 to 11) have a green pass on a map that
   mounts their condition (`docs/runs/history.md`); no manual test left (TESTING.md, map of the eighteen). The
   `_tools/Test-Mod.ps1` suite was **rerun**: PASS, every claim holds, 12 French keys checked.
-- Captures opened: the three English dialogs are clean. The scale shot is not usable (no visible bunny); that is a
-  `prepublished` gate, recorded in `remaining`, not a defect of the mod.
+- Captures opened: the three English dialogs are clean (cropped into `Art/Gallery` as images 2 to 4). The scale shot was not
+  usable (no visible bunny: the camera zoom was reset after the step); it is now written as a staged photograph (styled
+  colonist, lamp and stool, zoom set twice with a read-back) and awaits its run. A `prepublished` gate, recorded in
+  `remaining`, not a defect of the mod.
 - Evidence: 44 MB to 13 MB, superseded gallery folders deleted, French captures minified; the list that stays and
   what to keep during the next tests is in `TESTING.md`, "Evidence to keep". No `STATUS.md` field points to a deleted folder.
 - Documentation read again; versions in `docs/PROTOCOLS-READ.md`. New since 2026-09-25 and applied: the gallery folder
@@ -58,9 +60,8 @@ Checked on the real artifacts, not on this file:
   pending" item is gone (the text is not in `About.xml`).
 
 - `FRENCH_REVIEW.md` regenerated with the shared `scripts/Make-FrenchReview.ps1` (TRANSLATIONS.md, 2026-10-02: first line
-  `# French review - <display name>`, one script for every mod). The mod's own `_tools/Generate-FrenchReview.ps1` is
-  deleted. The shared script does not follow `ParentName`, so the `head` row has an empty English cell; it carries a `?` and
-  the reason, from `french-review-flags.json`. 12 rows, still awaiting Virginie.
+  `# French review - <display name>`, one script for every mod); the mod's own `_tools/Generate-FrenchReview.ps1` is deleted.
+  Reviewed and validated by Virginie, see the next entry.
 
 - **French review, 2026-10-02: Virginie, reviewed, validated** ("humour conserve"), `FRENCH_REVIEW.md` of the 12 rows, texts unchanged since
   revision `52f756f`. One correction requested and done: `DustBunny.tools.head.label` is traced as inherited from the abstract
@@ -701,7 +702,6 @@ delivered preview. The obsolete local QA directory was replaced by the shared re
 configuration/gallery/preview tests pass 17/17, and `_tools/Test-Mod.ps1` rebuilds with zero
 warnings or errors and passes XML, Def-reference, patch and translation checks. Gameplay status
 is unchanged; no push or Workshop publication was performed.
-
 
 ## Preview source migration — 2026-10-02
 
