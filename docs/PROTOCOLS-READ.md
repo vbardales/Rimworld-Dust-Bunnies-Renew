@@ -1,56 +1,58 @@
 # Protocols read, and in which version
 
-Written 2026-09-25 by Claude Sonnet 5, after the context of the session was compacted. It says what was read, at which
-version, what came out of it for this mod, and which documents were of no use, so that a document that has not moved
-is not read twice. The version is the last commit that touched the file (`git log -1`), and `clean` means
-`git status --short` shows nothing for it. Reread a document when its commit differs from the one below.
+Rewritten 2026-10-02 by Claude Sonnet 5, for the AUDIT.md pass. It says what was read, at which version, what it gave this
+mod, and which documents were of no use, so that a document that has not moved is not read twice. Reread a document when
+its version differs from the one below. Times are local.
 
-The collection root and each sibling repository are separate Git repositories. Times are local.
+**How a version is read.** The protocol documents (`AGENTS.md`, `AUDIT.md`, `PUBLISHING.md`, `TRANSLATIONS.md`,
+`STYLE_RIMWORLD.md`, `MOD_SETTINGS.md`, `WORKSHOP_COMMENTS.md`, `scripts/SEARCHING.md`) belong to the protocols repository, not
+to the monorepo: `git log` from the monorepo returns the commit that *removed* them, a plausible hash for the opposite of what
+is wanted (this file's 2026-09-25 version recorded `90d51374`, which is that removal). The right command, from the collection
+root: `git --git-dir=../rimworld-protocols.git --work-tree=. log -1 --format='%h %ci' -- <file>`. `M` means modified, not committed.
+The tool repositories and this repository answer to plain `git log -1` in their own folder.
 
 ## Read, and useful
 
 | Document | Version | What it gave this mod |
 |---|---|---|
-| `AGENTS.md` | root `90d51374`, 2026-09-25 15:25, clean | Evidence rules (latest report per scenario for the current revision, list before deleting, never delete what `STATUS.md` points to, one line per run in `docs/runs/`); publication goes through the CI, no session approves a `publish`. Applied: the evidence folders were minified and the failed ADS 2 run deleted. |
-| `AUDIT.md` | root `90d51374`, 2026-09-25 15:25, clean | The chain, and the criteria of `done` and `tested`. `tested` needs the `@review` captures actually opened, no `@wip`, every `@requires` pass played with its own map and its report read (`setName`, suite and scenario names), no manual test left. The pass with a declared-incompatible mod asserts the documented symptom and stays green. A pass map is played in order and the mod under test comes last unless the map names it. Tickets: small, one pass per request, a fix ticket plays the minimum. |
-| `Rimworld-Ticket-Dispatcher/docs/WELCOME.md` | `79668cc`, 2026-09-25 17:16, clean | How to file, what to expect (`START`, `END`, `RUN_DONE`), no watcher. **A request carries no SHA: put it in `-Label`.** The tickets filed so far did not record it in their labels: `docs/runs/history.md` names the tree of each run instead. Evidence: `report.html` and `messages.ndjson` of a superseded build are not kept. Read again after each compaction, with this file. |
-| `Rimworld-Ticket-Dispatcher/docs/SUBMIT.md` | `79668cc`, 2026-09-25 17:16, clean | Every option of `Submit-PickleRun.ps1`. `-DepMap` takes a file name, never a relative path. Exit codes. `-Extra '-pickle-scenario-timeout=N'` if a wait ever trips the watchdog. |
-| `PUBLISHING.md` | root `90d51374`, 2026-09-25 15:25, clean | Needed for `prepublished`: the description ends with `[url=...]Source code on GitHub[/url]`; **every integration studied or exercised is thanked by name, and every named mod with its own page is linked** (ADS 2 is neither yet, see below); the distributed `ATTRIBUTION.md` must equal the root one (compared, identical, hash `a272e510`); everything is in English; the Steam description is sent once, so it is fixed by hand afterwards. Not applicable here: the parts on the shared index, `--amend` and `subtree`, which concern the monorepo, since this mod is its own repository. |
-| `TRANSLATIONS.md` | root `90d51374` (last edited 2026-09-13), clean | `localization`, `translation_en`, `translation_fr` are `complete` and unchanged. The runtime check (raw keys, fallback, clipping, in French and English) is what scenario 16 and the French pass are for. |
-| `PickleTools/README.md` | PickleTools `2b7b6d0`, 2026-09-25 17:22, clean | The catalogue of shared tools. For this mod: **NewColony** (a new colony from the main menu), **KeyedClick**, **ScreenshotMode**, **ClearScreen**, **ClickDiagnostics**, **HoverSteps**, **ExpansionSteps**. A tool is staged by one line of a pass map, `nelim.pickletools.<tool> path:PickleTools/<Tool>/Mod`. |
-| `PickleTools/docs/steps.md` | PickleTools `d6d8db1`, 2026-09-25 17:44, clean (the folder is `docs/`, the earlier read was of Pickle's own catalogue) | Where to look before writing a step. The steps for the two remaining `tested` criteria exist: `the new colony's ... is`, `a new colony is started`, `I click button keyed {string}`, `screenshot mode is enabled around the open windows`. |
-| `PickleTools/Headless/README.md` | PickleTools `b2712fc`, 2026-09-25 15:03, clean | Filter terms, passes and maps (the map order is the activation order, `path:` and `!<dlc>` lines), exit codes, `-Then`, evidence. Most of the rest (lock, sleep, orphans) concerns the machine and the dispatcher, not a mod session. |
-| `Rimworld-Release-Admin/docs/OPERATIONS.md` | `d403592`, 2026-09-25 16:33, clean | For a later `prepublished` and `published`: a dry-run of the exact SHA first, `publish` with the full SHA, only Virginie approves. A documented-mode release reads the `### <version>` block of `PUBLICATION.md` and the `## [<version>]` section of `CHANGELOG.md`, so **`PUBLICATION.md` has to exist**. The gallery is manual. Nothing to do yet. |
+| `AGENTS.md` | `7fd7475`, 2026-09-29, clean | Evidence rules: per mod and scenario keep the latest report for the revision in the repository (plus an older one if it is the sole proof of a check), delete the rest, list before deleting, never delete what `STATUS.md` points to, history is one line per run in `docs/runs/`. Applied: evidence 44 MB to 13 MB. Publication goes through the CI; no session approves `steam-production`. |
+| `AUDIT.md` | `7fd7475`, 2026-09-29, clean, read whole | The chain and transition 9 (`tested`: no `@wip`, every `@requires` pass played on its own map and its report read, no manual test left, `@review` captures opened). Transition 10 (`prepublished`) and 11 (`published`). Session title `<packageId without nelim.> / <workflow_stage>`; `workflow_stage` was missing from `STATUS.md` and is added. A `0.1.0` prepublication opens the CHANGELOG with "creation d'un publishIdFile". |
+| `PUBLISHING.md` | `02394c0`, 2026-10-01, **modified, not committed** | Read: the first section (before the first envoi: start from the source repository and always send it a pull request, the one-shot description and its single Markdown source, packageId, images). New since 2026-09-25 and applied: **gallery folder starts at `0-` (single digit), a byte copy of `Preview.png`** (`Art/Workshop/00-preview.png` renamed `0-preview.png`); the Preview carries the ModIcon in a corner (done, `656ae2d`); captures of pawns must show off what the mod adds. Not reread: the CI section ("Publier par la CI"), read at publication. |
+| `TRANSLATIONS.md` | `af8427f`, 2026-10-02, clean | Read: "Review file". New since 2026-09-30 and applied: `FRENCH_REVIEW.md` starts with `# French review - <display name>` and is generated by the shared `scripts/Make-FrenchReview.ps1 -ModRoot .`, doubts in `french-review-flags.json`. The mod's own generator is deleted, the file regenerated. The French review stays Virginie's: `translation_fr` stays `partial`. |
+| `WORKSHOP_COMMENTS.md` | `7fd7475`, 2026-09-29, clean | Only this mod's rows read. Harmony, Pickle, RimLogging already cover Dust Bunnies Renew; ADS 2 (`3238353862`) and Nocturnal Animals (`2269731409`) are `posted` by the owner, 2026-09-28. Nothing to post; the drafts in `PUBLICATION.md` are deleted. |
+| `Rimworld-Ticket-Dispatcher/docs/WELCOME.md` | `77ca9d7`, 2026-09-27 | Whole text. One queue, one worker, one lock, state in `.pickle-state`; a request carries no SHA (write it in `-Label`); a gallery pass must zoom enough that the subject shows (Virginie, 2026-09-26: this mod's scale shot fails exactly that); delete evidence with `robocopy <empty> <target> /MIR` when paths exceed MAX_PATH; keep `summary.json` and `junit.xml`, never `report.html` or `messages.ndjson` of a superseded build; check `git status` for Explorer artifacts (`desktop.ini`, `.ico`) before a commit that touches `Mod/`. |
+
+## Read before, not reread, version moved or not
+
+| Document | Last read at, now | Note |
+|---|---|---|
+| `MOD_SETTINGS.md` | `b83933b`, 2026-09-23, clean | Unchanged since read 2026-09-13. `settings_audit: not_applicable` stands (no settings, no page, no shortcut). |
+| `Rimworld-Ticket-Dispatcher/docs/SUBMIT.md` | `d07b2b8`, 2026-09-26 | Moved since 2026-09-25 (state is `.pickle-state`). Reread before filing the next ticket. |
+| `PickleTools/README.md` | `ff20d89` | Reread before writing a scenario or a step. |
+| `PickleTools/docs/steps.md` | `da7c3b0` | Same. New steps since: `DefFields`, gizmo-by-key, select-by-def-and-cell, CoatSteps (not needed here). |
+| `PickleTools/Headless/README.md` | `ed4e73a` | Moved (a pass map's last line needs its newline; `-ThenWithout`). Reread before the next pass map. |
+| `Rimworld-Release-Admin/docs/OPERATIONS.md` | `3c03f51`, 2026-09-26, cut from 49 KB to 15 KB | Reread whole before any workflow, tag or `publish`. |
 
 ## Read, not useful now
 
 | Document | Version | Why not, and when to read it again |
 |---|---|---|
-| `STYLE_RIMWORLD.md` | root `90d51374`, 2026-09-25 15:25, clean | Generating and engraving the preview and the icon, which the owner alone generates. Both exist and are checked. Read it again only if the preview is regenerated or its 32 px readability is questioned. |
-| `scripts/SEARCHING.md` | root `90d51374`, 2026-09-17 mtime, clean | Searching the corpus of installed mods. The defName collision check was done at the start of the port. Read it again only for a new "who else declares this" question. |
+| `STYLE_RIMWORLD.md` | `c105a43` (2026-10-01), **modified, not committed** | Generating the preview and the icon, which only the owner generates. Both exist and are checked. Read again only if the preview is regenerated or its 32 px readability is questioned. |
+| `scripts/SEARCHING.md` | `50de695`, 2026-09-28 | Searching the corpus of installed mods. The defName collision check was done at the port. Read again only for a new "who else declares this" question. |
 
 ## Named in the request and not present
 
-`PUBLICATION.md`, `BACKLOG.md`, `NOTES.md`, `BUGS.md` do not exist in this repository. `BACKLOG.md` would not be the
-monorepo's in any case. `PUBLICATION.md` is required before `prepublished` (AUDIT.md, step 10): the order of the gallery
-images, the thank-you comments, the dependency answer, the adult-content answer, and the `### <version>` change note.
-It is not started; see `remaining` in `STATUS.md`.
+`NOTES.md` and `BUGS.md` do not exist in this repository and nothing calls for them. `BACKLOG.md` is the mod's own.
 
 ## The mod's own files
 
-`STATUS.md` `897c601` (2026-09-25 13:25), `README.md` `fb9a19a` (2026-09-24 16:51), `CHANGELOG.md` `8bc4401`
-(2026-09-24 23:41), `ATTRIBUTION.md` and `Mod/ATTRIBUTION.md` modified, not committed at the time of writing (see the
-commit that adds this file), `LICENSE` `1b63e37` (2026-09-19, identical to `Mod/LICENSE`), `TESTING.md` `897c601`,
-`Mod/About/About.xml` `fb9a19a`, `docs/runs/history.md` `897c601`, `Tests/Pickle/` `1e27f7c` and after.
+`STATUS.md` `bd4468e`, `README.md` `0d35d8a`, `CHANGELOG.md` `077502e`, `ATTRIBUTION.md` `87cfd94`, `LICENSE` `1b63e37`,
+`PUBLICATION.md`, `TESTING.md`, `BACKLOG.md` and `docs/runs/history.md` edited on 2026-10-02 (see the commit that adds this
+file), `Mod/About/About.xml` `077502e`, `Tests/Pickle/` `81921e4` and before. `Mod/ATTRIBUTION.md` still equals the root one.
 
 ## What reading them changed
 
-- `ATTRIBUTION.md` said "no patch" and "every stat unchanged". Both were false after the ADS 2 patch and the toxic stat.
-  It now describes both, credits ADS 2 and its author, and names the AI tools and Pickle. Its copy under `Mod/` is
-  identical.
-- Still open, and not started, for `prepublished`: the Steam description needs the sections AUDIT.md lists (`IF I GO
-  QUIET`, `AI-GENERATED`, `THANKS`, the ATTRIBUTION and licence line) and Workshop links on the mod names it cites
-  (ADS 2 and the original, which is a raw URL today); `About.xml` still says "In-game validation of this port is
-  pending"; and `PUBLICATION.md` does not exist. None of it blocks `tested`. The live Steam description is frozen
-  and can only be corrected by hand.
-- Tickets to come carry the tested SHA in their `-Label`.
+- `tested` re-checked on the real files: nothing lowers it. `workflow_stage: tested` written; the title is `dustbunnies / tested`.
+- Gallery folder renamed to the `0-` convention; its images 1 to 4 are not there: the scale shot shows no bunny.
+- `TESTING.md` said the scenarios had never run and the manual tests were not met; both statements were false and are rewritten.
+- Evidence trimmed, and `TESTING.md`, "Evidence to keep" names what stays for the next tests.

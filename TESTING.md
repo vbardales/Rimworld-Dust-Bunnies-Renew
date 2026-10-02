@@ -34,23 +34,22 @@ outside the repository; the script calls `pwsh` by name and does not fall back.
 
 ## What `tested` requires
 
-**`done` is met**, as of 2026-09-24. The collection's workflow, transition 8, asks for the Pickle scenarios to be *written*,
-with their scope justified; running them is left to `tested`. `Tests/Pickle/` holds 7 features and 7 local steps, and
-its README says what is in Gherkin, what deliberately is not, and why. `Tests/Pickle/Check-Steps.ps1` resolves every
-step line to exactly one step, and was checked against three deliberate faults before being trusted. **The scenarios
-have never been run.**
-
-Then transition 9 (`done` -> `tested`). Three checks, each measured against what exists.
+**`done` is met**, as of 2026-09-24, and **`tested` is met** (re-checked against AUDIT.md transition 9 on 2026-10-02). `Tests/Pickle/`
+holds 11 features and the local steps; `Tests/Pickle/Check-Steps.ps1` resolves every step line to exactly one step.
+Transition 9, one check at a time, against what exists:
 
 | Check | Where this mod stands |
 |---|---|
-| No scenario left in `@wip`. A shelved scenario is repaired and replayed, or deleted with its reason. | None of the seven features carries `@wip`, and `-IncludeWip` is never passed. It has to hold at the run, not only in the files. |
-| Every conditional scenario ran. Each `@requires` (optional mod, DLC, companion tool) had its own pass on a map that mounts it, and its report was read. | Two. `07-original-mod-incompatibility` carries `@requires:BlockHen.Animal.DustBunnies`, and plays only in the third pass, on a map that mounts the original. A report has to show it **played** there and **skipped** elsewhere; skipped in the third pass is not a pass. `08-animal-prosthetics-2` carries `@requires:SamBucher.ADogSaidAnimalProsthetics2` and plays only in the fourth pass, under the same rule. The About declares no hard dependency, and the content needs no DLC, so nothing else is conditional. |
-| No manual test left to validate. What is still ticked by hand is either automated and green, or listed as not applicable with its reason. | **Not met, and none has run.** The map below assigns each of the eighteen. Open: French clipping in the bill and information dialogs has no capture scenario. |
+| Scenarios run in game and green; `@review` captures opened; `exitReason` read first; played against discovered counted | Yes. Every feature `01` to `11` played green in some run (`docs/runs/history.md`, one line per run). The `@review` captures were opened: French dialogs (2026-09-26, nothing to correct), English dialogs of the gallery (2026-10-02, clean). |
+| No scenario left in `@wip`. | None of the eleven features carries `@wip`, and `-IncludeWip` is never passed. |
+| Every conditional scenario ran. Each `@requires` had its own pass on a map that mounts it, and its report was read. | Yes, five of them: `07` (`BlockHen.Animal.DustBunnies`, `wsl-deps.incompat-original.map`), `08` (`SamBucher.ADogSaidAnimalProsthetics2`, `wsl-deps.avec-ads2.map`), `09` (`Mlie.XNDNocturnalAnimals`, `wsl-deps.avec-nocturnal.map`), `10` (PickleTools ScreenshotMode, `wsl-deps.captures-fr.map`), `11` (Screenshot Studio and ScreenshotMode, `wsl-deps.gallery.map`). Each played in its own pass and was skipped elsewhere; `07`, `08`, `09` were replayed after the packageId rename (2026-09-28). |
+| No manual test left to validate. | Met. Each of the eighteen is automated and green, offline (`Check-Claims.ps1`, rerun green 2026-10-02), or `n/a` with its reason, in the map below. French clipping: `10-french-dialogs`, read. A new game is not required (Virginie, 2026-09-25). |
+
+The Workshop gallery (pass 7 below) is a `prepublished` gate, not a `tested` one.
 
 ### Where each manual check goes
 
-The suite is written and none of it has run. `Pickle` names the feature in `Tests/Pickle/Mod/Pickle/Features/`
+`Pickle` names the feature in `Tests/Pickle/Mod/Pickle/Features/`
 that covers the check; `offline` means an assertion for `Test-Mod.ps1`, because whatever can be proved outside
 the game has to be, and they are written, in `_tools/checks/Check-Claims.ps1`; `n/a` means the scenario would test the engine
 and not the mod, which the workflow rules out: the mod answers for what it declares, and that is read in the
@@ -79,7 +78,7 @@ sources. `Tests/Pickle/README.md` gives the reasoning per feature.
 | 18 | ADS 2: the dust bunny is offered a peg leg and a denture, and nothing above category 1 | The enrolment is declared and guarded offline, in `Check-Claims.ps1`. That the surgeries really reach a dust bunny, and that the patch ran before ADS 2 copied its lists, is a running-game fact: Pickle `08-animal-prosthetics-2`, the fourth pass. It compares with a Squirrel (ADS 2 lists it in category 1 only) and with a Cat (all three), so it names no recipe: ADS 2 does define them, `InstallPegLegAnimal` and its siblings, but a comparison holds whatever they are called. ADS 2 is in the WSL cache since 2026-09-24 and the pass is filed |
 | 5, tail | Save, quit, reload: the bunny, the dust and the queued bills persist | Pickle `04-save-reload`: a queued bill and an animal survive a round trip. The **made** animal's faction across a reload is not asserted: the animal there is spawned by kind, and faction persistence is vanilla's |
 
-Nothing in the Pickle rows was confirmed by running anything: it is the plan the first run settles. The offline rows run on every `Test-Mod.ps1`.
+The Pickle rows were all played green (see above); the offline rows run on every `Test-Mod.ps1`.
 
 ## Passes this mod needs
 
@@ -103,7 +102,7 @@ mod set and one language each.
    at `SamuelBucher/A-Dog-Said-Animal-Prosthetics-2`): the optional integration this mod declares, with
    `wsl-deps.avec-ads2.map`. It declares no hard dependency, so its line is the whole set. `08` asserts the load
    order first, this mod before ADS 2, because ADS 2 copies its category lists once; then that the dust bunny is
-   offered what a Squirrel is and less than a Cat. It is **written and filed**. ADS 2 is
+   offered what a Squirrel is and less than a Cat. It was played green. ADS 2 is
    not in the Windows Workshop; it was fetched into the WSL cache on 2026-09-24, at the owner's request, through
    the machine lock, and the staging script reads that cache as its second place.
 5. **With [XND] Nocturnal Animals (Continued)** (`Mlie.XNDNocturnalAnimals`, Workshop 2269731409): the second optional
@@ -124,8 +123,9 @@ mod set and one language each.
    after any interface change. `11-gallery-captures` stages PickleTools' Zen Meadow Screenshot Studio (its saved
    fixture and native-capture presentation mode) for the live dust bunny next to a colonist, showing scale, and
    ScreenshotMode for the English bill dialog and information cards, the same mechanism `10-french-dialogs` uses.
-   It is `@review`: green proves the four captures were taken, not what is on them — **still to be opened and
-   looked at**, and their order and what each shows is in `PUBLICATION.md`, "Gallery order". Written, not yet run.
+   It is `@review`: green proves the four captures were taken, not what is on them — **each is opened and
+   looked at**; the order and what each shows is in `PUBLICATION.md`, "Gallery order". Played: the three English dialogs
+   are clean (read 2026-10-02); the scale shot still does not show the bunny (see `PUBLICATION.md`).
 
 **No new game is created** (Virginie, 2026-09-25). The `tested` criterion "a new game and an existing save" is met by the
 existing save alone: loading a game saved **without** this mod, with the mod added, which is what the shared `test-colony`
@@ -172,15 +172,19 @@ on a superseded build: it proves nothing about the current one. Never keep a `sc
 from the shared report folder, which carries every other mod's captures. List what goes and what stays before
 deleting, and **never delete a report that `STATUS.md` or a tracked file points to: repoint it first.**
 
-What is worth keeping for this mod, once it has runs:
+What is worth keeping for this mod (the folders under `Tests/Pickle/Evidence/`, disk only, as of 2026-10-02):
 
-- the **English pass**: its summary and `Player.log` (startup and the recipe completion), and **one** capture
-  of the bunny standing on the crafting spot after the bill completes, `dust bunny made at the crafting spot`, taken by
-  the first scenario of `03`. That is the one image that shows the
-  mod working, and the only one a person has to read;
-- the **French pass**: its summary and `Player.log`, and nothing else. The labels are asserted, so their proof
-  is the report;
-- the **incompatibility pass**: its summary, and the step outcome that names which mod owned `MakeDustBunny`. There is no log line to keep, because the symptom is silence. Keep it until the original mod is updated: it is the sole proof of that check.
+- the latest run of each scenario on the current code (the tree of `077502e`: the code has not changed since, only text and
+  the Preview): `2026-09-28-rename-loads` (`01`), `-rename-incompat` (`07`, the sole proof of that check, keep it until the
+  original mod moves), `-rename-ads2` (`08`), `-rename-nocturnal` (`09`), plus `2026-09-25-bare-startup` (the startup log
+  with no error about the optional extension);
+- the passes the rename runs did not repeat, still on unchanged defs: `2026-09-24-english` and `-french`
+  (`02` to `06`, with `steps.txt`), `-fix-toxic` and `-fix-training` (the two scenarios that superseded their failing copies there);
+- the French captures, minified to JPEG: `2026-09-25-captures-fr`;
+- the gallery originals (the three dialogs are the only copy until images 1 to 4 sit in `Art/Workshop`; do not minify them):
+  `2026-09-28-gallery` (three English dialogs) and `2026-09-30-gallery-scale4` (the scale shot, summary and log).
+
+A new pass replaces the folder it supersedes: a rerun of `08` or `09` replaces its `-rename-` folder, it does not add one.
 
 Nothing else takes a capture. The two `Preview` and `ModIcon` images are the owner's and are not test evidence.
 

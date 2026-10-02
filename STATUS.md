@@ -14,6 +14,7 @@ local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
 stage:        tested
+workflow_stage: tested
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 upstream_mod_remotes:
@@ -22,18 +23,48 @@ upstream_pr:  https://github.com/blockdude/csharp-rimworld-dust-bunnies/pull/1 (
 port_licence: MIT, limited to port additions described in LICENSE
 dependencies: none required; optional integrations with SamBucher.ADogSaidAnimalProsthetics2 (loadBefore) and Mlie.XNDNocturnalAnimals (MayRequire on an extension)
 showcase:     complete
-tested_on:    2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
+tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria met, see the audit entry below); 2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
 remaining:
   - "unverified: French review by Virginie (TRANSLATIONS.md, 2026-09-30, \"Systematic French review by Virginie\"): FRENCH_REVIEW.md generated from the shipped DefInjected XML, all 12 rows resolved; not yet reviewed. translation_fr cannot go to `complete` until she has."
-  - "unverified: [prepublished gate] Gallery screenshots (see PUBLICATION.md, `Gallery order`; TESTING.md, pass 7): written as Pickle scenario `11-gallery-captures`, not by hand (Virginie, 2026-09-27), staged with `wsl-deps.gallery.map`; not yet run, and its four captures still to be opened and looked at once it is."
-  - "unverified: [prepublished gate] Thank-you comments for A Dog Said... Animal Prosthetics 2 and Nocturnal Animals (both authors): drafted in PUBLICATION.md, but check WORKSHOP_COMMENTS.md first, another mod's draft may post first; post only once this item is public."
+  - "unverified: [prepublished gate] Gallery: images 2 to 4 (English dialogs) opened 2026-10-02, clean; image 1, the scale shot, still shows no distinguishable bunny (`11-gallery-captures` needs a closer camera, then a ticket). Images 1 to 4 are not in `Art/Workshop` yet; only `0-preview.png` is (see PUBLICATION.md, `Gallery order`)."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
-updated:      2026-09-30
+updated:      2026-10-02
 ---
 
 # Dust Bunnies Renew — status
+
+## Audit — 2026-10-02 (Claude Sonnet 5; revision `81921e4`, working tree: documentation and evidence only)
+
+`tested` -> `tested`, no change. `workflow_stage: tested` added (the field was missing; session title `dustbunnies / tested`).
+
+Checked on the real artifacts, not on this file:
+- `Mod/About/PublishedFileId.txt` is `3806760430`, committed with `Add published Workshop file ID for 0.1.0`;
+  `CHANGELOG.md` has `## [0.1.0] — 2026-09-23`, "Creation of a publishIdFile", and `## [Unreleased]` above it.
+- No `.dds` tracked (0 in `git ls-files`); `*.dds` is in `.gitignore`; the five the game wrote stay on disk. No `.ico`
+  under `Mod/`; `Mod/desktop.ini` is ignored and untracked.
+- Source repository: `blockdude/csharp-rimworld-dust-bunnies` (in `upstream_mod_remotes`); pull request #1 is open,
+  no comment, no review (`gh pr view`, 2026-10-02).
+- `tested`: no `@wip` in the eleven features; all five `@requires` features (07 to 11) have a green pass on a map that
+  mounts their condition (`docs/runs/history.md`); no manual test left (TESTING.md, map of the eighteen). The
+  `_tools/Test-Mod.ps1` suite was **rerun**: PASS, every claim holds, 12 French keys checked.
+- Captures opened: the three English dialogs are clean. The scale shot is not usable (no visible bunny); that is a
+  `prepublished` gate, recorded in `remaining`, not a defect of the mod.
+- Evidence: 44 MB to 13 MB, superseded gallery folders deleted, French captures minified; the list that stays and
+  what to keep during the next tests is in `TESTING.md`, "Evidence to keep". No `STATUS.md` field points to a deleted folder.
+- Documentation read again; versions in `docs/PROTOCOLS-READ.md`. New since 2026-09-25 and applied: the gallery folder
+  starts at `0-preview.png` (renamed from `00-`, byte-identical to `Preview.png`); the thank-you drafts were deleted
+  (registry shows ADS 2 and Nocturnal `posted` by the owner on 2026-09-28); the stale "About.xml says validation is
+  pending" item is gone (the text is not in `About.xml`).
+
+- `FRENCH_REVIEW.md` regenerated with the shared `scripts/Make-FrenchReview.ps1` (TRANSLATIONS.md, 2026-10-02: first line
+  `# French review - <display name>`, one script for every mod). The mod's own `_tools/Generate-FrenchReview.ps1` is
+  deleted. The shared script does not follow `ParentName`, so the `head` row has an empty English cell; it carries a `?` and
+  the reason, from `french-review-flags.json`. 12 rows, still awaiting Virginie.
+
+Not rechecked, kept from earlier audits: icon and Preview (2026-09-12 and after), dependencies, translations (2026-09-13,
+2026-09-30). Open and unchanged: `translation_fr` stays `partial` until Virginie reviews `FRENCH_REVIEW.md`.
 
 ## Translation audit — 2026-09-30 (French gender-agreement rule; Claude Sonnet 5)
 

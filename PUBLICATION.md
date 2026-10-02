@@ -78,7 +78,7 @@ up by hand on the Steam page). Order (owner's convention, 2026-09-29: the first 
 numbered 0, a byte-identical copy of `Preview.png`, recopied every time the Preview changes so
 the two never drift):
 
-0. `00-preview.png` — a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
+0. `0-preview.png` — a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
    flood-filled `ModIcon.png` cut-out (`_tools/cutout-icon.cjs`, `_tools/overlay-icon.cjs`, the
    reference implementation is `ManyHappyReturns/_tools/cutout-icon.cjs`) popping out of the
    scene's emptiest corner, bottom-left, tilted +15°, bleeding past the frame. Done; committed.
@@ -88,44 +88,25 @@ the two never drift):
    buildup, never eats).
 4. The dust resource's information card (Fabric stuff, worst insulator).
 
-**Images 1-4 are not in `Art/Workshop` yet.** `11-gallery-captures` produced them once
-(2026-09-28, ticket `6c8a`): the bill dialog and the two information cards were opened and are
-clean; the scale shot showed no visible bunny and was fixed twice (`3f81`, `e4be`, the second an
-infra crash), refiled as `b340`, still pending. Add `01-` to `04-` once that capture is opened
-and looks right, matching the numbering above; each still has to be opened and looked at, and
-none may show developer tools, another mod's debug overlay, the Pickle launcher panel, or an
-empty inventory column.
+**Images 1-4 are not in `Art/Workshop` yet.** Read on 2026-10-02: the three English dialogs
+(`Tests/Pickle/Evidence/2026-09-28-gallery`) are clean: no developer tool, no overlay, no launcher panel, no empty
+column. Image 1, the latest scale shot (`2026-09-30-gallery-scale4`, a passed run), **does not show the bunny**: a
+colonist ("Miel") alone on a meadow, the bunny a few pixels beside her at 1920 px. `11-gallery-captures` needs a closer
+camera before it can be image 1. Observation for image 3: the card reads "Leather amount 18", the def-level figure (the
+animal yields about 6, as the description says); a reader of the gallery sees 18. Add `1-` to `4-` once all four are
+right, in the numbering above. The `0-` rule (single digit, byte copy of the Preview) is met by `0-preview.png`.
 
 ## Thank-you comments
 
-Registry: `../WORKSHOP_COMMENTS.md`. Two rows are `posted` and already list Dust Bunnies Renew
-in their `Covers` column (added 2026-09-27): Harmony, Pickle, RimLogging — nothing to post for
-them, they cover this mod's dev-tool credit already. Pickle Tools is `not_applicable` (same
-author, no self-comment). Two integrations are still `drafted` elsewhere; check the registry
-before posting either — if it is already `posted` by the time this mod goes public, post
-nothing and just note it here.
+Registry: `../WORKSHOP_COMMENTS.md` (read 2026-10-02). Nothing is left to post for this mod:
 
-**A Dog Said... Animal Prosthetics 2** (item `3238353862`), if the registry still shows
-`drafted` when this item goes public. Only facts recorded in `ATTRIBUTION.md` and the test
-runs; Virginie reads and adjusts the voice before posting:
+- Harmony, Pickle, RimLogging: `posted`, the `Covers` column lists Dust Bunnies Renew. PickleTools: not applicable (same author).
+- A Dog Said... Animal Prosthetics 2 (item `3238353862`): `posted` by the owner on 2026-09-28, one message from A Certain
+  Series that covers the other mods naming the page, this one included.
+- [XND] Nocturnal Animals (Continued) (item `2269731409`): `posted` by the owner on 2026-09-28, crediting Mlie and
+  XeoNovaDan together; the original's page (`2004368312`) is `not_applicable`.
 
-```
-Thanks for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3238353862]A Dog Said... Animal Prosthetics 2[/url] :) In Dust Bunnies Renew the dust bunny, a little animal crafted from dust, is offered your first category, basic replacements: I read how your mod files animals, put it in the same list as the Squirrel and the Rat, and checked in game that it gets what the Squirrel gets. I chose category 1 myself and haven't asked you, so tell me if you'd rather it went elsewhere.
-```
-
-**[XND] Nocturnal Animals (Continued)** (item `2269731409`, Mlie), if still `drafted`:
-
-```
-Thanks for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2269731409]Nocturnal Animals[/url] :) Dust Bunnies Renew gives its dust bunny your extension with the Nocturnal body clock, only when your mod is loaded, and in game I read it back as Nocturnal. It is optional on my side, nothing needs it. Thank you for keeping XeoNovaDan's mod alive for 1.6.
-```
-
-**[XND] Nocturnal Animals (the original, XeoNovaDan)** (item `2004368312`), if still `drafted`
-— check first whether the original page still accepts comments; if not, mark `not_applicable`
-in the registry with that reason instead of posting:
-
-```
-Thanks for the original Nocturnal Animals :) Dust Bunnies Renew gives its dust bunny the Nocturnal body clock through the continuation Mlie maintains for 1.6, and it works in game. Your idea is the one it rests on.
-```
+This mod's own drafts for those three pages were deleted: they do not go out.
 
 ## Dependencies and DLC
 
@@ -141,7 +122,6 @@ No adult content. Not applicable.
 
 ## Remaining before the first envoi
 
-- About.xml's description still says "In-game validation of this port is pending" — see
-  `STATUS.md`; fix before or at the same time as adopting this file's Markdown block as the
-  synced source (`sync-about-description.mjs` / `--sync-about`).
-- `CHANGELOG.md` needs its `## [0.1.0]` entry once the item is created (AUDIT.md, §11).
+- Gallery image 1 (see "Gallery order"), then images 1 to 4 into `Art/Workshop`.
+- `CHANGELOG.md` needs a dated `## [1.0.0]` section before the `publish` (the CI dry-run does not catch its absence).
+- The release note of 1.0.0, first line `[b]1.0.0[/b]`, written when the version is sent.

@@ -1,0 +1,3 @@
+{
+  "DustBunny.tools.head.label": "English cell empty: the label \"head\" is inherited from the abstract BaseDustBunny, and the generator does not follow ParentName."
+}

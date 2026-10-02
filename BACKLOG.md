@@ -12,7 +12,7 @@ Decided by Virginie on 2026-09-25: **Nocturnal**. Written: the extension on the 
 **Played on 2026-09-25 on `52f756f`, both green:** `20260925-185222-363-3128` (feature `09` with the map) and `20260925-185228-539-bc21` (one scenario of the bare English pass, to read the startup log for a class
 error). They answer the one thing not verified, that 1.6 honours `MayRequire` on a `modExtensions` list item. If it
 does not, the fallback is a patch guarded by `PatchOperationFindMod`, which takes the mod's name, not its packageId.
-`THANKS` and a thank-you comment for XeoNovaDan and Mlie are due at `prepublished` (PUBLISHING.md).
+`THANKS` is in the description; the thank-you comment for XeoNovaDan and Mlie was posted by the owner on 2026-09-28.
 
 Reference, read on 2026-09-25 from the installed copy (1.6): an animal opts in with
 `<li Class="NocturnalAnimals.ExtendedRaceProperties"><bodyClock>Nocturnal</bodyClock></li>`; `bodyClock` is `Diurnal`,
@@ -45,17 +45,14 @@ A French `@review` capture of the bill and information dialogs (scenario 16): do
 
 ## 4. Before `prepublished`
 
-`PUBLICATION.md`; a description with the sections AUDIT.md lists and Workshop links on the cited mods; correct
-`About.xml` ("In-game validation of this port is pending"). See `docs/PROTOCOLS-READ.md`.
+Updated 2026-10-02. Done: `PUBLICATION.md` exists, with the description as its single Markdown source (the CI
+syncs `About.xml` from it), Workshop links on the cited mods, and the thank-you comments (nothing left to post, the
+owner posted them from another mod on 2026-09-28). Open, all listed in `STATUS.md` `remaining`: gallery image 1 (the
+scale shot does not show the bunny) and images 1 to 4 into `Art/Workshop`; a dated `## [1.0.0]` section in
+`CHANGELOG.md`; the French review by Virginie; the frozen Steam description, to correct by hand.
 
-**The description will have one source** (message from the CI/CD session, 2026-09-25, "no action now"; Rimworld-Release-Admin
-`f196148`, `docs/OPERATIONS.md` "Changing where the Steam description comes from"; PUBLISHING.md `16f3c59` of the protocols
-repository; not read here yet, only the message). At the next publication, or when Virginie asks: the description is written once,
-in Markdown, in a fenced `markdown` block under `## Steam description` of `PUBLICATION.md`, ending with
-`[Source code on GitHub](URL)`, without a code fence inside it; the CI converts it to BBCode and generates the `<description>` of
-`About.xml` from it, and a dry-run stops if they differ. So `PUBLICATION.md` has to be written that way, and the hand-kept
-description of `About.xml` goes. The change note starts with the version on its first line (`[b]1.0.0[/b]`). No `.github/` edit by
-hand. A change of source changes the SHA and needs a new dry-run.
+Upstream: the pull request to 2blockdude's repository is open and unanswered
+(<https://github.com/blockdude/csharp-rimworld-dust-bunnies/pull/1>, checked 2026-10-02: no comment, no review).
 
 ## 5. Wording: "small critters" was my gloss, not ADS 2's — fixed on 2026-09-25
 
