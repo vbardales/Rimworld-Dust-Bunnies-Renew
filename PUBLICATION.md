@@ -72,23 +72,22 @@ scale shot and ScreenshotMode for the dialogs, as the French review pass (`10-fr
 already does. It is `@review`: green proves the four captures were taken, not what is on them —
 each one still has to be opened and looked at before upload.
 
-Gallery folder: `Art/Workshop` (`galleryDir` in `.github/publish.config.json`; the dry-run lists
+Gallery folder: `Art/Gallery` (`galleryDir` in `.github/publish.config.json`; the dry-run lists
 it as a reminder, SteamCMD never sends it — the CI has one `previewfile` field, the gallery goes
 up by hand on the Steam page). Order (owner's convention, 2026-09-29: the first image is
 numbered 0, a byte-identical copy of `Preview.png`, recopied every time the Preview changes so
 the two never drift):
 
 0. `0-preview.png` — a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
-   flood-filled `ModIcon.png` cut-out (`_tools/cutout-icon.cjs`, `_tools/overlay-icon.cjs`, the
-   reference implementation is `ManyHappyReturns/_tools/cutout-icon.cjs`) popping out of the
-   scene's emptiest corner, bottom-left, tilted +15°, bleeding past the frame. Done; committed.
+   true-alpha `ModIcon-badge.png` derivative in the bottom-left corner, tilted +15° and bleeding past the
+   frame. Its local radial veil uses the palette's veil colour. Done; committed.
 1. The live dust bunny on the floor, next to a colonist, showing scale.
 2. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost.
 3. The dust bunny's information card, showing its stats (comfortable to -55 C, immune to toxic
    buildup, never eats).
 4. The dust resource's information card (Fabric stuff, worst insulator).
 
-**Images 1-4 are not in `Art/Workshop` yet.** Read on 2026-10-02: the three English dialogs
+**Images 1-4 are not in `Art/Gallery` yet.** Read on 2026-10-02: the three English dialogs
 (`Tests/Pickle/Evidence/2026-09-28-gallery`) are clean: no developer tool, no overlay, no launcher panel, no empty
 column. Image 1, the latest scale shot (`2026-09-30-gallery-scale4`, a passed run), **does not show the bunny**: a
 colonist ("Miel") alone on a meadow, the bunny a few pixels beside her at 1920 px. `11-gallery-captures` needs a closer
@@ -122,6 +121,6 @@ No adult content. Not applicable.
 
 ## Remaining before the first envoi
 
-- Gallery image 1 (see "Gallery order"), then images 1 to 4 into `Art/Workshop`.
+- Gallery image 1 (see "Gallery order"), then images 1 to 4 into `Art/Gallery`.
 - `CHANGELOG.md` needs a dated `## [1.0.0]` section before the `publish` (the CI dry-run does not catch its absence).
 - The release note of 1.0.0, first line `[b]1.0.0[/b]`, written when the version is sent.

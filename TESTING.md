@@ -181,7 +181,7 @@ What is worth keeping for this mod (the folders under `Tests/Pickle/Evidence/`, 
 - the passes the rename runs did not repeat, still on unchanged defs: `2026-09-24-english` and `-french`
   (`02` to `06`, with `steps.txt`), `-fix-toxic` and `-fix-training` (the two scenarios that superseded their failing copies there);
 - the French captures, minified to JPEG: `2026-09-25-captures-fr`;
-- the gallery originals (the three dialogs are the only copy until images 1 to 4 sit in `Art/Workshop`; do not minify them):
+- the gallery originals (the three dialogs are the only copy until images 1 to 4 sit in `Art/Gallery`; do not minify them):
   `2026-09-28-gallery` (three English dialogs) and `2026-09-30-gallery-scale4` (the scale shot, summary and log).
 
 A new pass replaces the folder it supersedes: a rerun of `08` or `09` replaces its `-rename-` folder, it does not add one.

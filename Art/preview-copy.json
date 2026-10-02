@@ -1,0 +1,43 @@
+{
+  "title": "Dust Bunnies Renew (unofficial)",
+  "titleSize": 50,
+  "titleParts": [
+    { "text": "Dust Bunnies", "scale": 1 },
+    { "text": "Renew", "scale": 0.65, "font": "ui", "color": "secondary", "breakBefore": true },
+    { "text": "(unofficial)", "scale": 0.65, "font": "ui", "color": "secondary" }
+  ],
+  "suffix": "",
+  "tag": "",
+  "copyLines": [
+    "Sweep the floor, pile up the fluff, and the fluff gets up and walks."
+  ],
+  "layout": "panel",
+  "panelAnchor": "top-left",
+  "backgroundFile": "Preview.png",
+  "backgroundPosition": "center",
+  "backgroundSize": "cover",
+  "echo": {
+    "file": "echo.png",
+    "preSized": true,
+    "color": "var(--accent)",
+    "width": 205,
+    "height": 162,
+    "opacity": 1,
+    "veil": false,
+    "panelTop": 2,
+    "panelRight": -1,
+    "panelWidth": 48,
+    "flipX": true
+  },
+  "iconBadge": {
+    "file": "ModIcon-badge.png",
+    "corner": "bottom-left",
+    "width": 180,
+    "translate": "-5%, 5%",
+    "outline": false,
+    "veil": "radial",
+    "veilSize": 275,
+    "veilLeft": -55,
+    "veilBottom": -61
+  }
+}

@@ -27,7 +27,7 @@ tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria 
 workshop:     3806760430
 remaining:
   - "unverified: French review by Virginie (TRANSLATIONS.md, 2026-09-30, \"Systematic French review by Virginie\"): FRENCH_REVIEW.md generated from the shipped DefInjected XML, all 12 rows resolved; not yet reviewed. translation_fr cannot go to `complete` until she has."
-  - "unverified: [prepublished gate] Gallery: images 2 to 4 (English dialogs) opened 2026-10-02, clean; image 1, the scale shot, still shows no distinguishable bunny (`11-gallery-captures` needs a closer camera, then a ticket). Images 1 to 4 are not in `Art/Workshop` yet; only `0-preview.png` is (see PUBLICATION.md, `Gallery order`)."
+  - "unverified: [prepublished gate] Gallery: images 2 to 4 (English dialogs) opened 2026-10-02, clean; image 1, the scale shot, still shows no distinguishable bunny (`11-gallery-captures` needs a closer camera, then a ticket). Images 1 to 4 are not in `Art/Gallery` yet; only `0-preview.png` is (see PUBLICATION.md, `Gallery order`)."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 updated:      2026-10-02
@@ -678,3 +678,22 @@ the yellow accent separates more clearly from the secondary, with no clipping or
 Segoe UI is confirmed. Minimum text/background contrast remains 6.62:1; badge digits now
 measure 14.20:1. The current measurements and thumbnail are in Art/preview-qa/.
 No illustration replacement, publication, commit or push.
+
+## Preview migrated to the shared composition — 2026-10-02
+
+The delivered 896 x 504 preview now comes from `../scripts/Render-Preview.cjs`,
+`Art/preview-copy.json` and the unchanged palette. Its panel uses RimWord for the main title,
+Segoe UI for `Renew (unofficial)` and the description, and dynamic 30 px / 20 px vertical padding.
+`Art/echo.png` is a final-size transparent line-art redrawn from the actual
+`Mod/Textures/DustBunny/Bunny/Dust_Bunny_east.png` game sprite; only the final resize is applied,
+with no threshold, morphology, renderer cleanup or directional fade. The original
+`Art/ModIcon-cutout.png` remains unchanged; `Art/ModIcon-badge.png` is its separately committed
+alpha-trimmed composition derivative, bottom-left at +15 degrees and `translate(-5%, 5%)`.
+
+The gallery moved from `Art/Workshop` to `Art/Gallery`; `0-preview.png` is byte-identical to the
+delivered preview. The obsolete local QA directory was replaced by the shared renderer's
+`Art/Preview-layout.html`, `Art/Preview-qa.json`, `Art/Preview-background-qa.png` and the current
+`Art/preview-268.png`. `Art/Preview.ico` was regenerated from the final preview. Targeted
+configuration/gallery/preview tests pass 17/17, and `_tools/Test-Mod.ps1` rebuilds with zero
+warnings or errors and passes XML, Def-reference, patch and translation checks. Gameplay status
+is unchanged; no push or Workshop publication was performed.

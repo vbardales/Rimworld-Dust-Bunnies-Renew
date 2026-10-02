@@ -48,7 +48,7 @@ A French `@review` capture of the bill and information dialogs (scenario 16): do
 Updated 2026-10-02. Done: `PUBLICATION.md` exists, with the description as its single Markdown source (the CI
 syncs `About.xml` from it), Workshop links on the cited mods, and the thank-you comments (nothing left to post, the
 owner posted them from another mod on 2026-09-28). Open, all listed in `STATUS.md` `remaining`: gallery image 1 (the
-scale shot does not show the bunny) and images 1 to 4 into `Art/Workshop`; a dated `## [1.0.0]` section in
+scale shot does not show the bunny) and images 1 to 4 into `Art/Gallery`; a dated `## [1.0.0]` section in
 `CHANGELOG.md`; the French review by Virginie; the frozen Steam description, to correct by hand.
 
 Upstream: the pull request to 2blockdude's repository is open and unanswered

@@ -8,7 +8,7 @@
   ],
   "forbidPaths": [],
   "previewFile": "About/Preview.png",
-  "galleryDir": "Art/Workshop",
+  "galleryDir": "Art/Gallery",
   "aboutFromDescription": true,
   "build": {
     "project": "Source/DustBunnies.csproj"
