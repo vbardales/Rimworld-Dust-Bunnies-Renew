@@ -68,6 +68,10 @@ Checked on the real artifacts, not on this file:
   `BaseDustBunny` (English `head`), `tête` is correct. The shared generator does not follow `ParentName`, so its English cell
   shows the inherited source through `french-review-english.json` (`head (inherited from BaseDustBunny)`), no `?`. `translation_fr: complete`.
 
+- **Code review, 2026-10-05 (low effort, `0.1.0` to `HEAD`, reviewed commit `84e8c57a9e8925508b38364bf8018df7d493ec1a`):** two findings, both in the
+  Pickle steps (`Tests/Pickle/Source/DustBunnySteps.cs`), none in `Mod/`: `Standable` called before `InBounds` when picking the
+  bunny's spawn cell, and an orphaned duplicate doc comment above the camera fields. Not fixed yet (ticket `021b` still plays `Tests/`).
+
 Not rechecked, kept from earlier audits: icon and Preview (2026-09-12 and after), dependencies, translations (2026-09-13,
 2026-09-30). Open and unchanged: `translation_fr` stays `partial` until Virginie reviews `FRENCH_REVIEW.md`.
 
