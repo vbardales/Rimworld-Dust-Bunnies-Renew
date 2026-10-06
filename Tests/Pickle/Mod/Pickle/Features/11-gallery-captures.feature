@@ -1,26 +1,4 @@
-# The Workshop gallery, produced by a scenario instead of by hand (AUDIT.md, "Captures destinées à la
-# publication"): reproducible after any interface change, and PUBLICATION.md's "Gallery order" names exactly
-# these four images.
-#
-# This is a review scenario, like 10-french-dialogs: it asserts that each capture was taken, not what is on
-# the picture. Its green proves the journey ran; the four captures still have to be OPENED AND LOOKED AT before
-# they go on the Workshop page (AUDIT.md, tested -> prepublished, "Ordre des captures").
-#
-# Needs PickleTools' Zen Meadow Screenshot Studio (its own fixture, its native-capture presentation mode), ColonistRace
-# (hair, body, dyed clothes), StageDecor (lamp, stool) and ScreenshotMode (for the dialogs), staged only in the pass whose map names them:
-#
-#   -Language English -DepMap wsl-deps.gallery.map -Filter '11-gallery-captures'
-#
-# English only: the gallery is the same page's first, most demonstrative image and its dialogs, and About.xml's
-# description is English (PUBLISHING.md, "Écrire en anglais").
-@requires:nelim.pickletools.screenshotstudio
-@requires:nelim.pickletools.screenshotmode
-@requires:nelim.pickletools.colonistrace
-@requires:nelim.pickletools.camerazoom
-@requires:nelim.pickletools.stagedecor
-Feature: the Workshop gallery images
-
-  # THE SERIES (owner's rules, PUBLISHING.md, 2026-10-02 and 2026-10-06: every capture is a staged photograph except the
+# THE SERIES (owner's rules, PUBLISHING.md, 2026-10-02 and 2026-10-06: every capture is a staged photograph except the
 # menus; one story for the series; the photographer chooses place, moment and composition).
 #
 # The story: spring cleaning in the Sanctuary. Nelim sweeps the dust off her floor, piles a hundred of it on the crafting
@@ -54,6 +32,7 @@ Feature: the Workshop gallery images
 @requires:nelim.pickletools.screenshotstudio
 @requires:nelim.pickletools.screenshotmode
 @requires:nelim.pickletools.colonistrace
+@requires:nelim.pickletools.camerazoom
 Feature: the Workshop gallery images
 
   @review
