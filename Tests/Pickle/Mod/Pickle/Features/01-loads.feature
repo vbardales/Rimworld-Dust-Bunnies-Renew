@@ -1,4 +1,4 @@
-# Runtime checks only. _tools/Test-Mod.ps1 owns the XML contracts and the translation paths. What only
+# Runtime checks only. scripts/Test-Mod.ps1 owns the XML contracts and the translation paths. What only
 # a running game shows is what the game's own loader made of the defs, and whether the mod's one class bound.
 #
 # The failure this feature is here for leaves no line in a scenario's window: a `workerClass` the loader cannot

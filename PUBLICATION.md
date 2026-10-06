@@ -81,18 +81,24 @@ the two never drift):
 0. `0-preview.png` — a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
    the ModIcon badge in a corner (placement and veil in `Art/Preview.config.json`, rendered by the shared
    renderer, see `Art/preview-workflow.md`). Done; committed.
-1. The live dust bunny on the floor, next to a colonist, showing scale.
+1. **The dust bunny at the foot of Nelim's bed** (staged photograph, `11-gallery-captures`): a dust bunny, tiny and grey, on the white rug
+   of the Sanctuary's `sleeping-nook`, Nelim standing two cells away in teal and plum, midday light, the royal bed and the
+   drapes behind. It says: it is alive, and it is tiny.
 2. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost.
 3. The dust bunny's information card, showing its stats (comfortable to -55 C, immune to toxic
    buildup, never eats).
 4. The dust resource's information card (Fabric stuff, worst insulator).
 
-**State, 2026-10-02.** `Art/Gallery` holds `0-preview.png` and images 2 to 4, cropped to their dialogs from the English
-run (originals in `Tests/Pickle/Evidence/2026-09-28-gallery`); they were opened and are clean. Image 1 is the staged
-photograph of `11-gallery-captures` (owner's rule, 2026-10-02: every gallery capture is staged except the menus): the
-earlier scale shots showed no distinguishable bunny, the zoom being reset after the step. It is not in the folder until a
-run shows the bunny; then add `1-`. Image 3 reads "Leather amount 18", the def-level figure (the animal yields about 6, as
-the description says).
+**The story of the series** (owner's rule: one story, not a row of captures): spring cleaning in the Sanctuary. Nelim sweeps the
+dust off her floor, piles a hundred of it on the crafting spot (image 2, the bill that asks for it), and the dust gets up and
+walks (image 1). Images 3 and 4 are what the player reads next: the animal's card, the dust's card. The three menus are plain
+screenshots of the windows, as the rule says, cropped to the window. The shooting plan is the header of
+`Tests/Pickle/Mod/Pickle/Features/11-gallery-captures.feature`.
+
+**State, 2026-10-06.** `Art/Gallery` holds `0-preview.png` (copy of the regenerated Preview, 2026-10-06) and images 2 to 4
+(cropped to their dialogs from the English run, originals in `Tests/Pickle/Evidence/2026-09-28-gallery`; opened, clean). Image 1
+is rewritten as the staged photograph above and awaits its run; then add `1-`. Image 3 reads "Leather amount 18", the
+def-level figure (the animal yields about 6, as the description says).
 
 ## Thank-you comments
 

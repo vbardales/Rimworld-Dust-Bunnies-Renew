@@ -9,6 +9,5 @@
 nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
 nelim.pickletools.clearscreen      path:PickleTools/ClearScreen/Mod
 nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod
-# ColonistRace: Miel's body, hair and dyed clothes. StageDecor: the lamp and the stool, taken away after the shot.
 nelim.pickletools.colonistrace     path:PickleTools/ColonistRace/Mod
-nelim.pickletools.stagedecor       path:PickleTools/StageDecor/Mod
+# ColonistRace: Nelim's dyed clothes in the hero image.

@@ -1,7 +1,7 @@
 # Test scenarios
 
 Where each kind of check lives, what `tested` still needs, and which proofs to keep. The eighteen
-scenarios themselves are in [`_tools/FUNCTIONAL-SCENARIOS.md`](_tools/FUNCTIONAL-SCENARIOS.md). No run of
+scenarios themselves are in [`scripts/FUNCTIONAL-SCENARIOS.md`](scripts/FUNCTIONAL-SCENARIOS.md). No run of
 any of them is recorded: this mod has never been loaded by RimWorld.
 
 ## Automated regression tests
@@ -9,19 +9,19 @@ any of them is recorded: this mod has never been loaded by RimWorld.
 From the repository root:
 
 ```powershell
-pwsh -NoProfile -File _tools/Test-Mod.ps1
+pwsh -NoProfile -File scripts/Test-Mod.ps1
 ```
 
 It needs a .NET SDK, PowerShell 7 and a RimWorld 1.6 installation (`-GameRoot` overrides the path), reads the
 game's own assemblies and data, and exits non-zero on the first failure. `-SkipBuild` checks the existing DLL
-and must not be reported as a fresh build. Its four checkers are copies under `_tools/checks/`, so nothing
+and must not be reported as a fresh build. Its four checkers are copies under `scripts/checks/`, so nothing
 outside this repository is needed.
 
 Coverage: the Release build; all nine XML files parse; `packageId`, the `(unofficial)` suffix and the GitHub
 link; every XML field against the game's own field list; every def reference, its type and every abstract
 parent; the twelve French DefInjected keys; the two C# types the XML names; and, on the shipped DLL, that the
 recipe worker derives from `RecipeWorker`, overrides the game's completion hook, and that the `DefOf` field is
-a `PawnKindDef`; and the claims the description makes (`_tools/checks/Check-Claims.ps1`): both recipes at the crafting spot only, no `<products>` on `MakeDustBunny`, wildness under `statBases`, dust the worst cold insulator of every material a garment can be made from, no more flammable than cloth and as wood, and the butchering yield computed the way the game does it; and the enrolment in A Dog Said... Animal Prosthetics 2: one conditional operation on `ADS_Cat1` that enrols `DustBunny` in category 1 only, no `MayRequire` on the operation, no `<nomatch>`, `loadBefore` in the About and no hard dependency. These are the XML tests and the automated tests of this mod: there is no separate suite.
+a `PawnKindDef`; and the claims the description makes (`scripts/checks/Check-Claims.ps1`): both recipes at the crafting spot only, no `<products>` on `MakeDustBunny`, wildness under `statBases`, dust the worst cold insulator of every material a garment can be made from, no more flammable than cloth and as wood, and the butchering yield computed the way the game does it; and the enrolment in A Dog Said... Animal Prosthetics 2: one conditional operation on `ADS_Cat1` that enrols `DustBunny` in category 1 only, no `MayRequire` on the operation, no `<nomatch>`, `loadBefore` in the About and no hard dependency. These are the XML tests and the automated tests of this mod: there is no separate suite.
 
 They do not run pawn generation, and no isolated C# suite is claimed: the worker needs a map, a pawn and a
 bill. That is what the scenarios below are for.
@@ -51,7 +51,7 @@ The Workshop gallery (pass 7 below) is a `prepublished` gate, not a `tested` one
 
 `Pickle` names the feature in `Tests/Pickle/Mod/Pickle/Features/`
 that covers the check; `offline` means an assertion for `Test-Mod.ps1`, because whatever can be proved outside
-the game has to be, and they are written, in `_tools/checks/Check-Claims.ps1`; `n/a` means the scenario would test the engine
+the game has to be, and they are written, in `scripts/checks/Check-Claims.ps1`; `n/a` means the scenario would test the engine
 and not the mod, which the workflow rules out: the mod answers for what it declares, and that is read in the
 sources. `Tests/Pickle/README.md` gives the reasoning per feature.
 
@@ -118,14 +118,27 @@ mod set and one language each.
    each dialog opened and nothing about the picture: **the three captures must be opened and looked at** for raw keys,
    fallback text and clipping. One small ticket.
 
-7. **The Workshop gallery captures** (`wsl-deps.gallery.map`, `-Language English`): produced by a scenario instead
-   of by hand (Virginie, 2026-09-27; AUDIT.md, "Captures destinées à la publication"), so they stay reproducible
-   after any interface change. `11-gallery-captures` stages PickleTools' Zen Meadow Screenshot Studio (its saved
-   fixture and native-capture presentation mode) for the live dust bunny next to a colonist, showing scale, and
-   ScreenshotMode for the English bill dialog and information cards, the same mechanism `10-french-dialogs` uses.
-   It is `@review`: green proves the four captures were taken, not what is on them — **each is opened and
-   looked at**; the order and what each shows is in `PUBLICATION.md`, "Gallery order". Played: the three English dialogs
-   are clean (read 2026-10-02); the scale shot still does not show the bunny (see `PUBLICATION.md`).
+7. **The Workshop gallery captures** (`wsl-deps.gallery.map`, `-Language English`): the gallery is staged, not grabbed
+   (owner's rules, PUBLISHING.md, 2026-10-02 and 2026-10-06): one story, the photographer's own choices of place, moment and
+   composition, a shooting plan in the header of the feature. `11-gallery-captures` plays image 1 as a staged photograph in
+   PickleTools' Sanctuary (`Nelims-tribe`, place `sleeping-nook`, midday, Nelim in teal and plum, the dust bunny at the foot of
+   her bed, camera at zoom 6), and keeps the English bill dialog and the two information cards as plain menu screenshots on
+   the test colony, the way `10-french-dialogs` does. It is `@review`: green proves the four captures were taken, not what is
+   on them — **each is opened and looked at**; the order and what each shows is in `PUBLICATION.md`, "Gallery order". The
+   three dialogs were played and read (2026-10-02, clean). Image 1 was rewritten on 2026-10-06 and is **new**: not yet played.
+   `Check-Steps.ps1` reports three steps of ScreenshotStudio as undefined (`I am at the sanctuary`, `studio presentation mode
+   is enabled`, `the animals are removed from the sanctuary`): they exist in its source, written `Prefix + "..."`, a form the
+   script's attribute pattern does not read. A false alarm of the checker, not a missing step.
+
+## Order of the passes (AUDIT.md, 2026-10-02)
+
+What has never run or is red is replayed alone, in small tickets; the non-regression passes are filed together, at the end, on
+the final revision. Today: **new** is `11-gallery-captures` image 1 (rewritten 2026-10-06). **Non-regression**, every scenario
+green on the logic still in the repository: `01` to `10` and the three dialogs of `11`; the `Mod/` has not changed since
+`077502e` and the steps they use are unchanged. The final non-regression set is the seven passes above, filed once after the
+last new ticket is green. When the last ticket is played, the optional mods this mod's passes downloaded into the WSL
+(A Dog Said... Animal Prosthetics 2, [XND] Nocturnal Animals) are removed from the WSL install, under the machine lock, only
+if no other mod's `wsl-deps` names them, with the list of what goes and what stays written first (AUDIT.md, 11).
 
 **No new game is created** (Virginie, 2026-09-25). The `tested` criterion "a new game and an existing save" is met by the
 existing save alone: loading a game saved **without** this mod, with the mod added, which is what the shared `test-colony`
@@ -193,7 +206,7 @@ Nothing else takes a capture. The two `Preview` and `ModIcon` images are the own
 
 ## Manual validation
 
-[`_tools/FUNCTIONAL-SCENARIOS.md`](_tools/FUNCTIONAL-SCENARIOS.md) stays the source of the eighteen scenarios:
+[`scripts/FUNCTIONAL-SCENARIOS.md`](scripts/FUNCTIONAL-SCENARIOS.md) stays the source of the eighteen scenarios:
 setup, actions, expected results and the `Player.log` line that names each failure. Record date, RimWorld
 version, active DLC and mods, scenario, PASS or FAIL and the log location after any run, and update
 `STATUS.md` with the outcome.

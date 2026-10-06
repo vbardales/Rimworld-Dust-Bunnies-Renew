@@ -80,7 +80,7 @@ Two things make it work, and both are in the files rather than in a note:
   `SamBucher.ADogSaidAnimalProsthetics2`, which is not a dependency: nothing is required and nothing changes
   without it.
 
-`_tools/checks/Check-Claims.ps1` asserts both, and was seen to fail on nine mutations of the patch and the About.
+`scripts/checks/Check-Claims.ps1` asserts both, and was seen to fail on nine mutations of the patch and the About.
 Whether the surgeries actually appear on a living dust bunny is a running-game fact, and is not yet tested: it
 needs ADS 2 mounted, which is a pass of its own in `TESTING.md`.
 
@@ -92,7 +92,7 @@ animal without one is diurnal, the vanilla behaviour. The dust bunny carries the
 a list item, so without the mod the item is skipped before its class is looked up and nothing is logged. It is not a
 dependency and needs no load order. The choice of `Nocturnal` is the owner's (2026-09-25).
 
-`_tools/checks/Check-Claims.ps1` asserts the extension, its `MayRequire`, the clock and the absence of a dependency,
+`scripts/checks/Check-Claims.ps1` asserts the extension, its `MayRequire`, the clock and the absence of a dependency,
 and was seen to fail on three mutations. Whether the extension reaches the running def is what feature `09` plays,
 in its own pass, which passed on 2026-09-25 (Pickle).
 
@@ -217,7 +217,7 @@ DustBunniesRenew/
   Mod/      <- what goes on the Workshop; the NTFS junction into RimWorld/Mods points here
   Source/   <- C#, never published
   Art/      <- originals, Preview HTML/palette/renderer and visual QA, never published
-  _tools/   <- validation scripts and functional scenarios, never published
+  scripts/   <- validation scripts and functional scenarios, never published
 ```
 
 `Source/Directory.Build.props` sends build intermediates to `../.build/`. That is not
@@ -239,17 +239,17 @@ RimWorld installation is needed to compile. No Harmony: the mod patches nothing.
 Run the repository-local suite (PowerShell 7, .NET SDK and RimWorld 1.6 required):
 
 ```powershell
-pwsh -NoProfile -File _tools/Test-Mod.ps1
+pwsh -NoProfile -File scripts/Test-Mod.ps1
 # For another game installation:
-pwsh -NoProfile -File _tools/Test-Mod.ps1 -GameRoot 'D:\Games\RimWorld'
+pwsh -NoProfile -File scripts/Test-Mod.ps1 -GameRoot 'D:\Games\RimWorld'
 ```
 
 It builds the DLL, parses all mod XML, checks fields and def references against the game,
 checks French injection paths and XML class names, and verifies the compiled recipe override.
-The checkers live in `_tools/checks/`; no monorepo or sibling scripts are required.
+The checkers live in `scripts/checks/`; no monorepo or sibling scripts are required.
 `-SkipBuild` checks the existing DLL only. These checks do not execute pawn spawning.
 
-See [_tools/FUNCTIONAL-SCENARIOS.md](_tools/FUNCTIONAL-SCENARIOS.md) for the 18 manual
+See [scripts/FUNCTIONAL-SCENARIOS.md](scripts/FUNCTIONAL-SCENARIOS.md) for the 18 manual
 in-game scenarios, and [STATUS.md](STATUS.md) for the latest verified results and limitations.
 
 ## Credits

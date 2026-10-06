@@ -12,7 +12,7 @@ confirm or break. Running the suite is the work of `done -> tested`, not of `don
 
 ## What is in Gherkin, and why it needs a game
 
-`../../_tools/Test-Mod.ps1` already proves what a file can prove: the XML text, the references, the
+`../../scripts/Test-Mod.ps1` already proves what a file can prove: the XML text, the references, the
 translation paths and the compiled recipe hook. Nothing below repeats it. Each feature exists because the game
 itself has to act on the defs, and the first one because the whole mod is a single method that nothing calls
 until a colonist finishes a bill.
@@ -35,7 +35,7 @@ A check the game does not need to run, or that only tests the game, does not bel
 
 | Check | Where it went | Why |
 |---|---|---|
-| Both recipes offered at the crafting spot and nowhere else; dust worse than every stuff a garment can be made from; wildness under `statBases`; the recipe having no `<products>` | `../../_tools/checks/Check-Claims.ps1`, run by `Test-Mod.ps1` | Each is a fact about the XML and the game's own data, so it is read offline. Each was seen to fail on a mutated copy of the defs |
+| Both recipes offered at the crafting spot and nowhere else; dust worse than every stuff a garment can be made from; wildness under `statBases`; the recipe having no `<products>` | `../../scripts/checks/Check-Claims.ps1`, run by `Test-Mod.ps1` | Each is a fact about the XML and the game's own data, so it is read offline. Each was seen to fail on a mutated copy of the defs |
 | Never eats, comfortable to -55 °C, never manhunter, never breeds, dies of old age, corpse looks alive, the sprite always turned | none | Each is a declared value that vanilla code reads: replaying it tests the game, not the mod. The declarations are read in the sources |
 | Haul and rescue training refused | none | `TrainableDef.minBodySize` is 0.40 and 0.65, and the animal is 0.2 at its largest: vanilla arithmetic. `03` asserts what the animal **can** do, which is what a player will try |
 | "Do until you have X" refused | none | The refusal is vanilla's `CanCountProducts` on a recipe with no products; the mod's part is having none, which is read offline |
@@ -108,7 +108,7 @@ Read `exitReason` before the counts, and compare the scenarios played with the s
 ```powershell
 dotnet build Tests/Pickle/Source/DustBunniesRenew.PickleSteps.csproj -c Release
 powershell -NoProfile -ExecutionPolicy Bypass -File Tests/Pickle/Check-Steps.ps1
-pwsh -NoProfile -File _tools/Test-Mod.ps1
+pwsh -NoProfile -File scripts/Test-Mod.ps1
 ```
 
 `Check-Steps.ps1` compiles every local pattern with Pickle's own expression engine, and matches every step line

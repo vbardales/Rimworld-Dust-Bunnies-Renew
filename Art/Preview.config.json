@@ -43,6 +43,7 @@
     "panelWidth": 48,
     "flipX": true
   },
+  "modIconSource": "ModIcon-source.png",
   "iconBadge": {
     "file": "ModIcon-source.png",
     "corner": "bottom-left",

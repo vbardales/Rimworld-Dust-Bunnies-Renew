@@ -107,8 +107,8 @@ the icon's mistake a second time, at four times the size.
 Both were replaced on 2026-09-11 by images made for this port, and **neither is derived from the
 original art** — no pixel of the bunny sprite is in either one. The mascot is the repository's own,
 recoloured grey for this mod; the showcase is a workshop floor drawn from scratch. The
-full-resolution originals are under `Art/`, and the engraving page that lays the title over the
-showcase is `_tools/preview.html`.
+full-resolution originals are under `Art/`, and the shared renderer that lays the title over the
+showcase is configured by `Art/Preview.config.json`.
 
 `Art/Make-ModIcon.ps1`, which performed the withdrawn crop, is deleted with them. It was kept only
 as a fallback for as long as the mascot did not exist.

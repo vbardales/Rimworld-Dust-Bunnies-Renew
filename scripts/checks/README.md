@@ -4,7 +4,7 @@ These four checkers were copied from the former workspace scripts on 2026-09-12 
 repository can validate independently. Check-DefRefs and Check-XmlClasses additionally
 return exit code 1 for findings, allowing Test-Mod.ps1 to fail reliably.
 
-Run `pwsh -NoProfile -File _tools/Test-Mod.ps1` from the repository root. A .NET SDK,
+Run `pwsh -NoProfile -File scripts/Test-Mod.ps1` from the repository root. A .NET SDK,
 PowerShell 7 and a RimWorld 1.6 installation are required; -GameRoot overrides its path.
 -SkipBuild validates the existing DLL and must not be reported as a fresh build.
 

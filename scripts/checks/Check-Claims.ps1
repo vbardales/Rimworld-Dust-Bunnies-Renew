@@ -24,10 +24,10 @@
   Numbers are parsed with the invariant culture: on a French machine "2.5" is not a number to a default parse.
 
   Each claim was seen to fail: a copy of Mod/ outside the repository was mutated once per claim, and the check
-  exited 1 on every one and 0 on the untouched mod. See the mutation list in _tools/checks/README.md.
+  exited 1 on every one and 0 on the untouched mod. See the mutation list in scripts/checks/README.md.
 
 .EXAMPLE
-  pwsh -NoProfile -File _tools/checks/Check-Claims.ps1 -ModPath Mod -GameData "C:\...\RimWorld\Data"
+  pwsh -NoProfile -File scripts/checks/Check-Claims.ps1 -ModPath Mod -GameData "C:\...\RimWorld\Data"
 #>
 param(
     [Parameter(Mandatory)][string]$ModPath,
