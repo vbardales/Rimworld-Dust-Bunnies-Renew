@@ -16,6 +16,7 @@
 @requires:nelim.pickletools.screenshotstudio
 @requires:nelim.pickletools.screenshotmode
 @requires:nelim.pickletools.colonistrace
+@requires:nelim.pickletools.camerazoom
 @requires:nelim.pickletools.stagedecor
 Feature: the Workshop gallery images
 
@@ -44,7 +45,7 @@ Feature: the Workshop gallery images
 # (AUDIT.md, tested -> prepublished, "Ordre des captures").
 #
 # Needs PickleTools' ScreenshotStudio (the Sanctuary fixture, its framing and presentation steps), ColonistRace (Nelim's
-# clothes), StageDecor and ScreenshotMode (for the dialogs), staged only in the pass whose map names them:
+# clothes), CameraZoom (zoom 6, after the Sanctuary framing lifts the game's clamp) and ScreenshotMode (for the dialogs), staged only in the pass whose map names them:
 #
 #   -Language English -DepMap wsl-deps.gallery.map -Filter '11-gallery-captures'
 #
@@ -63,13 +64,14 @@ Feature: the Workshop gallery images
     And I set the weather to "Clear"
     And Nelim's Pickle Tools: the animals are removed from the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: I am at the sanctuary "sleeping-nook"
+    And Nelim's Pickle Tools: the camera root size is set to 6
+    And Nelim's Pickle Tools: the camera root size is 6
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
     And Nelim's Pickle Tools: "Nelim" stands at (176, 120) facing East
     And I wait 60 ticks
     When Dust Bunnies Renew: a dust bunny is spawned at (178, 120)
     And Nelim's Pickle Tools: studio presentation mode is enabled
-    And Dust Bunnies Renew: the camera is centred on the dust bunny at zoom 6
     And I take a screenshot "image 1, the dust bunny at the foot of the bed, scale"
     Then no errors were logged
 

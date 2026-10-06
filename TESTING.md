@@ -126,9 +126,9 @@ mod set and one language each.
    the test colony, the way `10-french-dialogs` does. It is `@review`: green proves the four captures were taken, not what is
    on them — **each is opened and looked at**; the order and what each shows is in `PUBLICATION.md`, "Gallery order". The
    three dialogs were played and read (2026-10-02, clean). Image 1 was rewritten on 2026-10-06 and is **new**: not yet played.
-   `Check-Steps.ps1` reports three steps of ScreenshotStudio as undefined (`I am at the sanctuary`, `studio presentation mode
-   is enabled`, `the animals are removed from the sanctuary`): they exist in its source, written `Prefix + "..."`, a form the
-   script's attribute pattern does not read. A false alarm of the checker, not a missing step.
+   The zoom is PickleTools' own: `I am at the sanctuary` lifts the game's zoom clamp, then `the camera root size is set to 6`
+   and `the camera root size is 6` (read-back); the mod no longer writes `CameraDriver` fields itself (NPT, 2026-10-06). `Check-Steps.ps1`
+   now resolves the `Prefix + "..."` form of the shared tools, so every step line resolves (checked 2026-10-06).
 
 ## Order of the passes (AUDIT.md, 2026-10-02)
 

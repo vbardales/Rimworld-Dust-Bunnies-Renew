@@ -54,11 +54,19 @@ function New-Expr($pattern) { New-Object CucumberExpressions.CucumberExpression(
 # The attribute argument is a C# literal: undo its escaping to get the pattern Pickle sees. The optional
 # TimeoutSeconds argument after the pattern is allowed for.
 $attr = '\[(?:Given|When|Then)\("((?:[^"\\]|\\.)*)"[^\]]*\]'
+# The shared tools write [Given(Prefix + "...")], with the file's own Prefix constant: resolve it.
+$attrPrefixed = '\[(?:Given|When|Then)\(Prefix\s*\+\s*"((?:[^"\\]|\\.)*)"[^\]]*\]'
 function Read-Patterns($dir, $source) {
     foreach ($f in Get-ChildItem -LiteralPath $dir -Filter *.cs -ErrorAction SilentlyContinue) {
         $text = [IO.File]::ReadAllText($f.FullName)
         foreach ($m in [regex]::Matches($text, $attr)) {
             [pscustomobject]@{ Source = $source; File = $f.Name; Pattern = ($m.Groups[1].Value -replace '\\\\', '\' -replace '\\"', '"') }
+        }
+        $pm = [regex]::Match($text, 'Prefix\s*=\s*"((?:[^"\\]|\\.)*)"')
+        if ($pm.Success) {
+            foreach ($m in [regex]::Matches($text, $attrPrefixed)) {
+                [pscustomobject]@{ Source = $source; File = $f.Name; Pattern = $pm.Groups[1].Value + ($m.Groups[1].Value -replace '\\\\', '\' -replace '\\"', '"') }
+            }
         }
     }
 }

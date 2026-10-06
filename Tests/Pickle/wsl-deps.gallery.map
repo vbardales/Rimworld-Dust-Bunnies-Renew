@@ -11,3 +11,5 @@ nelim.pickletools.clearscreen      path:PickleTools/ClearScreen/Mod
 nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod
 nelim.pickletools.colonistrace     path:PickleTools/ColonistRace/Mod
 # ColonistRace: Nelim's dyed clothes in the hero image.
+# CameraZoom: the camera at zoom 6 for the hero image (PickleTools' own step, after "I am at the sanctuary").
+nelim.pickletools.camerazoom       path:PickleTools/CameraZoom/Mod
