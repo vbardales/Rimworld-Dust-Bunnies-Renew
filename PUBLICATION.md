@@ -95,10 +95,11 @@ walks (image 1). Images 3 and 4 are what the player reads next: the animal's car
 screenshots of the windows, as the rule says, cropped to the window. The shooting plan is the header of
 `Tests/Pickle/Mod/Pickle/Features/11-gallery-captures.feature`.
 
-**State, 2026-10-06.** `Art/Gallery` holds `0-preview.png` (copy of the regenerated Preview, 2026-10-06) and images 2 to 4
-(cropped to their dialogs from the English run, originals in `Tests/Pickle/Evidence/2026-09-28-gallery`; opened, clean). Image 1
-is rewritten as the staged photograph above and awaits its run; then add `1-`. Image 3 reads "Leather amount 18", the
-def-level figure (the animal yields about 6, as the description says).
+**State, 2026-10-06.** `Art/Gallery` holds `0-preview.png` (copy of the regenerated Preview), `1-bunny-at-the-bed.png` (the staged
+photograph, ticket `0412`, zoom 4, read: Nelim awake in teal, the bunny about 70 px wide on the rug beside her, no tool overlay) and
+images 2 to 4 (cropped to their dialogs, originals in `Tests/Pickle/Evidence/2026-09-28-gallery`; read, clean). Image 3 reads
+"Leather amount 18", the def-level figure (the animal yields about 6, as the description says). Image 1 is the full 1920 x 1080
+frame, 2 MB, not cropped: a photograph keeps its surroundings.
 
 ## Thank-you comments
 

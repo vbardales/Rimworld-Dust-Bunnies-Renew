@@ -125,7 +125,7 @@ mod set and one language each.
    her bed, camera at zoom 4), and keeps the English bill dialog and the two information cards as plain menu screenshots on
    the test colony, the way `10-french-dialogs` does. It is `@review`: green proves the four captures were taken, not what is
    on them — **each is opened and looked at**; the order and what each shows is in `PUBLICATION.md`, "Gallery order". The
-   three dialogs were played and read (2026-10-02, clean). Image 1 was rewritten on 2026-10-06 and is **new**: not yet played.
+   three dialogs were played and read (2026-10-02, clean). Image 1 was rewritten on 2026-10-06 and played green at zoom 4 (`0412`), picture read.
    The zoom is PickleTools' own: `I am at the sanctuary` lifts the game's zoom clamp, then `the camera root size is set to 6`
    and `the camera root size is 6` (read-back); the mod no longer writes `CameraDriver` fields itself (NPT, 2026-10-06). `Check-Steps.ps1`
    now resolves the `Prefix + "..."` form of the shared tools, so every step line resolves (checked 2026-10-06).
@@ -133,7 +133,7 @@ mod set and one language each.
 ## Order of the passes (AUDIT.md, 2026-10-02)
 
 What has never run or is red is replayed alone, in small tickets; the non-regression passes are filed together, at the end, on
-the final revision. Today: **new** is `11-gallery-captures` image 1 (rewritten 2026-10-06). **Non-regression**, every scenario
+the final revision. Today: nothing is new or red any more; image 1 of `11-gallery-captures` (rewritten 2026-10-06) was the last new scenario and is green. **Non-regression**, every scenario
 green on the logic still in the repository: `01` to `10` and the three dialogs of `11`; the `Mod/` has not changed since
 `077502e` and the steps they use are unchanged. The final non-regression set is the seven passes above, filed once after the
 last new ticket is green. When the last ticket is played, the optional mods this mod's passes downloaded into the WSL
@@ -194,8 +194,8 @@ What is worth keeping for this mod (the folders under `Tests/Pickle/Evidence/`, 
 - the passes the rename runs did not repeat, still on unchanged defs: `2026-09-24-english` and `-french`
   (`02` to `06`, with `steps.txt`), `-fix-toxic` and `-fix-training` (the two scenarios that superseded their failing copies there);
 - the French captures, minified to JPEG: `2026-09-25-captures-fr`;
-- the gallery originals (the three dialogs are the only copy until images 1 to 4 sit in `Art/Gallery`; do not minify them):
-  `2026-09-28-gallery` (three English dialogs) and `2026-09-30-gallery-scale4` (the scale shot, summary and log).
+- the gallery originals (the three dialogs are the only copy of their full frames; do not minify them): `2026-09-28-gallery`; and
+  `2026-10-06-gallery-image1-zoom4`, the run of image 1 as it ships (summary, log and the 1920 x 1080 picture).
 
 A new pass replaces the folder it supersedes: a rerun of `08` or `09` replaces its `-rename-` folder, it does not add one.
 
