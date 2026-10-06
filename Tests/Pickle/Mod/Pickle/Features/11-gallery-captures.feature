@@ -7,7 +7,7 @@
 #
 # SHOOTING PLAN, one line per image (place; moment; subject; composition; the living thing; what the image says):
 #   1  sleeping-nook (Nelim's bed on the white rug, the Sanctuary's hearth hall); midday, hour 12, a minute of set-up;
-#      the live dust bunny, at the foot of the bed; low and close (zoom 6), the animal in the lower middle, Nelim
+#      the live dust bunny, at the foot of the bed; low and close (zoom 4), the animal in the lower middle, Nelim
 #      standing two cells away and looking at it, the royal bed and the drapes behind; Nelim herself, in teal and plum
 #      against the white rug and the warm wood, the one grey thing in the frame being the bunny; "it is alive, and it is
 #      tiny": the scale, and the reward of the whole recipe.
@@ -23,7 +23,7 @@
 # (AUDIT.md, tested -> prepublished, "Ordre des captures").
 #
 # Needs PickleTools' ScreenshotStudio (the Sanctuary fixture, its framing and presentation steps), ColonistRace (Nelim's
-# clothes), CameraZoom (zoom 6, after the Sanctuary framing lifts the game's clamp) and ScreenshotMode (for the dialogs), staged only in the pass whose map names them:
+# clothes), CameraZoom (zoom 4, after the Sanctuary framing lifts the game's clamp) and ScreenshotMode (for the dialogs), staged only in the pass whose map names them:
 #
 #   -Language English -DepMap wsl-deps.gallery.map -Filter '11-gallery-captures'
 #
@@ -43,8 +43,8 @@ Feature: the Workshop gallery images
     And I set the weather to "Clear"
     And Nelim's Pickle Tools: the animals are removed from the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: I am at the sanctuary "sleeping-nook"
-    And Nelim's Pickle Tools: the camera root size is set to 6
-    And Nelim's Pickle Tools: the camera root size is 6
+    And Nelim's Pickle Tools: the camera root size is set to 4
+    And Nelim's Pickle Tools: the camera root size is 4
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
     And Nelim's Pickle Tools: "Nelim" stands at (176, 120) facing East

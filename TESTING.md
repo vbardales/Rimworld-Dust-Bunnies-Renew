@@ -122,7 +122,7 @@ mod set and one language each.
    (owner's rules, PUBLISHING.md, 2026-10-02 and 2026-10-06): one story, the photographer's own choices of place, moment and
    composition, a shooting plan in the header of the feature. `11-gallery-captures` plays image 1 as a staged photograph in
    PickleTools' Sanctuary (`Nelims-tribe`, place `sleeping-nook`, midday, Nelim in teal and plum, the dust bunny at the foot of
-   her bed, camera at zoom 6), and keeps the English bill dialog and the two information cards as plain menu screenshots on
+   her bed, camera at zoom 4), and keeps the English bill dialog and the two information cards as plain menu screenshots on
    the test colony, the way `10-french-dialogs` does. It is `@review`: green proves the four captures were taken, not what is
    on them — **each is opened and looked at**; the order and what each shows is in `PUBLICATION.md`, "Gallery order". The
    three dialogs were played and read (2026-10-02, clean). Image 1 was rewritten on 2026-10-06 and is **new**: not yet played.
