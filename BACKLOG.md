@@ -67,3 +67,11 @@ prosthetics and then the bionics. So "category 1, small critters" in `README.md`
 `About.xml`, `Mod/Patches/ADogSaidAnimalProsthetics2.xml` and the message of `Check-Claims` section 6 says something ADS 2
 does not: category 1 is the smallest set of surgeries, not the smallest animals. Reword to "its first category, basic
 replacements: a peg leg or a wooden limb, and a denture". Touches `Mod/`, so it waits until no ticket is in flight.
+
+## 6. One-pixel lines along placed Dust items (found 2026-10-07)
+
+At camera root size 4, every `Dust` item on the ground shows thin vertical lines along the edges of its quad (`drawSize` 3.0, textures
+`Dust_a/b/c.png`, 256 x 256, speck in the middle, no opaque pixel within 2 px of an edge). Vanilla `Silver` placed the same way is clean, so
+it is not the Pickle tools; the five `.dds` the game had written are not the cause either (lines persist with them removed). The source
+mod has the same def and textures. Not changed: it alters how the shipped item looks in the game. Candidates for the owner: a smaller
+`drawSize` with a tighter canvas, or a texture re-export. Evidence: `Tests/Pickle/Evidence/2026-10-07-dust-seam` and `-dust-seam-nodds`.

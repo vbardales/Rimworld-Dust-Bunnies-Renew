@@ -9,7 +9,7 @@
 #   1  sleeping-nook (Nelim's bed on the white rug, the Sanctuary's hearth hall); midday, hour 12, a minute of set-up;
 #      the live dust bunny, at the foot of the bed; low and close (zoom 4), the animal in the lower middle, Nelim
 #      standing two cells away and looking at it, the royal bed and the drapes behind; Nelim herself, in teal and plum
-#      against the white rug and the warm wood, the one grey thing in the frame being the bunny, nine heaps of the mod's own dust (StageDecor) on the rug around it, since it is made of them; "it is alive, and it is
+#      against the white rug and the warm wood, the one grey thing in the frame being the bunny, nine patches of vanilla dirt (StageDecor, Filth_Dirt) on the rug around it, the closest thing to dust that draws cleanly (the mod's own Dust item shows one-pixel lines at this zoom, see 12-dust-seam-diagnostic); "it is alive, and it is
 #      tiny": the scale, and the reward of the whole recipe.
 #   2  the bill dialog of "Make a dust bunny" (a menu, a plain screenshot of the dialog on the test colony): the
 #      hundred dust it asks for, the work amount, the crafting spot.
@@ -23,7 +23,7 @@
 # (AUDIT.md, tested -> prepublished, "Ordre des captures").
 #
 # Needs PickleTools' ScreenshotStudio (the Sanctuary fixture, its framing and presentation steps), ColonistRace (Nelim's
-# clothes), StageDecor (nine heaps of dust around the bunny), CameraZoom (zoom 4, after the Sanctuary framing lifts the game's clamp) and ScreenshotMode (for the dialogs), staged only in the pass whose map names them:
+# clothes), StageDecor (nine patches of dirt around the bunny), CameraZoom (zoom 4, after the Sanctuary framing lifts the game's clamp) and ScreenshotMode (for the dialogs), staged only in the pass whose map names them:
 #
 #   -Language English -DepMap wsl-deps.gallery.map -Filter '11-gallery-captures'
 #
@@ -50,15 +50,15 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
     And Nelim's Pickle Tools: "Nelim" stands at (176, 120) facing East
     And I wait 60 ticks
-    When Nelim's Pickle Tools: I place the decor "Dust" at (177, 120)
-    And Nelim's Pickle Tools: I place the decor "Dust" at (179, 120)
-    And Nelim's Pickle Tools: I place the decor "Dust" at (180, 120)
-    And Nelim's Pickle Tools: I place the decor "Dust" at (176, 119)
-    And Nelim's Pickle Tools: I place the decor "Dust" at (177, 119)
-    And Nelim's Pickle Tools: I place the decor "Dust" at (178, 119)
-    And Nelim's Pickle Tools: I place the decor "Dust" at (179, 119)
-    And Nelim's Pickle Tools: I place the decor "Dust" at (179, 121)
-    And Nelim's Pickle Tools: I place the decor "Dust" at (180, 121)
+    When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (177, 120)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (179, 120)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (180, 120)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (176, 119)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (177, 119)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (178, 119)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (179, 119)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (179, 121)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (180, 121)
     And Dust Bunnies Renew: a dust bunny is spawned at (178, 120)
     And Nelim's Pickle Tools: studio presentation mode is enabled
     And I take a screenshot "image 1, the dust bunny at the foot of the bed, scale"

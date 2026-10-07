@@ -101,6 +101,12 @@ Checked on the real artifacts, not on this file:
   (`mateMtbHours` 0, not a canid, never mates); **Better Crossbreeding** open as the owner's design decision (`BACKLOG.md`, 2). GitHub topics
   present (`rimworld`, `rimworld-mod`, `mod`). **Social preview** uploaded 2026-10-07 with Virginie's word: `Mod/About/Preview.png` (572 KB) through *Settings -> Social preview*; the `og:image` of the public page changed (`4d0cb851...` to `7cf3c50a...`).
 
+- **Dust seam finding, 2026-10-07** (tickets `ed2e`, `7f68`, `abbf`, `3e4e`): the gallery capture with the mod's Dust items placed around the bunny showed
+  one-pixel vertical lines. `12-dust-seam-diagnostic` shows `Silver` clean and `Dust` lined, with and without the `.dds`: it is the item's own graphic
+  (`drawSize` 3.0, inherited from the source mod), not the tools. Not a regression, not fixed; recorded in `BACKLOG.md` (6) for the owner.
+  The five `.dds` were moved out of `Mod/` for the test and stay out (the game regenerates them; git ignores them). Image 1 uses vanilla
+  `Filth_Dirt` instead of Dust.
+
 Not rechecked, kept from earlier audits: icon and Preview (2026-09-12 and after), dependencies, translations (2026-09-13,
 2026-09-30). Open and unchanged: `translation_fr` stays `partial` until Virginie reviews `FRENCH_REVIEW.md`.
 

@@ -130,6 +130,12 @@ mod set and one language each.
    and `the camera root size is 6` (read-back); the mod no longer writes `CameraDriver` fields itself (NPT, 2026-10-06). `Check-Steps.ps1`
    now resolves the `Prefix + "..."` form of the shared tools, so every step line resolves (checked 2026-10-06).
 
+**`12-dust-seam-diagnostic`** is a diagnostic, not a regression scenario and not part of the gallery: nine `Silver` then nine `Dust` items
+on the rug of the Sanctuary, no presentation mode. Result (2026-10-07, tickets `abbf` and `3e4e`): `Silver` draws clean, `Dust` shows
+one-pixel vertical lines along the edges of its 3-cell quad, with or without the five `.dds` the game had written beside the PNGs. The
+lines come from the item's own graphic (`drawSize` 3, an inherited value: the source mod ships the same def and textures), not from the
+Pickle tools. They are not a regression of the port; whether to change `drawSize` or the textures is the owner's call (`BACKLOG.md`, 3).
+
 ## Order of the passes (AUDIT.md, 2026-10-02)
 
 What has never run or is red is replayed alone, in small tickets; the non-regression passes are filed together, at the end, on
