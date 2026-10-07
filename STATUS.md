@@ -99,8 +99,7 @@ Checked on the real artifacts, not on this file:
   `## Steam change notes` with a `### 0.1.0` and a draft `### 1.0.0` block, first lines `[b]x[/b]`; the gallery section describes the Sanctuary
   photograph. **Animal-mod integrations** (PUBLISHING.md): ADS 2 and Nocturnal Animals done and played; **Dogs mate** not applicable
   (`mateMtbHours` 0, not a canid, never mates); **Better Crossbreeding** open as the owner's design decision (`BACKLOG.md`, 2). GitHub topics
-  present (`rimworld`, `rimworld-mod`, `mod`). **Open:** the repository's social preview image is the earlier Preview; a new upload (browser,
-  *Settings -> Social preview*) is a public change, left for Virginie's word.
+  present (`rimworld`, `rimworld-mod`, `mod`). **Social preview** uploaded 2026-10-07 with Virginie's word: `Mod/About/Preview.png` (572 KB) through *Settings -> Social preview*; the `og:image` of the public page changed (`4d0cb851...` to `7cf3c50a...`).
 
 Not rechecked, kept from earlier audits: icon and Preview (2026-09-12 and after), dependencies, translations (2026-09-13,
 2026-09-30). Open and unchanged: `translation_fr` stays `partial` until Virginie reviews `FRENCH_REVIEW.md`.
