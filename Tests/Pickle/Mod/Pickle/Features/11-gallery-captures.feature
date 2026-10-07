@@ -12,7 +12,7 @@
 # SHOOTING PLAN, one line per image (place; moment; subject; composition; the living thing; what the image says):
 #   1  sleeping-nook (Nelim's bed on the white rug, the Sanctuary's hearth hall); midday, hour 12, a minute of set-up;
 #      the live dust bunny, at the foot of the bed; low and close (zoom 4), the animal in the lower middle, Nelim
-#      standing two cells away and looking at it, the royal bed and the drapes behind; Nelim herself, brown-eyed as she is (the EyeGenes3 gene Eyes_Brown), in teal and plum
+#      standing two cells away and looking at it, the royal bed and the drapes behind; Nelim herself, dark-brown-eyed as the Sanctuary fixture already makes her (Eyes_DarkBrown, no step needed), in teal and plum
 #      against the white rug and the warm wood, the one grey thing in the frame being the bunny, nine patches of vanilla dirt (StageDecor, Filth_Dirt) on the rug around it, the closest thing to dust that draws cleanly (the mod's own Dust item shows one-pixel lines at this zoom, see 12-dust-seam-diagnostic); "it is alive, and it is
 #      tiny": the scale, and the reward of the whole recipe.
 #   2  the bill dialog of "Make a dust bunny" (a menu, a plain screenshot of the dialog on the test colony): the
@@ -51,7 +51,6 @@ Feature: the Workshop gallery images
     And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: the camera root size is set to 4
     And Nelim's Pickle Tools: the camera root size is 4
-    And Nelim's Sanctuary: "Nelim" has the gene "Eyes_Brown"
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
     And Nelim's Pickle Tools: "Nelim" stands at (176, 120) facing East
