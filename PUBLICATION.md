@@ -40,7 +40,7 @@ Every game call the worker makes was checked against 1.6 by reflection before re
 
 A third fix, found once the port ran in game: ToxicSensitivity is gone from RimWorld's StatDefs. The original wrote it at zero to make the animal immune to toxic buildup; the port writes ToxicResistance at 1.0 (immune) instead, to keep that intent.
 
-REMOVAL
+IF I GO QUIET
 
 If 2blockdude or HendraGradeWood asks for this to be taken down, it comes down immediately and without discussion.
 
@@ -55,11 +55,25 @@ See ATTRIBUTION.md for the full port history and the MIT licence, which covers o
 [Source code on GitHub](https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew)
 ```
 
-## Steam release notes (first envoi)
+## Steam change notes
+
+One fenced block per version, sent as written (Rimworld-Release-Admin `docs/OPERATIONS.md`); the first line carries the exact
+version in BBCode or the CI run stops.
+
+### 0.1.0
 
 ```
 [b]0.1.0[/b]
 First upload, to create the Workshop item. Private until tested by subscription.
+```
+
+### 1.0.0
+
+Draft, to be reread when the version is sent:
+
+```
+[b]1.0.0[/b]
+First public version: the 1.6 port of Dust Bunnies, with the toxic-buildup, wildness and DefOf fixes, and two optional integrations (A Dog Said... Animal Prosthetics 2, [XND] Nocturnal Animals).
 ```
 
 ## Gallery order
@@ -67,9 +81,9 @@ First upload, to create the Workshop item. Private until tested by subscription.
 Steam shows the first image large: the most demonstrative goes there, not the prettiest.
 Produced by a dedicated Pickle scenario rather than by hand, so it is reproducible after any
 interface change (AUDIT.md, "Captures destinées à la publication"): `11-gallery-captures`,
-`English -DepMap wsl-deps.gallery.map`, using PickleTools' Zen Meadow Screenshot Studio for the
-scale shot and ScreenshotMode for the dialogs, as the French review pass (`10-french-dialogs`)
-already does. It is `@review`: green proves the four captures were taken, not what is on them —
+`English -DepMap wsl-deps.gallery.map`: image 1 is a staged photograph in PickleTools' Sanctuary (Screenshot Studio, ColonistRace,
+StageDecor, CameraZoom), the dialogs are plain menu screenshots taken with ScreenshotMode, as the French review pass
+(`10-french-dialogs`) does. It is `@review`: green proves the four captures were taken, not what is on them —
 each one still has to be opened and looked at before upload.
 
 Gallery folder: `Art/Gallery` (`galleryDir` in `.github/publish.config.json`; the dry-run lists
@@ -120,6 +134,11 @@ description alone: `SamBucher.ADogSaidAnimalProsthetics2` (`loadBefore`, the mod
 conditional patch adds `DustBunny` to `ADS_Cat1`'s `recipeUsers`) and
 `Mlie.XNDNocturnalAnimals` (`MayRequire` on a `DefModExtension`, no `loadAfter` needed since the
 extension is read lazily). Neither forces a download for anyone who doesn't have it.
+
+The other two animal-mod integrations of PUBLISHING.md ("Mods qui ajoutent des animaux", checked 2026-10-07):
+**Dogs mate (Continued)** (`Mlie.DogsMate`, 2441132298) does not apply: the dust bunny has `mateMtbHours` 0 and is not a canid, so it
+never mates and there is no group to add it to; no patch, nothing to thank. **Better Crossbreeding** (`DizzyEevee.BetterCrossbreeding`,
+3520675842) is an open design decision of the owner, not a compatibility patch (`BACKLOG.md`, item 2); none is shipped.
 
 ## Adult content
 

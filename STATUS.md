@@ -94,6 +94,14 @@ Checked on the real artifacts, not on this file:
   Pickle steps (`Tests/Pickle/Source/DustBunnySteps.cs`), none in `Mod/`: `Standable` called before `InBounds` when picking the
   bunny's spawn cell, and an orphaned duplicate doc comment above the camera fields. Not fixed yet (ticket `021b` still plays `Tests/`).
 
+- **PUBLICATION.md checked against PUBLISHING.md (`87ce652`), 2026-10-07:** the description section that carries the adoption clause is now headed
+  `IF I GO QUIET` as AUDIT.md orders (also in `Mod/About/About.xml`, which the CI keeps equal to the block); the change notes are under
+  `## Steam change notes` with a `### 0.1.0` and a draft `### 1.0.0` block, first lines `[b]x[/b]`; the gallery section describes the Sanctuary
+  photograph. **Animal-mod integrations** (PUBLISHING.md): ADS 2 and Nocturnal Animals done and played; **Dogs mate** not applicable
+  (`mateMtbHours` 0, not a canid, never mates); **Better Crossbreeding** open as the owner's design decision (`BACKLOG.md`, 2). GitHub topics
+  present (`rimworld`, `rimworld-mod`, `mod`). **Open:** the repository's social preview image is the earlier Preview; a new upload (browser,
+  *Settings -> Social preview*) is a public change, left for Virginie's word.
+
 Not rechecked, kept from earlier audits: icon and Preview (2026-09-12 and after), dependencies, translations (2026-09-13,
 2026-09-30). Open and unchanged: `translation_fr` stays `partial` until Virginie reviews `FRENCH_REVIEW.md`.
 

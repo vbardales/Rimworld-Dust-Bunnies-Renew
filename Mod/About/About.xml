@@ -39,7 +39,7 @@ Every game call the worker makes was checked against 1.6 by reflection before re
 
 A third fix, found once the port ran in game: ToxicSensitivity is gone from RimWorld's StatDefs. The original wrote it at zero to make the animal immune to toxic buildup; the port writes ToxicResistance at 1.0 (immune) instead, to keep that intent.
 
-REMOVAL
+IF I GO QUIET
 
 If 2blockdude or HendraGradeWood asks for this to be taken down, it comes down immediately and without discussion.
 
