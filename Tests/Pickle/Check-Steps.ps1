@@ -117,10 +117,19 @@ foreach ($p in 'the save {string} is loaded', 'I save and reload', 'I save and r
 
 # The shared tools this suite stages: every line of every pass map naming a path under PickleTools/.
 $staged = @()
+$stagedBacklot = $false
 foreach ($map in Get-ChildItem -LiteralPath $suite -Filter 'wsl-deps*.map') {
     foreach ($line in [IO.File]::ReadAllLines($map.FullName)) {
-        if ($line -match '^\s*(\S+)\s+path:PickleTools/([^/\s]+)/') { $staged += $Matches[2] }
+        # PickleTools/Tests/... is the standalone shell of the bundle: it has no steps of its own to read.
+        if ($line -match '^\s*(\S+)\s+path:PickleTools/([^/\s]+)/' -and $Matches[2] -ne 'Tests') { $staged += $Matches[2] }
+        if ($line -match '^\s*(\S+)\s+path:SanctuaryBacklot/') { $stagedBacklot = $true }
     }
+}
+# Nelim's Sanctuary Backlot (the fixture and the place steps, prefix "Nelim's Sanctuary:"), staged by path:SanctuaryBacklot/Mod.
+if ($stagedBacklot) {
+    $sbSrc = Join-Path $repo 'SanctuaryBacklot\Source'
+    if (-not (Test-Path -LiteralPath $sbSrc)) { Write-Host "MISSING  the pass map stages SanctuaryBacklot and $sbSrc does not exist" -ForegroundColor Red; $bad++ }
+    else { foreach ($p in Read-Patterns $sbSrc 'tool:SanctuaryBacklot') { $others += $p } }
 }
 foreach ($tool in $staged | Sort-Object -Unique) {
     $src = Join-Path $repo "PickleTools\$tool\Source"

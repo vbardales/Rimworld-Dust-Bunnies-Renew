@@ -107,6 +107,11 @@ Checked on the real artifacts, not on this file:
   The five `.dds` were moved out of `Mod/` for the test and stay out (the game regenerates them; git ignores them). Image 1 uses vanilla
   `Filth_Dirt` instead of Dust.
 
+- **Sanctuary moved to SanctuaryBacklot, 2026-10-08** (instruction relayed by Ticket Manager from the `sanctuarybacklot` session, confirmed by Virginie): `wsl-deps.gallery.map`
+  now starts from the Backlot's `wsl-deps.sanctuary.map` and stages `nelim.sanctuarybacklot`; the seeds are in `Tests/Pickle/config/gallery/`; the place steps use the
+  `Nelim's Sanctuary:` prefix and are told apart from NPT's `Nelim's Pickle Tools:` steps (table in `TESTING.md`); `Check-Steps.ps1` reads the Backlot's sources:
+  every step line resolves. **Not yet played** with this map (many more mods than before: bodies, trousers, facial animation).
+
 Not rechecked, kept from earlier audits: icon and Preview (2026-09-12 and after), dependencies, translations (2026-09-13,
 2026-09-30). Open and unchanged: `translation_fr` stays `partial` until Virginie reviews `FRENCH_REVIEW.md`.
 

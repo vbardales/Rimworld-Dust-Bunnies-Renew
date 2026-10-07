@@ -136,6 +136,20 @@ one-pixel vertical lines along the edges of its 3-cell quad, with or without the
 lines come from the item's own graphic (`drawSize` 3, an inherited value: the source mod ships the same def and textures), not from the
 Pickle tools. They are not a regression of the port; whether to change `drawSize` or the textures is the owner's call (`BACKLOG.md`, 3).
 
+**The Sanctuary is now its own repository** (SanctuaryBacklot, `vbardales/Rimworld-Nelim-Sanctuary-Backlot`, private; owner's instruction relayed
+2026-10-08). `wsl-deps.gallery.map` starts from the Backlot's `wsl-deps.sanctuary.map` (body, trouser and facial-animation mods included, seeds in
+`Tests/Pickle/config/gallery/`), plus `nelim.sanctuarybacklot path:SanctuaryBacklot/Mod` (it carries the fixture `Nelims-tribe`; ScreenshotStudio
+must not stage it too, a duplicate fixture fails Pickle) and ScreenshotMode. `Check-Steps.ps1` reads `SanctuaryBacklot/Source` as well.
+
+**Step prefixes, to tell the repositories apart** (also in the header of `11-gallery-captures.feature`):
+
+| Prefix | Repository | In this suite |
+|---|---|---|
+| `Nelim's Sanctuary:` | SanctuaryBacklot | `I am at the sanctuary`, `the animals are kept out of the sanctuary` (the fixture and its named places) |
+| `Nelim's Pickle Tools:` | PickleTools (NPT) | `studio presentation mode is enabled` (ScreenshotStudio), `wears ... dyed rgb`, `stands at` (ColonistRace), `the camera root size` (CameraZoom), `I place the decor`, `the decor is removed` (StageDecor), `screenshot mode` (ScreenshotMode) |
+| `Dust Bunnies Renew:` | this suite | the bunny, its card, its dialogs |
+| none | Pickle | `the save ... is loaded`, `I set the hour`, `I take a screenshot`, `no errors were logged` |
+
 ## Order of the passes (AUDIT.md, 2026-10-02)
 
 What has never run or is red is replayed alone, in small tickets; the non-regression passes are filed together, at the end, on

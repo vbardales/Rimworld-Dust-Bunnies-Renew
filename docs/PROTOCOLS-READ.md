@@ -23,6 +23,8 @@ not committed. The tool repositories and this repository answer to plain `git lo
 | `Rimworld-Ticket-Dispatcher/docs/SUBMIT.md` | `7d6c5b2`, 2026-10-04 | Options of `Submit-PickleRun.ps1`. A request can come back `invalid` with an empty owner and mod (ticket `021b`): check `-List` right after filing. |
 | `TRANSLATIONS.md` | `af8427f`, 2026-10-02 | `FRENCH_REVIEW.md` and the shared generator. Unchanged since. |
 
+| `SanctuaryBacklot/README.md`, `docs/steps.md`, `docs/GALERIE.md` (head), `Tests/Pickle/wsl-deps.sanctuary.map` | SanctuaryBacklot working tree, 2026-10-08 (no commit read) | The Sanctuary moved out of PickleTools: prefix `Nelim's Sanctuary:` for the place steps, the fixture lives in `Mod/Pickle/Fixtures/`, `nelim.sanctuarybacklot` is staged by `path:`; the map used as the base of this mod's gallery pass. |
+
 ## Not reread this session (moved or not), reread before use
 
 | Document | Last read at | Note |

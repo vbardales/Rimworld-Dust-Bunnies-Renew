@@ -1,17 +1,38 @@
-# Pass "gallery": the Workshop gallery captures (PUBLICATION.md, "Gallery order"), produced by a dedicated
-# scenario instead of by hand, so they are reproducible after any interface change.
+# Pass "gallery": the Workshop gallery of Dust Bunnies Renew (PUBLICATION.md, "Gallery order"), one pass for the whole series.
 #
-# PickleTools tools, development only and never a dependency of the mod:
-# - ScreenshotStudio, for the paused "zen meadow" fixture and its native-capture presentation mode (the live dust
-#   bunny next to a colonist, showing scale).
-# - ClearScreen, so a window ScreenshotStudio does not own cannot swallow a click while the scene is set up.
-# - ScreenshotMode, for the English bill dialog and information card captures (as the French review pass uses it).
+# Base: SanctuaryBacklot/Tests/Pickle/wsl-deps.sanctuary.map (owner's instruction, 2026-10-08), unchanged below the marker, so the
+# Sanctuary is the one Nelim's Sanctuary Backlot ships. Seeds of the third-party settings: Tests/Pickle/config/gallery/ (copied from
+# SanctuaryBacklot/Tests/Pickle/config/sanctuary/).
+#
+# Added for this suite: the Backlot itself (the fixture Nelims-tribe and the place steps, prefix "Nelim's Sanctuary:"; it must NOT also
+# be staged by ScreenshotStudio, a duplicate fixture fails Pickle) and ScreenshotMode (the three dialogs of 11-gallery-captures).
+nelim.sanctuarybacklot path:SanctuaryBacklot/Mod
+nelim.pickletools.screenshotmode path:PickleTools/ScreenshotMode/Mod
+# ---- the Backlot's map, as copied ----
 nelim.pickletools.screenshotstudio path:PickleTools/ScreenshotStudio/Mod
-nelim.pickletools.clearscreen      path:PickleTools/ClearScreen/Mod
-nelim.pickletools.screenshotmode   path:PickleTools/ScreenshotMode/Mod
-nelim.pickletools.colonistrace     path:PickleTools/ColonistRace/Mod
-# ColonistRace: Nelim's dyed clothes in the hero image.
-# CameraZoom: the camera at zoom 6 for the hero image (PickleTools' own step, after "I am at the sanctuary").
-nelim.pickletools.camerazoom       path:PickleTools/CameraZoom/Mod
-# StageDecor: three heaps of the mod's own dust around the bunny, taken away after the shot.
-nelim.pickletools.stagedecor       path:PickleTools/StageDecor/Mod
+nelim.pickletools.camerazoom path:PickleTools/CameraZoom/Mod
+nelim.pickletools.stagedecor path:PickleTools/StageDecor/Mod
+nelim.pickletools.coatsteps path:PickleTools/CoatSteps/Mod
+nelim.pickletools.clearscreen path:PickleTools/ClearScreen/Mod
+nelim.pickletools.colonistrace path:PickleTools/ColonistRace/Mod
+nelim.pickletools.clickdiagnostics path:PickleTools/ClickDiagnostics/Mod
+# The bundle is committed under PickleTools/Mod: this shell replaces it, so the tools above are the only copy of their steps (see StandaloneBase).
+nelim.pickletools   path:PickleTools/Tests/Pickle/StandaloneBase/Mod
+# Minimum list, 2026-10-07/08 (owner). The staging activates in file order, then sorts by loadAfter/dependencies.
+# Bodies and trousers, as proven by Venus Touch Waistlines' gallery pass WITHOUT TailorMade (VenusTouchWaistlines/docs/runs/2026-10-08_gallery-no-tailormade-1):
+# Female Body Variants and Female Apparel Variants load BEFORE WDI (else their Naked_*_Female textures shadow WDI's); AB's Visible Pants is indispensable (without it Venus does nothing).
+# Seeds: Tests/Pickle/config/gallery/ (copied from SanctuaryBacklot/Tests/Pickle/config/sanctuary/) (AB's settings; Venus's, whose name must be Mod_local-<packageId>_<Class>.xml because it is staged by path:).
+# Not staged: TailorMade (not needed), Paper Adapter / APP / THIGAPPE (redo the same fitting, not tested together; for a separate comparison pass), Kas.GeneralCollection (optional, Workshop id not found), Reel's textures (second pass).
+tiagocc0.FemaleBodyVariants 3798082132
+tiagocc0.FemaleApparelVariants 3799726535
+wdi.realistic.bodies 3527486510
+ab.vplrf 2986402536
+nelim.venustouch.waistlines path:VenusTouchWaistlines/Mod
+# Facial animation: base, experimentals, Vanilla Textures Expanded, Akeron Extras (needs VTE), EyeGenes3, the performance patch, then VFAE (hard-requires the first four of this block, adopts the VTE and Reel placement adjustments, includes blinking).
+Nals.FacialAnimation 1635901197
+nals.facialanimationexperimentals 2581693737
+VanillaExpanded.VTEXE.FacialAnims 2816938779
+Newton.AKNExtras.FacialAnimations 2889716301
+lucius.eyegenes3 3745223213
+astryl.FacialAnimationPerformancePatch 3790129900
+sd.fa.movingvanillaeyes 3753978140

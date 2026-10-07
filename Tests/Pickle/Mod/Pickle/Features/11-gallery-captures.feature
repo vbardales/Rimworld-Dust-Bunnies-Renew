@@ -1,3 +1,7 @@
+# STEP PREFIXES, to tell the two repositories apart: "Nelim's Sanctuary:" is the Sanctuary Backlot (the fixture and its named places:
+# frame, empty, bare floor, animals removed or kept out, roof); "Nelim's Pickle Tools:" is PickleTools (ScreenshotStudio's presentation mode,
+# ColonistRace's clothes, CameraZoom, StageDecor, ScreenshotMode); "Dust Bunnies Renew:" is this suite's own; the rest is Pickle's.
+#
 # THE SERIES (owner's rules, PUBLISHING.md, 2026-10-02 and 2026-10-06: every capture is a staged photograph except the
 # menus; one story for the series; the photographer chooses place, moment and composition).
 #
@@ -29,6 +33,7 @@
 #
 # English only: the gallery is the same page's first, most demonstrative image and its dialogs, and About.xml's
 # description is English (PUBLISHING.md, "Écrire en anglais").
+@requires:nelim.sanctuarybacklot
 @requires:nelim.pickletools.screenshotstudio
 @requires:nelim.pickletools.screenshotmode
 @requires:nelim.pickletools.colonistrace
@@ -42,8 +47,8 @@ Feature: the Workshop gallery images
     And game speed is paused
     And I set the hour to 12
     And I set the weather to "Clear"
-    And Nelim's Pickle Tools: the animals are removed from the sanctuary "sleeping-nook"
-    And Nelim's Pickle Tools: I am at the sanctuary "sleeping-nook"
+    And Nelim's Sanctuary: the animals are kept out of the sanctuary "sleeping-nook"
+    And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: the camera root size is set to 4
     And Nelim's Pickle Tools: the camera root size is 4
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)

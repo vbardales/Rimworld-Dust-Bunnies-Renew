@@ -7,6 +7,7 @@
 # and then with the mod's Dust. Lines with Dust only: the graphic of the mod. Lines with both: NPT's side.
 #
 #   -Language English -DepMap wsl-deps.gallery.map -Filter '12-dust-seam-diagnostic'
+@requires:nelim.sanctuarybacklot
 @requires:nelim.pickletools.screenshotstudio
 @requires:nelim.pickletools.camerazoom
 @requires:nelim.pickletools.stagedecor
@@ -18,8 +19,8 @@ Feature: the one-pixel lines around placed dust
     And game speed is paused
     And I set the hour to 12
     And I set the weather to "Clear"
-    And Nelim's Pickle Tools: the animals are removed from the sanctuary "sleeping-nook"
-    And Nelim's Pickle Tools: I am at the sanctuary "sleeping-nook"
+    And Nelim's Sanctuary: the animals are kept out of the sanctuary "sleeping-nook"
+    And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: the camera root size is set to 4
     When Nelim's Pickle Tools: I place the decor "Silver" at (177, 120)
     And Nelim's Pickle Tools: I place the decor "Silver" at (179, 120)
@@ -40,8 +41,8 @@ Feature: the one-pixel lines around placed dust
     And game speed is paused
     And I set the hour to 12
     And I set the weather to "Clear"
-    And Nelim's Pickle Tools: the animals are removed from the sanctuary "sleeping-nook"
-    And Nelim's Pickle Tools: I am at the sanctuary "sleeping-nook"
+    And Nelim's Sanctuary: the animals are kept out of the sanctuary "sleeping-nook"
+    And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: the camera root size is set to 4
     When Nelim's Pickle Tools: I place the decor "Dust" at (177, 120)
     And Nelim's Pickle Tools: I place the decor "Dust" at (179, 120)
