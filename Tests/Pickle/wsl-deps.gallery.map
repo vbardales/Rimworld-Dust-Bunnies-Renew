@@ -13,3 +13,5 @@ nelim.pickletools.colonistrace     path:PickleTools/ColonistRace/Mod
 # ColonistRace: Nelim's dyed clothes in the hero image.
 # CameraZoom: the camera at zoom 6 for the hero image (PickleTools' own step, after "I am at the sanctuary").
 nelim.pickletools.camerazoom       path:PickleTools/CameraZoom/Mod
+# StageDecor: three heaps of the mod's own dust around the bunny, taken away after the shot.
+nelim.pickletools.stagedecor       path:PickleTools/StageDecor/Mod
