@@ -54,7 +54,8 @@ updated:      2026-10-06
   `Check-Steps.ps1` resolves `Prefix + "..."`: all step lines resolve. Whether `stands at` wakes Nelim is unverified.
 - **Code review** (`0.1.0` to `84e8c57`, 2026-10-05): the two findings are fixed in this session (`Standable` before `InBounds`: the
   step that had it is replaced by a spawn on a named cell, bounds checked first; the orphaned duplicate doc comment removed).
-  **Last reviewed commit: `84e8c57a9e8925508b38364bf8018df7d493ec1a`.**
+  **2026-10-08, low effort, `84e8c57` to `856fad3`: no finding** (the only changes to `Mod/` are the Dust textures at 64 x 64, `drawSize` 0.75, the About files and the regenerated Preview and ModIcon; no `Source/` change).
+  **Last reviewed commit: `856fad3e1d0c1510c483df2662baef7fb4030591`.**
 
 ## Audit — 2026-10-02 (Claude Sonnet 5; audited at `81921e4`, later commits touch the gallery scenario, `Art/` and documentation only; `Mod/` is unchanged since `077502e`)
 
