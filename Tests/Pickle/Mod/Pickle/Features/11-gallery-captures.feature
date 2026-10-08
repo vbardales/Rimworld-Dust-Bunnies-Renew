@@ -47,7 +47,7 @@ Feature: the Workshop gallery images
     And game speed is paused
     And I set the hour to 12
     And I set the weather to "Clear"
-    And Nelim's Sanctuary: the animals are kept out of the sanctuary "sleeping-nook"
+    And Nelim's Sanctuary: the animals are removed from the sanctuary "sleeping-nook"
     And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: the camera root size is set to 4
     And Nelim's Pickle Tools: the camera root size is 4
