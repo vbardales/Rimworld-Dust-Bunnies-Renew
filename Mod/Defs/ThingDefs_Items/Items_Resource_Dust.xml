@@ -8,7 +8,7 @@
     <graphicData>
       <texPath>DustBunny/Item/Resource/Dust</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
-      <drawSize>3.0</drawSize>
+      <drawSize>0.75</drawSize>
     </graphicData>
     <statBases>
       <MaxHitPoints>15</MaxHitPoints>
