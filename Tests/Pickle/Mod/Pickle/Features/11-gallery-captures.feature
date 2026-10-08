@@ -12,7 +12,7 @@
 # SHOOTING PLAN, one line per image (place; moment; subject; composition; the living thing; what the image says):
 #   1  sleeping-nook (Nelim's bed on the white rug, the Sanctuary's hearth hall); midday, hour 12, a minute of set-up;
 #      the live dust bunny, at the foot of the bed; low and close (zoom 4), the animal in the lower middle, Nelim
-#      standing two cells away and looking at it, the royal bed and the drapes behind; Nelim herself, dark-brown-eyed as the Sanctuary fixture already makes her (Eyes_DarkBrown, no step needed), in teal and plum
+#      standing two cells away and looking at it, the royal bed and the drapes behind; Nelim herself, dark-brown-eyed as the Sanctuary fixture already makes her (Eyes_DarkBrown, no step needed), a light smile, no heat sweat (room held at 20 degrees, expression normal+moodCheerful2), in teal and plum
 #      against the white rug and the warm wood, the one grey thing in the frame being the bunny, nine patches of vanilla dirt (StageDecor, Filth_Dirt) on the rug around it, the closest thing to dust that draws cleanly (the mod's own Dust item shows one-pixel lines at this zoom, see 12-dust-seam-diagnostic); "it is alive, and it is
 #      tiny": the scale, and the reward of the whole recipe.
 #   2  the bill dialog of "Make a dust bunny" (a menu, a plain screenshot of the dialog on the test colony): the
@@ -47,6 +47,7 @@ Feature: the Workshop gallery images
     And game speed is paused
     And I set the hour to 12
     And I set the weather to "Clear"
+    And Nelim's Pickle Tools: the temperature of the map is 20 degrees
     And Nelim's Sanctuary: the animals are removed from the sanctuary "sleeping-nook"
     And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: the camera root size is set to 4
@@ -54,7 +55,8 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
     And Nelim's Pickle Tools: "Nelim" stands at (176, 120) facing East
-    And I wait 60 ticks
+    And I wait 120 ticks
+    And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful2"
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (177, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (179, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (180, 120)
