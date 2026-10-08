@@ -103,7 +103,7 @@ Checked on the real artifacts, not on this file:
 
 - **Dust seam finding, 2026-10-07** (tickets `ed2e`, `7f68`, `abbf`, `3e4e`): the gallery capture with the mod's Dust items placed around the bunny showed
   one-pixel vertical lines. `12-dust-seam-diagnostic` shows `Silver` clean and `Dust` lined, with and without the `.dds`: it is the item's own graphic
-  (`drawSize` 3.0, inherited from the source mod), not the tools. Not a regression, not fixed; recorded in `BACKLOG.md` (6) for the owner.
+  (`drawSize` 3.0, inherited from the source mod), not the tools. **Fixed 2026-10-08 with the owner's choice (option 1)**: `Dust_a/b/c.png` cropped to 64 x 64 around the speck (it spanned 49 x 48 px, nothing opaque near the edge) and `drawSize` 0.75, same apparent scale; ticket `b8bb` (tree `5e55d2a`) shows no line at zoom 4, the nine specks the same size (picture read against `2026-10-07-dust-seam`).
   The five `.dds` were moved out of `Mod/` for the test and stay out (the game regenerates them; git ignores them). Image 1 uses vanilla
   `Filth_Dirt` instead of Dust.
 

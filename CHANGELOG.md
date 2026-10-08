@@ -12,6 +12,9 @@ Port of 2blockdude's and HendraGradeWood's **Dust Bunnies** to RimWorld 1.6.
 
 ### Fixed
 
+- `Dust` item graphic: textures `Dust_a/b/c.png` cropped from 256 x 256 to 64 x 64 around the speck and `drawSize` 3.0 reduced to 0.75 (same apparent size). The
+  original showed thin one-pixel vertical lines along the item quad at close zoom, which the source mod has too. Looks the same in play, without the lines.
+
 - `BaseDustBunny`: `<ToxicSensitivity>0.0</ToxicSensitivity>` replaced by
   `<ToxicResistance>1.0</ToxicResistance>`. `ToxicSensitivity` is not a `StatDef` in 1.6; the loader
   logged `Could not resolve cross-reference: No RimWorld.StatDef named ToxicSensitivity` at every

@@ -134,7 +134,7 @@ mod set and one language each.
 on the rug of the Sanctuary, no presentation mode. Result (2026-10-07, tickets `abbf` and `3e4e`): `Silver` draws clean, `Dust` shows
 one-pixel vertical lines along the edges of its 3-cell quad, with or without the five `.dds` the game had written beside the PNGs. The
 lines come from the item's own graphic (`drawSize` 3, an inherited value: the source mod ships the same def and textures), not from the
-Pickle tools. They are not a regression of the port; whether to change `drawSize` or the textures is the owner's call (`BACKLOG.md`, 3).
+Pickle tools. Fixed 2026-10-08 at the owner's choice: 64 x 64 canvas and `drawSize` 0.75; ticket `b8bb` shows no line, same apparent size (`BACKLOG.md`, 6).
 
 **The Sanctuary is now its own repository** (SanctuaryBacklot, `vbardales/Rimworld-Nelim-Sanctuary-Backlot`, private; owner's instruction relayed
 2026-10-08). `wsl-deps.gallery.map` starts from the Backlot's `wsl-deps.sanctuary.map` (body, trouser and facial-animation mods included, seeds in

@@ -68,7 +68,7 @@ prosthetics and then the bionics. So "category 1, small critters" in `README.md`
 does not: category 1 is the smallest set of surgeries, not the smallest animals. Reword to "its first category, basic
 replacements: a peg leg or a wooden limb, and a denture". Touches `Mod/`, so it waits until no ticket is in flight.
 
-## 6. One-pixel lines along placed Dust items (found 2026-10-07)
+## 6. One-pixel lines along placed Dust items (found 2026-10-07, FIXED 2026-10-08)
 
 At camera root size 4, every `Dust` item on the ground shows thin vertical lines along the edges of its quad (`drawSize` 3.0, textures
 `Dust_a/b/c.png`, 256 x 256, speck in the middle, no opaque pixel within 2 px of an edge). Vanilla `Silver` placed the same way is clean, so
