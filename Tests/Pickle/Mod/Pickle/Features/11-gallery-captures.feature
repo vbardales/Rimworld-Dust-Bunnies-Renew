@@ -11,10 +11,13 @@
 #
 # SHOOTING PLAN, one line per image (place; moment; subject; composition; the living thing; what the image says):
 #   1  sleeping-nook (Nelim's bed on the white rug, the Sanctuary's hearth hall); midday, hour 12, a minute of set-up;
-#      the live dust bunny, at the foot of the bed; low and close (zoom 4), the animal in the lower middle, Nelim
-#      standing two cells away and looking at it, the royal bed and the drapes behind; Nelim herself, dark-brown-eyed as the Sanctuary fixture already makes her (Eyes_DarkBrown, no step needed), a light smile, no heat sweat (room held at 20 degrees, expression normal+moodCheerful2), in teal and plum
-#      against the white rug and the warm wood, the one grey thing in the frame being the bunny, nine patches of vanilla dirt (StageDecor, Filth_Dirt) on the rug around it, the closest thing to dust that draws cleanly (the mod's own Dust item shows one-pixel lines at this zoom, see 12-dust-seam-diagnostic); "it is alive, and it is
-#      tiny": the scale, and the reward of the whole recipe.
+#      the live dust bunny, centred in the frame and the one grey thing in it; very close (zoom 2.6, the bunny about 110 px,
+#      twice what zoom 4 gave), Nelim one cell above it, standing and facing South so her face turns to the camera and the light
+#      smile reads (room held at 20 degrees, expression normal+moodCheerful2, no heat sweat), in teal and plum against the white
+#      rug; six patches of vanilla dirt (StageDecor, Filth_Dirt) tight around the bunny, the closest thing to dust that draws
+#      cleanly (the mod's own Dust item showed one-pixel lines, since fixed, see 12-dust-seam-diagnostic); "it is alive, and
+#      it is tiny": the scale, and the reward of the whole recipe. Recomposed 2026-10-11 after the first candidate (zoom 4,
+#      profile, nine blotches) read too small, with an unreadable smile.
 #   2  the bill dialog of "Make a dust bunny" (a menu, a plain screenshot of the dialog on the test colony): the
 #      hundred dust it asks for, the work amount, the crafting spot.
 #   3  the information card of the dust bunny (a menu): what it is, what it never needs, how it trains.
@@ -50,23 +53,20 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: the temperature of the map is 20 degrees
     And Nelim's Sanctuary: the animals are removed from the sanctuary "sleeping-nook"
     And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
-    And Nelim's Pickle Tools: the camera root size is set to 4
-    And Nelim's Pickle Tools: the camera root size is 4
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
-    And Nelim's Pickle Tools: "Nelim" stands at (176, 120) facing East
+    And Nelim's Pickle Tools: "Nelim" stands at (176, 121) facing South
     And I wait 120 ticks
     And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful2"
-    When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (177, 120)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (179, 120)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (180, 120)
+    When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (175, 120)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (177, 120)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (178, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (176, 119)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (177, 119)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (178, 119)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (179, 119)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (179, 121)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (180, 121)
-    And Dust Bunnies Renew: a dust bunny is spawned at (178, 120)
+    And Dust Bunnies Renew: a dust bunny is spawned at (176, 120)
+    And Nelim's Pickle Tools: I frame the cell (176, 120) at zoom 2.6
+    And Nelim's Pickle Tools: the camera root size is 2.6
     And Nelim's Pickle Tools: studio presentation mode is enabled
     And I take a screenshot "image 1, the dust bunny at the foot of the bed, scale"
     And Nelim's Pickle Tools: the decor is removed
