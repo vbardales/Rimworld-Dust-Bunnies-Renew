@@ -25,6 +25,11 @@ showcase:     complete
 tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria met, see the audit entry below); 2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
 remaining:
+  - "defect: Source/Directory.Build.props and .gitignore still use `.build/`; PUBLISHING.md (2026-10-10) renames it `build/` and the mod root may hold no dot folder besides .git and .github. The fix touches Source/ (build path only, no code): it reopens code_review_sha by the letter of 8.m, to be decided."
+  - "defect: TESTING.md is stale: says the mod was never loaded by RimWorld, last run 2026-09-24 at 1b63e37 (8 XML files, now 9), still uses the old vocabulary (done, tested, prepublished) and 'eighteen scenarios / seven passes' without matching docs/runs/history.md. Rewrite against the current state."
+  - "defect: root of the repository carries stray files (desktop.ini ignored, french-review-english.json kept on purpose, preview-workflow.md from the withdrawn pipeline); check each against STYLE_RIMWORLD.md root rule."
+  - "unverified: [declareDependencies 4.f] Better Crossbreeding: BACKLOG.md item 2 recommends nothing (the bunny never mates, hasGenders false, mateMtbHours 0) but the decision is open; Dogs mate recorded not applicable. Virginie confirms or asks for a joke outcome."
+  - "unverified: em dash (U+2014) rule of 2026-10-10 in README, PUBLICATION, ATTRIBUTION (root and Mod/), TESTING, BACKLOG, scripts/FUNCTIONAL-SCENARIOS.md; the Steam description and About.xml are clean. CHANGELOG is append-only."
   - "unverified: [prepublished gate] Gallery: `Art/Gallery` holds `0-preview.png` and images 1 to 4 (image 1 the staged photograph in the Sanctuary, played and read 2026-10-06; images 2 to 4 cropped English dialogs, read 2026-10-02). Virginie has yet to look at the series as a whole and confirm its order (PUBLICATION.md, `Gallery order`)."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
@@ -35,15 +40,18 @@ protocols_read_sha: b4bb8a9157ee29ba1541b90a7e3ed4215b6574ac
 
 # Dust Bunnies Renew — status
 
-## Audit — 2026-10-10 (Claude Sonnet 5, against AUDIT.md of 2026-10-10; audited at `e1748ad`, working tree clean)
+## Audit — 2026-10-10 (Claude Sonnet 5, against AUDIT.md of 2026-10-10; audited at `e1748ad`, working tree clean; full replay of 1 to 8)
 
-`tested` (old vocabulary) -> `shootGallery[1.0.0]`, the correspondence table's answer. `stage` removed, `code_review_sha` added.
-- Transitions 1 to 8 hold (details in `docs/runs/status-journal-2026-10-10.md`): eight features played green, no `@wip`, no manual test left, code review `84e8c57..856fad3` done, no finding; no `Source/` or `Mod/` code change after `856fad3` (`e1748ad` touches `Art/Gallery` only).
-- 9 `shootGallery` open: `Art/Gallery` holds `0-preview.png`, `1-bunny-at-the-bed.png`, `1-candidate-bunny-smile.png` (ticket 51e9; replaces image 1 if accepted), `2-bill-dialog.png`, `3-dust-bunny-card.png`, `4-dust-card.png`. The candidate is played and committed, **not yet opened and accepted by Virginie**, so the order (9.c) is not settled.
-- Not run: no game (rule absolue); `Test-Mod.ps1` not rerun, nothing under `Mod/` changed since its PASS of 2026-10-06.
-- Protocols read: AUDIT.md (whole), WELCOME.md, AGENTS.md and GALLERY.md diffs. The PUBLISHING.md, PICKLE.md, STYLE_RIMWORLD.md and TRANSLATIONS.md rewrites since `5a975b5` were only skimmed: `protocols_read_sha` records HEAD, reread those four before `mountPreview`.
-- Registered with the Ticket Manager (REGISTER sent 2026-10-10, owner `local_02284246-6ece-4f7f-a760-17233cba0048`).
+`tested` (old vocabulary) -> `shootGallery[1.0.0]`. `stage` removed, `code_review_sha` added. Checked on artifacts, not on this file:
+- 4 `declareDependencies`: About.xml has no hard dependency, `loadBefore` ADS 2, `incompatibleWith` the original (BlockHen.Animal.DustBunnies), no LoadFolders (single 1.6 folder). ADS 2 patch is one `PatchOperationConditional` on `ADS_Cat1`, no MayRequire on an Operation; Nocturnal is `MayRequire` on a `<li>`. 4.f: ADS 2 and Nocturnal done and played; Dogs mate not applicable; Better Crossbreeding open (remaining).
+- 5 `auditSettings`: no settings, no page, no C# options: `settings_audit: not_applicable` stands.
+- 6 `localize`: the 4 French DefInjected files read whole, 12 keys, none agrees with a pawn (jobStrings are third-person verbs): no gender switch needed. `FRENCH_REVIEW.md` regenerated (new header, revision `5e55d2a`); French reviewed and validated by Virginie 2026-10-02, texts unchanged since.
+- 7 `writeTests`: `scripts/Test-Mod.ps1` **rerun 2026-10-10: PASS** ("EVERY CLAIM HOLDS", 9 XML files, 12 keys, 0 errors). Feature suites and pass maps exist (`Tests/Pickle/`: ads2, nocturnal, captures-fr, gallery, incompat-original). TESTING.md stale (remaining).
+- 8 `playTests`: eight features played green (`docs/runs/history.md`, not replayed: no game). `Mod/` last changed at `5e55d2a` (Dust textures 64 x 64, `drawSize` 0.75), played by ticket b8bb on that tree; code review `84e8c57..856fad3` covers it, no finding; `Source/` and `Mod/` untouched since.
+- 9 `shootGallery` open: `Art/Gallery` holds `0-preview.png`, `1-bunny-at-the-bed.png`, `1-candidate-bunny-smile.png` (ticket 51e9, replaces image 1 if accepted), `2-bill-dialog.png`, `3-dust-bunny-card.png`, `4-dust-card.png`. Candidate not yet accepted by Virginie; order (9.c) not settled.
+- Protocols: AUDIT.md, WELCOME.md whole; AGENTS.md, GALLERY.md, TRANSLATIONS.md diffs read; PUBLISHING.md diff skimmed; PICKLE.md and STYLE_RIMWORLD.md skimmed only (`protocols_read_sha` records HEAD): reread both before `mountPreview`.
+- Registered with the Ticket Manager (2026-10-10, confirmed; owner `local_02284246-6ece-4f7f-a760-17233cba0048`).
 
 ## Current state
 
-`Mod/` unchanged since `077502e`. Workshop item 3806760430 stays private until Virginie switches it. CHANGELOG still needs the dated `## [1.0.0]` section, made in the commit sent to the dry-run (AUDIT.md 12.e). Earlier sections (French review, Sanctuary move to SanctuaryBacklot, dust seam fix, Nocturnal and ADS integrations, upstream PR #1): see the journal.
+`Mod/` unchanged since `5e55d2a`. Workshop item 3806760430 stays private until Virginie switches it. CHANGELOG still needs the dated `## [1.0.0]` section, made in the commit sent to the dry-run (AUDIT.md 12.e). Earlier sections (Sanctuary move, dust seam fix, integrations, upstream PR #1): `docs/runs/status-journal-2026-10-10.md`.
