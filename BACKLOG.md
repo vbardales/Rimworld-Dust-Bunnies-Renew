@@ -18,7 +18,11 @@ Reference, read on 2026-09-25 from the installed copy (1.6): an animal opts in w
 `<li Class="NocturnalAnimals.ExtendedRaceProperties"><bodyClock>Nocturnal</bodyClock></li>`; `bodyClock` is `Diurnal`,
 `Nocturnal`, `Crepuscular` or `Cathemeral`; unpatched animals are diurnal.
 
-## 2. Better Crossbreeding — feasible, but it is a design change, not a compatibility
+## 2. Better Crossbreeding — decided 2026-10-11: nothing (Virginie)
+
+The dust bunny stays genderless and never mates; breeding would also be a design change (genders, mating interval, a way round the 100 dust). Kept below as the reasoning. Breeding could come as 1.1.0 if she asks.
+
+### Reasoning (2026-09-25)
 
 Better Crossbreeding, `DizzyEevee.BetterCrossbreeding`, Workshop 3520675842, 1.6 only. It builds on the crossbreeding of
 1.6 (`canCrossBreedWith` in `<race>`) and adds a `DZY.Crossbreeding.Extension` on the **mother's** `PawnKindDef`, with an
