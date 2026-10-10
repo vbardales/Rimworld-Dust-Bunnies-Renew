@@ -43,7 +43,7 @@ $defOf = $assembly.GetType('DustBunnies.DustBunniesDefOf', $true).GetField('Dust
 if ($defOf.FieldType.FullName -ne 'Verse.PawnKindDef') { throw 'DefOf field has wrong type' }
 try { $types = $game.GetTypes() } catch [Reflection.ReflectionTypeLoadException] { $types = $_.Exception.Types | Where-Object { $_ } }
 if (-not $types) { throw 'Cannot read game types' }
-$typeList = Join-Path $root '.build/test-types.txt'
+$typeList = Join-Path $root 'build/test-types.txt'
 New-Item -ItemType Directory -Force (Split-Path $typeList) | Out-Null
 $types.FullName | Set-Content $typeList
 Run-Check 'Check-XmlClasses' @('-ModPath', $mod, '-TypeLists', $typeList, '-SourceDirs', "$root/Source")

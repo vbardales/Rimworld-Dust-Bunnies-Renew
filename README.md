@@ -220,7 +220,7 @@ DustBunniesRenew/
   scripts/   <- validation scripts and functional scenarios, never published
 ```
 
-`Source/Directory.Build.props` sends build intermediates to `../.build/`. That is not
+`Source/Directory.Build.props` sends build intermediates to `../build/`. That is not
 housekeeping: RimWorld's uploader calls `SteamUGC.SetItemContent` on the mod's root directory with
 no filtering, so an `obj/` left inside `Mod/` would publish the publicised `Assembly-CSharp.dll` —
 about 6 MB of the game's own code — to every subscriber.

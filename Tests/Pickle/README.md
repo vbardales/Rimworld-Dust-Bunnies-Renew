@@ -64,7 +64,7 @@ across every suite loaded. Each exists because no stock or shared step does it:
   animal is offered some the dust bunny is not. Two steps, and by design they name no recipe.
 
 Build with `dotnet build Tests/Pickle/Source/DustBunniesRenew.PickleSteps.csproj -c Release`. The output is
-`Mod/Pickle/Assemblies/`, which is tracked, and the intermediates go to `.build/`, which is not. Rebuild before
+`Mod/Pickle/Assemblies/`, which is tracked, and the intermediates go to `build/`, which is not. Rebuild before
 every run: Pickle loads step DLLs when the game starts.
 
 ## Passes

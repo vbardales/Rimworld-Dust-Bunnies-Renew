@@ -9,10 +9,10 @@
 #     else in this folder - Art/, Source/, the docs, this file - stays out of reach by
 #     construction.
 
-# Build intermediates. Source/Directory.Build.props already sends them to ../.build/, so the
+# Build intermediates. Source/Directory.Build.props already sends them to ../build/, so the
 # two entries below are belt and braces against a build run with the props file bypassed - which
 # would drop a 6 MB publicised Assembly-CSharp.dll inside the mod.
-.build/
+build/
 Source/obj/
 Source/bin/
 
