@@ -1,7 +1,7 @@
 # Test scenarios
 
 Where each kind of check lives, what `tested` still needs, and which proofs to keep. The eighteen
-scenarios themselves are in [`scripts/FUNCTIONAL-SCENARIOS.md`](scripts/FUNCTIONAL-SCENARIOS.md). No run of
+scenarios themselves are in [`scripts/TEST_SCENARIOS.md`](scripts/TEST_SCENARIOS.md). No run of
 any of them is recorded: this mod has never been loaded by RimWorld.
 
 ## Automated regression tests
@@ -14,7 +14,7 @@ pwsh -NoProfile -File scripts/Test-Mod.ps1
 
 It needs a .NET SDK, PowerShell 7 and a RimWorld 1.6 installation (`-GameRoot` overrides the path), reads the
 game's own assemblies and data, and exits non-zero on the first failure. `-SkipBuild` checks the existing DLL
-and must not be reported as a fresh build. Its four checkers are copies under `scripts/checks/`, so nothing
+and must not be reported as a fresh build. It calls the shared checkers of the protocols repository (`../scripts/`) and this mod's own under `scripts/checks/`, so nothing
 outside this repository is needed.
 
 Coverage: the Release build; all nine XML files parse; `packageId`, the `(unofficial)` suffix and the GitHub
@@ -35,7 +35,7 @@ outside the repository; the script calls `pwsh` by name and does not fall back.
 ## What `tested` requires
 
 **`done` is met**, as of 2026-09-24, and **`tested` is met** (re-checked against AUDIT.md transition 9 on 2026-10-02). `Tests/Pickle/`
-holds 11 features and the local steps; `Tests/Pickle/Check-Steps.ps1` resolves every step line to exactly one step.
+holds 11 features and the local steps; the shared `scripts/Check-Steps.ps1` of the protocols repository (`-ModRoot` this mod, `-PickleAssemblies` the installed Pickle `1.6/Assemblies`) resolves every step line to exactly one step.
 Transition 9, one check at a time, against what exists:
 
 | Check | Where this mod stands |
@@ -192,7 +192,7 @@ repository.
 | Keep, per pass | Why |
 |---|---|
 | `summary.json` and `summary.md` | The verdict: `exitReason`, counts, scenario names. Read `exitReason` first |
-| `junit.xml` and `steps.txt` | The per-scenario outcome and failure messages, and every step's outcome: `steps.txt` is extracted from `report.html` (`grep` on its JSON) before `Minify-Evidence.ps1` removes it, because `messages.ndjson` carries no step text |
+| `junit.xml` and `steps.txt` | The per-scenario outcome and failure messages, and every step's outcome: `steps.txt` is extracted from `report.html` (`grep` on its JSON) before the shared `Minify-Evidence.ps1` removes it, because `messages.ndjson` carries no step text |
 | `Player.log` | Startup, load order, errors outside the scenarios: only the newest one per pass |
 | `evidence-complete.txt` or `no-report.txt` | Says the copy is whole, or that the launcher left no report |
 | The `@review` captures, **minified to JPEG** | Human review outcome. Keep the original of a capture that has to be measured, not read |
@@ -221,12 +221,12 @@ A new pass replaces the folder it supersedes: a rerun of `08` or `09` replaces i
 
 Nothing else takes a capture. The two `Preview` and `ModIcon` images are the owner's and are not test evidence.
 
-`Tests/Pickle/Minify-Evidence.ps1` shrinks a copied report in place: screenshots become JPEG (quality 80, at most
+The shared `scripts/Minify-Evidence.ps1` of the protocols repository (`-Folder Tests/Pickle/Evidence/<run>`) shrinks a copied report in place: screenshots become JPEG (quality 80, at most
 1280 px), and `report.html` and `messages.ndjson` go.
 
 ## Manual validation
 
-[`scripts/FUNCTIONAL-SCENARIOS.md`](scripts/FUNCTIONAL-SCENARIOS.md) stays the source of the eighteen scenarios:
+[`scripts/TEST_SCENARIOS.md`](scripts/TEST_SCENARIOS.md) stays the source of the eighteen scenarios:
 setup, actions, expected results and the `Player.log` line that names each failure. Record date, RimWorld
 version, active DLC and mods, scenario, PASS or FAIL and the log location after any run, and update
 `STATUS.md` with the outcome.

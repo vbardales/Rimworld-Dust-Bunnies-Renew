@@ -246,10 +246,10 @@ pwsh -NoProfile -File scripts/Test-Mod.ps1 -GameRoot 'D:\Games\RimWorld'
 
 It builds the DLL, parses all mod XML, checks fields and def references against the game,
 checks French injection paths and XML class names, and verifies the compiled recipe override.
-The checkers live in `scripts/checks/`; no monorepo or sibling scripts are required.
+`scripts/Test-Mod.ps1` calls the protocols repository's shared checkers (`../scripts/`: Check-ModBasics, Check-Translations, Check-DefRefs, Check-DefInjected); this mod keeps `scripts/checks/Check-Claims.ps1`, and for now local copies of Check-XmlFields and Check-XmlClasses, which skip a `MayRequire` element of another mod (see `scripts/checks/README.md`).
 `-SkipBuild` checks the existing DLL only. These checks do not execute pawn spawning.
 
-See [scripts/FUNCTIONAL-SCENARIOS.md](scripts/FUNCTIONAL-SCENARIOS.md) for the 18 manual
+See [scripts/TEST_SCENARIOS.md](scripts/TEST_SCENARIOS.md) for the 18 manual
 in-game scenarios, and [STATUS.md](STATUS.md) for the latest verified results and limitations.
 
 ## Credits

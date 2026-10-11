@@ -7,8 +7,11 @@ $root = Split-Path $PSScriptRoot -Parent
 $mod = Join-Path $root 'Mod'
 $managed = Join-Path $GameRoot 'RimWorldWin64_Data/Managed'
 $data = Join-Path $GameRoot 'Data'
-function Run-Check([string]$Name, [string[]]$Arguments) {
-    & pwsh -NoProfile -File (Join-Path $PSScriptRoot "checks/$Name.ps1") @Arguments
+# Shared checks live in the protocols repository (the folder above this mod); Check-Claims is this mod's own.
+$shared = Join-Path (Split-Path $root -Parent) 'scripts'
+function Run-Check([string]$Name, [string[]]$Arguments, [switch]$Local) {
+    $dir = if ($Local) { Join-Path $PSScriptRoot 'checks' } else { $shared }
+    & pwsh -NoProfile -File (Join-Path $dir "$Name.ps1") @Arguments
     if ($LASTEXITCODE -ne 0) { throw "$Name failed ($LASTEXITCODE)" }
 }
 if (-not $SkipBuild) {
@@ -16,18 +19,18 @@ if (-not $SkipBuild) {
     if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
 }
 if (-not (Test-Path "$managed/Assembly-CSharp.dll")) { throw 'RimWorld installation required; pass -GameRoot.' }
-# Parse metadata, definitions and translations, not just Defs/.
-$xmlFiles = @(Get-ChildItem $mod -Recurse -Filter *.xml)
-foreach ($file in $xmlFiles) { $null = [xml](Get-Content $file.FullName -Raw) }
+# Generic checks (XML well formed, About.xml, ATTRIBUTION and LICENSE copies, Preview and ModIcon, PublishedFileId) and translations.
+Run-Check 'Check-ModBasics' @('-ModRoot', $root, '-Unofficial', '-OriginalWorkshopId', '2659958183')
+Run-Check 'Check-Translations' @('-ModRoot', $root)
 [xml]$about = Get-Content "$mod/About/About.xml" -Raw
 if ($about.ModMetaData.packageId -cne 'nelim.dustbunnies') { throw 'Unexpected packageId' }
-if (-not $about.ModMetaData.name.EndsWith('(unofficial)')) { throw 'Unofficial suffix missing' }
 if (-not $about.ModMetaData.description.Contains('https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew')) { throw 'GitHub description link missing' }
+$xmlFiles = @(Get-ChildItem $mod -Recurse -Filter *.xml)
 
-Run-Check 'Check-XmlFields' @('-ModPath', $mod, '-Managed', $managed, '-ExtraAssemblies', "$mod/Assemblies/DustBunnies.dll")
+Run-Check 'Check-XmlFields' -Local -Arguments @('-ModPath', $mod, '-Managed', $managed, '-ExtraAssemblies', "$mod/Assemblies/DustBunnies.dll")
 Run-Check 'Check-DefRefs' @('-ModPath', $mod, '-Managed', $managed, '-GameData', $data, '-Brief')
 Run-Check 'Check-DefInjected' @('-TransMod', $mod, '-Managed', $managed, '-GameData', $data)
-Run-Check 'Check-Claims' @('-ModPath', $mod, '-GameData', $data)
+Run-Check 'Check-Claims' @('-ModPath', $mod, '-GameData', $data) -Local
 
 # Resolve the XML worker against the shipped DLL, not merely its source text.
 Get-ChildItem "$managed/UnityEngine*.dll" | ForEach-Object { $null = [Reflection.Assembly]::LoadFrom($_.FullName) }
@@ -46,5 +49,5 @@ if (-not $types) { throw 'Cannot read game types' }
 $typeList = Join-Path $root 'build/test-types.txt'
 New-Item -ItemType Directory -Force (Split-Path $typeList) | Out-Null
 $types.FullName | Set-Content $typeList
-Run-Check 'Check-XmlClasses' @('-ModPath', $mod, '-TypeLists', $typeList, '-SourceDirs', "$root/Source")
+Run-Check 'Check-XmlClasses' -Local -Arguments @('-ModPath', $mod, '-TypeLists', $typeList, '-SourceDirs', "$root/Source")
 Write-Host "PASS: $($xmlFiles.Count) XML files, fields, references, translations, the claims the description makes, XML classes and compiled recipe hook. In-game scenarios remain separate."
