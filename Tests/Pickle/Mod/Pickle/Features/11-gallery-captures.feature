@@ -13,7 +13,7 @@
 #   1  sleeping-nook (Nelim's bed on the white rug, the Sanctuary's hearth hall); midday, hour 12, a minute of set-up;
 #      the live dust bunny, centred in the frame and the one grey thing in it; very close (zoom 2.6, the bunny about 110 px,
 #      twice what zoom 4 gave), Nelim one cell above it, standing and facing South so her face turns to the camera and the light
-#      smile reads (room held at 20 degrees, expression normal+moodCheerful2, no heat sweat), in teal and plum against the white
+#      smile reads (room held at 20 degrees, expression normal+moodCheerful2, then the face parts set by hand: BrowEven so the brows are two, not the monobrow she had in the first candidates, MouthSmile, LidCheerful; no heat sweat), in teal and plum against the white
 #      rug; six patches of vanilla dirt (StageDecor, Filth_Dirt) tight around the bunny, the closest thing to dust that draws
 #      cleanly (the mod's own Dust item showed one-pixel lines, since fixed, see 12-dust-seam-diagnostic); "it is alive, and
 #      it is tiny": the scale, and the reward of the whole recipe. Recomposed 2026-10-11 after the first candidate (zoom 4,
@@ -58,6 +58,9 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" stands at (176, 121) facing South
     And I wait 120 ticks
     And Nelim's Pickle Tools: "Nelim" facial expression is "normal+moodCheerful2"
+    And Nelim's Pickle Tools: "Nelim" brows are "BrowEven"
+    And Nelim's Pickle Tools: "Nelim" mouth is "MouthSmile"
+    And Nelim's Pickle Tools: "Nelim" lids are "LidCheerful"
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (175, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (177, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (178, 120)
@@ -70,7 +73,8 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: studio presentation mode is enabled
     And I take a screenshot "image 1, the dust bunny at the foot of the bed, scale"
     And Nelim's Pickle Tools: the decor is removed
-    Then no errors were logged
+    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthSmile"
+    And no errors were logged
 
   @review
   Scenario: the bill dialog and the information cards of the dust bunny and of the dust, in English
