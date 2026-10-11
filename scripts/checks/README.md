@@ -1,14 +1,11 @@
 # Local validation tools
 
-`scripts/Test-Mod.ps1` calls the shared checkers of the protocols repository first (`../scripts/`: Check-ModBasics,
-Check-Translations, Check-DefRefs, Check-DefInjected) and then this mod's own, kept here on purpose:
+`scripts/Test-Mod.ps1` calls the shared checkers of the protocols repository (`../scripts/`: Check-ModBasics,
+Check-Translations, Check-XmlFields, Check-DefRefs, Check-DefInjected, Check-XmlClasses) and then this mod's own,
+kept here on purpose:
 
 - `Check-Claims.ps1`: written for this mod. It asserts the facts the public description states, against the XML and the
   game's own data (details below).
-- `Check-XmlFields.ps1` and `Check-XmlClasses.ps1`: local copies **kept for now** because they skip an element behind
-  `MayRequire` of another mod (the Nocturnal Animals extension, `NocturnalAnimals.ExtendedRaceProperties`), which the
-  shared versions do not yet: they fail on `bodyClock` and on the unknown type. To delete when the shared scripts
-  carry that skip (reported to the audit session, 2026-10-11).
 
 Run `pwsh -NoProfile -File scripts/Test-Mod.ps1` from the repository root. A .NET SDK, PowerShell 7 and a RimWorld 1.6
 installation are required; -GameRoot overrides its path. -SkipBuild validates the existing DLL and must not be reported

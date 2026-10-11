@@ -27,7 +27,7 @@ if ($about.ModMetaData.packageId -cne 'nelim.dustbunnies') { throw 'Unexpected p
 if (-not $about.ModMetaData.description.Contains('https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew')) { throw 'GitHub description link missing' }
 $xmlFiles = @(Get-ChildItem $mod -Recurse -Filter *.xml)
 
-Run-Check 'Check-XmlFields' -Local -Arguments @('-ModPath', $mod, '-Managed', $managed, '-ExtraAssemblies', "$mod/Assemblies/DustBunnies.dll")
+Run-Check 'Check-XmlFields' @('-ModPath', $mod, '-Managed', $managed, '-ExtraAssemblies', "$mod/Assemblies/DustBunnies.dll")
 Run-Check 'Check-DefRefs' @('-ModPath', $mod, '-Managed', $managed, '-GameData', $data, '-Brief')
 Run-Check 'Check-DefInjected' @('-TransMod', $mod, '-Managed', $managed, '-GameData', $data)
 Run-Check 'Check-Claims' @('-ModPath', $mod, '-GameData', $data) -Local
@@ -49,5 +49,5 @@ if (-not $types) { throw 'Cannot read game types' }
 $typeList = Join-Path $root 'build/test-types.txt'
 New-Item -ItemType Directory -Force (Split-Path $typeList) | Out-Null
 $types.FullName | Set-Content $typeList
-Run-Check 'Check-XmlClasses' -Local -Arguments @('-ModPath', $mod, '-TypeLists', $typeList, '-SourceDirs', "$root/Source")
+Run-Check 'Check-XmlClasses' @('-ModPath', $mod, '-TypeLists', $typeList, '-SourceDirs', "$root/Source")
 Write-Host "PASS: $($xmlFiles.Count) XML files, fields, references, translations, the claims the description makes, XML classes and compiled recipe hook. In-game scenarios remain separate."
