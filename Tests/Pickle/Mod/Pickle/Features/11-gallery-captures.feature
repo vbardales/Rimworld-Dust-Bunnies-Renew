@@ -18,10 +18,12 @@
 #      cleanly (the mod's own Dust item showed one-pixel lines, since fixed, see 12-dust-seam-diagnostic); "it is alive, and
 #      it is tiny": the scale, and the reward of the whole recipe. Recomposed 2026-10-11 after the first candidate (zoom 4,
 #      profile, nine blotches) read too small, with an unreadable smile.
-#   2  the bill dialog of "Make a dust bunny" (a menu, a plain screenshot of the dialog on the test colony): the
-#      hundred dust it asks for, the work amount, the crafting spot.
-#   3  the information card of the dust bunny (a menu): what it is, what it never needs, how it trains.
-#   4  the information card of the dust (a menu): the material the bunny comes from and goes back to.
+#   2  the bill dialog of "Make a dust bunny" (a menu, a plain screenshot of the dialog, over the Sanctuary's sleeping-nook at
+#      midday, a crafting spot on the rug and the dust bunny beside it): the hundred dust it asks for, the work amount, the crafting spot.
+#   3  the information card of the dust bunny (a menu, same place and hour): what it is, what it never needs, how it trains.
+#   4  the information card of the dust (a menu, same place and hour): the material the bunny comes from and goes back to.
+#   The menus were first taken on the shared test colony (2026-09-28); the owner refused them on 2026-10-12: the scenarios play in
+#   SanctuaryBacklot (AUDIT.md 9.a), so the Sanctuary is what shows around the windows. Each is then framed 1600 x 900 around the window.
 # The cumulative-time recipe of PUBLISHING.md is not needed here: image 1 is the only image of the map, the others show
 # windows, so no scenario has anything to age. The living thing is placed after the set-up wait, so it has not left.
 #
@@ -77,9 +79,17 @@ Feature: the Workshop gallery images
 
   @review
   Scenario: the bill dialog and the information cards of the dust bunny and of the dust, in English
-    Given the save "test-colony" is loaded
-    And a "CraftingSpot" is built at (146, 155)
+    Given the save "Nelims-tribe" is loaded
+    And game speed is paused
+    And I set the hour to 12
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Sanctuary: the animals are removed from the sanctuary "sleeping-nook"
+    And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
+    And a "CraftingSpot" is built at (177, 119)
     And I add bill "MakeDustBunny" to the "CraftingSpot"
+    And Dust Bunnies Renew: a dust bunny is spawned at (178, 120)
+    And I wait 120 ticks
     When Dust Bunnies Renew: the bill dialog for "MakeDustBunny" is open
     And Nelim's Pickle Tools: screenshot mode is enabled around the open windows
     And I take a screenshot "bill dialog of the dust bunny recipe, English"
