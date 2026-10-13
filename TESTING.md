@@ -1,8 +1,8 @@
 # Test scenarios
 
-Where each kind of check lives, what `tested` still needs, and which proofs to keep. The eighteen
-scenarios themselves are in [`scripts/TEST_SCENARIOS.md`](scripts/TEST_SCENARIOS.md). No run of
-any of them is recorded: this mod has never been loaded by RimWorld.
+Where each kind of check lives, where the 1.6 proof stands, and which proofs to keep. The eighteen
+checks themselves are in [`scripts/TEST_SCENARIOS.md`](scripts/TEST_SCENARIOS.md); the Pickle suite
+(`Tests/Pickle/`, twelve features) plays them in the game, and `docs/runs/history.md` has one line per run.
 
 ## Automated regression tests
 
@@ -26,26 +26,24 @@ a `PawnKindDef`; and the claims the description makes (`scripts/checks/Check-Cla
 They do not run pawn generation, and no isolated C# suite is claimed: the worker needs a map, a pawn and a
 bill. That is what the scenarios below are for.
 
-**Last run, 2026-09-24 at `1b63e37`: exit 0.** Build 0 warnings, 0 errors; 8 XML files; no unknown fields; no
-missing reference; 12 keys, 0 errors; 2 types resolved. The shipped DLL is byte-identical before and after the
-rebuild (SHA-256 `2D6203280D1B7985DFE2F2FBA6255B046A50BD75D63C90186A59E843A16F580B`). PowerShell 7 was not
-installed on the machine, so the script ran under Windows PowerShell 5.1 through a temporary `pwsh` shim kept
-outside the repository; the script calls `pwsh` by name and does not fall back.
+**Last run, 2026-10-13 at `10d199d`: PASS.** 9 XML files, no unknown field, no missing reference, 12 French keys,
+0 errors, the C# types and the compiled recipe hook resolved. The build folder is `build/` (renamed from `.build/` on
+2026-10-11); the shipped DLL is byte-identical before and after the rename (SHA-256
+`2D6203280D1B7985DFE2F2FBA6255B046A50BD75D63C90186A59E843A16F580B`).
 
-## What `tested` requires
+## Where the 1.6 proof stands (`playTests`)
 
-**`done` is met**, as of 2026-09-24, and **`tested` is met** (re-checked against AUDIT.md transition 9 on 2026-10-02). `Tests/Pickle/`
-holds 11 features and the local steps; the shared `scripts/Check-Steps.ps1` of the protocols repository (`-ModRoot` this mod, `-PickleAssemblies` the installed Pickle `1.6/Assemblies`) resolves every step line to exactly one step.
-Transition 9, one check at a time, against what exists:
+`Tests/Pickle/` holds 12 features and the local steps; the shared `scripts/Check-Steps.ps1` of the protocols repository
+resolves every step line to exactly one step. Against the exit criteria of `playTests` (AUDIT.md, 8):
 
 | Check | Where this mod stands |
 |---|---|
-| Scenarios run in game and green; `@review` captures opened; `exitReason` read first; played against discovered counted | Yes. Every feature `01` to `11` played green in some run (`docs/runs/history.md`, one line per run). The `@review` captures were opened: French dialogs (2026-09-26, nothing to correct), English dialogs of the gallery (2026-10-02, clean). |
-| No scenario left in `@wip`. | None of the eleven features carries `@wip`, and `-IncludeWip` is never passed. |
-| Every conditional scenario ran. Each `@requires` had its own pass on a map that mounts it, and its report was read. | Yes, five of them: `07` (`BlockHen.Animal.DustBunnies`, `wsl-deps.incompat-original.map`), `08` (`SamBucher.ADogSaidAnimalProsthetics2`, `wsl-deps.avec-ads2.map`), `09` (`Mlie.XNDNocturnalAnimals`, `wsl-deps.avec-nocturnal.map`), `10` (PickleTools ScreenshotMode, `wsl-deps.captures-fr.map`), `11` (Screenshot Studio and ScreenshotMode, `wsl-deps.gallery.map`). Each played in its own pass and was skipped elsewhere; `07`, `08`, `09` were replayed after the packageId rename (2026-09-28). |
-| No manual test left to validate. | Met. Each of the eighteen is automated and green, offline (`Check-Claims.ps1`, rerun green 2026-10-02), or `n/a` with its reason, in the map below. French clipping: `10-french-dialogs`, read. A new game is not required (Virginie, 2026-09-25). |
+| Scenarios run in game and green; `@review` captures opened; `exitReason` read first | Yes. Features `01` to `11` each played green in some run (`docs/runs/history.md`). `@review` captures opened: French dialogs (2026-09-26, nothing to correct), English dialogs and image 1 of the gallery (several rounds, last 2026-10-13). `12` is a diagnostic: its Dust fix (2026-10-08) is read. |
+| No scenario left in `@wip` | None, and `-IncludeWip` is never passed. |
+| Every conditional scenario ran, each `@requires` on a map that mounts it | Yes, five: `07` (the original mod, `wsl-deps.incompat-original.map`), `08` (ADS 2, `wsl-deps.avec-ads2.map`), `09` (Nocturnal Animals, `wsl-deps.avec-nocturnal.map`), `10` (ScreenshotMode, `wsl-deps.captures-fr.map`), `11` (Sanctuary, Screenshot Studio, ScreenshotMode, `wsl-deps.gallery.map`). `07`, `08`, `09` were replayed after the packageId rename (2026-09-28). |
+| No manual test left to validate | Met. Each of the eighteen is automated and green, offline (`Check-Claims.ps1`), or `n/a` with its reason, in the map below. A new game is not required (Virginie, 2026-09-25). |
 
-The Workshop gallery (pass 7 below) is a `prepublished` gate, not a `tested` one.
+The 1.7 pass is separate (AUDIT.md, "Passe 1.7"): nothing is recorded as `tested_1_7` yet.
 
 ### Where each manual check goes
 
@@ -119,16 +117,13 @@ mod set and one language each.
    fallback text and clipping. One small ticket.
 
 7. **The Workshop gallery captures** (`wsl-deps.gallery.map`, `-Language English`): the gallery is staged, not grabbed
-   (owner's rules, PUBLISHING.md, 2026-10-02 and 2026-10-06): one story, the photographer's own choices of place, moment and
-   composition, a shooting plan in the header of the feature. `11-gallery-captures` plays image 1 as a staged photograph in
-   PickleTools' Sanctuary (`Nelims-tribe`, place `sleeping-nook`, midday, Nelim in teal and plum, the dust bunny at the foot of
-   her bed, camera at zoom 4), and keeps the English bill dialog and the two information cards as plain menu screenshots on
-   the test colony, the way `10-french-dialogs` does. It is `@review`: green proves the four captures were taken, not what is
-   on them — **each is opened and looked at**; the order and what each shows is in `PUBLICATION.md`, "Gallery order". The
-   three dialogs were played and read (2026-10-02, clean). Image 1 was rewritten on 2026-10-06 and played green at zoom 4 (`0412`), picture read.
-   The zoom is PickleTools' own: `I am at the sanctuary` lifts the game's zoom clamp, then `the camera root size is set to 6`
-   and `the camera root size is 6` (read-back); the mod no longer writes `CameraDriver` fields itself (NPT, 2026-10-06). `Check-Steps.ps1`
-   now resolves the `Prefix + "..."` form of the shared tools, so every step line resolves (checked 2026-10-06).
+   (PUBLISHING.md, GALLERY.md): one story, the photographer's own choices of place, moment and composition, a shooting plan in
+   the header of the feature. `11-gallery-captures` plays image 1 as a staged photograph in the Sanctuary (`Nelims-tribe`,
+   `sleeping-nook`, midday, Nelim in teal and plum with her own face step, the dust bunny at the foot of her bed, zoom 2.6), the
+   bill dialog as a plain menu screenshot over the same place, and the two information cards (full-height windows) on the
+   Sanctuary's `window-backdrop-for-height`. It is `@review`: green proves the captures were taken, not what is on them,
+   so **each is opened and looked at**; the order and what each shows is in `PUBLICATION.md`, "Gallery order". Last
+   played 2026-10-12 (evidence `2026-10-12-gallery-menus-sanctuary`), the cards on the backdrop refiled 2026-10-13.
 
 **`12-dust-seam-diagnostic`** is a diagnostic, not a regression scenario and not part of the gallery: nine `Silver` then nine `Dust` items
 on the rug of the Sanctuary, no presentation mode. Result (2026-10-07, tickets `abbf` and `3e4e`): `Silver` draws clean, `Dust` shows
@@ -150,17 +145,18 @@ must not stage it too, a duplicate fixture fails Pickle) and ScreenshotMode. `Ch
 | `Dust Bunnies Renew:` | this suite | the bunny, its card, its dialogs |
 | none | Pickle | `the save ... is loaded`, `I set the hour`, `I take a screenshot`, `no errors were logged` |
 
-## Order of the passes (AUDIT.md, 2026-10-02)
+## Full passes (AUDIT.md, "Passes Pickle")
 
-What has never run or is red is replayed alone, in small tickets; the non-regression passes are filed together, at the end, on
-the final revision. Today: nothing is new or red any more; image 1 of `11-gallery-captures` (rewritten 2026-10-06) was the last new scenario and is green. **Non-regression**, every scenario
-green on the logic still in the repository: `01` to `10` and the three dialogs of `11`; the `Mod/` has not changed since
-`077502e` and the steps they use are unchanged. The final non-regression set is the seven passes above, filed once after the
-last new ticket is green. When the last ticket is played, the optional mods this mod's passes downloaded into the WSL
-(A Dog Said... Animal Prosthetics 2, [XND] Nocturnal Animals) are removed from the WSL install, under the machine lock, only
-if no other mod's `wsl-deps` names them, with the list of what goes and what stays written first (AUDIT.md, 11).
+A full Pickle pass has two reasons to exist: the diagnostic (every scenario once, done at the start, 2026-09-24) and the
+non-regression, after the commit, on the published revision, at `followUp` (owner rule, 2026-10-13). Between the two, a red or
+new scenario is replayed alone as a small ticket until it is green; there is no "final pass" before `publish`. The
+non-regression set is the seven passes above. `Mod/` last changed at `5e55d2a` (the Dust textures at 64 x 64 and `drawSize`
+0.75, 2026-10-08), so `12-dust-seam-diagnostic` is the one scenario that reads the Dust graphic and joins the set. When the
+last ticket is played, the optional mods this mod's passes downloaded into the WSL (A Dog Said... Animal Prosthetics 2,
+[XND] Nocturnal Animals) are removed from the WSL install, under the machine lock, only if no other mod's `wsl-deps` names
+them, with the list written first (AUDIT.md, 11).
 
-**No new game is created** (Virginie, 2026-09-25). The `tested` criterion "a new game and an existing save" is met by the
+**No new game is created** (Virginie, 2026-09-25). The `playTests` criterion "a new game and an existing save" is met by the
 existing save alone: loading a game saved **without** this mod, with the mod added, which is what the shared `test-colony`
 fixture does in every scenario that loads it (`02` to `04`, and the training and size scenarios). A new colony is not
 repeatable, and this mod adds content only: no game component, no world or map generation, no settings, and the dust bunny is in
@@ -178,8 +174,7 @@ The machine is shared, so a run is a ticket. Tickets are filed with TicketDispat
 `WELCOME.md`, which is the owner's and lives outside this repository), and **it follows them**: this mod's session
 sets up no watcher, no `Monitor` and no cron of its own. Tickets are small, three rather than one big one. An
 **exploration or fix** ticket plays as few scenarios as possible; an **initial or final** ticket plays every
-scenario of its pass. The four passes above are four initial tickets, filed on 2026-09-24; a request carries no revision, so the mod
-stays untouched between filing and the last `RUN_DONE`.
+scenario of its pass. A request carries no revision, so the mod stays untouched between filing and the last `RUN_DONE`.
 
 ## Evidence to keep
 
@@ -205,19 +200,10 @@ on a superseded build: it proves nothing about the current one. Never keep a `sc
 from the shared report folder, which carries every other mod's captures. List what goes and what stays before
 deleting, and **never delete a report that `STATUS.md` or a tracked file points to: repoint it first.**
 
-What is worth keeping for this mod (the folders under `Tests/Pickle/Evidence/`, disk only, as of 2026-10-02):
-
-- the latest run of each scenario on the current code (the tree of `077502e`: the code has not changed since, only text and
-  the Preview): `2026-09-28-rename-loads` (`01`), `-rename-incompat` (`07`, the sole proof of that check, keep it until the
-  original mod moves), `-rename-ads2` (`08`), `-rename-nocturnal` (`09`), plus `2026-09-25-bare-startup` (the startup log
-  with no error about the optional extension);
-- the passes the rename runs did not repeat, still on unchanged defs: `2026-09-24-english` and `-french`
-  (`02` to `06`, with `steps.txt`), `-fix-toxic` and `-fix-training` (the two scenarios that superseded their failing copies there);
-- the French captures, minified to JPEG: `2026-09-25-captures-fr`;
-- the gallery originals (the three dialogs are the only copy of their full frames; do not minify them): `2026-09-28-gallery`; and
-  `2026-10-06-gallery-image1-zoom4`, the run of image 1 as it ships (summary, log and the 1920 x 1080 picture).
-
-A new pass replaces the folder it supersedes: a rerun of `08` or `09` replaces its `-rename-` folder, it does not add one.
+What is worth keeping for this mod (the folders under `Tests/Pickle/Evidence/`, disk only): the latest run of each scenario
+on the current code, the passes a later run did not repeat on unchanged defs, the French captures (minified), and the gallery
+runs that name a published image. Run `scripts/Prune-Evidence.ps1 -Mod DustBunniesRenew` (dry run) to see what a newer folder
+supersedes: it lists what goes and what stays, and keeps any folder named in `STATUS.md` or `docs/runs/`.
 
 Nothing else takes a capture. The two `Preview` and `ModIcon` images are the owner's and are not test evidence.
 
