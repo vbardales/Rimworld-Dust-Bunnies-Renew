@@ -29,7 +29,7 @@ remaining:
   - "unverified: [prepublished gate] Gallery: `Art/Gallery` holds `0-preview.png` and images 1 to 4 (image 1 the staged photograph in the Sanctuary, played and read 2026-10-06; images 2 to 4 cropped English dialogs, read 2026-10-02). Virginie has yet to look at the series as a whole and confirm its order (PUBLICATION.md, `Gallery order`)."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
-code_review_sha: 765ad84cc5f97c379ae03146516195f23869890a
+code_review_sha: d2f2fb968cdf7e866d66e29e800a9f17eb80d347
 updated:      2026-10-13
 protocols_read_sha: 2f4e0002e2543fcde57999c51ff8b2f0dfc8efdb
 ---
@@ -60,3 +60,5 @@ protocols_read_sha: 2f4e0002e2543fcde57999c51ff8b2f0dfc8efdb
 ## Cleanup — 2026-10-13 (Claude Sonnet 5.5)
 
 TESTING.md rewritten against the current state (12 features, `playTests` vocabulary, full-pass rule of 2026-10-13, Dust change at `5e55d2a` joins the non-regression set). Root: `preview-workflow.md` deleted (stale, described the withdrawn pipeline; `PUBLICATION.md` now points to `STYLE_RIMWORLD.md`), `desktop.ini` ignored, `french-review-english.json` kept on purpose. Em dash (U+2014) removed from README, PUBLICATION, ATTRIBUTION (root and `Mod/`, still identical), BACKLOG and `scripts/TEST_SCENARIOS.md`; CHANGELOG is append-only and left. Descriptions no longer name a RimWorld version. Gallery: images 1 and 2 accepted 2026-10-13; images 3 and 4 refiled on `window-backdrop-for-height` (ticket `20261013-111203-704-8093`).
+
+Code review reopened 2026-10-13 by two `Mod/` commits since `765ad84` (AUDIT.md 8.m): `Mod/About/About.xml` (description text: no RimWorld version), `Mod/ATTRIBUTION.md` (em dashes) and `Mod/About/Preview.png` (re-rendered with the echo source, byte-identical to `Art/Gallery/0-preview.png`). Diff `765ad84..d2f2fb968cdf7e866d66e29e800a9f17eb80d347` read whole: no `Source/` change, no Def, patch or texture change, so no code to review; DLL SHA-256 still `2D6203...F580B`. `code_review_sha` moved to d2f2fb968cdf7e866d66e29e800a9f17eb80d347.
