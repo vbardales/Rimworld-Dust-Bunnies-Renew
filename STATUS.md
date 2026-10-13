@@ -31,7 +31,7 @@ remaining:
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 code_review_sha: d2f2fb968cdf7e866d66e29e800a9f17eb80d347
 updated:      2026-10-13
-protocols_read_sha: 2f4e0002e2543fcde57999c51ff8b2f0dfc8efdb
+protocols_read_sha: 92cd25e11ff11424d3d28b4170ea845fa4f2e227
 ---
 
 # Dust Bunnies Renew — status
