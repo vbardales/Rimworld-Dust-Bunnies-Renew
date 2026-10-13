@@ -26,14 +26,11 @@ tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria 
 workshop:     3806760430
 remaining:
   - "unverified: [mountPreview 10.f] the Preview was re-rendered on 2026-10-12 after the echo became Art/echo-source.png (STYLE_RIMWORLD.md): upload Mod/About/Preview.png again as the GitHub social preview (public repository) and record social_preview_sha256 and echo_review_sha at mountPreview; the upload of 2026-10-07 is stale."
-  - "defect: TESTING.md is stale: says the mod was never loaded by RimWorld, last run 2026-09-24 at 1b63e37 (8 XML files, now 9), still uses the old vocabulary (done, tested, prepublished) and 'eighteen scenarios / seven passes' without matching docs/runs/history.md. Rewrite against the current state."
-  - "defect: root of the repository carries stray files (desktop.ini ignored, french-review-english.json kept on purpose, preview-workflow.md from the withdrawn pipeline); check each against STYLE_RIMWORLD.md root rule."
-  - "unverified: em dash (U+2014) rule of 2026-10-10 in README, PUBLICATION, ATTRIBUTION (root and Mod/), TESTING, BACKLOG, scripts/TEST_SCENARIOS.md; the Steam description and About.xml are clean. CHANGELOG is append-only."
   - "unverified: [prepublished gate] Gallery: `Art/Gallery` holds `0-preview.png` and images 1 to 4 (image 1 the staged photograph in the Sanctuary, played and read 2026-10-06; images 2 to 4 cropped English dialogs, read 2026-10-02). Virginie has yet to look at the series as a whole and confirm its order (PUBLICATION.md, `Gallery order`)."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 code_review_sha: 765ad84cc5f97c379ae03146516195f23869890a
-updated:      2026-10-10
+updated:      2026-10-13
 protocols_read_sha: 2f4e0002e2543fcde57999c51ff8b2f0dfc8efdb
 ---
 
@@ -59,3 +56,7 @@ protocols_read_sha: 2f4e0002e2543fcde57999c51ff8b2f0dfc8efdb
 ## Current state
 
 `Mod/` unchanged since `5e55d2a`. Workshop item 3806760430 stays private until Virginie switches it. CHANGELOG still needs the dated `## [1.0.0]` section, made in the commit sent to the dry-run (AUDIT.md 12.e). Earlier sections (Sanctuary move, dust seam fix, integrations, upstream PR #1): `docs/runs/status-journal-2026-10-10.md`.
+
+## Cleanup — 2026-10-13 (Claude Sonnet 5.5)
+
+TESTING.md rewritten against the current state (12 features, `playTests` vocabulary, full-pass rule of 2026-10-13, Dust change at `5e55d2a` joins the non-regression set). Root: `preview-workflow.md` deleted (stale, described the withdrawn pipeline; `PUBLICATION.md` now points to `STYLE_RIMWORLD.md`), `desktop.ini` ignored, `french-review-english.json` kept on purpose. Em dash (U+2014) removed from README, PUBLICATION, ATTRIBUTION (root and `Mod/`, still identical), BACKLOG and `scripts/TEST_SCENARIOS.md`; CHANGELOG is append-only and left. Descriptions no longer name a RimWorld version. Gallery: images 1 and 2 accepted 2026-10-13; images 3 and 4 refiled on `window-backdrop-for-height` (ticket `20261013-111203-704-8093`).

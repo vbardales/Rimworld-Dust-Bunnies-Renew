@@ -9,8 +9,8 @@ compiled API hook, but cannot prove that completing a bill spawns a pawn. Scenar
 therefore the first functional priority after loading. Expected results below are hypotheses
 to verify in RimWorld, not evidence that the tests passed.
 
-Where each scenario is planned to go — a Pickle feature, an offline assertion, or not applicable with
-its reason — is in [`../TESTING.md`](../TESTING.md).
+Where each scenario is planned to go - a Pickle feature, an offline assertion, or not applicable with
+its reason - is in [`../TESTING.md`](../TESTING.md).
 
 **Setup for everything below.** Development mode on. A small colony with a **crafting spot** and
 one colonist whose Crafting is enabled and not disabled by a trait. Time controls at 3x for the
@@ -31,13 +31,13 @@ anything that depends on the animal's life stage, which a def does not have: see
 
 **Watch for in `Player.log`.** Three lines, each a different failure, and one silence:
 
-- `Could not find type named` naming `DustBunnies.Recipe_SpawnDustBunny` — the assembly did not
+- `Could not find type named` naming `DustBunnies.Recipe_SpawnDustBunny` - the assembly did not
   load, or the namespace moved. This is the dangerous one, because a `workerClass` that fails to
   resolve does **not** kill the def: the field is left null and the recipe works in every visible
   way except the one that matters. See scenario 4, which is the only place it shows.
-- `Failed to find PawnKindDef named DustBunny. There are` — the `[DefOf]` did not bind. The race
+- `Failed to find PawnKindDef named DustBunny. There are` - the `[DefOf]` did not bind. The race
   file did not load, or the defName changed on one side only.
-- `Tried to use an uninitialized DefOf of type` — something touched `DustBunniesDefOf` before the
+- `Tried to use an uninitialized DefOf of type` - something touched `DustBunniesDefOf` before the
   database was complete. The port exists partly to make this impossible; if it comes back, the
   static initialiser has crept back in.
 - **No line at all** is what the original mod loaded alongside this one looks like, which is why it
@@ -79,7 +79,7 @@ infinite free bill being an infinite free skill.
 **Do.** Gather 200 dust. Open the build menu and place a wall, then a tailoring bill for a parka.
 
 **Expect.** Dust appears in the material list for both, under **Fabric**. The parka comes out
-**pale blue**, not grey — `stuffProps` sets the colour to (174, 219, 228), which is the one place
+**pale blue**, not grey - `stuffProps` sets the colour to (174, 219, 228), which is the one place
 this mod's art and its numbers disagree, and it is theirs.
 
 **Then.** Read the parka's stats, next to the same parka in cloth. Every one of these is worse,
@@ -88,21 +88,21 @@ and most of them are worse by an order of magnitude:
 | | Dust | Cloth | Vanilla floor |
 |---|---|---|---|
 | Cold insulation | 0.9 | 18 | 2.5 |
-| Heat insulation | 0 | 18 | — |
-| Sharp armour | 0.002 | 0.36 | — |
-| Hit points factor | 0.03 | 1 | — |
+| Heat insulation | 0 | 18 | - |
+| Sharp armour | 0.002 | 0.36 | - |
+| Hit points factor | 0.03 | 1 | - |
 
 **Dust is the worst insulator of any material a garment can be made from**, by a factor of nearly
 three under the lowest vanilla one. Only the six stone-block stuffs state no cold insulation at all,
 and they are Stony, which no garment accepts. A parka made of dust is not a parka. That is almost certainly the joke rather than
-an oversight — the stuff is swept off the floor and costs nothing — and it is theirs either way.
+an oversight - the stuff is swept off the floor and costs nothing - and it is theirs either way.
 
 **It is also the one claim `About.xml` used to get wrong.** The description called dust *warm*
 until 2026-09-12, which these numbers say plainly it is not.
 
 **Then.** Leave 100 dust outdoors for a day, and separately drop one incendiary near a pile.
 
-**Expect.** It burns readily — `Flammability` 1.0, the same as wood. But it deteriorates **half as
+**Expect.** It burns readily - `Flammability` 1.0, the same as wood. But it deteriorates **half as
 fast as cloth**, not faster: `DeteriorationRate` is 2 against cloth's 4. Dust outdoors outlasts
 clothing outdoors, which is funnier than it is useful.
 
@@ -137,7 +137,7 @@ has moved.
 colour, it can be renamed, and it appears in the Animals tab. It was never wild and was never
 tamed: it is made, so it takes the faction of whoever made it.
 
-**How it fails.** A bunny that spawns wild means `billDoer.Faction` came through null — which
+**How it fails.** A bunny that spawns wild means `billDoer.Faction` came through null - which
 happens if the bill was somehow done by a pawn with no faction.
 
 **Then.** Save, quit to the main menu and reload. Confirm the bunny still belongs to the colony, dust stacks and queued bills persist, and no new mod errors appear in Player.log.
@@ -150,7 +150,7 @@ happens if the bill was somehow done by a pawn with no faction.
 
 **Why it matters.** This is the port's first correction and the only one with a visible number.
 Wildness stopped being a field of `RaceProperties` and became a `StatDef`; the old element matched
-no field, and RimWorld does not stop for an element that matches nothing — it logs one line and
+no field, and RimWorld does not stop for an element that matches nothing - it logs one line and
 carries on with the value unset. The stat's default is −1, clamped to 0. So a bunny left in the
 old form would read **0%** here, or show nothing at all, `Wildness` declaring `showIfUndefined`
 false. 0% is not a small error: it is a perfectly tame animal where a slightly wild one was
@@ -221,7 +221,7 @@ says about 6. Check the yield against the living one, never against the def's ca
 against the 50.
 
 **Why it matters.** It sets the exchange rate of the whole mod. 100 dust in, one bunny, and about a
-sixteenth of it back out — so the loop loses heavily and a colony cannot farm dust through bunnies.
+sixteenth of it back out - so the loop loses heavily and a colony cannot farm dust through bunnies.
 `About.xml` claimed a flat 50 until 2026-09-12 and about 18 until 2026-09-24. Both ignored the life
 stage, and the second was read off the def's card.
 
@@ -229,7 +229,7 @@ stage, and the second was read off the def's card.
 
 **Do.** Play, or force manhunter-pack events in development mode, for several seasons.
 
-**Expect.** Never a dust bunny among them — `canArriveManhunter` is false. And never one on the
+**Expect.** Never a dust bunny among them - `canArriveManhunter` is false. And never one on the
 map at world generation or in a wildlife wave, because the race belongs to no biome, whatever
 `ecoSystemWeight` says.
 
@@ -240,7 +240,7 @@ map at world generation or in a wildlife wave, because the race belongs to no bi
 **Expect.** No pregnancy, ever. `mateMtbHours` is 0, so the `litterSizeCurve` and the
 `gestationPeriodDays` beside it never apply. They are dead settings and were left as found.
 
-**Also.** No gender on either — `hasGenders` is false.
+**Also.** No gender on either - `hasGenders` is false.
 
 ## 14. It dies of old age in about a year
 
@@ -303,8 +303,8 @@ game removes the earlier def of a name and adds the later one, so whichever of t
 owns `DustBunny`, `Dust`, `GatherDust` and `MakeDustBunny`, and the other's version is gone. The
 owner is the mod that comes last in the mod list, and nothing in the log or the game says so.
 
-**Why it matters.** Every `defName` is unchanged — `DustBunny`, `Dust`, `GatherDust`,
-`MakeDustBunny` and the rest — so the declaration is the only thing between a player and a def that
+**Why it matters.** Every `defName` is unchanged - `DustBunny`, `Dust`, `GatherDust`,
+`MakeDustBunny` and the rest - so the declaration is the only thing between a player and a def that
 changes under them without a word. Whether it is still true is worth looking at. Never run a colony
 you care about with both enabled.
 

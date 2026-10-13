@@ -2,7 +2,7 @@
 
 Work that is decided or proposed and not done. Nothing here is in the published mod. Newest first.
 
-## 1. Nocturnal Animals (Continued) — done and played green on 2026-09-25
+## 1. Nocturnal Animals (Continued) - done and played green on 2026-09-25
 
 Decided by Virginie on 2026-09-25: **Nocturnal**. Written: the extension on the `DustBunny` `ThingDef` with
 `MayRequire="Mlie.XNDNocturnalAnimals"` (`Mod/Defs/ThingDefs_Races/Races_DustBunny.xml`), an eighth section of
@@ -18,7 +18,7 @@ Reference, read on 2026-09-25 from the installed copy (1.6): an animal opts in w
 `<li Class="NocturnalAnimals.ExtendedRaceProperties"><bodyClock>Nocturnal</bodyClock></li>`; `bodyClock` is `Diurnal`,
 `Nocturnal`, `Crepuscular` or `Cathemeral`; unpatched animals are diurnal.
 
-## 2. Better Crossbreeding — decided 2026-10-11: nothing (Virginie)
+## 2. Better Crossbreeding - decided 2026-10-11: nothing (Virginie)
 
 The dust bunny stays genderless and never mates; breeding would also be a design change (genders, mating interval, a way round the 100 dust). Kept below as the reasoning. Breeding could come as 1.1.0 if she asks.
 
@@ -58,7 +58,7 @@ scale shot does not show the bunny) and images 1 to 4 into `Art/Gallery`; a date
 Upstream: the pull request to 2blockdude's repository is open and unanswered
 (<https://github.com/blockdude/csharp-rimworld-dust-bunnies/pull/1>, checked 2026-10-02: no comment, no review).
 
-## 5. Wording: "small critters" was my gloss, not ADS 2's — fixed on 2026-09-25
+## 5. Wording: "small critters" was my gloss, not ADS 2's - fixed on 2026-09-25
 
 Category 1 itself is confirmed by Virginie (2026-09-25), knowing what it contains: only the wording changes.
 

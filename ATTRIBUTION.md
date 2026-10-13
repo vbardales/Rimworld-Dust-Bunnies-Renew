@@ -1,9 +1,9 @@
-# Dust Bunnies — attribution
+# Dust Bunnies - attribution
 
 A 1.6 port of **Dust Bunnies**, by **2blockdude** and **HendraGradeWood**
 ([2659958183](https://steamcommunity.com/sharedfiles/filedetails/?id=2659958183)).
 
-## Upstream pull request — 2026-09-28
+## Upstream pull request - 2026-09-28
 
 Opened [blockdude/csharp-rimworld-dust-bunnies#1](https://github.com/blockdude/csharp-rimworld-dust-bunnies/pull/1)
 against the source repository: a `1.6/` folder in its own per-version layout (matching `1.1/`,
@@ -13,14 +13,14 @@ purpose is served and the two can point at each other; if not, nothing here chan
 
 ## Status: public
 
-The source mod is **dead** — it declares 1.1, 1.2 and 1.3 and nothing further, and its repository
-was last pushed on 2021-11-21 — and **no licence is declared anywhere**, checked at the four
+The source mod is **dead** - it declares 1.1, 1.2 and 1.3 and nothing further, and its repository
+was last pushed on 2021-11-21 - and **no licence is declared anywhere**, checked at the four
 places one could be:
 
 - no `LICENSE` file in the mod;
 - nothing in `About.xml`, neither a field nor a sentence in the body of the description;
 - nothing in the body of the description on its Steam page;
-- and, because this mod does declare a `<url>`, the linked repository too —
+- and, because this mod does declare a `<url>`, the linked repository too -
   [blockdude/csharp-rimworld-dust-bunnies](https://github.com/blockdude/csharp-rimworld-dust-bunnies)
   reports `"license": null` and its `README.md` is four lines with no terms in them.
 
@@ -31,7 +31,7 @@ This is the usual convention for ports on the RimWorld Workshop: republished wit
 name** and **removal on request, without argument**. The `<author>` field reads
 `2blockdude, HendraGradeWood - 1.6 adapted by Nelim`, and the removal clause is in the description.
 
-## Explicit licence and visibility recheck — 2026-09-12
+## Explicit licence and visibility recheck - 2026-09-12
 
 Decision: **mod licence classification `silent`; mod visibility classification `public`**,
 under the project's PUBLISHING.md rule for abandoned sources without permission or a recorded
@@ -64,7 +64,7 @@ was contacted, no permission was obtained, and no publication or visibility chan
 
 ## What was carried over
 
-Everything the mod defined — seven defs, four distinct images and one C# class. The original had no
+Everything the mod defined - seven defs, four distinct images and one C# class. The original had no
 dependency, no DLC, no research and no patch; the port adds one optional patch of its own, described
 under "What changed in the port".
 
@@ -84,14 +84,14 @@ HendraGradeWood's, unchanged. So are the textures, byte for byte.
 **The mod ships five texture files but only four distinct images.**
 `Textures/DustBunny/Bunny/Dust_Bunny_east.png` and
 `Textures/DustBunny/Bunny/Dessicated_Dust_Bunny.png` are the same 256×256 file, identical by MD5.
-The dessicated corpse of a dust bunny is therefore drawn exactly like a live one — which, for a
+The dessicated corpse of a dust bunny is therefore drawn exactly like a live one - which, for a
 creature that is a clump of dust, is arguably correct and is in any case theirs to decide. It is
 recorded rather than fixed: repainting it would be making art, not porting a mod.
 
 **Neither image under `About/` is theirs,** and the reason belongs in this file rather than a
 style note.
 
-An icon was once cut from their own sprite — the opaque 91×83 squared around its centre and scaled
+An icon was once cut from their own sprite - the opaque 91×83 squared around its centre and scaled
 to 128 px. It was withdrawn on 2026-09-11, and two rules reach it. The first is the one that
 matters here: **an icon cut from the source mod is the source authors' art standing in for the
 identity of the port**, and the identity is the one thing a port should carry itself. Everything
@@ -105,7 +105,7 @@ showcase at all: it was the bunny sprite itself, the same 256×256 file as
 the icon's mistake a second time, at four times the size.
 
 Both were replaced on 2026-09-11 by images made for this port, and **neither is derived from the
-original art** — no pixel of the bunny sprite is in either one. The mascot is the repository's own,
+original art** - no pixel of the bunny sprite is in either one. The mascot is the repository's own,
 recoloured grey for this mod; the showcase is a workshop floor drawn from scratch. The
 full-resolution originals are under `Art/`, and the shared renderer that lays the title over the
 showcase is configured by `Art/Preview.config.json`.
@@ -117,7 +117,7 @@ as a fallback for as long as the mascot did not exist.
 
 The original assembly holds exactly one type, `DustBunnies.Recipe_SpawnDustBunny`, and it is the
 whole mod: a `RecipeWorker` that spawns a pawn instead of producing an item. `Source/` is a
-reimplementation of that behaviour against the 1.6 API, not a decompilation dropped in — the
+reimplementation of that behaviour against the 1.6 API, not a decompilation dropped in - the
 assembly was decompiled to find out what it called, and every call was then checked against 1.6 by
 reflection before a line was written.
 
@@ -140,18 +140,18 @@ now left implicit.
 
 The call site was verified too, not just the signature. `Toils_Recipe.FinishRecipeAndStartStoringProduct`
 still calls `curJob.bill.Notify_IterationCompleted(actor, ingredients)`, and `Bill_Production`
-still forwards it to `recipe.Worker` — after the ingredients are consumed, before the job ends,
+still forwards it to `recipe.Worker` - after the ingredients are consumed, before the job ends,
 with the doer standing on the crafting spot.
 
 ## What changed in the port
 
 **Wildness.** `<wildness>0.1</wildness>` sat inside `<race>`. Wildness stopped being a field of
 `RaceProperties` and became a `StatDef`; that element now matches no field, and RimWorld does not
-stop for an element that matches no field — it logs one line and carries on with the field unset.
+stop for an element that matches no field - it logs one line and carries on with the field unset.
 The `Wildness` stat's `defaultBaseValue` is `-1` (Core's own comment: *"so we can catch missing
 wildness stats on animals"*), `minValue` is `0`, and `StatWorker` clamps, so a dust bunny left in
 the old form would have come out perfectly tame instead of very slightly wild. Small in effect
-here — 0.1 is nearly nothing — but it also erases the line from the animal's information card,
+here - 0.1 is nearly nothing - but it also erases the line from the animal's information card,
 since `Wildness` declares `showIfUndefined` false. It is now `<Wildness>0.1</Wildness>` under
 `statBases`, written the way vanilla's own animals write it.
 
@@ -162,8 +162,8 @@ public static PawnKindDef Pawn_DustBunny = DefDatabase<PawnKindDef>.GetNamed("Du
 ```
 
 An inline static field initialiser runs when the CLR first touches the type, which is a moment the
-mod does not choose. In practice it worked — `RecipeDef.Worker` is lazy, and by the time a bill
-runs the database is long since built — but a failure there surfaces as a
+mod does not choose. In practice it worked - `RecipeDef.Worker` is lazy, and by the time a bill
+runs the database is long since built - but a failure there surfaces as a
 `TypeInitializationException` with the real cause two levels down, and the field never rebinds if
 the database is reloaded. It is a `[DefOf]` class now: `DefOfHelper.RebindAllDefOfs` binds it once
 the database is complete, and again after any reload.
@@ -205,12 +205,12 @@ null `Map` handed straight to `GenSpawn`.
 every other language falls back to.
 
 **Dead code dropped.** The recipe file carried a commented-out `VG_DigSoil_Bulk` recipe referring
-to `VG_PileofDirt` and `VG_DiggingSpot`, defs from another mod entirely — the template this file
+to `VG_PileofDirt` and `VG_DiggingSpot`, defs from another mod entirely - the template this file
 was started from. The concrete `DustBunny` `ThingDef` also carried an empty `<race>` element whose
 only content was a commented-out `<useMeatFrom>Hare</useMeatFrom>`.
 
 **French was added**: 12 keys. The animal is a *mouton de poussière*, which is what the thing is
-called in French and which keeps the joke — a *mouton* is both the dust under the bed and the
+called in French and which keeps the joke - a *mouton* is both the dust under the bed and the
 animal in the field, so *"fait de mouton"* lands the way *"made from bunny"* does. jobStrings are
 third person present, the way vanilla writes them (*"Extrait le moût du houblon."*), not the
 infinitive the English uses. The dust needs no `stuffProps.stuffAdjective`:
@@ -221,7 +221,7 @@ infinitive the English uses. The dust needs no `stuffProps.stuffAdjective`:
 
 Every stat but the toxic one above, every tool, the litter curve, the single life stage, the sounds, the
 trade tags, the draw sizes, the recipe costs and work amounts, and the four images. The balance was not
-touched anywhere else — including the parts that look like mistakes and are not the port's to decide:
+touched anywhere else - including the parts that look like mistakes and are not the port's to decide:
 `baseHungerRate` 0 (it never eats), `lifeExpectancy` 1 (it lives a year), `mateMtbHours` 0 with a
 `litterSizeCurve` and a `gestationPeriodDays` that consequently never come into play, and
 `ecoSystemWeight` on an animal that is in no biome and can only be crafted.
@@ -229,13 +229,13 @@ touched anywhere else — including the parts that look like mistakes and are no
 **The `defName`s were kept, and checked rather than assumed.** `Dust` in particular carries no
 author prefix and is exactly the kind of name that collides:
 
-- **Core and every DLC** — nothing defines `Dust`, `DustBunny`, `GatherDust` or `MakeDustBunny`,
+- **Core and every DLC** - nothing defines `Dust`, `DustBunny`, `GatherDust` or `MakeDustBunny`,
   and nothing declares `BaseDustBunny` or `DustBunnyBase` as an abstract `Name`.
 - **Every subscribed Workshop mod**, 10 352 of them. One hit, and it is not a collision:
   *Allergies* (`phil42.allergies`) declares a `P42_Allergies.AllergyDef` named `Dust`. RimWorld's
   `DefDatabase` is generic per def type, so an `AllergyDef` and a `ThingDef` may share a name.
   Every other hit is the source mod's own three version folders.
-- **Every other mod in this repository** — nothing.
+- **Every other mod in this repository** - nothing.
 
 No collision, so no rename. That is the right way round to decide it: a rename is permanent in a
 way a port is not.
@@ -247,7 +247,7 @@ Workshop item.
 
 The `1.1/` and `1.2/` version folders. The mod declared its content in per-version directories
 with no `LoadFolders.xml`, so RimWorld was loading whichever matched. The three folders held
-**byte-identical** XML — only the assembly differed, being recompiled per version — so the port
+**byte-identical** XML - only the assembly differed, being recompiled per version - so the port
 keeps one copy of the defs at the root and one assembly built against 1.6.
 
 ## AI assistance and test tools

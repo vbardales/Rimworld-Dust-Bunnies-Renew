@@ -1,4 +1,4 @@
-# Dust Bunnies Renew — publication
+# Dust Bunnies Renew - publication
 
 Everything the Workshop page needs that the rest of the repository does not already say. Serves
 the first envoi and whoever reopens this mod after.
@@ -83,18 +83,18 @@ Produced by a dedicated Pickle scenario rather than by hand, so it is reproducib
 interface change (AUDIT.md, "Captures destinées à la publication"): `11-gallery-captures`,
 `English -DepMap wsl-deps.gallery.map`: image 1 is a staged photograph in PickleTools' Sanctuary (Screenshot Studio, ColonistRace,
 StageDecor, CameraZoom), the dialogs are plain menu screenshots taken with ScreenshotMode, as the French review pass
-(`10-french-dialogs`) does. It is `@review`: green proves the four captures were taken, not what is on them —
+(`10-french-dialogs`) does. It is `@review`: green proves the four captures were taken, not what is on them -
 each one still has to be opened and looked at before upload.
 
 Gallery folder: `Art/Gallery` (`galleryDir` in `.github/publish.config.json`; the dry-run lists
-it as a reminder, SteamCMD never sends it — the CI has one `previewfile` field, the gallery goes
+it as a reminder, SteamCMD never sends it - the CI has one `previewfile` field, the gallery goes
 up by hand on the Steam page). Order (owner's convention, 2026-09-29: the first image is
 numbered 0, a byte-identical copy of `Preview.png`, recopied every time the Preview changes so
 the two never drift):
 
-0. `0-preview.png` — a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
+0. `0-preview.png` - a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
    the ModIcon badge in a corner (placement and veil in `Art/Preview.config.json`, rendered by the shared
-   renderer, see `Art/preview-workflow.md`). Done; committed.
+   renderer, STYLE_RIMWORLD.md). Done; committed.
 1. **The dust bunny at the foot of Nelim's bed** (staged photograph, `11-gallery-captures`): a dust bunny, tiny and grey, on the white rug
    of the Sanctuary's `sleeping-nook`, Nelim standing two cells away in teal and plum, midday light, the royal bed and the
    drapes behind. It says: it is alive, and it is tiny.
