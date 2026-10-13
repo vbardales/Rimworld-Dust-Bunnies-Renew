@@ -26,17 +26,17 @@ No DLC, no dependencies. Seven defs, four texture images and one class.
 
 Optional: with [A Dog Said... Animal Prosthetics 2](https://steamcommunity.com/sharedfiles/filedetails/?id=3238353862) the dust bunny is enrolled in its first category, basic replacements, so it can receive a peg leg or a denture. With [[XND] Nocturnal Animals (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2269731409) it is nocturnal. Nothing is required and nothing changes without them.
 
-I am not the author of this mod. The dust bunny, its artwork and its balance are 2blockdude's and HendraGradeWood's - all I did was bring it forward to 1.6, repair what the port turned up, and write the French. Credit goes to them; mistakes in the port are mine.
+I am not the author of this mod. The dust bunny, its artwork and its balance are 2blockdude's and HendraGradeWood's - all I did was bring it forward to the latest RimWorld version, repair what the port turned up, and write the French. Credit goes to them; mistakes in the port are mine.
 
 Original mod: https://steamcommunity.com/sharedfiles/filedetails/?id=2659958183 - declares 1.1, 1.2 and 1.3 and nothing further, untouched since November 2021.
 
 WHAT THE PORT FIXED
 
-Wildness stopped being a field of RaceProperties and became a StatDef. The old element matches nothing, and RimWorld does not stop for an element that matches nothing - it logs one line and carries on with the field unset. The stat's default is -1, clamped to 0, so a dust bunny left in the old form would have been perfectly tame instead of very slightly wild. It is now under statBases, where 1.6 wants it.
+Wildness stopped being a field of RaceProperties and became a StatDef. The old element matches nothing, and RimWorld does not stop for an element that matches nothing - it logs one line and carries on with the field unset. The stat's default is -1, clamped to 0, so a dust bunny left in the old form would have been perfectly tame instead of very slightly wild. It is now under statBases, where the latest RimWorld version wants it.
 
 The recipe worker held its PawnKindDef in a static field initialised inline. That runs the first time anything touches the class, at a moment the mod does not control, and a failure there surfaces as a TypeInitializationException with the real cause two levels down. It is a [DefOf] now, bound by the game once the def database is complete.
 
-Every game call the worker makes was checked against 1.6 by reflection before recompiling, because a RecipeWorker whose signature moved does not fail at load - it fails when the recipe runs, long after.
+Every game call the worker makes was checked against the game by reflection before recompiling, because a RecipeWorker whose signature moved does not fail at load - it fails when the recipe runs, long after.
 
 A third fix, found once the port ran in game: ToxicSensitivity is gone from RimWorld's StatDefs. The original wrote it at zero to make the animal immune to toxic buildup; the port writes ToxicResistance at 1.0 (immune) instead, to keep that intent.
 
@@ -73,7 +73,7 @@ Draft, to be reread when the version is sent:
 
 ```
 [b]1.0.0[/b]
-First public version: the 1.6 port of Dust Bunnies, with the toxic-buildup, wildness and DefOf fixes, and two optional integrations (A Dog Said... Animal Prosthetics 2, [XND] Nocturnal Animals).
+First public version: the port of Dust Bunnies to the latest RimWorld version, with the toxic-buildup, wildness and DefOf fixes, and two optional integrations (A Dog Said... Animal Prosthetics 2, [XND] Nocturnal Animals).
 ```
 
 ## Gallery order
