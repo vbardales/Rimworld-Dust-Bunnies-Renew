@@ -13,7 +13,7 @@ visibility_at: GitHub API verified 2026-09-24 (public, main); Workshop item 3806
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: writeDocs[1.0.0]
+workflow_stage: prepareRelease[1.0.0]
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 upstream_mod_remotes:
@@ -28,6 +28,7 @@ remaining:
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "unverified: the Workshop page of item 3806760430 still carries the description frozen at creation (butchering about 18 dust, dust the worst insulator in the game; it is about 6, and the worst of any material a garment can be made from). `publish.config.json` makes `PUBLICATION.md` the description source: check that the 1.0.0 dispatch updates the description (update_description) and, after it, that the Steam page reads as `PUBLICATION.md`. No manual correction planned."
 code_review_sha: 092ead7433b132936fdc74ffaa402131e99211b0
+publication_changelog_review_sha: c656e9987e448c561cbb577f4afb63a8df10b9c8
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: f7fa401ed95fb5183ffc772f2ff36fee20f3fdfc8f70a4948eeb364e2c29e78e
 updated:      2026-10-14
@@ -92,6 +93,6 @@ Order 1 to 4 confirmed (first image large on Steam: the most demonstrative). Ind
 - 11.f: `[Unreleased]` holds the version's changes; it becomes `## [1.0.0]` at the dry-run (12.e).
 - 11.g: no adult content; the four gallery images and the Preview were all opened this week.
 - 11.h: thank-you comments are all `posted` or not applicable (registry); 11.i: the 1.0.0 release note draft, first line `[b]1.0.0[/b]`, is in `PUBLICATION.md`, to be reread when sent.
-- 11.j open: Virginie's review of `PUBLICATION.md` and `CHANGELOG.md` (`publication_changelog_review_sha`), line 1.0.
+- 11.j done 2026-10-14: Virginie validated PUBLICATION.md and CHANGELOG.md in chat (line 1.0), reviewed commit `publication_changelog_review_sha`. `writeDocs` -> `prepareRelease[1.0.0]`.
 
 Code review sha moved again on 2026-10-14 to `092ead7433b132936fdc74ffaa402131e99211b0`: the only `Mod/` change since the previous move is the two description phrases in `Mod/About/About.xml` ("No DLC or required dependencies", "from which clothes can be made"); no Source, Def, patch or texture change. The Steam description changed, so Virginie's review of `PUBLICATION.md` (11.j) covers the text after these edits.
