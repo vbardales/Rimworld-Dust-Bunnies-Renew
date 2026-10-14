@@ -13,7 +13,7 @@ visibility_at: GitHub API verified 2026-09-24 (public, main); Workshop item 3806
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: shootGallery[1.0.0]
+workflow_stage: mountPreview[1.0.0]
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 upstream_mod_remotes:
@@ -26,12 +26,11 @@ tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria 
 workshop:     3806760430
 remaining:
   - "unverified: [mountPreview 10.f] the Preview was re-rendered on 2026-10-12 after the echo became Art/echo-source.png (STYLE_RIMWORLD.md): upload Mod/About/Preview.png again as the GitHub social preview (public repository) and record social_preview_sha256 and echo_review_sha at mountPreview; the upload of 2026-10-07 is stale."
-  - "unverified: [prepublished gate] Gallery: `Art/Gallery` holds `0-preview.png` and images 1 to 4 (image 1 the staged photograph in the Sanctuary, played and read 2026-10-06; images 2 to 4 cropped English dialogs, read 2026-10-02). Virginie has yet to look at the series as a whole and confirm its order (PUBLICATION.md, `Gallery order`)."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 code_review_sha: d2f2fb968cdf7e866d66e29e800a9f17eb80d347
-updated:      2026-10-13
-protocols_read_sha: 92cd25e11ff11424d3d28b4170ea845fa4f2e227
+updated:      2026-10-14
+protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
 ---
 
 # Dust Bunnies Renew — status
@@ -62,3 +61,15 @@ protocols_read_sha: 92cd25e11ff11424d3d28b4170ea845fa4f2e227
 TESTING.md rewritten against the current state (12 features, `playTests` vocabulary, full-pass rule of 2026-10-13, Dust change at `5e55d2a` joins the non-regression set). Root: `preview-workflow.md` deleted (stale, described the withdrawn pipeline; `PUBLICATION.md` now points to `STYLE_RIMWORLD.md`), `desktop.ini` ignored, `french-review-english.json` kept on purpose. Em dash (U+2014) removed from README, PUBLICATION, ATTRIBUTION (root and `Mod/`, still identical), BACKLOG and `scripts/TEST_SCENARIOS.md`; CHANGELOG is append-only and left. Descriptions no longer name a RimWorld version. Gallery: images 1 and 2 accepted 2026-10-13; images 3 and 4 refiled on `window-backdrop-for-height` (ticket `20261013-111203-704-8093`).
 
 Code review reopened 2026-10-13 by two `Mod/` commits since `765ad84` (AUDIT.md 8.m): `Mod/About/About.xml` (description text: no RimWorld version), `Mod/ATTRIBUTION.md` (em dashes) and `Mod/About/Preview.png` (re-rendered with the echo source, byte-identical to `Art/Gallery/0-preview.png`). Diff `765ad84..d2f2fb968cdf7e866d66e29e800a9f17eb80d347` read whole: no `Source/` change, no Def, patch or texture change, so no code to review; DLL SHA-256 still `2D6203...F580B`. `code_review_sha` moved to d2f2fb968cdf7e866d66e29e800a9f17eb80d347.
+
+## Gallery — 2026-10-13, accepted by Virginie (AUDIT.md 9, `shootGallery` -> `mountPreview`)
+
+| Index | File | Shows | Frame |
+|---|---|---|---|
+| 0 | `0-preview.png` | byte copy of `Mod/About/Preview.png` | 896 x 504 |
+| 1 | `1-bunny-at-the-bed.png` | the live dust bunny at the foot of Nelim's bed, Sanctuary `sleeping-nook`, midday | 1920 x 1080 |
+| 2 | `2-bill-dialog.png` | the "Make a dust bunny" bill, 100x dust | 1600 x 900 |
+| 3 | `3-dust-bunny-card.png` | the dust bunny's information card, on `window-backdrop-for-height` | 1200 x 1080 |
+| 4 | `4-dust-card.png` | the dust's information card, same backdrop | 1200 x 1080 |
+
+Order 1 to 4 confirmed (first image large on Steam: the most demonstrative). Indexes contiguous, 4.1 MB in all, no `candidate` left. Runs: tickets `82d4` (cards) and the Sanctuary run of 2026-10-12 (images 1 and 2), `docs/runs/history.md`. Next, `mountPreview`: echo review (`echo_review_sha`), GitHub social preview upload (`social_preview_sha256`).

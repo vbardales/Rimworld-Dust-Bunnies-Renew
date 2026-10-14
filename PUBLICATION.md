@@ -98,22 +98,18 @@ the two never drift):
 1. **The dust bunny at the foot of Nelim's bed** (staged photograph, `11-gallery-captures`): a dust bunny, tiny and grey, on the white rug
    of the Sanctuary's `sleeping-nook`, Nelim standing two cells away in teal and plum, midday light, the royal bed and the
    drapes behind. It says: it is alive, and it is tiny.
-2. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost.
+2. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost, over the Sanctuary's `sleeping-nook`, cropped 1600 x 900 around the window.
 3. The dust bunny's information card, showing its stats (comfortable to -55 C, immune to toxic
-   buildup, never eats).
-4. The dust resource's information card (Fabric stuff, worst insulator).
+   buildup, never eats), a full-height window on the Sanctuary's `window-backdrop-for-height`, cropped sideways (1200 x 1080).
+4. The dust resource's information card (Fabric stuff, worst insulator), same backdrop and crop.
 
 **The story of the series** (owner's rule: one story, not a row of captures): spring cleaning in the Sanctuary. Nelim sweeps the
 dust off her floor, piles a hundred of it on the crafting spot (image 2, the bill that asks for it), and the dust gets up and
 walks (image 1). Images 3 and 4 are what the player reads next: the animal's card, the dust's card. The three menus are plain
-screenshots of the windows, as the rule says, cropped to the window. The shooting plan is the header of
+screenshots of the windows, as the rule says; the two full-height cards are cropped sideways, not in height. The shooting plan is the header of
 `Tests/Pickle/Mod/Pickle/Features/11-gallery-captures.feature`.
 
-**State, 2026-10-06.** `Art/Gallery` holds `0-preview.png` (copy of the regenerated Preview), `1-bunny-at-the-bed.png` (the staged
-photograph, ticket `0412`, zoom 4, read: Nelim awake in teal, the bunny about 70 px wide on the rug beside her, no tool overlay) and
-images 2 to 4 (cropped to their dialogs, originals in `Tests/Pickle/Evidence/2026-09-28-gallery`; read, clean). Image 3 reads
-"Leather amount 18", the def-level figure (the animal yields about 6, as the description says). Image 1 is the full 1920 x 1080
-frame, 2 MB, not cropped: a photograph keeps its surroundings.
+**State, 2026-10-13.** `Art/Gallery` holds `0-preview.png` (copy of the Preview) and the four accepted images, indexes 0 to 4 with no gap: `1-bunny-at-the-bed.png` (Sanctuary close-up, zoom 2.6, 1920 x 1080), `2-bill-dialog.png` (1600 x 900), `3-dust-bunny-card.png` and `4-dust-card.png` (1200 x 1080). All read and accepted by Virginie, order 1 to 4 (her verdict 2026-10-13). Image 3 reads "Leather amount 18", the def-level figure (the animal yields about 6, as the description says). Source frames: `Tests/Pickle/Evidence/2026-10-12-gallery-menus-sanctuary` and `2026-10-13-gallery-cards-backdrop-2`.
 
 ## Thank-you comments
 
@@ -146,6 +142,6 @@ No adult content. Not applicable.
 
 ## Remaining before the first envoi
 
-- Gallery image 1 (see "Gallery order"), then images 1 to 4 into `Art/Gallery`.
+- Images 1 to 4 are in `Art/Gallery` (see "Gallery order"); to put on the Steam page by hand.
 - `CHANGELOG.md` needs a dated `## [1.0.0]` section before the `publish` (the CI dry-run does not catch its absence).
 - The release note of 1.0.0, first line `[b]1.0.0[/b]`, written when the version is sent.
