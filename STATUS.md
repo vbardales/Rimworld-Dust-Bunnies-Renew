@@ -82,3 +82,14 @@ Order 1 to 4 confirmed (first image large on Steam: the most demonstrative). Ind
 ## Social preview — 2026-10-14 (mountPreview 10.f)
 
 `Mod/About/Preview.png` uploaded as the GitHub social preview by the session, through Virginie's logged-in Chrome (Settings, Social preview, upload; her "fais-le"), 2026-10-14. After a reload the Social preview panel shows the new Preview (echo against "(unofficial)", 1.6 badge). The sha256 is the uploaded file's, not read back from GitHub (CORS blocks fetching the served image): `social_preview_sha256: f7fa401ed95fb5183ffc772f2ff36fee20f3fdfc8f70a4948eeb364e2c29e78e`. `mountPreview` -> `writeDocs[1.0.0]`.
+
+## writeDocs checks — 2026-10-14 (Claude Sonnet 5.5, at `e0853ea`; AUDIT.md 11)
+
+- 11.a, 11.b: the Steam description is one block under `## Steam description`, in English: UNOFFICIAL paragraph, body, WHAT THE PORT FIXED, IF I GO QUIET with the adoption clause word for word (grep against PUBLISHING.md), AI-GENERATED (Claude and Codex), THANKS (ADS 2 and Nocturnal Animals by their authors, Harmony, Pickle, RimLogging and Pickle Tools as development tools only), the ATTRIBUTION line and, last, `Source code on GitHub` to `vbardales/Rimworld-Dust-Bunnies-Renew`. Workshop links not opened remotely this session.
+- 11.c: `sync-about-description.mjs` says the `About.xml` description is already the plain text of `PUBLICATION.md`; `<url>` is the repository.
+- 11.d: Workshop link on every cited mod that has a page (ADS 2, Nocturnal Animals, its original, Harmony, Pickle, RimLogging, Pickle Tools, the original Dust Bunnies); the original authors 2blockdude and HendraGradeWood are credited.
+- 11.e: gallery order and table aligned with this file (2026-10-13), dependencies and DLC, adult content answered.
+- 11.f: `[Unreleased]` holds the version's changes; it becomes `## [1.0.0]` at the dry-run (12.e).
+- 11.g: no adult content; the four gallery images and the Preview were all opened this week.
+- 11.h: thank-you comments are all `posted` or not applicable (registry); 11.i: the 1.0.0 release note draft, first line `[b]1.0.0[/b]`, is in `PUBLICATION.md`, to be reread when sent.
+- 11.j open: Virginie's review of `PUBLICATION.md` and `CHANGELOG.md` (`publication_changelog_review_sha`), line 1.0.
