@@ -13,7 +13,7 @@ visibility_at: GitHub API verified 2026-09-24 (public, main); Workshop item 3806
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: mountPreview[1.0.0]
+workflow_stage: writeDocs[1.0.0]
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 upstream_mod_remotes:
@@ -25,11 +25,11 @@ showcase:     complete
 tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria met, see the audit entry below); 2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
 remaining:
-  - "unverified: [mountPreview 10.f] the Preview was re-rendered on 2026-10-12 after the echo became Art/echo-source.png (STYLE_RIMWORLD.md): upload Mod/About/Preview.png again as the GitHub social preview (public repository) and record social_preview_sha256 and echo_review_sha at mountPreview; the upload of 2026-10-07 is stale."
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 code_review_sha: d2f2fb968cdf7e866d66e29e800a9f17eb80d347
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
+social_preview_sha256: f7fa401ed95fb5183ffc772f2ff36fee20f3fdfc8f70a4948eeb364e2c29e78e
 updated:      2026-10-14
 protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
 ---
@@ -78,3 +78,7 @@ Order 1 to 4 confirmed (first image large on Steam: the most demonstrative). Ind
 ## Echo review — 2026-10-14 (mountPreview, AUDIT.md 10.a)
 
 `Art/echo-source.png` kept. It is the yellow line-art of the in-game dust bunny (grey rabbit, long ears, round tail), the same animal and pose family as gallery images 1 and 3, so the Preview and the gallery show one subject; the mod's subject has not moved. In the rendered Preview the echo's nose touches the closing parenthesis of "(unofficial)" and its ears pass behind the end of the title: a placement matter in `Art/Preview.config.json`, not a mismatch of the echo, and the Preview is already accepted, so it is not reopened for taste. `echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300`.
+
+## Social preview — 2026-10-14 (mountPreview 10.f)
+
+`Mod/About/Preview.png` uploaded as the GitHub social preview by the session, through Virginie's logged-in Chrome (Settings, Social preview, upload; her "fais-le"), 2026-10-14. After a reload the Social preview panel shows the new Preview (echo against "(unofficial)", 1.6 badge). The sha256 is the uploaded file's, not read back from GitHub (CORS blocks fetching the served image): `social_preview_sha256: f7fa401ed95fb5183ffc772f2ff36fee20f3fdfc8f70a4948eeb364e2c29e78e`. `mountPreview` -> `writeDocs[1.0.0]`.
