@@ -26,7 +26,7 @@ tested_on:    re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria 
 workshop:     3806760430
 remaining:
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
-  - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
+  - "unverified: the Workshop page of item 3806760430 still carries the description frozen at creation (butchering about 18 dust, dust the worst insulator in the game; it is about 6, and the worst of any material a garment can be made from). `publish.config.json` makes `PUBLICATION.md` the description source: check that the 1.0.0 dispatch updates the description (update_description) and, after it, that the Steam page reads as `PUBLICATION.md`. No manual correction planned."
 code_review_sha: d2f2fb968cdf7e866d66e29e800a9f17eb80d347
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: f7fa401ed95fb5183ffc772f2ff36fee20f3fdfc8f70a4948eeb364e2c29e78e
@@ -55,7 +55,7 @@ protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
 
 ## Current state
 
-`Mod/` unchanged since `5e55d2a`. Workshop item 3806760430 stays private until Virginie switches it. CHANGELOG still needs the dated `## [1.0.0]` section, made in the commit sent to the dry-run (AUDIT.md 12.e). Earlier sections (Sanctuary move, dust seam fix, integrations, upstream PR #1): `docs/runs/status-journal-2026-10-10.md`.
+Defs and source unchanged since `5e55d2a` (About.xml, ATTRIBUTION.md and the Preview changed since, as text and image only). Workshop item 3806760430 stays private until Virginie switches it. CHANGELOG still needs the dated `## [1.0.0]` section, made in the commit sent to the dry-run (AUDIT.md 12.e). Earlier sections (Sanctuary move, dust seam fix, integrations, upstream PR #1): `docs/runs/status-journal-2026-10-10.md`.
 
 ## Cleanup — 2026-10-13 (Claude Sonnet 5.5)
 
