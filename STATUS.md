@@ -9,11 +9,11 @@ repo:         Rimworld-Dust-Bunnies-Renew
 remote:       https://github.com/vbardales/Rimworld-Dust-Bunnies-Renew.git
 visibility:   public
 mod_visibility: public
-visibility_at: GitHub API verified 2026-09-24 (public, main); Workshop item 3806760430 created by the 0.1.0 prepublication on 2026-09-23, which Steam creates private; the switch to public is not recorded
+visibility_at: Steam API GetPublishedFileDetails 2026-10-14 (visibility 0 = public) for item 3806760430; GitHub API verified 2026-09-24 (public, main)
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: publish[1.0.0]
+workflow_stage: followUp[1.0.0]
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 upstream_mod_remotes:
@@ -109,3 +109,7 @@ Code review sha moved again on 2026-10-14 to `092ead7433b132936fdc74ffaa402131e9
 
 Run `38549198976` green (job `publish` 1m40s, then `tag-and-release`), approved by Virginie, on `46b475822f7d1cbb1902422969e649ab93d81417`: tag `v1.0.0` and the GitHub release "Dust Bunnies Renew (unofficial) 1.0.0" created by the CI; description and Preview sent with the version. `Mod/About/PublishedFileId.txt` unchanged (3806760430), nothing to commit. The item is still private, so the page was not read from outside: to check once it is public (description, change note `[b]1.0.0[/b]`, header image). Still to do by Virginie: upload the five images of `Art/Gallery` on the Steam page in order 0 to 4, test the private page by subscription, switch the item to public (13.c). Then `followUp[1.0.0]`: non-regression pass, thank-you comments (already posted), cleanup.
 Upstream: PR https://github.com/blockdude/csharp-rimworld-dust-bunnies/pull/1 ("Add 1.6 support", opened 2026-09-28) is still OPEN, no comment, no review. Its 1.6 folder carries the same three fixes as this port (wildness under statBases, ToxicResistance, DefOf), without this repository's later work. Nothing is posted there without Virginie's word.
+
+## Public — 2026-10-14 (AUDIT.md 13.b, 13.c, 13.f)
+
+Virginie switched item 3806760430 to public (her word, chat, 2026-10-14). Checked from outside: Steam `GetPublishedFileDetails` returns `visibility` 0 (public), not banned, tags `Mod` and `1.6`, description 4955 characters (the text sent, with "No DLC or required dependencies" and "from which clothes can be made"), `time_updated` 2026-10-14T10:26Z; the change-notes page shows `1.0.0` and "First public version: the port of Dust Bunnies to the latest RimWorld version...". The Workshop page lists 6 distinct images (header plus the gallery, uploaded by Virginie). Thank-you comments: nothing to post, every row of `WORKSHOP_COMMENTS.md` for this mod is `posted` (Harmony, Pickle, RimLogging, ADS 2, Nocturnal Animals) or `not_applicable` (the original Nocturnal, PickleTools). Remaining at `followUp`: the non-regression pass on the published revision (AUDIT.md 14.a), cleanup before sleep (14.c, 14.d), the upstream PR left for Virginie to decide.
