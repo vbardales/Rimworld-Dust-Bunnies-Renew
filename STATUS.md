@@ -29,6 +29,7 @@ remaining:
   - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
   - "defect: The Workshop page of item 3806760430 still carries the description frozen at creation, which says butchering gives about 18 dust and that dust is the worst insulator in the game. It is about 6, and the worst of any material a garment can be made from. Virginie will correct it by hand on the Steam page at the MEP (2026-09-25); About.xml and the docs are already right."
 code_review_sha: d2f2fb968cdf7e866d66e29e800a9f17eb80d347
+echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 updated:      2026-10-14
 protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
 ---
@@ -73,3 +74,7 @@ Code review reopened 2026-10-13 by two `Mod/` commits since `765ad84` (AUDIT.md 
 | 4 | `4-dust-card.png` | the dust's information card, same backdrop | 1200 x 1080 |
 
 Order 1 to 4 confirmed (first image large on Steam: the most demonstrative). Indexes contiguous, 4.1 MB in all, no `candidate` left. Runs: tickets `82d4` (cards) and the Sanctuary run of 2026-10-12 (images 1 and 2), `docs/runs/history.md`. Next, `mountPreview`: echo review (`echo_review_sha`), GitHub social preview upload (`social_preview_sha256`).
+
+## Echo review — 2026-10-14 (mountPreview, AUDIT.md 10.a)
+
+`Art/echo-source.png` kept. It is the yellow line-art of the in-game dust bunny (grey rabbit, long ears, round tail), the same animal and pose family as gallery images 1 and 3, so the Preview and the gallery show one subject; the mod's subject has not moved. In the rendered Preview the echo's nose touches the closing parenthesis of "(unofficial)" and its ears pass behind the end of the title: a placement matter in `Art/Preview.config.json`, not a mismatch of the echo, and the Preview is already accepted, so it is not reopened for taste. `echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300`.
