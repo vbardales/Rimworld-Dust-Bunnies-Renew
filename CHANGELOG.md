@@ -2,11 +2,9 @@
 
 All notable changes to this mod are documented here.
 
-## [Unreleased]
+## [1.0.0] - 2026-10-14
 
-Becomes **1.0.0** when the item goes public. It was dated 2026-09-05 and called a first release
-before anything had been uploaded, which was wrong twice: nothing shipped that day, and the first
-upload is `0.1.0` below.
+First public version. The `0.1.0` below only created the private Workshop item.
 
 Port of 2blockdude's and HendraGradeWood's **Dust Bunnies** to RimWorld 1.6.
 
