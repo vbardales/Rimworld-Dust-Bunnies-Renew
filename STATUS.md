@@ -13,7 +13,7 @@ visibility_at: GitHub API verified 2026-09-24 (public, main); Workshop item 3806
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: prepareRelease[1.0.0]
+workflow_stage: publish[1.0.0]
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 upstream_mod_remotes:
