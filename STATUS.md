@@ -13,7 +13,7 @@ visibility_at: Steam API GetPublishedFileDetails 2026-10-14 (visibility 0 = publ
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: followUp[1.0.0]
+workflow_stage: playTests[1.1.0]
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
 upstream_mod_remotes:
@@ -32,7 +32,7 @@ publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: f7fa401ed95fb5183ffc772f2ff36fee20f3fdfc8f70a4948eeb364e2c29e78e
 updated:      2026-10-14
-protocols_read_sha: 1eba2baf4d52f146b4fe4f01d90bdd9f0988979e
+protocols_read_sha: c49ea9912bc14e787f9d4ffbce1495c1a951ba4f
 ---
 
 # Dust Bunnies Renew — status
@@ -117,3 +117,5 @@ Virginie switched item 3806760430 to public (her word, chat, 2026-10-14). Checke
 Non-regression (14.a) filed 2026-10-14 on the published tree (`46b4758` plus STATUS only), seven small tickets, one per pass of TESTING.md: `c68e` (1 English), `8b85` (2 French), `f564` (3 incompatibility, `07`), `d21f` (4 ADS 2, `08`), `8a09` (5 Nocturnal, `09`), `8058` (6 French dialogs, `10`), and pass 7 (gallery `11` and `12`, refiled after `addf` was cancelled for a wrong filter syntax). Results go to `docs/runs/history.md`.
 
 Upstream, 2026-10-14 (Virginie's word): comment posted on PR #1 (issuecomment-6166449631) pointing to the published port; thank-you comment posted by Virginie on the original Workshop page 2659958183 (register row `posted`). Nothing else is owed upstream.
+
+1.7 pass opened 2026-10-14 (Virginie's word: minor bump to 1.1.0 for RimWorld 1.7; AUDIT.md "Passe 1.7"). Stage `playTests[1.1.0]`: the 1.0.0 followUp (non-regression tickets c68e, 8b85, f564, d21f, 8a09, 8058, 6af7 on 1.6, cleanup 14.c/14.d) stays open and resumes after. The mod has a DLL (`net472`); first test it as is on 1.7. Ticket `20261014-124426-086-5173` filed on `/home/nelim/rimworld17`, English only, features 01 to 05 (loads, gather dust, make a dust bunny, save and reload, English labels), evidence `Tests/Pickle/Evidence/2026-10-14-1.7-core`. Held back on 1.7: 06 and 10 (French, no French pack on 1.7), 07 (original mod is 1.6 only), 08 and 09 (optional mods, their own 1.7 status unknown), 11 and 12 (gallery, Sanctuary). No `<li>1.7</li>`, no version bump, no CHANGELOG entry until the run is green (AUDIT.md "Quand"). `tested_1_7` absent until then.
