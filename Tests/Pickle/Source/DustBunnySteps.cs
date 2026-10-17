@@ -3,6 +3,7 @@ using System.Linq;
 using RimWorks.Pickle;
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace DustBunnies.PickleSteps
 {
@@ -228,6 +229,46 @@ namespace DustBunnies.PickleSteps
             ctx.Assert(def != null, $"no ThingDef named {thingDefName}");
             Find.WindowStack.Add(new Dialog_InfoCard(def, null, null));
             ctx.Assert(Find.WindowStack.IsOpen<Dialog_InfoCard>(), "the information card did not open");
+        }
+
+        /// <summary>
+        /// Diagnostic, 1.7 pass (2026-10-17): why a colonist does not take a Crafting bill. Logs, never asserts, what
+        /// stands between the pawn and the bill: the pawn's own state, the bill's, and what the Crafting work givers
+        /// answer for the bench. Each line is one fact, so the log reads as a checklist.
+        /// </summary>
+        [When("Dust Bunnies Renew: the work state of {string} is logged")]
+        public void LogWorkState(PickleContext ctx, string colonistName)
+        {
+            var map = Map(ctx);
+            var pawn = map.mapPawns.FreeColonistsSpawned.FirstOrDefault(p => p.LabelShort == colonistName || p.Name.ToStringShort == colonistName);
+            ctx.Assert(pawn != null, $"no spawned colonist named {colonistName}");
+            var lines = new List<string>();
+            lines.Add($"pawn {Describe(pawn)} downed={pawn.Downed} drafted={pawn.Drafted} asleep={!pawn.Awake()} mental={(pawn.InMentalState ? pawn.MentalState.def.defName : "none")}");
+            lines.Add($"curJob={(pawn.CurJob == null ? "none" : pawn.CurJob.def.defName + " target " + pawn.CurJob.targetA)} curDriver={(pawn.jobs?.curDriver == null ? "none" : pawn.jobs.curDriver.GetType().Name)} queue={pawn.jobs?.jobQueue?.Count}");
+            lines.Add($"Crafting: disabled={pawn.WorkTypeIsDisabled(WorkTypeDefOf.Crafting)} priority={pawn.workSettings.GetPriority(WorkTypeDefOf.Crafting)} manualPriorities={Current.Game.playSettings.useWorkPriorities}");
+            lines.Add($"timetable now={(pawn.timetable == null ? "none" : pawn.timetable.CurrentAssignment.defName)} hour={GenLocalDate.HourOfDay(pawn)}");
+            lines.Add($"thinkTree={(pawn.thinker?.MainThinkNodeRoot == null ? "none" : "root ok")} mapTick={Find.TickManager.TicksGame} speed={Find.TickManager.CurTimeSpeed} paused={Find.TickManager.Paused}");
+            lines.Add($"windows open: [{string.Join(", ", Find.WindowStack.Windows.Select(w => w.GetType().Name))}]");
+            foreach (var thing in map.listerThings.AllThings)
+            {
+                var giver = thing as IBillGiver;
+                if (giver == null) continue;
+                foreach (var bill in giver.BillStack.Bills.OfType<Bill_Production>())
+                {
+                    bool reachable = pawn.CanReach(thing, PathEndMode.InteractionCell, Danger.Some);
+                    lines.Add($"bench {thing.def.defName} at {thing.Position}: bill {bill.recipe.defName} shouldDoNow={bill.ShouldDoNow()} suspended={bill.suspended} usableForBills={giver.UsableForBillsAfterFueling()} forbidden={thing.IsForbidden(pawn)} reachable={reachable} allowedToDo={bill.PawnAllowedToStartAnew(pawn)} billSkillOk={bill.recipe.PawnSatisfiesSkillRequirements(pawn)}");
+                    foreach (var wg in DefDatabase<WorkGiverDef>.AllDefsListForReading.Where(d => d.workType == WorkTypeDefOf.Crafting && typeof(WorkGiver_DoBill).IsAssignableFrom(d.giverClass)))
+                    {
+                        var scanner = wg.Worker as WorkGiver_Scanner;
+                        Job job = null;
+                        string error = null;
+                        try { job = scanner?.JobOnThing(pawn, thing, false); }
+                        catch (System.Exception e) { error = e.GetType().Name + ": " + e.Message; }
+                        lines.Add($"  workgiver {wg.defName}: potentialWork={scanner?.PotentialWorkThingRequest.Accepts(thing)} JobOnThing={(job == null ? "null" : job.def.defName)}{(error == null ? "" : " threw " + error)}");
+                    }
+                }
+            }
+            Log.Message("[DustBunnies diagnostic] " + string.Join("\n  ", lines));
         }
 
         private static ThingDef AnimalDef(PickleContext ctx, string defName)
