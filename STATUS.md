@@ -32,7 +32,7 @@ publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: f7fa401ed95fb5183ffc772f2ff36fee20f3fdfc8f70a4948eeb364e2c29e78e
 updated:      2026-10-14
-protocols_read_sha: c49ea9912bc14e787f9d4ffbce1495c1a951ba4f
+protocols_read_sha: c25ae06225bd8489c501cf0fa400deac97b54192
 ---
 
 # Dust Bunnies Renew — status
