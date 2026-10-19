@@ -242,12 +242,15 @@ namespace DustBunnies.PickleSteps
             var map = Map(ctx);
             var pawn = map.mapPawns.FreeColonistsSpawned.FirstOrDefault(p => p.LabelShort == colonistName || p.Name.ToStringShort == colonistName);
             ctx.Assert(pawn != null, $"no spawned colonist named {colonistName}");
+            var dust = DefDatabase<ThingDef>.GetNamed("Dust");
             var lines = new List<string>();
             lines.Add($"pawn {Describe(pawn)} downed={pawn.Downed} drafted={pawn.Drafted} asleep={!pawn.Awake()} mental={(pawn.InMentalState ? pawn.MentalState.def.defName : "none")}");
             lines.Add($"curJob={(pawn.CurJob == null ? "none" : pawn.CurJob.def.defName + " target " + pawn.CurJob.targetA)} curDriver={(pawn.jobs?.curDriver == null ? "none" : pawn.jobs.curDriver.GetType().Name)} queue={pawn.jobs?.jobQueue?.Count}");
             lines.Add($"Crafting: disabled={pawn.WorkTypeIsDisabled(WorkTypeDefOf.Crafting)} priority={pawn.workSettings.GetPriority(WorkTypeDefOf.Crafting)} manualPriorities={Current.Game.playSettings.useWorkPriorities}");
             lines.Add($"timetable now={(pawn.timetable == null ? "none" : pawn.timetable.CurrentAssignment.defName)} hour={GenLocalDate.HourOfDay(pawn)}");
             lines.Add($"thinkTree={(pawn.thinker?.MainThinkNodeRoot == null ? "none" : "root ok")} mapTick={Find.TickManager.TicksGame} speed={Find.TickManager.CurTimeSpeed} paused={Find.TickManager.Paused}");
+            foreach (var other in map.mapPawns.FreeColonistsSpawned.Where(o => o != pawn))
+                lines.Add($"other colonist {Describe(other)} curJob={(other.CurJob == null ? "none" : other.CurJob.def.defName + " target " + other.CurJob.targetA)}");
             lines.Add($"windows open: [{string.Join(", ", Find.WindowStack.Windows.Select(w => w.GetType().Name))}]");
             foreach (var thing in map.listerThings.AllThings)
             {
@@ -256,6 +259,7 @@ namespace DustBunnies.PickleSteps
                 foreach (var bill in giver.BillStack.Bills.OfType<Bill_Production>())
                 {
                     bool reachable = pawn.CanReach(thing, PathEndMode.InteractionCell, Danger.Some);
+                    lines.Add($"bill state: repeatMode={bill.repeatMode?.defName} repeatCount={bill.repeatCount} targetCount={bill.targetCount} paused={bill.paused} dustOnMap={map.resourceCounter.GetCount(dust)} dustThings={map.listerThings.ThingsOfDef(dust).Count}");
                     lines.Add($"bench {thing.def.defName} at {thing.Position}: bill {bill.recipe.defName} shouldDoNow={bill.ShouldDoNow()} suspended={bill.suspended} usableForBills={giver.UsableForBillsAfterFueling()} forbidden={thing.IsForbidden(pawn)} reachable={reachable} allowedToDo={bill.PawnAllowedToStartAnew(pawn)} billSkillOk={bill.recipe.PawnSatisfiesSkillRequirements(pawn)}");
                     foreach (var wg in DefDatabase<WorkGiverDef>.AllDefsListForReading.Where(d => d.workType == WorkTypeDefOf.Crafting && typeof(WorkGiver_DoBill).IsAssignableFrom(d.giverClass)))
                     {
