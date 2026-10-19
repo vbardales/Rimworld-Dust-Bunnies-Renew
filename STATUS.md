@@ -59,7 +59,7 @@ Defs and source unchanged since `5e55d2a` (About.xml, ATTRIBUTION.md, Preview ch
 
 ## Cleanup — 2026-10-13 (Claude Sonnet 5.5)
 
-TESTING.md rewritten against current state (12 features, `playTests` vocabulary, full-pass rule of 2026-10-13, Dust change at `5e55d2a` joins non-regression set). Root: `preview-workflow.md` deleted (stale, described withdrawn pipeline; `PUBLICATION.md` now points to `STYLE_RIMWORLD.md`), `desktop.ini` ignored, `french-review-english.json` kept on purpose. Em dash (U+2014) removed from README, PUBLICATION, ATTRIBUTION (root and `Mod/`, still identical), BACKLOG, `scripts/TEST_SCENARIOS.md`; CHANGELOG append-only, left. Descriptions no longer name RimWorld version. Gallery: images 1 and 2 accepted 2026-10-13; images 3 and 4 refiled on `window-backdrop-for-height` (ticket `20261013-111203-704-8093`).
+TESTING.md rewritten against current state (12 features, `playTests` vocabulary, full-pass rule of 2026-10-13, Dust change at `5e55d2a` joins non-regression set). Root: `preview-workflow.md` deleted (stale, described withdrawn pipeline; `PUBLICATION.md` now points to `STYLE_RIMWORLD.md`), `desktop.
 
 Code review reopened 2026-10-13 by two `Mod/` commits since `765ad84` (AUDIT.md 8.m): `Mod/About/About.xml` (description text: no RimWorld version), `Mod/ATTRIBUTION.md` (em dashes), `Mod/About/Preview.png` (re-rendered with echo source, byte-identical to `Art/Gallery/0-preview.png`). Diff `765ad84..d2f2fb968cdf7e866d66e29e800a9f17eb80d347` read whole: no `Source/` change, no Def, patch, texture change, so no code to review; DLL SHA-256 still `2D6203...F580B`. `code_review_sha` moved to d2f2fb968cdf7e866d66e29e800a9f17eb80d347.
 
