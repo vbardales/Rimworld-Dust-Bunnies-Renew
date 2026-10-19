@@ -48,3 +48,7 @@ evidence/
 
 # Reproducible Preview diagnostics generated locally by the shared renderer.
 Art/.render/
+
+# Pickle reception and parking: on disk only (AGENTS.md "Test evidence").
+Tests/Pickle/Inbox/
+Tests/Pickle/Parked/
