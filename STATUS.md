@@ -30,7 +30,7 @@ remaining:
 code_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
-social_preview_sha256: f7fa401ed95fb5183ffc772f2ff36fee20f3fdfc8f70a4948eeb364e2c29e78e
+social_preview_sha256: e18f27906e9ef374fe101910e1f99c745be7c73e5ff2d9ffe562168293dba741
 updated:      2026-10-14
 protocols_read_sha: c94c7bd9c6954f001038a6202ae288fd8c078915
 ---
@@ -128,3 +128,5 @@ Non-regression result 2026-10-15 (AUDIT 14.a), published tree `46b4758`: passes 
 Evidence sorted 2026-10-19 (AGENTS.md "Test evidence"): `Evidence/` 1.3 MB, 8 minified greens each with `RELEASE.md`; `Parked/` 1 entry; `Inbox/` empty.
 
 1.7 bill diagnostic v2, read 2026-10-25: ticket `20261019-230516-846-42c2` DONE 2026-10-21, 1/1 passed (scenario is a log dump, green by design), evidence `Tests/Pickle/Inbox/2026-10-19-1.7-bill-diagnostic-2` (stdout.txt 227 KB, capped at 2000 lines, carries the three work-state snapshots; not yet read: reading it needs a text search, to ask Virginie). Next: read snapshots (repeat mode, repeat count, Dust count, other colonists' jobs), then refile 02 and 03. `tested_1_7` stays absent.
+
+Preview re-rendered 2026-10-25 with the new `Art/Preview.config.json` schema (`panel`, `echo`, `icon`), validated by Virginie in chat, commit `e18f279`-era Preview. Uploaded as GitHub social preview the same day through Virginie's Chrome (her "envoie la preview"); Social preview panel shows the new image after reload. `social_preview_sha256` is the uploaded file's. Echo not reopened (`echo_review_sha` stale INFO: `0-preview.png` changed, Virginie accepted the render). Known cosmetic: echo nose touches "and" in the summary line.
