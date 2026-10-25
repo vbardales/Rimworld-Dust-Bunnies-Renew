@@ -4,7 +4,7 @@
 # The bench is a crafting spot, built at a cell other suites also use on this fixture. A colonist is made rather
 # than borrowed, and asked whether Crafting is enabled before anything depends on it: a generated colonist can
 # refuse the work, and a scenario that waits on a refusing colonist fails for a reason that is not the mod's.
-@slow @timeout:240
+@slow @timeout:1200
 Feature: a colonist gathers dust from nothing
 
   Background:

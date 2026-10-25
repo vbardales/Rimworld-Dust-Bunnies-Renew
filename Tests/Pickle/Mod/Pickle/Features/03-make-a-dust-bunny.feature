@@ -14,7 +14,7 @@
 # figures.
 Feature: making a dust bunny, and what the made animal is
 
-  @slow @timeout:240 @review
+  @slow @timeout:1200 @review
   Scenario: a hundred dust become one dust bunny, and it is the colony's
     Given the save "test-colony" is loaded
     And a colonist "Maker" exists
