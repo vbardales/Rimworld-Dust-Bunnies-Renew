@@ -32,7 +32,7 @@ publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: f7fa401ed95fb5183ffc772f2ff36fee20f3fdfc8f70a4948eeb364e2c29e78e
 updated:      2026-10-14
-protocols_read_sha: 7d3b1f5a26a32c297c2c12758979e0a909f674a1
+protocols_read_sha: c94c7bd9c6954f001038a6202ae288fd8c078915
 ---
 # Dust Bunnies Renew — status
 
@@ -126,3 +126,5 @@ Non-regression result 2026-10-15 (AUDIT 14.a), published tree `46b4758`: passes 
 1.7 bill reds, state 2026-10-19: ticket `5173` 6 of 8 green; `02-gather-dust` and `03-make-a-dust-bunny` RED (colonist never makes the Crafting bill), red again on the 2026-10-15 repro (parked in `Tests/Pickle/Parked/2026-10-15-1.7-bills`, RELEASE.md: both green on 1.7). Repro `stdout.txt`: 1.6 fixture save on 1.7, `Could not find think node` warnings, `Dialog_MessageBox` open at entry. Diagnostic ticket `1d08` (feature `13-bill-diagnostic`, evidence `Tests/Pickle/Evidence/2026-10-17-1.7-bill-diagnostic`): Sweeper not blocked, all preconditions ok; `shouldDoNow=True` at snapshots 1-2, False at 3 (`JobOnThing=null`) while busy on `HaulToCell` Steel. Open: why `shouldDoNow` flips (bill repeat mode, dust count, Steel stock); The "exception" of the first read was only the log call stack trace, `LogWorkState` did not throw. Same Steel haul target for 1800 ticks while Sweeper walks (107,209 to 123,190), bench at (146,155). Diagnostic v2 (repeat mode, repeat count, Dust count, other colonists jobs) filed 2026-10-19 as `20261019-230516-846-42c2` on `/home/nelim/rimworld17`, evidence `Tests/Pickle/Inbox/2026-10-19-1.7-bill-diagnostic-2`. Then refile 02 and 03. Whether Pickle bill-steps suite is green on 1.7 unknown (TM has no reachable Pickle session). `tested_1_7` stays absent; no `<li>1.7</li>`.
 
 Evidence sorted 2026-10-19 (AGENTS.md "Test evidence"): `Evidence/` 1.3 MB, 8 minified greens each with `RELEASE.md`; `Parked/` 1 entry; `Inbox/` empty.
+
+1.7 bill diagnostic v2, read 2026-10-25: ticket `20261019-230516-846-42c2` DONE 2026-10-21, 1/1 passed (scenario is a log dump, green by design), evidence `Tests/Pickle/Inbox/2026-10-19-1.7-bill-diagnostic-2` (stdout.txt 227 KB, capped at 2000 lines, carries the three work-state snapshots; not yet read: reading it needs a text search, to ask Virginie). Next: read snapshots (repeat mode, repeat count, Dust count, other colonists' jobs), then refile 02 and 03. `tested_1_7` stays absent.
