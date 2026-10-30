@@ -1,0 +1,3 @@
+# Pass "bills17": the two bill scenarios (02, 03) on RimWorld 1.7, English, with PickleTools' step that waits with explicit
+# stop rules and logs why it stopped (ColonistRace, PickleTools ec83d9c). Nothing else is staged: the minimal list plus the mod.
+nelim.pickletools.colonistrace path:PickleTools/ColonistRace/Mod

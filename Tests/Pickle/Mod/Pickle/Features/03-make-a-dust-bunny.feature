@@ -14,7 +14,7 @@
 # figures.
 Feature: making a dust bunny, and what the made animal is
 
-  @slow @timeout:1200 @review
+  @slow @timeout:1200 @review @requires:nelim.pickletools.colonistrace
   Scenario: a hundred dust become one dust bunny, and it is the colony's
     Given the save "test-colony" is loaded
     And a colonist "Maker" exists
@@ -25,7 +25,7 @@ Feature: making a dust bunny, and what the made animal is
     And 100 "Dust" is spawned at the stockpile
     And I add bill "MakeDustBunny" to the "CraftingSpot"
     And game speed is ultrafast
-    And I wait for a "DustBunny" to exist
+    And Nelim's Pickle Tools: I wait up to 9000 ticks or 1000 seconds until more "DustBunny" exist
     Then no "Dust" exists
     And Dust Bunnies Renew: the map holds 1 dust bunny
     And Dust Bunnies Renew: the dust bunny belongs to the colony
