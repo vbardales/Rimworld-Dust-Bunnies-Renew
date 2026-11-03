@@ -30,7 +30,7 @@ remaining:
 code_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
-social_preview_sha256: e18f27906e9ef374fe101910e1f99c745be7c73e5ff2d9ffe562168293dba741
+social_preview_sha256: 0b61dfee1c15a092aa98f6b2a8b5c9a83efea2066de3798d202a5b2d41ef4e24
 updated:      2026-10-14
 protocols_read_sha: 70aa4922f19ac4df5b64764c38ed8681034da913
 ---
@@ -138,3 +138,4 @@ Resume 2026-11-03 (DuB): protocols read 9a625156, registered with TM (ticket 8f4
 Resume 2026-11-03 (second, DuB): protocols read 70aa4922. Preview re-rendered after the echo.width/height removal: NOT committed (rendered files restored). The echo now sits on the copy line ("and" struck through by the ear and head), so it needs a placement fix by Virginie's decision (echo size/position is no longer configurable in `Art/Preview.config.json`). Ticket 8f4f still queued, Mod/ and Tests/ stay still until RUN_DONE.
 1.7 bills, 2026-11-03: ticket `8f4f` ended exit 3 (guard stop, game silent 5 min, no scenario played, no summary.json; stalled archive kept by the dispatcher in `pickle-reports-archive/stalled-DustBunniesRenew-1103-1551`). Empty evidence folder deleted. Refiled `20261103-155636-229-2d06` (same filter, map `wsl-deps.bills17.map`, `-NoBatch`, timeout 1500, evidence `Tests/Pickle/Inbox/2026-11-03-1.7-bills-step-refile`). Mod/ and Tests/ stay still until RUN_DONE.
 Preview 2026-11-03: re-rendered after the echo.width/height removal, with `echo.flipX: false` (Virginie: "j'inverserais l'echo"; the renderer mirrors by default): the echo faces left and no longer strikes "and"; copyLines split in two so the text wraps before the echo, no overlap left. Committed by path. GitHub social preview not re-uploaded yet (`social_preview_sha256` still the 2026-10-25 file); echo_review_sha stale (INFO). Ticket `2d06` queued, Mod/ and Tests/ stay still.
+Social preview 2026-11-03: Preview (flipX false, copy in two lines, `cf7693d`) uploaded through Virginie's Chrome after her "validé"; panel shows the new image after upload. `social_preview_sha256` is the uploaded file's. Echo review: Virginie validated the render in chat 2026-11-03.
