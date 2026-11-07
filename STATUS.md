@@ -146,3 +146,26 @@ Social preview 2026-11-07: Preview (ModIcon bottom-left, `70cce2c`) uploaded by 
 Code review 2026-11-07 (8.m): diff `46b4758..d3b6b26aeeb251bf28eb36595cca08abee1790ef` over `Mod` and `Source`: only `Mod/About/OptionalCompat.xml` (4 lines, data file ignored by the game) and `Mod/About/Preview.png`; revue du diff : images et texte seuls, no Source, Def, patch or texture change. `code_review_sha` moved to HEAD.
 8.d closed 2026-11-07: the `@review` capture of 03 (crafting spot, 1.7) showed no bunny: the log says the wait ended at 20:45:23 (count 0 to 1) and the screenshot came ~20 s later at ultrafast, so the animal had walked out of frame. State steps (map holds 1 dust bunny, belongs to the colony, Dust gone) already prove the bill; gallery image 1 shows the live bunny. Screenshot steps and `@review` removed from 03 (no @review left, no @wip).
 playTests closed 2026-11-07 (AUDIT 8.n): 8.a to 8.m met, 1.6 green and 1.7 English green. Stage shootGallery[1.1.0]: gallery of 1.0.0 stays (5 images accepted 2026-10-13); the 1.1.0 gallery pass is to decide there.
+
+## NSB
+
+Sync 2026-11-07 (sync-nsb). Places read: 2026-11-07 (lines of `sleeping-nook` and `window-backdrop-for-height` in SANCTUAIRE-LIEUX.md, EMBELLISSEMENT-LIEUX.md, VALIDE.md; not the whole files). Tribe read: 2026-11-07 (NELIM-PROFIL.md as diffs since 2026-10-13 and VALIDE.md lines for Nelim; ROSTER, APPARENCES-CANON, LOOKS-VALIDATION, CATALOGUE-ANIMAUX, AVANCEMENT not opened). NSB moved a lot since 2026-10-13 (places and animals validated by Virginie on 2026-11-07, decor batches 3 and 4, 20-place embellishment order), nothing that renames or removes what this gallery uses. Rules 1 to 5 of 2026-11-05 and 2026-11-07 stand.
+
+| Place | Shots | Changes for the gallery | Last read |
+|---|---|---|---|
+| `sleeping-nook` (178, 121) | 1 | none; NSB lists it "à embellir" (lot 10, candles, vases, plush, painting, screen): the image changes when the decorated save replaces `Nelims-tribe` | 2026-11-07 |
+| `window-backdrop-for-height` (90, 140) | 3, 4 | none; "zone libre", frame validated 2026-10-06, NSB prefers it for tall windows | 2026-11-07 |
+
+| Colonist | Shots | Outfit per shot | Last read | Exceptions |
+|---|---|---|---|---|
+| Nelim | 1 | `Apparel_BasicShirt` dyed teal and `Apparel_Pants` dyed plum (free, rule 4: a chosen scene look, not her roster wardrobe) | 2026-11-07 (diffs only; 1.7 body hair `MortonFlameLowerBody` validated 2026-11-07, not visible in shot 1) | none |
+
+| Animal | Shots | Outfit | Last read | Exceptions |
+|---|---|---|---|---|
+| dust bunny (the mod's own) | 1 | none | not in NSB catalogue, not needed | none: animal the mod adds, authorized by default (rule 2, 2026-11-07) |
+
+| Animal the mod includes (rule 5) | Shots |
+|---|---|
+| dust bunny (`DustBunny` pawn kind, the only animal the mod adds) | 1 (live, with Nelim), 3 (information card) |
+
+Not changed: shotlist and scenarios. 1.1.0 gallery decision (keep the 1.0.0 gallery or redo) still open with Virginie.
