@@ -2,31 +2,57 @@
 # frame, empty, bare floor, animals removed or kept out, roof); "Nelim's Pickle Tools:" is PickleTools (ScreenshotStudio's presentation mode,
 # ColonistRace's clothes, CameraZoom, StageDecor, ScreenshotMode); "Dust Bunnies Renew:" is this suite's own; the rest is Pickle's.
 #
-# THE SERIES (owner's rules, PUBLISHING.md, 2026-10-02 and 2026-10-06: every capture is a staged photograph except the
-# menus; one story for the series; the photographer chooses place, moment and composition).
+# THE SERIES, SHOTLIST OF 1.1.0 (written 2026-11-07, after the NSB sync of the same day; replaces the plan of 1.0.0).
+# Every capture is a staged photograph except the menus; one story; the photographer chooses place, moment and composition.
 #
-# The story: spring cleaning in the Sanctuary. Nelim sweeps the dust off her floor, piles a hundred of it on the crafting
-# spot and, a short while later, the dust gets up and walks: a dust bunny, tame the moment it exists. The series runs in
-# the order of the scenarios of this file.
+# STORY. Spring cleaning in Nelim's Sanctuary, one day: Nelim (the protagonist) sweeps the dust off the veranda floor,
+# heaps it, and carries it to the crafting spot; at dusk a dust bunny stands up and walks; at night it is still awake
+# beside her bed (Nocturnal Animals). The thread is the grey Dust itself: ten of it in scene 1, a hundred in scene 2, a
+# crumb in scene 3, then the bunny. Rhythm: morning, noon, dusk, night, one `I set the hour to N` per scenario (8, 11,
+# 18, 23), Clear, room held at 20 degrees. Nelim keeps ONE outfit all day (continuity): `Apparel_BasicShirt` dyed rgb
+# (22, 110, 120) teal and `Apparel_Pants` dyed rgb (92, 38, 84) plum (any outfit is free, NSB rule 4), her own face
+# (`Nelim has her own face`: BrowNormal, MouthSmirkSmile, normal+blink: a light smile, written, no sweat), hair her own `Roo_HD_Hair_Highpony` (no hat), face kit
+# "neutral" first. Order of play and of the page: 1 to 4 below, then the windows.
 #
-# SHOOTING PLAN, one line per image (place; moment; subject; composition; the living thing; what the image says):
-#   1  sleeping-nook (Nelim's bed on the white rug, the Sanctuary's hearth hall); midday, hour 12, a minute of set-up;
-#      the live dust bunny, centred in the frame and the one grey thing in it; very close (zoom 2.6, the bunny about 110 px,
-#      twice what zoom 4 gave), Nelim one cell above it, standing and facing South so her face turns to the camera and the light
-#      smile reads (room held at 20 degrees, then the face kit "neutral" and SanctuaryBacklot's `Nelim has her own face` (BrowNormal, MouthSmirkSmile, expression normal+blink: two separate brows, a small smile, no sweat, no blush; the monobrow of the first candidates was fixed there, 2026-10-12, ticket 56b0)), in teal and plum against the white
-#      rug; six patches of vanilla dirt (StageDecor, Filth_Dirt) tight around the bunny, the closest thing to dust that draws
-#      cleanly (the mod's own Dust item showed one-pixel lines, since fixed, see 12-dust-seam-diagnostic); "it is alive, and
-#      it is tiny": the scale, and the reward of the whole recipe. Recomposed 2026-10-11 after the first candidate (zoom 4,
-#      profile, nine blotches) read too small, with an unreadable smile.
-#   2  the bill dialog of "Make a dust bunny" (a menu, a plain screenshot of the dialog, over the Sanctuary's sleeping-nook at
-#      midday, a crafting spot on the rug and the dust bunny beside it): the hundred dust it asks for, the work amount, the crafting spot.
-#   3  the information card of the dust bunny (a menu, a full-height window: on the Sanctuary's `window-backdrop-for-height`,
-#      bamboo, midday; owner, 2026-10-13, SanctuaryBacklot GALERIE.md "Choisir un lieu"): what it is, how it trains.
-#   4  the information card of the dust (a menu, same backdrop and hour): the material the bunny comes from and goes back to.
-#   The menus were first taken on the shared test colony (2026-09-28); the owner refused them on 2026-10-12: the scenarios play in
-#   SanctuaryBacklot (AUDIT.md 9.a), so the Sanctuary is what shows around the windows. Each is then framed 1600 x 900 around the window.
-# The cumulative-time recipe of PUBLISHING.md is not needed here: image 1 is the only image of the map, the others show
-# windows, so no scenario has anything to age. The living thing is placed after the set-up wait, so it has not left.
+# Mods in the DepMap: the Sanctuary map, plus Mlie.XNDNocturnalAnimals (2269731409) for scene 4 (and, on dusk, scene 3).
+# A step that may not exist and goes to NPT first (GALLERY.md, "ne pas se limiter"): `I place the decor "Dust"` (StageDecor
+# takes a ThingDef; if it refuses an item, NPT is asked) and `carries 100 of the item "Dust"` (a stack over the stack limit).
+#
+#   1  workshop-1-sweep. Place: veranda `terrace` (193-200, 118-124), hour 8, Clear, paused after 120 ticks of work. WIDE (the whole veranda in frame):
+#      zoom 3.2 centred (196, 120.5), Nelim left of the spot, dirt and the grey `Dust` heap (about 2 cells wide, 47 px on a 268 px thumbnail) in the foreground, Shelf (197, 118) behind. Subject: Nelim
+#      works the "Gather dust" bill at a CraftingSpot (196, 120). Says: the dust comes off the floor, by hand. Decor: what the
+#      place already holds (Shelf, TorchLamp (200, 119) and (195, 123), Stool (197, 122), Campfire (194, 121), Harpsichord
+#      (199, 122)) plus, placed and removed after: `Filth_Dirt` at (195, 119), (197, 119), (195, 121), (198, 120), (194, 120),
+#      (199, 121), `Dust` x10 at (195, 120) (the product beside the spot), `PlantPot` (200, 121) with `Plant_Daylily` fully
+#      grown; the lamps are off (daylight). Living: Nelim, the daylily. Instant: one bill is done, she works the next, the
+#      dirt still waits. Obtained: add the bill, `Nelim is forced into the job "DoBill" on the building "CraftingSpot" at (196,
+#      120)`, `I let 120 ticks pass`, `game speed is paused`. Subtitle: "Nelim sweeps the veranda: the dust comes off the floor."
+#   2  workshop-2-armful. Place: `terrace`, hour 11, Clear. MEDIUM: zoom 3 centred (197, 119.5), Nelim off-centre right (the `Dust` x10 heap of scene 1 still at (195, 120), 2 cells wide, 50 px on the thumbnail),
+#      walking left. Subject: Nelim carries the whole hundred of dust from the Shelf to the crafting spot. Says: a hundred
+#      dust is the price of one bunny. Decor: the same fixed furniture, `Filth_Dirt` left at (194, 120) and (199, 121),
+#      `PlantPot` (200, 121) with `Plant_Daylily`, TorchLamp (200, 119) off; the floor around the spot is swept (time passed
+#      since scene 1). Living: Nelim, the daylily. Instant: she has just lifted the heap, next she sets it on the spot.
+#      Obtained: `Nelim carries 100 of the item "Dust"`, `Nelim stands at (198, 119)`, `Nelim is forced to walk to (196, 120)`,
+#      pause after 25 ticks. Subtitle: "A hundred dust is a lot of sweeping."
+#   3  workshop-3-first-steps. Place: `terrace`, hour 18 (dusk, so the bunny is up: Nocturnal Animals), Clear, paused after 15
+#      ticks. CLOSE: zoom 1.8 centred (196, 121.5), the bunny in the lower third, front-on (walking South), Nelim in profile
+#      at the right edge. Subject: the new dust bunny walks out of the crafting spot. Says: the heap became an animal and it
+#      walks. Decor: CraftingSpot (196, 120), Shelf and TorchLamp (200, 119) lit (dusk light), `Dust` x5 crumbs at (195, 120),
+#      `Filth_Dirt` (195, 119), (197, 119), `PlantPot` (200, 121) with `Plant_Daylily`. Living: the dust bunny (front), Nelim,
+#      the daylily. Instant: the last crumbs have just stood up, next it trots off. Obtained: `a dust bunny is spawned at
+#      (196, 120)`, `the animal ... is forced to walk to (196, 123)`, `Nelim is forced to walk to (197, 121)` (turned toward
+#      it), pause after 15 ticks. Subtitle: "At dusk the dust gets up and walks."
+#   4  workshop-4-night-shift. Place: `sleeping-nook` (178, 121), hour 23, Clear, 20 degrees, paused after 20 ticks. MEDIUM:
+#      zoom 2.8 centred (177, 121), the bunny in front of the bed, Nelim asleep on it. Subject: the bunny awake beside the
+#      sleeping Nelim. Says: it never sleeps, and it stays with her. Decor: the bed and nook furniture, only the TorchLamp at
+#      (175, 119) lit (a pool of light in the dark), `PlantPot` (177, 119) with `Plant_Daylily`. Living: the bunny (front),
+#      Nelim (asleep). Instant: she has just fallen asleep, the bunny circles the bed. Obtained: `Nelim is forced into the
+#      job "LayDown" on the building "Bed" at (178, 121)`, `the animal ... is forced to walk to (177, 122)`, pause after 20
+#      ticks. Subtitle: "By night it is still awake." The only colonist with a changed trait: none (asleep, eyes closed).
+#   Windows, not rated (taken on `window-backdrop-for-height`, cropped, no subtitle): 5 the "Make a dust bunny" bill dialog;
+#   6 the information card of the dust bunny; 7 the information card of the dust; 8 (to ask NPT: operations list of the
+#   bunny with a peg leg of A Dog Said Animal Prosthetics 2; if NPT refuses, Virginie arbitrates).
+#   The dust bunny is the only animal the mod adds: front-on in scenes 3 and 4, card in 6. Authorized by default (NSB rule 2).
 #
 # This is a review scenario, like 10-french-dialogs: it asserts that each capture was taken, not what is on the picture.
 # Its green proves the journey ran; each capture has to be OPENED AND LOOKED AT before it goes on the Workshop page
