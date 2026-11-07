@@ -11,7 +11,7 @@
 # crumb in scene 3, then the bunny. Rhythm: morning, noon, dusk, night, one `I set the hour to N` per scenario (8, 11,
 # 18, 23), Clear, room held at 20 degrees. Nelim keeps ONE outfit all day (continuity): `Apparel_BasicShirt` dyed rgb
 # (22, 110, 120) teal and `Apparel_Pants` dyed rgb (92, 38, 84) plum (any outfit is free, NSB rule 4), her own face
-# (`Nelim has her own face`: BrowNormal, MouthSmirkSmile, normal+blink: a light smile, written, no sweat), hair her own `Roo_HD_Hair_Highpony` (no hat), face kit
+# (`Nelim has her own face`: BrowNormal, MouthLipsSmirk, normal+blink: a light smile, written, no sweat), hair her own `Roo_HD_Hair_Highpony` (no hat), face kit
 # "neutral" first. Order of play and of the page: 1 to 4 below, then the windows.
 #
 # Mods in the DepMap: the Sanctuary map, plus Mlie.XNDNocturnalAnimals (2269731409) for scene 4 (and, on dusk, scene 3).
@@ -36,7 +36,7 @@
 #      Obtained: `Nelim carries 75 of the item "Dust"` (a full stack: Dust is a ResourceBase, stack limit 75), `Nelim stands at (198, 119)`, `Nelim is forced to walk to (196, 120)`,
 #      pause after 25 ticks. Subtitle: "A hundred dust is a lot of sweeping."
 #   3. workshop-3-first-steps. Place: `terrace`, 18h (dusk, so the bunny is up: Nocturnal Animals), Clear, paused after 15
-#      ticks. CLOSE: zoom 1.8 centred (196, 121), the bunny in the lower third, front-on (walking South), Nelim in profile
+#      ticks. CLOSE: zoom 2 centred (196, 121), the bunny in the lower third, front-on (walking South), Nelim in profile
 #      at the right edge. Subject: the new dust bunny walks out of the crafting spot. Says: the heap became an animal and it
 #      walks. Decor: CraftingSpot (196, 120), Shelf and TorchLamp (200, 119) lit (dusk light), one `Dust` crumb at (195, 120),
 #      `Filth_Dirt` (195, 119), (197, 119), `PlantPot` (200, 121) with `Plant_Daylily`. Living: the dust bunny (front), Nelim,
@@ -86,7 +86,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
     And a "CraftingSpot" is built at (196, 120)
-    And I add bill "GatherDust" to the "CraftingSpot"
+    And Nelim's Pickle Tools: the building "CraftingSpot" at (196, 120) has the bill "GatherDust"
     And Nelim's Pickle Tools: "Nelim" stands at (195, 121) facing East
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (195, 119)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (197, 119)
@@ -108,7 +108,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: studio presentation mode is enabled
     And I take a screenshot "image 1, Nelim sweeps the veranda, the dust comes off the floor"
     And Nelim's Pickle Tools: the decor is removed
-    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthSmirkSmile"
+    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthLipsSmirk"
     And no errors were logged
 
   @review
@@ -142,7 +142,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: studio presentation mode is enabled
     And I take a screenshot "image 2, Nelim carries a hundred dust to the crafting spot"
     And Nelim's Pickle Tools: the decor is removed
-    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthSmirkSmile"
+    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthLipsSmirk"
     And no errors were logged
 
   @review
@@ -169,14 +169,14 @@ Feature: the Workshop gallery images
     And game speed is ultrafast
     And Nelim's Pickle Tools: I let 15 ticks pass
     And game speed is paused
-    And Nelim's Pickle Tools: I frame the cell (196, 121) at zoom 1.8
-    And Nelim's Pickle Tools: the camera root size is 1.8
+    And Nelim's Pickle Tools: I frame the cell (196, 121) at zoom 2
+    And Nelim's Pickle Tools: the camera root size is 2
     And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: studio presentation mode is enabled
     And I take a screenshot "image 3, at dusk the dust gets up and walks"
     And Nelim's Pickle Tools: the decor is removed
-    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthSmirkSmile"
+    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthLipsSmirk"
     And no errors were logged
 
   @review
