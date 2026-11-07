@@ -31,7 +31,7 @@ remaining:
 code_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
-social_preview_sha256: 0b61dfee1c15a092aa98f6b2a8b5c9a83efea2066de3798d202a5b2d41ef4e24
+social_preview_sha256: 2775d59be589ba7f19f9ea6af2919e05e98e6069686220e2ede1e28d0f757d4f
 updated:      2026-10-14
 protocols_read_sha: c27e9d4bb2e6e7612bfca125f3bc2aded895424e
 ---
@@ -142,3 +142,4 @@ Preview 2026-11-03: re-rendered after the echo.width/height removal, with `echo.
 Social preview 2026-11-03: Preview (flipX false, copy in two lines, `cf7693d`) uploaded through Virginie's Chrome after her "validé"; panel shows the new image after upload. `social_preview_sha256` is the uploaded file's. Echo review: Virginie validated the render in chat 2026-11-03.
 Resume 2026-11-07 (DuB): protocols read f0219f10. Ticket `2d06` read: 1/1 passed, `02-gather-dust` GREEN on 1.7 with the Pickle Tools wait step (330 s); only 02 ran, game then died on a GLFW error (exit 3 guard stop), so `03` never played. Run minified into Evidence (Inbox empty, `2026-10-19-1.7-bill-diagnostic-2` too). Parked `2026-10-15-1.7-bills` waits on 03 only. Refiled 03 alone: `20261107-185015-027-c546` (`-Game /home/nelim/rimworld17`, map `wsl-deps.bills17.map`, `-NoBatch`, timeout 1500, evidence `Tests/Pickle/Inbox/2026-11-07-1.7-make-bunny`). Preview re-rendered for new config schema (suffix, description), committed `55f7f90`; social preview upload not redone (cosmetic change, Virginie to say). Mod/ and Tests/ stay still until RUN_DONE; `tested_1_7` stays absent until 03 green.
 1.7 result 2026-11-07: ticket `c546` (03 alone) 3/3 passed (`make-bunny` file: make a dust bunny, size and yield, train guard and attack), lane azure. With `2d06` (02 green) the English 1.7 set is green: `tested_1_7: yes` (French and gallery out on 1.7, no pack). Run minified into Evidence, Parked `2026-10-15-1.7-bills` released, Inbox empty. OptionalCompat declared (Audit 4.b/4.e): `Mod/About/OptionalCompat.xml` holds Mlie.XNDNocturnalAnimals (workshopId 2269731409, kind synergy), check OK, commit `9bed3e7`. ADS 2 is `loadBefore` plus a conditional patch: check reports no undeclared target. Resume 2026-11-07 (second): protocols read c27e9d4b. Not done: `supportedVersions` 1.7, version bump, CHANGELOG entry (publication gesture, with Preview redo); social preview upload (Virginie to say).
+Social preview 2026-11-07: Preview (ModIcon bottom-left, `70cce2c`) uploaded by Virginie by hand (Chrome extension could not inject scripts); `social_preview_sha256` is the uploaded file's.
