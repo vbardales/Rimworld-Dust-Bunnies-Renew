@@ -14,7 +14,7 @@
 # figures.
 Feature: making a dust bunny, and what the made animal is
 
-  @slow @timeout:1200 @review @requires:nelim.pickletools.colonistrace
+  @slow @timeout:1200 @requires:nelim.pickletools.colonistrace
   Scenario: a hundred dust become one dust bunny, and it is the colony's
     Given the save "test-colony" is loaded
     And a colonist "Maker" exists
@@ -29,9 +29,6 @@ Feature: making a dust bunny, and what the made animal is
     Then no "Dust" exists
     And Dust Bunnies Renew: the map holds 1 dust bunny
     And Dust Bunnies Renew: the dust bunny belongs to the colony
-    When I zoom all the way in
-    And I move the camera to (146, 155)
-    And I take a screenshot "dust bunny made at the crafting spot"
     Then no errors were logged
 
   Scenario: the living dust bunny has the size and the yield the description gives
