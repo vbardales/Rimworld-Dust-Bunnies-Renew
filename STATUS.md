@@ -33,7 +33,7 @@ publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: 2775d59be589ba7f19f9ea6af2919e05e98e6069686220e2ede1e28d0f757d4f
 updated:      2026-10-14
-protocols_read_sha: 54d2e3243b18b0f286d3cc26a29db15816319699
+protocols_read_sha: fe5645e2
 ---
 # Dust Bunnies Renew — status
 
@@ -185,3 +185,4 @@ Series k: ok (one story, episodes move on: morning, noon, dusk, night; wide 1, m
 Gallery ticket 2026-11-07: `20261107-230536-675-632b` filed (story scenes 1 to 4 of `11-gallery-captures`, `-DepMap wsl-deps.gallery.map`, English, 1.6, evidence `Tests/Pickle/Inbox/2026-11-07-gallery-story`, tree at 82c782e). Keep `Mod/` and `Tests/` still until RUN_DONE. On RUN_DONE: open each capture, `rate-gallery` verdict (REDO or candidate), steps NPT confirmed from docs only (Dust on 3 cells, carry 75, lies at on a colonist) may fail: read junit.xml.
 Open before sleep 2026-11-07: (1) ticket 632b RUNNING, on RUN_DONE open the 4 captures, score-gallery (REDO or candidate), refile REDO scenes, then reindex menus to 5 to 7, subtitles, mountPreview. (2) Window 8 (peg leg of ADS 2, Health tab operations list) has no NPT step (InspectTabs opens tabs, Health operations not checked): out of the series unless Virginie asks, then ask NPT what to write. (3) NSB moves: rerun sync-nsb when Check-Status shows nsb-sync. (4) Rank of Steam images and Preview social upload done 2026-11-07 (sha recorded).
 Gallery ticket 632b RED 2026-11-07 (4/4: cells already held PlantPot (200, 121) and (177, 119), Human at (195, 121)). Real cause: the Daylily step failed (the pot holds the cell), not the pot. Fix in `11-gallery-captures.feature`: NPT step `PlantPot holding Plant_Daylily fully grown at`, and `Filth_Dirt` at (195, 121) removed. de6e and c40e cancelled, refiled as `20261107-232925-894-8c67`, evidence `Tests/Pickle/Inbox/2026-11-07-gallery-story-2`. Keep `Mod/` and `Tests/` still until RUN_DONE.
+Gallery ticket 8c67 RED 2026-11-07 (4/4, new causes): bill (use `the building "CraftingSpot" at (196, 120) has the bill "GatherDust"`, not `I add bill`), mouth (own face now gives MouthLipsSmirk, assertions fixed), zoom 1.8 (camera capped at 2, scene 3 now zoom 2), scene 4 `lies at (177, 121)` (RoyalBed cell not standable): asked NPT for a step laying a colonist in a bed. Scenes 1 to 3 refiled `20261107-235526-374-7689` (03fd1ca, evidence `Tests/Pickle/Inbox/2026-11-07-gallery-story-3`). Scene 4 held until NPT answers. Keep `Mod/` and `Tests/` still until RUN_DONE.
