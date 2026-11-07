@@ -3,10 +3,7 @@
     "title": "Dust Bunnies Renew (unofficial)",
     "titleParts": [
       { "text": "Dust Bunnies" },
-      {
-        "text": "Renew (unofficial)",
-        "suffix": true
-      }
+      { "text": "Renew (unofficial)", "suffix": true }
     ],
     "description": "Sweep the floor, pile up the fluff, and the fluff gets up and walks."
   },
@@ -15,7 +12,7 @@
     "file": "echo-source.png",
     "flipX": false
   },
-  "icon": { "file": "ModIcon-source.png" },
+  "icon": { "file": "ModIcon-source.png", "corner": "bottom-left" },
   "palette": {
     "veil": "#302A24",
     "inkPrimary": "#F2ECE1",
