@@ -3,7 +3,10 @@
     "title": "Dust Bunnies Renew (unofficial)",
     "titleParts": [
       { "text": "Dust Bunnies" },
-      { "text": "Renew (unofficial)", "suffix": true }
+      {
+        "text": "Renew (unofficial)",
+        "suffix": true
+      }
     ],
     "description": "Sweep the floor, pile up the fluff, and the fluff gets up and walks."
   },
