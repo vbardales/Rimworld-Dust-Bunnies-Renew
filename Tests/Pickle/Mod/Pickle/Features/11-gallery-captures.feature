@@ -47,7 +47,7 @@
 #      zoom 2.8 centred (177, 121), the bunny in front of the bed, Nelim asleep on it. Subject: the bunny awake beside the
 #      sleeping Nelim. Says: it never sleeps, and it stays with her. Decor: the bed and nook furniture, only the TorchLamp at
 #      (179, 119) lit (a pool of light in the dark), `PlantPot` (177, 119) with `Plant_Daylily`. Living: the bunny (front),
-#      Nelim (asleep). Instant: she has just fallen asleep, the bunny circles the bed. Obtained: `the animal "Nelim" lies at (177, 121) facing south` (NPT, 2026-11-07: a forced LayDown on the cell, the pawn lies on the bed at once; written for animals, not played on a colonist yet),
+#      Nelim (asleep). Instant: she has just fallen asleep, the bunny circles the bed. Obtained: `"Nelim" lies asleep in the bed "RoyalBed" at (177, 121)` (NPT, 2026-11-07: moves her onto the bed's sleeping slot, forced LayDown held until the scenario ends; not played yet),
 #      `the animal ... is forced to walk to (176, 120)`, pause after 20
 #      ticks. Subtitle: "By night it is still awake." The only colonist with a changed trait: none (asleep, eyes closed).
 #   Windows, not rated (taken on `window-backdrop-for-height`, cropped, no subtitle): 5 the "Make a dust bunny" bill dialog;
@@ -194,7 +194,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (179, 119)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (179, 119) is lit
     And Nelim's Pickle Tools: an animal of kind "DustBunny" named "Bun" is spawned at (179, 120) at life stage 0
-    And Nelim's Pickle Tools: the animal "Nelim" lies at (177, 121) facing south
+    And Nelim's Pickle Tools: "Nelim" lies asleep in the bed "RoyalBed" at (177, 121)
     And Nelim's Pickle Tools: "Bun" is forced to walk to (176, 120)
     And game speed is ultrafast
     And Nelim's Pickle Tools: I let 20 ticks pass
