@@ -13,7 +13,7 @@ visibility_at: Steam API GetPublishedFileDetails 2026-10-14 (visibility 0 = publ
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: playTests[1.1.0]
+workflow_stage: shootGallery[1.1.0]
 tested_1_7:   yes
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
@@ -33,7 +33,7 @@ publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: 2775d59be589ba7f19f9ea6af2919e05e98e6069686220e2ede1e28d0f757d4f
 updated:      2026-10-14
-protocols_read_sha: c27e9d4bb2e6e7612bfca125f3bc2aded895424e
+protocols_read_sha: 54d2e3243b18b0f286d3cc26a29db15816319699
 ---
 # Dust Bunnies Renew — status
 
@@ -145,3 +145,4 @@ Resume 2026-11-07 (DuB): protocols read f0219f10. Ticket `2d06` read: 1/1 passed
 Social preview 2026-11-07: Preview (ModIcon bottom-left, `70cce2c`) uploaded by Virginie by hand (Chrome extension could not inject scripts); `social_preview_sha256` is the uploaded file's.
 Code review 2026-11-07 (8.m): diff `46b4758..d3b6b26aeeb251bf28eb36595cca08abee1790ef` over `Mod` and `Source`: only `Mod/About/OptionalCompat.xml` (4 lines, data file ignored by the game) and `Mod/About/Preview.png`; revue du diff : images et texte seuls, no Source, Def, patch or texture change. `code_review_sha` moved to HEAD.
 8.d closed 2026-11-07: the `@review` capture of 03 (crafting spot, 1.7) showed no bunny: the log says the wait ended at 20:45:23 (count 0 to 1) and the screenshot came ~20 s later at ultrafast, so the animal had walked out of frame. State steps (map holds 1 dust bunny, belongs to the colony, Dust gone) already prove the bill; gallery image 1 shows the live bunny. Screenshot steps and `@review` removed from 03 (no @review left, no @wip).
+playTests closed 2026-11-07 (AUDIT 8.n): 8.a to 8.m met, 1.6 green and 1.7 English green. Stage shootGallery[1.1.0]: gallery of 1.0.0 stays (5 images accepted 2026-10-13); the 1.1.0 gallery pass is to decide there.
