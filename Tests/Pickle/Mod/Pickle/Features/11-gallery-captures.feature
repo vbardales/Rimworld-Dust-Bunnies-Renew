@@ -90,15 +90,13 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" stands at (195, 121) facing East
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (195, 119)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (197, 119)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (195, 121)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (198, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 120)
     And Nelim's Pickle Tools: I place the decor "Dust" at (194, 119)
     And Nelim's Pickle Tools: I place the decor "Dust" at (196, 119)
-    And Nelim's Pickle Tools: I place the decor "PlantPot" at (200, 121)
-    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (200, 121) fully grown
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (200, 121)
     And Nelim's Pickle Tools: "Nelim" is forced into the job "DoBill" on the building "CraftingSpot" at (196, 120)
     And game speed is ultrafast
     And Nelim's Pickle Tools: I let 120 ticks pass
@@ -131,8 +129,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 120)
     And Nelim's Pickle Tools: I place the decor "Dust" at (194, 119)
     And Nelim's Pickle Tools: I place the decor "Dust" at (196, 119)
-    And Nelim's Pickle Tools: I place the decor "PlantPot" at (200, 121)
-    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (200, 121) fully grown
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (200, 121)
     And Nelim's Pickle Tools: "Nelim" carries 75 of the item "Dust"
     And Nelim's Pickle Tools: "Nelim" is forced to walk to (196, 120)
     And game speed is ultrafast
@@ -164,8 +161,7 @@ Feature: the Workshop gallery images
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (195, 119)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (197, 119)
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 120)
-    And Nelim's Pickle Tools: I place the decor "PlantPot" at (200, 121)
-    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (200, 121) fully grown
+    And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (200, 121)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (200, 119) is lit
     And Nelim's Pickle Tools: an animal of kind "DustBunny" named "Bun" is spawned at (196, 120) at life stage 0
     And Nelim's Pickle Tools: "Bun" is forced to walk to (196, 123)
@@ -194,8 +190,7 @@ Feature: the Workshop gallery images
     And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
-    When Nelim's Pickle Tools: I place the decor "PlantPot" at (177, 119)
-    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (177, 119) fully grown
+    When Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (177, 119)
     And Nelim's Pickle Tools: I place the decor "TorchLamp" at (179, 119)
     And Nelim's Pickle Tools: the decor "TorchLamp" at (179, 119) is lit
     And Nelim's Pickle Tools: an animal of kind "DustBunny" named "Bun" is spawned at (179, 120) at life stage 0
