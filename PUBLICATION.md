@@ -95,21 +95,28 @@ the two never drift):
 0. `0-preview.png` - a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
    the ModIcon badge in a corner (placement and veil in `Art/Preview.config.json`, rendered by the shared
    renderer, STYLE_RIMWORLD.md). Done; committed.
-1. **The dust bunny at the foot of Nelim's bed** (staged photograph, `11-gallery-captures`): a dust bunny, tiny and grey, on the white rug
-   of the Sanctuary's `sleeping-nook`, Nelim standing two cells away in teal and plum, midday light, the royal bed and the
-   drapes behind. It says: it is alive, and it is tiny.
-2. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost, over the Sanctuary's `sleeping-nook`, cropped 1600 x 900 around the window.
-3. The dust bunny's information card, showing its stats (comfortable to -55 C, immune to toxic
-   buildup, never eats), a full-height window on the Sanctuary's `window-backdrop-for-height`, cropped sideways (1200 x 1080).
-4. The dust resource's information card (Fabric stuff, worst insulator), same backdrop and crop.
+1. **Nelim sweeps the veranda** (staged photograph, `11-gallery-captures`): wide, the Sanctuary's `terrace` at 8 h, Nelim in teal and plum working the Gather dust bill at a crafting spot, a grey heap of dust and dirt in the foreground. It says: the dust comes off the floor, by hand.
+2. **Nelim carries the hundred dust** (staged photograph): the `terrace` at 11 h, Nelim walking to the crafting spot with a hundred dust in her arms. It says: a hundred dust is the price of one bunny.
+3. **At dusk the dust gets up and walks** (staged photograph): close, the `terrace` at 18 h, a dust bunny walking toward the camera out of the crafting spot, Nelim watching. It says: the heap became an animal.
+4. **By night it is still awake** (staged photograph): the `sleeping-nook` at 23 h, the dust bunny awake beside the sleeping Nelim (Nocturnal Animals). It says: it never sleeps, and it stays with her.
+5. The bill dialog of "Make a dust bunny" (English), showing the 100-dust cost, over the Sanctuary's `sleeping-nook`, cropped 1600 x 900 around the window.
+6. The dust bunny's information card, showing its stats (comfortable to -55 C, immune to toxic buildup, never eats), a full-height window on the Sanctuary's `window-backdrop-for-height`, cropped sideways (1200 x 1080).
+7. The dust resource's information card (Fabric stuff, worst insulator), same backdrop and crop.
 
-**The story of the series** (owner's rule: one story, not a row of captures): spring cleaning in the Sanctuary. Nelim sweeps the
-dust off her floor, piles a hundred of it on the crafting spot (image 2, the bill that asks for it), and the dust gets up and
-walks (image 1). Images 3 and 4 are what the player reads next: the animal's card, the dust's card. The three menus are plain
-screenshots of the windows, as the rule says; the two full-height cards are cropped sideways, not in height. The shooting plan is the header of
-`Tests/Pickle/Mod/Pickle/Features/11-gallery-captures.feature`.
+**The story of the series** (owner's rule: one story, not a row of captures): spring cleaning in the Sanctuary, one day. Nelim sweeps the dust off her veranda (image 1), carries a hundred of it to the crafting spot (image 2), and at dusk the dust gets up and walks (image 3); by night it is still awake beside her bed (image 4). Images 5 to 7 are what the player reads next: the bill, the animal's card, the dust's card. The three menus are plain screenshots of the windows, as the rule says; the two full-height cards are cropped sideways, not in height. The shooting plan is the header of `Tests/Pickle/Mod/Pickle/Features/11-gallery-captures.feature`.
 
-**State, 2026-10-13.** `Art/Gallery` holds `0-preview.png` (copy of the Preview) and the four accepted images, indexes 0 to 4 with no gap: `1-bunny-at-the-bed.png` (Sanctuary close-up, zoom 2.6, 1920 x 1080), `2-bill-dialog.png` (1600 x 900), `3-dust-bunny-card.png` and `4-dust-card.png` (1200 x 1080). All read and accepted by Virginie, order 1 to 4 (her verdict 2026-10-13). Image 3 reads "Leather amount 18", the def-level figure (the animal yields about 6, as the description says). Source frames: `Tests/Pickle/Evidence/2026-10-12-gallery-menus-sanctuary` and `2026-10-13-gallery-cards-backdrop-2`.
+**State, 2026-11-07.** Series rewritten for 1.1.0 (shotlist and scenarios written, plan rated 5 on each scene, no capture of the new scenes yet). `1-bunny-at-the-bed.png` was deleted with its rewritten scene (git history keeps it); the three menu images of 1.0.0 (`2-bill-dialog.png`, `3-dust-bunny-card.png`, `4-dust-card.png`) stay until reindexed to 5 to 7.
+
+## Gallery subtitles
+
+One English line burnt at the bottom of each scene without an interface window (`GALLERY.md`, "Sous-titres"); the clean originals go in `Art/Gallery-clean/`, same names and indexes. Lines are written before the captures; burnt only after acceptance and reindexing.
+
+| index | file | line |
+|---|---|---|
+| 1 | `1-sweep.jpg` | Nelim sweeps the veranda: the dust comes off the floor. |
+| 2 | `2-armful.jpg` | A hundred dust is a lot of sweeping. |
+| 3 | `3-first-steps.jpg` | At dusk the dust gets up and walks. |
+| 4 | `4-night-shift.jpg` | By night it is still awake. |
 
 ## Thank-you comments
 

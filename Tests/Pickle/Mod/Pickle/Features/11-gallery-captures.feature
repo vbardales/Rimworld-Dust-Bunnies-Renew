@@ -18,8 +18,8 @@
 # A step that may not exist and goes to NPT first (GALLERY.md, "ne pas se limiter"): `I place the decor "Dust"` (StageDecor
 # takes a ThingDef; if it refuses an item, NPT is asked) and `carries 100 of the item "Dust"` (a stack over the stack limit).
 #
-#   1  workshop-1-sweep. Place: veranda `terrace` (193-200, 118-124), hour 8, Clear, paused after 120 ticks of work. WIDE (the whole veranda in frame):
-#      zoom 3.2 centred (196, 120.5), Nelim left of the spot, dirt and the grey `Dust` heap (about 2 cells wide, 47 px on a 268 px thumbnail) in the foreground, Shelf (197, 118) behind. Subject: Nelim
+#   1. workshop-1-sweep. Place: veranda `terrace` (193-200, 118-124), 8h, Clear, paused after 120 ticks of work. WIDE (the whole veranda in frame):
+#      zoom 3.2 centred (196, 121), Nelim left of the spot, dirt and the grey `Dust` heap (about 2 cells wide, 47 px on a 268 px thumbnail) in the foreground, Shelf (197, 118) behind. Subject: Nelim
 #      works the "Gather dust" bill at a CraftingSpot (196, 120). Says: the dust comes off the floor, by hand. Decor: what the
 #      place already holds (Shelf, TorchLamp (200, 119) and (195, 123), Stool (197, 122), Campfire (194, 121), Harpsichord
 #      (199, 122)) plus, placed and removed after: `Filth_Dirt` at (195, 119), (197, 119), (195, 121), (198, 120), (194, 120),
@@ -27,27 +27,27 @@
 #      grown; the lamps are off (daylight). Living: Nelim, the daylily. Instant: one bill is done, she works the next, the
 #      dirt still waits. Obtained: add the bill, `Nelim is forced into the job "DoBill" on the building "CraftingSpot" at (196,
 #      120)`, `I let 120 ticks pass`, `game speed is paused`. Subtitle: "Nelim sweeps the veranda: the dust comes off the floor."
-#   2  workshop-2-armful. Place: `terrace`, hour 11, Clear. MEDIUM: zoom 3 centred (197, 119.5), Nelim off-centre right (the `Dust` x10 heap of scene 1 still at (195, 120), 2 cells wide, 50 px on the thumbnail),
+#   2. workshop-2-armful. Place: `terrace`, 11h, Clear. MEDIUM: zoom 3 centred (197, 120), Nelim off-centre right (the `Dust` x10 heap of scene 1 still at (195, 120), 2 cells wide, 50 px on the thumbnail),
 #      walking left. Subject: Nelim carries the whole hundred of dust from the Shelf to the crafting spot. Says: a hundred
 #      dust is the price of one bunny. Decor: the same fixed furniture, `Filth_Dirt` left at (194, 120) and (199, 121),
 #      `PlantPot` (200, 121) with `Plant_Daylily`, TorchLamp (200, 119) off; the floor around the spot is swept (time passed
 #      since scene 1). Living: Nelim, the daylily. Instant: she has just lifted the heap, next she sets it on the spot.
 #      Obtained: `Nelim carries 100 of the item "Dust"`, `Nelim stands at (198, 119)`, `Nelim is forced to walk to (196, 120)`,
 #      pause after 25 ticks. Subtitle: "A hundred dust is a lot of sweeping."
-#   3  workshop-3-first-steps. Place: `terrace`, hour 18 (dusk, so the bunny is up: Nocturnal Animals), Clear, paused after 15
-#      ticks. CLOSE: zoom 1.8 centred (196, 121.5), the bunny in the lower third, front-on (walking South), Nelim in profile
+#   3. workshop-3-first-steps. Place: `terrace`, 18h (dusk, so the bunny is up: Nocturnal Animals), Clear, paused after 15
+#      ticks. CLOSE: zoom 1.8 centred (196, 121), the bunny in the lower third, front-on (walking South), Nelim in profile
 #      at the right edge. Subject: the new dust bunny walks out of the crafting spot. Says: the heap became an animal and it
 #      walks. Decor: CraftingSpot (196, 120), Shelf and TorchLamp (200, 119) lit (dusk light), `Dust` x5 crumbs at (195, 120),
 #      `Filth_Dirt` (195, 119), (197, 119), `PlantPot` (200, 121) with `Plant_Daylily`. Living: the dust bunny (front), Nelim,
 #      the daylily. Instant: the last crumbs have just stood up, next it trots off. Obtained: `a dust bunny is spawned at
 #      (196, 120)`, `the animal ... is forced to walk to (196, 123)`, `Nelim is forced to walk to (197, 121)` (turned toward
 #      it), pause after 15 ticks. Subtitle: "At dusk the dust gets up and walks."
-#   4  workshop-4-night-shift. Place: `sleeping-nook` (178, 121), hour 23, Clear, 20 degrees, paused after 20 ticks. MEDIUM:
+#   4. workshop-4-night-shift. Place: `sleeping-nook`, 23h, Clear, 20 degrees, paused after 20 ticks. MEDIUM:
 #      zoom 2.8 centred (177, 121), the bunny in front of the bed, Nelim asleep on it. Subject: the bunny awake beside the
 #      sleeping Nelim. Says: it never sleeps, and it stays with her. Decor: the bed and nook furniture, only the TorchLamp at
-#      (175, 119) lit (a pool of light in the dark), `PlantPot` (177, 119) with `Plant_Daylily`. Living: the bunny (front),
+#      (179, 119) lit (a pool of light in the dark), `PlantPot` (177, 119) with `Plant_Daylily`. Living: the bunny (front),
 #      Nelim (asleep). Instant: she has just fallen asleep, the bunny circles the bed. Obtained: `Nelim is forced into the
-#      job "LayDown" on the building "Bed" at (178, 121)`, `the animal ... is forced to walk to (177, 122)`, pause after 20
+#      job "LayDown" on the building "RoyalBed" at (177, 121)`, `the animal ... is forced to walk to (176, 120)`, pause after 20
 #      ticks. Subtitle: "By night it is still awake." The only colonist with a changed trait: none (asleep, eyes closed).
 #   Windows, not rated (taken on `window-backdrop-for-height`, cropped, no subtitle): 5 the "Make a dust bunny" bill dialog;
 #   6 the information card of the dust bunny; 7 the information card of the dust; 8 (to ask NPT: operations list of the
@@ -74,34 +74,137 @@
 Feature: the Workshop gallery images
 
   @review
-  Scenario: image 1, the live dust bunny at the foot of Nelim's bed, showing scale
+  Scenario: image 1, Nelim sweeps the veranda and works the Gather dust bill
     Given the save "Nelims-tribe" is loaded
     And game speed is paused
-    And I set the hour to 12
+    And I set the hour to 8
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Sanctuary: the animals are removed from the sanctuary "terrace"
+    And Nelim's Sanctuary: I am at the sanctuary "terrace"
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
+    And a "CraftingSpot" is built at (196, 120)
+    And I add bill "GatherDust" to the "CraftingSpot"
+    And Nelim's Pickle Tools: "Nelim" stands at (195, 121) facing East
+    When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (195, 119)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (197, 119)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (195, 121)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (198, 120)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
+    And Nelim's Pickle Tools: I place the decor "Dust" at (195, 120)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (200, 121)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (200, 121) fully grown
+    And Nelim's Pickle Tools: "Nelim" is forced into the job "DoBill" on the building "CraftingSpot" at (196, 120)
+    And game speed is ultrafast
+    And Nelim's Pickle Tools: I let 120 ticks pass
+    And game speed is paused
+    And Nelim's Pickle Tools: I frame the cell (196, 121) at zoom 3.2
+    And Nelim's Pickle Tools: the camera root size is 3.2
+    And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
+    And Nelim's Sanctuary: Nelim has her own face
+    And Nelim's Pickle Tools: studio presentation mode is enabled
+    And I take a screenshot "image 1, Nelim sweeps the veranda, the dust comes off the floor"
+    And Nelim's Pickle Tools: the decor is removed
+    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthSmirkSmile"
+    And no errors were logged
+
+  @review
+  Scenario: image 2, Nelim carries the hundred dust to the crafting spot
+    Given the save "Nelims-tribe" is loaded
+    And game speed is paused
+    And I set the hour to 11
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Sanctuary: the animals are removed from the sanctuary "terrace"
+    And Nelim's Sanctuary: I am at the sanctuary "terrace"
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
+    And a "CraftingSpot" is built at (196, 120)
+    And Nelim's Pickle Tools: "Nelim" stands at (198, 119) facing West
+    When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
+    And Nelim's Pickle Tools: I place the decor "Dust" at (195, 120)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (200, 121)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (200, 121) fully grown
+    And Nelim's Pickle Tools: "Nelim" carries 100 of the item "Dust"
+    And Nelim's Pickle Tools: "Nelim" is forced to walk to (196, 120)
+    And game speed is ultrafast
+    And Nelim's Pickle Tools: I let 25 ticks pass
+    And game speed is paused
+    And Nelim's Pickle Tools: I frame the cell (197, 120) at zoom 3
+    And Nelim's Pickle Tools: the camera root size is 3
+    And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
+    And Nelim's Sanctuary: Nelim has her own face
+    And Nelim's Pickle Tools: studio presentation mode is enabled
+    And I take a screenshot "image 2, Nelim carries a hundred dust to the crafting spot"
+    And Nelim's Pickle Tools: the decor is removed
+    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthSmirkSmile"
+    And no errors were logged
+
+  @review
+  Scenario: image 3, at dusk the new dust bunny walks out of the crafting spot
+    Given the save "Nelims-tribe" is loaded
+    And game speed is paused
+    And I set the hour to 18
+    And I set the weather to "Clear"
+    And Nelim's Pickle Tools: the temperature of the map is 20 degrees
+    And Nelim's Sanctuary: the animals are removed from the sanctuary "terrace"
+    And Nelim's Sanctuary: I am at the sanctuary "terrace"
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
+    And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
+    And a "CraftingSpot" is built at (196, 120)
+    And Nelim's Pickle Tools: "Nelim" stands at (198, 120) facing West
+    When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (195, 119)
+    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (197, 119)
+    And Nelim's Pickle Tools: I place the decor "Dust" at (195, 120)
+    And Nelim's Pickle Tools: I place the decor "PlantPot" at (200, 121)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (200, 121) fully grown
+    And Nelim's Pickle Tools: the decor "TorchLamp" at (200, 119) is lit
+    And Nelim's Pickle Tools: an animal of kind "DustBunny" named "Bun" is spawned at (196, 120) at life stage 0
+    And Nelim's Pickle Tools: "Bun" is forced to walk to (196, 123)
+    And Nelim's Pickle Tools: "Nelim" is forced to walk to (197, 121)
+    And game speed is ultrafast
+    And Nelim's Pickle Tools: I let 15 ticks pass
+    And game speed is paused
+    And Nelim's Pickle Tools: I frame the cell (196, 121) at zoom 1.8
+    And Nelim's Pickle Tools: the camera root size is 1.8
+    And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
+    And Nelim's Sanctuary: Nelim has her own face
+    And Nelim's Pickle Tools: studio presentation mode is enabled
+    And I take a screenshot "image 3, at dusk the dust gets up and walks"
+    And Nelim's Pickle Tools: the decor is removed
+    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthSmirkSmile"
+    And no errors were logged
+
+  @review
+  Scenario: image 4, by night the dust bunny is still awake beside the sleeping Nelim
+    Given the save "Nelims-tribe" is loaded
+    And game speed is paused
+    And I set the hour to 23
     And I set the weather to "Clear"
     And Nelim's Pickle Tools: the temperature of the map is 20 degrees
     And Nelim's Sanctuary: the animals are removed from the sanctuary "sleeping-nook"
     And Nelim's Sanctuary: I am at the sanctuary "sleeping-nook"
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
-    And Nelim's Pickle Tools: "Nelim" stands at (176, 121) facing South
-    And I wait 120 ticks
-    And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
-    And Nelim's Sanctuary: Nelim has her own face
-    When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (175, 120)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (177, 120)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (178, 120)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (176, 119)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (177, 119)
-    And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (178, 119)
-    And Dust Bunnies Renew: a dust bunny is spawned at (176, 120)
-    And Nelim's Pickle Tools: I frame the cell (176, 120) at zoom 2.6
-    And Nelim's Pickle Tools: the camera root size is 2.6
+    When Nelim's Pickle Tools: I place the decor "PlantPot" at (177, 119)
+    And Nelim's Pickle Tools: I place the decor "Plant_Daylily" at (177, 119) fully grown
+    And Nelim's Pickle Tools: I place the decor "TorchLamp" at (179, 119)
+    And Nelim's Pickle Tools: the decor "TorchLamp" at (179, 119) is lit
+    And Nelim's Pickle Tools: an animal of kind "DustBunny" named "Bun" is spawned at (179, 120) at life stage 0
+    And Nelim's Pickle Tools: "Nelim" is forced into the job "LayDown" on the building "RoyalBed" at (177, 121)
+    And Nelim's Pickle Tools: "Bun" is forced to walk to (176, 120)
+    And game speed is ultrafast
+    And Nelim's Pickle Tools: I let 20 ticks pass
+    And game speed is paused
+    And Nelim's Pickle Tools: I frame the cell (177, 121) at zoom 2.8
+    And Nelim's Pickle Tools: the camera root size is 2.8
     And Nelim's Pickle Tools: studio presentation mode is enabled
-    And I take a screenshot "image 1, the dust bunny at the foot of the bed, scale"
+    And I take a screenshot "image 4, by night the dust bunny is still awake"
     And Nelim's Pickle Tools: the decor is removed
-    Then Nelim's Pickle Tools: "Nelim" mouth reads "MouthSmirkSmile"
-    And no errors were logged
+    Then no errors were logged
 
   @review
   Scenario: the bill dialog and the information cards of the dust bunny and of the dust, in English
