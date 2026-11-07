@@ -1,39 +1,18 @@
 {
   "panel": {
     "title": "Dust Bunnies Renew (unofficial)",
-    "titleSize": 50,
     "titleParts": [
-      {
-        "text": "Dust Bunnies",
-        "scale": 1
-      },
-      {
-        "text": "Renew",
-        "scale": 0.65,
-        "font": "ui",
-        "color": "secondary",
-        "breakBefore": true
-      },
-      {
-        "text": "(unofficial)",
-        "scale": 0.65,
-        "font": "ui",
-        "color": "secondary"
-      }
+      { "text": "Dust Bunnies" },
+      { "text": "Renew (unofficial)", "suffix": true }
     ],
-    "copyLines": [
-      "Sweep the floor, pile up the fluff,",
-      "and the fluff gets up and walks."
-    ]
+    "description": "Sweep the floor, pile up the fluff, and the fluff gets up and walks."
   },
-  "backgroundFile": "Preview-source.png",
+  "background": { "file": "Preview-source.png" },
   "echo": {
     "file": "echo-source.png",
     "flipX": false
   },
-  "icon": {
-    "file": "ModIcon-source.png"
-  },
+  "icon": { "file": "ModIcon-source.png" },
   "palette": {
     "veil": "#302A24",
     "inkPrimary": "#F2ECE1",
