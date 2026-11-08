@@ -33,7 +33,7 @@ publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: 2775d59be589ba7f19f9ea6af2919e05e98e6069686220e2ede1e28d0f757d4f
 updated:      2026-10-14
-protocols_read_sha: fe5645e2
+protocols_read_sha: 5300f94f4037eb8ae2de438dfb9f22ec530edfe3
 ---
 # Dust Bunnies Renew — status
 
@@ -170,6 +170,8 @@ Sync 2026-11-07 (sync-nsb). Places read: 2026-11-07 (lines of `sleeping-nook` an
 
 Not changed: shotlist and scenarios. 1.1.0 gallery decision (keep the 1.0.0 gallery or redo) still open with Virginie.
 
+Sync 2026-11-08 (sync-nsb-npt, Places read: 2026-11-08, Tribe read: 2026-11-08, Steps read: 2026-11-08; lines and diffs only). NSB since 2026-11-07: `sleeping-nook` validated by Virginie 2026-11-08 (VALIDE.md; our shot 4 place stays as is), `terrace` unchanged (validated), enclosure/workshops/hearth-hall validated, right-bank and gravel-yard refused (not used here). NPT since 2026-11-07: new steps `the building X at (x, z) is put out` and `lies asleep in the bed` (already used in scene 4), StageDecor made-of placement; none needed by scenes 1 to 3. Tables above unchanged: places, Nelim outfit, dust bunny all as before; included animal rule 5: dust bunny shown in shots 3 and 4. Nothing outside NSB, no owner question.
+
 ## Shotlist 1.1.0 (write-shotlist, 2026-11-07; plan in the header of `Tests/Pickle/Mod/Pickle/Features/11-gallery-captures.feature`)
 
 No capture yet for these scenes: rating the plan. Story: spring cleaning in the Sanctuary, one day (8, 11, 18, 23 h), Nelim in one outfit (teal `Apparel_BasicShirt`, plum `Apparel_Pants`, `Roo_HD_Hair_Highpony`, light smile written). Director pass (Opus): kept zoom changes for thumbnail legibility (j), the `Dust` thread (10, 100, crumb, bunny), `Dust` heap as foreground, dusk for scene 3 (Nocturnal Animals), LayDown for scene 4; dropped: `Dust` x30 on the Shelf (cell holds stacks), rhythm line rewritten to the real gaps.
@@ -187,3 +189,4 @@ Open before sleep 2026-11-07: (1) ticket 632b RUNNING, on RUN_DONE open the 4 ca
 Gallery ticket 632b RED 2026-11-07 (4/4: cells already held PlantPot (200, 121) and (177, 119), Human at (195, 121)). Real cause: the Daylily step failed (the pot holds the cell), not the pot. Fix in `11-gallery-captures.feature`: NPT step `PlantPot holding Plant_Daylily fully grown at`, and `Filth_Dirt` at (195, 121) removed. de6e and c40e cancelled, refiled as `20261107-232925-894-8c67`, evidence `Tests/Pickle/Inbox/2026-11-07-gallery-story-2`. Keep `Mod/` and `Tests/` still until RUN_DONE.
 Gallery ticket 8c67 RED 2026-11-07 (4/4, new causes): bill (use `the building "CraftingSpot" at (196, 120) has the bill "GatherDust"`, not `I add bill`), mouth (own face now gives MouthLipsSmirk, assertions fixed), zoom 1.8 (camera capped at 2, scene 3 now zoom 2), scene 4 `lies at (177, 121)` (RoyalBed cell not standable): asked NPT for a step laying a colonist in a bed. Scenes 1 to 3 refiled `20261107-235526-374-7689` (03fd1ca, evidence `Tests/Pickle/Inbox/2026-11-07-gallery-story-3`). Scene 4 held until NPT answers. Keep `Mod/` and `Tests/` still until RUN_DONE.
 Scene 4 2026-11-08: NPT step `"Nelim" lies asleep in the bed "RoyalBed" at (177, 121)` (compiled, not played) now in scenario; filed alone `20261107-235822-038-1642` (evidence `Tests/Pickle/Inbox/2026-11-08-gallery-story-4`). Scenes 1 to 3 on `7689`. Keep `Mod/` and `Tests/` still until both RUN_DONE.
+Resume 2026-11-08 (DuB): protocols read 5300f94f, registered with TM. Gallery launch `7689`+`1642` (merged, 4/4 passed) read and scored on the 4 captures (Inbox/2026-11-07-gallery-story-3): scene 4 candidate (asleep Nelim, awake bunny); scenes 1 to 3 REDO (1: dust barely visible, no heap foreground, Nelim back to camera; 2: carried stack unreadable, no heap; 3: bunny sits on Nelim's head, not front-on walking). Next: recompose 1 to 3, refile; one owner review at the end (GALLERY.md, 2026-11-08). Triage due: gallery-story-3 read, two stalled-* folders in Inbox. Open: NSB sync (Check-Status nsb-sync warn 2026-11-08), FRENCH_REVIEW.md rename to TRANSLATION_REVIEW.md.
