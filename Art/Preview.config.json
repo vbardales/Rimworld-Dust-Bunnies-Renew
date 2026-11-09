@@ -12,7 +12,10 @@
     "file": "echo-source.png",
     "flipX": false
   },
-  "icon": { "file": "ModIcon-source.png", "corner": "bottom-left" },
+  "icon": {
+    "file": "ModIcon-source.png",
+    "corner": "bottom-left"
+  },
   "palette": {
     "veil": "#302A24",
     "inkPrimary": "#F2ECE1",
