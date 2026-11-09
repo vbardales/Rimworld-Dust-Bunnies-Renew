@@ -20,6 +20,7 @@
 # `the animal "Nelim" lies at (x, z) facing south` for the sleeper; `the decor "TorchLamp" at (x, z) is lit` works on an existing building.
 #
 #   REDO 2026-11-09 (28be: dust still faint on 4 cells): scenes 1 and 2 now place Dust on 7 cells, adding (195, 120), (197, 121), (196, 123).
+#   REDO 2026-11-09 (4545: dust still invisible at 268 px, j weak): scenes 1 and 2 draw Dust at 2.0 times its size (PiT step, d824982, 0.75 to 1.5) and hold the camera at 1.5 after framing (`the camera orthographic size is held at 1.5`, replaces `root size is 2`); same 7 cells.
 #   REDO 2026-11-08 (capture rating of 7689: scenes 1 to 3 under 4/5): Dust renders as small specks, so the heap is carried by 4 adjacent cells, zoom 2 (tight) and Nelim FACING SOUTH toward the camera; scenes 1 and 2 no longer use `DoBill` (it turned her back to the camera: she works the bench from the south); scene 3 keeps Nelim still at (199, 121) so the bunny, walking South from (196, 120) to (196, 124), no longer overlaps her.
 #   1. workshop-1-sweep (REDO: zoom 2 centred (196, 121), Nelim at (196, 120) facing South, Dust on (195, 121), (196, 121), (195, 122), (196, 122), no bill, 10 ticks). Place: veranda `terrace` (193-200, 118-124), 8h, Clear, paused after 120 ticks of work. WIDE (the whole veranda in frame):
 #      zoom 3.2 centred (196, 121), Nelim left of the spot, dirt and the grey `Dust` heap (about 2 cells wide, 47 px on a 268 px thumbnail) in the foreground, Shelf (197, 118) behind. Subject: Nelim
@@ -93,6 +94,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (198, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
+    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.0 times its size
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 121)
     And Nelim's Pickle Tools: I place the decor "Dust" at (196, 121)
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 122)
@@ -105,7 +107,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: I let 10 ticks pass
     And game speed is paused
     And Nelim's Pickle Tools: I frame the cell (196, 121) at zoom 2
-    And Nelim's Pickle Tools: the camera root size is 2
+    And Nelim's Pickle Tools: the camera orthographic size is held at 1.5
     And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: studio presentation mode is enabled
@@ -129,6 +131,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" stands at (197, 119) facing South
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
+    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.0 times its size
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 121)
     And Nelim's Pickle Tools: I place the decor "Dust" at (196, 121)
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 122)
@@ -143,7 +146,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: I let 25 ticks pass
     And game speed is paused
     And Nelim's Pickle Tools: I frame the cell (197, 121) at zoom 2
-    And Nelim's Pickle Tools: the camera root size is 2
+    And Nelim's Pickle Tools: the camera orthographic size is held at 1.5
     And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: studio presentation mode is enabled
