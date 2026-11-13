@@ -20,6 +20,7 @@
 # `the animal "Nelim" lies at (x, z) facing south` for the sleeper; `the decor "TorchLamp" at (x, z) is lit` works on an existing building.
 #
 #   REDO 2026-11-09 (28be: dust still faint on 4 cells): scenes 1 and 2 now place Dust on 7 cells, adding (195, 120), (197, 121), (196, 123).
+#   REDO 2026-11-13 (047f: Dust x2 still faint flecks, no heap, carried stack a smudge on her face): scenes 1 and 2 draw Dust at 5.0 times its size (NPT 2026-11-13: allowed 0.1 to 20, second call multiplies the original again); same 7 cells, same camera 1.5.
 #   REDO 2026-11-09 (4545: dust still invisible at 268 px, j weak): scenes 1 and 2 draw Dust at 2.0 times its size (PiT step, d824982, 0.75 to 1.5) and hold the camera at 1.5 after framing (`the camera orthographic size is held at 1.5`, replaces `root size is 2`); same 7 cells.
 #   REDO 2026-11-08 (capture rating of 7689: scenes 1 to 3 under 4/5): Dust renders as small specks, so the heap is carried by 4 adjacent cells, zoom 2 (tight) and Nelim FACING SOUTH toward the camera; scenes 1 and 2 no longer use `DoBill` (it turned her back to the camera: she works the bench from the south); scene 3 keeps Nelim still at (199, 121) so the bunny, walking South from (196, 120) to (196, 124), no longer overlaps her.
 #   1. workshop-1-sweep (REDO: zoom 2 centred (196, 121), Nelim at (196, 120) facing South, Dust on (195, 121), (196, 121), (195, 122), (196, 122), no bill, 10 ticks). Place: veranda `terrace` (193-200, 118-124), 8h, Clear, paused after 120 ticks of work. WIDE (the whole veranda in frame):
@@ -94,7 +95,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (198, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
-    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.0 times its size
+    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 5.0 times its size
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 121)
     And Nelim's Pickle Tools: I place the decor "Dust" at (196, 121)
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 122)
@@ -131,7 +132,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" stands at (197, 119) facing South
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
-    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.0 times its size
+    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 5.0 times its size
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 121)
     And Nelim's Pickle Tools: I place the decor "Dust" at (196, 121)
     And Nelim's Pickle Tools: I place the decor "Dust" at (195, 122)
