@@ -93,7 +93,7 @@ numbered 0, a byte-identical copy of `Preview.png`, recopied every time the Prev
 the two never drift):
 
 0. `0-preview.png` - a copy of `Mod/About/Preview.png` itself: since 2026-09-29 it carries the
-   the ModIcon badge in a corner (placement and veil in `Art/Preview.config.json`, rendered by the shared
+   ModIcon badge in a corner (placement and veil in `Art/Preview.config.json`, rendered by the shared
    renderer, STYLE_RIMWORLD.md). Done; committed.
 1. **Nelim sweeps the veranda** (staged photograph, `11-gallery-captures`): wide, the Sanctuary's `terrace` at 8 h, Nelim in teal and plum working the Gather dust bill at a crafting spot, a grey heap of dust and dirt in the foreground. It says: the dust comes off the floor, by hand.
 2. **Nelim carries the hundred dust** (staged photograph): the `terrace` at 11 h, Nelim walking to the crafting spot with a hundred dust in her arms. It says: a hundred dust is the price of one bunny.
