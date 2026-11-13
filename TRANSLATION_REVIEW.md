@@ -36,7 +36,7 @@ Languages: French (11 keys, 0 missing against English). English is the source si
 |---|---|---|---|---|
 | `DustBunny.label` | dust bunny | dust bunny | mouton de poussière |  |
 | `DustBunny.description` | Little dust bunny. Made from dust. Made from bunny. | Little dust bunny. Made from dust. Made from bunny. | Petit mouton de poussière. Fait de poussière. Fait de mouton. |  |
-| `DustBunny.tools.head.label` |  |  | tête |  |
+| `DustBunny.tools.head.label` | head | head | tête |  |
 
 ## Review line (Virginie only)
 
