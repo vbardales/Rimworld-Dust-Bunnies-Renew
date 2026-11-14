@@ -35,11 +35,11 @@
 #      grown; the lamps are off (daylight). Living: Nelim, the daylily. Instant: one bill is done, she works the next, the
 #      dirt still waits. Obtained: add the bill, `Nelim is forced into the job "DoBill" on the building "CraftingSpot" at (196,
 #      120)`, `I let 120 ticks pass`, `game speed is paused`. Subtitle: "Nelim sweeps the veranda: the dust comes off the floor."
-#   2. workshop-2-armful. Place: `terrace`, 11h, Clear. MEDIUM: zoom 2 centred (198, 121) (REDO 2026-11-14b: zoom 2 centred (198, 121) so the pot enters the frame, drawn 2.5x, Nelim FACING SOUTH walking toward the camera from (197, 119) to (197, 122), a hundred Dust carried in her hands, a swept heap of 75 on (195, 121)). Subject (REDO 2026-11-14): Nelim walks toward the hundred dust waiting on the crafting spot (a swept heap of 75 on (195, 121); she carries a hundred Dust in her hands, a carried stack covered her face). Says: a hundred
+#   2. workshop-2-armful. Place: `terrace`, 11h, Clear. MEDIUM: zoom 2 centred (198, 121) (REDO 2026-11-14b: zoom 2 centred (198, 121) so the pot enters the frame, drawn 2.5x, Nelim FACING SOUTH walking toward the camera from (197, 119) to (197, 122), seventy-five Dust carried in her hands (stack limit 75), a swept heap of 75 on (195, 121)). Subject (REDO 2026-11-14): Nelim walks toward the hundred dust waiting on the crafting spot (a swept heap of 75 on (195, 121); she carries 75 Dust in her hands, a carried stack covered her face). Says: a hundred
 #      dust is the price of one bunny. Decor: the same fixed furniture, `Filth_Dirt` left at (194, 120) and (199, 121),
 #      `PlantPot` (200, 121) with `Plant_Daylily`, TorchLamp (200, 119) off; the floor around the spot is swept (time passed
 #      since scene 1). Living: Nelim, the daylily. Instant: she has just lifted the heap, next she sets it on the spot.
-#      Obtained (REDO 2026-11-14d): `75 of the item "Dust" are spawned at (195, 121)` (the swept heap left behind), `Nelim stands at (197, 119)`, `Nelim is forced to haul 100 of the item "Dust" to (197, 122)` (carried in her hands),
+#      Obtained (REDO 2026-11-14d): `75 of the item "Dust" are spawned at (195, 121)` (the swept heap left behind), `Nelim stands at (197, 119)`, `Nelim is forced to haul 75 of the item "Dust" to (197, 122)` (carried in her hands),
 #      pause after 50 ticks. Subtitle: "A hundred dust is a lot of sweeping."
 #   3. workshop-3-first-steps. Place: `terrace`, 18h (dusk, so the bunny is up: Nocturnal Animals), Clear, paused after 15
 #      ticks. CLOSE: zoom 2 centred (196, 121), the bunny in the lower third, front-on (walking South), Nelim in profile
@@ -105,10 +105,10 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: the building "CraftingSpot" at (196, 120) has the bill "GatherDust"
     And Nelim's Pickle Tools: "Nelim" is forced into the job "DoBill" on the building "CraftingSpot" at (196, 120)
     And game speed is ultrafast
-    And Nelim's Pickle Tools: the game is advanced by 60 ticks
+    And Nelim's Pickle Tools: the game is advanced by 150 ticks
     And game speed is paused
     And Nelim's Pickle Tools: I frame the cell (197, 121) at zoom 2
-    And Nelim's Pickle Tools: the camera orthographic size is held at 2.2
+    And Nelim's Pickle Tools: the camera orthographic size is held at 2.6
     And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: studio presentation mode is enabled
@@ -135,7 +135,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 3.5 times its size
     And Nelim's Pickle Tools: 75 of the item "Dust" are spawned at (195, 121)
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (200, 121)
-    And Nelim's Pickle Tools: "Nelim" is forced to haul 100 of the item "Dust" to (197, 122)
+    And Nelim's Pickle Tools: "Nelim" is forced to haul 75 of the item "Dust" to (197, 122)
     And game speed is ultrafast
     And Nelim's Pickle Tools: the game is advanced by 50 ticks
     And game speed is paused
