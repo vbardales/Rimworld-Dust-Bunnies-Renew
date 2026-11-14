@@ -20,11 +20,12 @@
 # `the animal "Nelim" lies at (x, z) facing south` for the sleeper; `the decor "TorchLamp" at (x, z) is lit` works on an existing building.
 #
 #   REDO 2026-11-09 (28be: dust still faint on 4 cells): scenes 1 and 2 now place Dust on 7 cells, adding (195, 120), (197, 121), (196, 123).
+#   REDO 2026-11-14b (cf2b: stacks read as a heap in image 2 but decor sparse and image 1 pile too small at 268 px): image 1 spawns two stacks of 75 (196, 121) and (195, 121), Nelim at (197, 120), frame (197, 121); image 2 frame (198, 121) to bring the PlantPot into view; Dust drawn at 2.5 in both.
 #   REDO 2026-11-14 (a2ec: Dust x5 reads as smoke, the carried stack covers her face; NPT: Dust is a Graphic_StackCount, a step cannot make it denser, only a denser sprite would): scenes 1 and 2 spawn real stacks with the item step (40 on (196, 121) in scene 1; 75 on (196, 121) and 25 on (196, 122) in scene 2, so the game picks the biggest stack sprite), draw Dust at 2.0 (not 5.0), and Nelim carries nothing in scene 2: she walks toward the hundred dust waiting on the spot. The 7 single cells are gone.
 #   REDO 2026-11-13 (047f: Dust x2 still faint flecks, no heap, carried stack a smudge on her face): scenes 1 and 2 draw Dust at 5.0 times its size (NPT 2026-11-13: allowed 0.1 to 20, second call multiplies the original again); same 7 cells, same camera 1.5.
 #   REDO 2026-11-09 (4545: dust still invisible at 268 px, j weak): scenes 1 and 2 draw Dust at 2.0 times its size (PiT step, d824982, 0.75 to 1.5) and hold the camera at 1.5 after framing (`the camera orthographic size is held at 1.5`, replaces `root size is 2`); same 7 cells.
 #   REDO 2026-11-08 (capture rating of 7689: scenes 1 to 3 under 4/5): Dust renders as small specks, so the heap is carried by 4 adjacent cells, zoom 2 (tight) and Nelim FACING SOUTH toward the camera; scenes 1 and 2 no longer use `DoBill` (it turned her back to the camera: she works the bench from the south); scene 3 keeps Nelim still at (199, 121) so the bunny, walking South from (196, 120) to (196, 124), no longer overlaps her.
-#   1. workshop-1-sweep (REDO 2026-11-14: zoom 2 centred (196, 121), Nelim at (196, 120) facing South, one stack of 40 Dust on (196, 121), no bill, 10 ticks). Place: veranda `terrace` (193-200, 118-124), 8h, Clear, paused after 120 ticks of work. WIDE (the whole veranda in frame):
+#   1. workshop-1-sweep (REDO 2026-11-14b: zoom 2 centred (197, 121), Nelim at (197, 120) facing South, two stacks of 75 Dust on (196, 121) and (195, 121), drawn 2.5x, no bill, 10 ticks). Place: veranda `terrace` (193-200, 118-124), 8h, Clear, paused after 120 ticks of work. WIDE (the whole veranda in frame):
 #      zoom 3.2 centred (196, 121), Nelim left of the spot, dirt and the grey `Dust` heap (about 2 cells wide, 47 px on a 268 px thumbnail) in the foreground, Shelf (197, 118) behind. Subject: Nelim
 #      works the "Gather dust" bill at a CraftingSpot (196, 120). Says: the dust comes off the floor, by hand. Decor: what the
 #      place already holds (Shelf, TorchLamp (200, 119) and (195, 123), Stool (197, 122), Campfire (194, 121), Harpsichord
@@ -33,7 +34,7 @@
 #      grown; the lamps are off (daylight). Living: Nelim, the daylily. Instant: one bill is done, she works the next, the
 #      dirt still waits. Obtained: add the bill, `Nelim is forced into the job "DoBill" on the building "CraftingSpot" at (196,
 #      120)`, `I let 120 ticks pass`, `game speed is paused`. Subtitle: "Nelim sweeps the veranda: the dust comes off the floor."
-#   2. workshop-2-armful. Place: `terrace`, 11h, Clear. MEDIUM: zoom 2 centred (197, 121) (REDO 2026-11-14: tight, Nelim FACING SOUTH walking toward the camera from (197, 119) to (197, 122), the hundred Dust as two stacks on (196, 121) and (196, 122)). Subject (REDO 2026-11-14): Nelim walks toward the hundred dust waiting on the crafting spot (75 on (196, 121), 25 on (196, 122); she carries nothing, a carried stack covered her face). Says: a hundred
+#   2. workshop-2-armful. Place: `terrace`, 11h, Clear. MEDIUM: zoom 2 centred (198, 121) (REDO 2026-11-14b: zoom 2 centred (198, 121) so the pot enters the frame, drawn 2.5x, Nelim FACING SOUTH walking toward the camera from (197, 119) to (197, 122), the hundred Dust as two stacks on (196, 121) and (196, 122)). Subject (REDO 2026-11-14): Nelim walks toward the hundred dust waiting on the crafting spot (75 on (196, 121), 25 on (196, 122); she carries nothing, a carried stack covered her face). Says: a hundred
 #      dust is the price of one bunny. Decor: the same fixed furniture, `Filth_Dirt` left at (194, 120) and (199, 121),
 #      `PlantPot` (200, 121) with `Plant_Daylily`, TorchLamp (200, 119) off; the floor around the spot is swept (time passed
 #      since scene 1). Living: Nelim, the daylily. Instant: she has just lifted the heap, next she sets it on the spot.
@@ -90,19 +91,20 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_BasicShirt" dyed rgb (22, 110, 120)
     And Nelim's Pickle Tools: "Nelim" wears "Apparel_Pants" dyed rgb (92, 38, 84)
     And a "CraftingSpot" is built at (196, 120)
-    And Nelim's Pickle Tools: "Nelim" stands at (196, 120) facing South
+    And Nelim's Pickle Tools: "Nelim" stands at (197, 120) facing South
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (195, 119)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (197, 119)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (198, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
-    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.0 times its size
-    And Nelim's Pickle Tools: 40 of the item "Dust" are spawned at (196, 121)
+    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.5 times its size
+    And Nelim's Pickle Tools: 75 of the item "Dust" are spawned at (196, 121)
+    And Nelim's Pickle Tools: 75 of the item "Dust" are spawned at (195, 121)
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (200, 121)
     And game speed is ultrafast
     And Nelim's Pickle Tools: I let 10 ticks pass
     And game speed is paused
-    And Nelim's Pickle Tools: I frame the cell (196, 121) at zoom 2
+    And Nelim's Pickle Tools: I frame the cell (197, 121) at zoom 2
     And Nelim's Pickle Tools: the camera orthographic size is held at 1.5
     And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
     And Nelim's Sanctuary: Nelim has her own face
@@ -127,7 +129,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" stands at (197, 119) facing South
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
-    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.0 times its size
+    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.5 times its size
     And Nelim's Pickle Tools: 75 of the item "Dust" are spawned at (196, 121)
     And Nelim's Pickle Tools: 25 of the item "Dust" are spawned at (196, 122)
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (200, 121)
@@ -135,7 +137,7 @@ Feature: the Workshop gallery images
     And game speed is ultrafast
     And Nelim's Pickle Tools: I let 25 ticks pass
     And game speed is paused
-    And Nelim's Pickle Tools: I frame the cell (197, 121) at zoom 2
+    And Nelim's Pickle Tools: I frame the cell (198, 121) at zoom 2
     And Nelim's Pickle Tools: the camera orthographic size is held at 1.5
     And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
     And Nelim's Sanctuary: Nelim has her own face
