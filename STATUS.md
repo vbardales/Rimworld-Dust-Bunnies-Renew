@@ -1,7 +1,8 @@
 ---
-localization: in_progress
+localization: complete
 translation_en: complete
 translation_fr: complete
+translation_zh: complete
 settings_audit: not_applicable
 mod:          Dust Bunnies Renew (unofficial)
 packageId:    nelim.dustbunnies
@@ -217,3 +218,4 @@ Gallery ticket 893a filed 2026-11-14 (images 1 and 2, gesture: bill GatherDust +
 Gallery ticket 893a read 2026-11-14 (image 1 passed but REDO: job moved Nelim to the bottom edge, cut off, still facing camera; image 2 failed: Dust stacks to 75, haul 100 refused). Fix: haul 75, scene 1 camera held 2.6, 150 ticks. Refiled (df6cf94), evidence deleted.
 Gallery ticket 54a5 read 2026-11-14 (2/2 passed, captures opened, 268 px check run): image 1 REDO (Nelim at the bottom edge, head to waist only, still facing the camera, no sweep pose), image 2 REDO (carried Dust stack drawn over her face and a second ghost stack of dust below the spot). Gesture steps do not deliver with Dust: a Graphic_StackCount carried item covers the pawn. Best framing stays 44fc (clean, readable, Nelim still). Decision open for Virginie: accept still Nelim (44fc framing) or commission denser or hand-friendly Dust art. Evidence 2026-11-14-gallery-dust-gesture2 still in Inbox, to delete (REDO).
 Stage 2026-11-14: back to localize[1.1.0] (Virginie): add Chinese. PiI found Crows' mod has a Chinese pack (3480771206); the original's languages not recorded. Gallery paused at shootGallery: images 1 and 2 REDO (54a5), decision open (still Nelim or new Dust art); evidence 2026-11-14-gallery-dust-gesture2 still in Inbox.
+Localize 2026-11-14: Simplified Chinese added (Languages/ChineseSimplified, 4 DefInjected files, 11 keys, written with Claude, not native-checked). Check-Translations PASS, Check-DefInjected 24 keys 0 errors. PUBLICATION.md Languages paragraph with the AI sentence. TRANSLATION_REVIEW.md to regenerate and /review-translation to run (ChatGPT) before leaving localize. Crows pack 3480771206 not reused (other mod).

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- EN: dust -->
+  <Dust.label>灰尘</Dust.label>
+  <!-- EN: Old dusty dust. Made from dust. -->
+  <Dust.description>陈年的灰扑扑的灰尘。由灰尘制成。</Dust.description>
+
+</LanguageData>

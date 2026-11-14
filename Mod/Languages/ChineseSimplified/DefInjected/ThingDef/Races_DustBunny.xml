@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- EN: dust bunny -->
+  <DustBunny.label>灰尘兔</DustBunny.label>
+  <!-- EN: Little dust bunny. Made from dust. Made from bunny. -->
+  <DustBunny.description>小小的灰尘兔。由灰尘制成。由兔子制成。</DustBunny.description>
+
+  <!-- EN: head -->
+  <DustBunny.tools.head.label>头部</DustBunny.tools.head.label>
+
+</LanguageData>

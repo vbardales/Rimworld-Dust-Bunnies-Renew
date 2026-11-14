@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- EN: gather dust -->
+  <GatherDust.label>收集灰尘</GatherDust.label>
+  <!-- EN: Gather up dust to make dust. -->
+  <GatherDust.description>把灰尘扫拢起来，做成灰尘。</GatherDust.description>
+  <!-- EN: Gathering dust. -->
+  <GatherDust.jobString>正在收集灰尘。</GatherDust.jobString>
+
+  <!-- EN: make a dust bunny -->
+  <MakeDustBunny.label>制作灰尘兔</MakeDustBunny.label>
+  <!-- EN: Make a dust bunny. Made from dust. -->
+  <MakeDustBunny.description>制作一只灰尘兔。由灰尘制成。</MakeDustBunny.description>
+  <!-- EN: Making a dust bunny. -->
+  <MakeDustBunny.jobString>正在制作灰尘兔。</MakeDustBunny.jobString>
+
+</LanguageData>

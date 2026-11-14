@@ -24,6 +24,8 @@ The bunny is a tiny grey thing, base body size 0.2 (0.04 in play, because it nev
 
 No DLC or required dependencies. Seven defs, four texture images and one class.
 
+Languages: English, French, and Simplified Chinese. Simplified Chinese: written with Claude (Anthropic) and reviewed by ChatGPT (OpenAI), and has not been checked by a native speaker; corrections are welcome. A Chinese pack exists for Crows' Dust Bunnies, but not for this mod's texts, so none of it is reused here.
+
 Optional: with [A Dog Said... Animal Prosthetics 2](https://steamcommunity.com/sharedfiles/filedetails/?id=3238353862) the dust bunny is enrolled in its first category, basic replacements, so it can receive a peg leg or a denture. With [[XND] Nocturnal Animals (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2269731409) it is nocturnal. Nothing is required and nothing changes without them.
 
 I am not the author of this mod. The dust bunny, its artwork and its balance are 2blockdude's and HendraGradeWood's - all I did was bring it forward to the latest RimWorld version, repair what the port turned up, and write the French. Credit goes to them; mistakes in the port are mine.
