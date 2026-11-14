@@ -20,6 +20,7 @@
 # `the animal "Nelim" lies at (x, z) facing south` for the sleeper; `the decor "TorchLamp" at (x, z) is lit` works on an existing building.
 #
 #   REDO 2026-11-09 (28be: dust still faint on 4 cells): scenes 1 and 2 now place Dust on 7 cells, adding (195, 120), (197, 121), (196, 123).
+#   REDO 2026-11-14c (8f43: piles now read at 268 px, but bare brick, pot or campfire cut, Nelim still beside the heap): images 1 and 2 hold the camera at 2.2 (wider: campfire, harpsichord, stool, pot in frame) and draw Dust at 3.5 so the piles keep their size on screen.
 #   REDO 2026-11-14b (cf2b: stacks read as a heap in image 2 but decor sparse and image 1 pile too small at 268 px): image 1 spawns two stacks of 75 (196, 121) and (195, 121), Nelim at (197, 120), frame (197, 121); image 2 frame (198, 121) to bring the PlantPot into view; Dust drawn at 2.5 in both.
 #   REDO 2026-11-14 (a2ec: Dust x5 reads as smoke, the carried stack covers her face; NPT: Dust is a Graphic_StackCount, a step cannot make it denser, only a denser sprite would): scenes 1 and 2 spawn real stacks with the item step (40 on (196, 121) in scene 1; 75 on (196, 121) and 25 on (196, 122) in scene 2, so the game picks the biggest stack sprite), draw Dust at 2.0 (not 5.0), and Nelim carries nothing in scene 2: she walks toward the hundred dust waiting on the spot. The 7 single cells are gone.
 #   REDO 2026-11-13 (047f: Dust x2 still faint flecks, no heap, carried stack a smudge on her face): scenes 1 and 2 draw Dust at 5.0 times its size (NPT 2026-11-13: allowed 0.1 to 20, second call multiplies the original again); same 7 cells, same camera 1.5.
@@ -97,7 +98,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (198, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
-    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.5 times its size
+    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 3.5 times its size
     And Nelim's Pickle Tools: 75 of the item "Dust" are spawned at (196, 121)
     And Nelim's Pickle Tools: 75 of the item "Dust" are spawned at (195, 121)
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (200, 121)
@@ -105,7 +106,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: I let 10 ticks pass
     And game speed is paused
     And Nelim's Pickle Tools: I frame the cell (197, 121) at zoom 2
-    And Nelim's Pickle Tools: the camera orthographic size is held at 1.5
+    And Nelim's Pickle Tools: the camera orthographic size is held at 2.2
     And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: studio presentation mode is enabled
@@ -129,7 +130,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: "Nelim" stands at (197, 119) facing South
     When Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (194, 120)
     And Nelim's Pickle Tools: I place the decor "Filth_Dirt" at (199, 121)
-    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 2.5 times its size
+    And Nelim's Pickle Tools: the graphic of the def "Dust" is drawn at 3.5 times its size
     And Nelim's Pickle Tools: 75 of the item "Dust" are spawned at (196, 121)
     And Nelim's Pickle Tools: 25 of the item "Dust" are spawned at (196, 122)
     And Nelim's Pickle Tools: I place the decor "PlantPot" holding "Plant_Daylily" fully grown at (200, 121)
@@ -138,7 +139,7 @@ Feature: the Workshop gallery images
     And Nelim's Pickle Tools: I let 25 ticks pass
     And game speed is paused
     And Nelim's Pickle Tools: I frame the cell (198, 121) at zoom 2
-    And Nelim's Pickle Tools: the camera orthographic size is held at 1.5
+    And Nelim's Pickle Tools: the camera orthographic size is held at 2.2
     And Nelim's Pickle Tools: "Nelim" face kit is "neutral"
     And Nelim's Sanctuary: Nelim has her own face
     And Nelim's Pickle Tools: studio presentation mode is enabled
