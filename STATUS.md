@@ -1,5 +1,5 @@
 ---
-localization: complete
+localization: in_progress
 translation_en: complete
 translation_fr: complete
 settings_audit: not_applicable
@@ -13,7 +13,7 @@ visibility_at: Steam API GetPublishedFileDetails 2026-10-14 (visibility 0 = publ
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: shootGallery[1.1.0]
+workflow_stage: localize[1.1.0]
 tested_1_7:   yes
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
@@ -33,7 +33,7 @@ publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: 2775d59be589ba7f19f9ea6af2919e05e98e6069686220e2ede1e28d0f757d4f
 updated:      2026-10-14
-protocols_read_sha: 08534e790c840f46614a48899f8f8174ce0553f3
+protocols_read_sha: 845ca18096ed60bda50efc193aeb83f9ea7cda49
 ---
 # Dust Bunnies Renew — status
 
@@ -216,3 +216,4 @@ Gallery ticket 44fc read 2026-11-14 (2/2 passed, camera 2.2, Dust x3.5, captures
 Gallery ticket 893a filed 2026-11-14 (images 1 and 2, gesture: bill GatherDust + DoBill forced 60 ticks, haul 100 Dust 50 ticks; steps from NPT; commit 365d087; extra flag -pickle-skip-def-check was unneeded, def pre-check passed without it). Evidence Tests/Pickle/Inbox/2026-11-14-gallery-dust-gesture. Tree kept still until RUN_DONE.
 Gallery ticket 893a read 2026-11-14 (image 1 passed but REDO: job moved Nelim to the bottom edge, cut off, still facing camera; image 2 failed: Dust stacks to 75, haul 100 refused). Fix: haul 75, scene 1 camera held 2.6, 150 ticks. Refiled (df6cf94), evidence deleted.
 Gallery ticket 54a5 read 2026-11-14 (2/2 passed, captures opened, 268 px check run): image 1 REDO (Nelim at the bottom edge, head to waist only, still facing the camera, no sweep pose), image 2 REDO (carried Dust stack drawn over her face and a second ghost stack of dust below the spot). Gesture steps do not deliver with Dust: a Graphic_StackCount carried item covers the pawn. Best framing stays 44fc (clean, readable, Nelim still). Decision open for Virginie: accept still Nelim (44fc framing) or commission denser or hand-friendly Dust art. Evidence 2026-11-14-gallery-dust-gesture2 still in Inbox, to delete (REDO).
+Stage 2026-11-14: back to localize[1.1.0] (Virginie): add Chinese. PiI found Crows' mod has a Chinese pack (3480771206); the original's languages not recorded. Gallery paused at shootGallery: images 1 and 2 REDO (54a5), decision open (still Nelim or new Dust art); evidence 2026-11-14-gallery-dust-gesture2 still in Inbox.
