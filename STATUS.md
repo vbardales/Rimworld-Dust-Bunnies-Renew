@@ -14,7 +14,7 @@ visibility_at: Steam API GetPublishedFileDetails 2026-10-14 (visibility 0 = publ
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: localize[1.1.0]
+workflow_stage: shootGallery[1.1.0]
 tested_1_7:   yes
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
@@ -34,7 +34,7 @@ publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: 2775d59be589ba7f19f9ea6af2919e05e98e6069686220e2ede1e28d0f757d4f
 updated:      2026-10-14
-protocols_read_sha: 845ca18096ed60bda50efc193aeb83f9ea7cda49
+protocols_read_sha: 95d78747420aa25181d21a3d58ba60de27d2c674
 ---
 # Dust Bunnies Renew — status
 
@@ -220,3 +220,4 @@ Gallery ticket 54a5 read 2026-11-14 (2/2 passed, captures opened, 268 px check r
 Stage 2026-11-14: back to localize[1.1.0] (Virginie): add Chinese. PiI found Crows' mod has a Chinese pack (3480771206); the original's languages not recorded. Gallery paused at shootGallery: images 1 and 2 REDO (54a5), decision open (still Nelim or new Dust art); evidence 2026-11-14-gallery-dust-gesture2 still in Inbox.
 Localize 2026-11-14: Simplified Chinese added (Languages/ChineseSimplified, 4 DefInjected files, 11 keys, written with Claude, not native-checked). Check-Translations PASS, Check-DefInjected 24 keys 0 errors. PUBLICATION.md Languages paragraph with the AI sentence. TRANSLATION_REVIEW.md to regenerate and /review-translation to run (ChatGPT) before leaving localize. Crows pack 3480771206 not reused (other mod).
 ChatGPT review 2026-11-15 (page 1 of 1, Chinese added): 1 applied (Dust.description zh smoother), 1 rejected (French 'Fait de mouton' to 'lapin': mouton is the deliberate pun, see the XML comment). No proper noun to decide. Chinese review landed, localize done pending Virginie. Gallery images 1 and 2 decision still open.
+Translation review validated by Virginie 2026-11-16 (revision f8dc154, French and Simplified Chinese; ChatGPT pages applied or rejected, no proper noun open). Back to shootGallery[1.1.0]: images 1 and 2 decision still open (still Nelim or new Dust art).
