@@ -7,10 +7,11 @@ name: publish to Steam, then tag (approval gated)
 # what is uploaded after the dry-run. Only this workflow file itself is read from the dispatched
 # branch.
 #
-# update_preview, update_description, update_title and update_tags are off by default. When on, the
-# dry-run prints what would be sent next to what the public page has now (size and SHA-256 of the image;
-# length, SHA-256 and a line diff of the description; the title; the whole tag list, which replaces the
-# page's) and only a publish run with the same options sends it, after the approval of steam-production.
+# update_preview, update_description and update_title are off by default. When on, the dry-run prints what
+# would be sent next to what the public page has now (size and SHA-256 of the image; length, SHA-256 and a
+# line diff of the description; the title) and only a publish run with the same options sends it, after the
+# approval of steam-production. The tags are not an option: every publish replaces the whole tag set with Mod
+# plus one tag per supportedVersions entry of About.xml, and the dry-run prints it next to the page's tags.
 # Visibility is never sent.
 #
 # If the upload succeeds and the tag-and-release job fails, use "Re-run failed jobs", never
@@ -47,11 +48,6 @@ name: publish to Steam, then tag (approval gated)
         required: true
         default: false
         type: boolean
-      update_tags:
-        description: Also replace the whole tag set with Mod plus one tag per supportedVersions entry of About.xml. Off by default.
-        required: true
-        default: false
-        type: boolean
 concurrency:
   group: steam-publish
   cancel-in-progress: false
@@ -63,6 +59,7 @@ jobs:
     environment: ${{ inputs.mode == 'publish' && 'steam-production' || 'release-dry-run' }}
     outputs:
       sha: ${{ steps.resolve.outputs.sha }}
+      tags: ${{ steps.tags.outcome }}
     env:
       REF: ${{ inputs.ref }}
       VERSION: ${{ inputs.version }}
@@ -108,7 +105,7 @@ jobs:
           done
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
           echo "Publishing $sha as version $VERSION"
-          echo "Commit $sha, version $VERSION, mode $MODE, update_preview=${{ inputs.update_preview }}, update_description=${{ inputs.update_description }}, update_title=${{ inputs.update_title }}, update_tags=${{ inputs.update_tags }}. To publish exactly this commit with these options, dispatch with ref=$sha." >> "$GITHUB_STEP_SUMMARY"
+          echo "Commit $sha, version $VERSION, mode $MODE, update_preview=${{ inputs.update_preview }}, update_description=${{ inputs.update_description }}, update_title=${{ inputs.update_title }}. To publish exactly this commit with these options, dispatch with ref=$sha." >> "$GITHUB_STEP_SUMMARY"
 
       # The scripts come from the pinned commit but this file comes from the dispatched branch: its blob is logged so that
       # dispatch-publish.sh refuses a publish when the file changed after the dry-run that was shown.
@@ -154,7 +151,7 @@ jobs:
 
       - name: Install the Steam upload library
         working-directory: release
-        run: npm install --no-save --ignore-scripts --no-audit --no-fund semantic-release-steam@2.1.3
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund semantic-release-steam@2.2.0 steam-user@5.3.0 steam-session@1.9.4 @steamdown/core@1.0.0
 
       - name: Steam login
         if: inputs.mode == 'publish'
@@ -171,9 +168,21 @@ jobs:
           UPDATE_PREVIEW: ${{ inputs.update_preview }}
           UPDATE_DESCRIPTION: ${{ inputs.update_description }}
           UPDATE_TITLE: ${{ inputs.update_title }}
-          UPDATE_TAGS: ${{ inputs.update_tags }}
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_REFRESH_TOKEN: ${{ secrets.STEAM_REFRESH_TOKEN }}
         run: node .github/scripts/steam-publish.mjs
+
+      # steamcmd ignores the tags key of workshop.vdf, so the tags are set here through the Steam client protocol and read
+      # back. A failure does not stop the tag and the release (the upload is done): tag-and-release ends red instead.
+      - name: Set the Workshop tags
+        id: tags
+        if: inputs.mode == 'publish'
+        continue-on-error: true
+        working-directory: release
+        env:
+          TAG_DIR: ${{ github.workspace }}/release
+          STEAM_REFRESH_TOKEN: ${{ secrets.STEAM_REFRESH_TOKEN }}
+        run: node .github/scripts/steam-set-tags.mjs
 
   tag-and-release:
     needs: publish
@@ -208,3 +217,11 @@ jobs:
           [[ "$VERSION" == *-* ]] && flags+=(--prerelease)
           gh release create "v$VERSION" --repo "$GITHUB_REPOSITORY" --target "$SHA" \
             --title "$title" --notes-file "$RUNNER_TEMP/notes.md" ${flags[@]+"${flags[@]}"}
+
+      # The upload, the tag and the release are done; only the Workshop tags failed. Set them with
+      # scripts/steam-apply-tags.mjs of Rimworld-Release-Admin, never by re-running the publish job (it would upload again).
+      - name: Report the Workshop tags failure
+        if: needs.publish.outputs.tags == 'failure'
+        run: |
+          echo "::error::the upload, the tag and the release are done, but the Workshop tags were not set and read back from Steam"
+          exit 1
