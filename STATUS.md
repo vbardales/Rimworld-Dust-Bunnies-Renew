@@ -14,7 +14,7 @@ visibility_at: Steam API GetPublishedFileDetails 2026-10-14 (visibility 0 = publ
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: mountPreview[1.1.0]
+workflow_stage: shootGallery[1.1.0]
 tested_1_7:   yes
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
@@ -30,6 +30,7 @@ ecosystem_line: 1.1
 upstream_synced: 2026-11-19 csharp-rimworld-dust-bunnies@012eff6
 workshop_required_items: n/a, no mandatory Workshop dependency (About.xml has none)
 remaining:
+  - "waits for Virginie: explicit oui to move to mountPreview (AGENTS.md rule 2026-11-19); gallery 1 to 7 ready, replay ledger 2026-11-19 reaches 10.a; Check-Textures ERROR on Dust_Bunny_north and _south (Audit: ship copies of _east in Mod/Textures, reopens code review and playTests, needs her decision)"
   - "open 10.a and 10.a bis: echo_review_sha stale (Art/Gallery images 1 to 4 changed since 8bd0da68); decide echo keep or redo, then Preview-source keep or redo (preview_source_decision), then re-render Preview (10.c) and check it (10.d)"
   - "open 10.e: root closed list (french-review-english.json and scripts/ deletions committed 2026-11-19; Docs/PROTOCOLS-READ.md and Docs/runs/status-journal-2026-10-10.md to delete by the AGENTS.md migration; TESTING.md still links the deleted scripts/TEST_SCENARIOS.md)"
   - "defect (script, for Audit): Check-Textures reports Dust_Bunny_north and _south missing for the DustBunny multi graphic (only _east shipped, the game falls back to it, every Pickle run green)"
@@ -41,7 +42,7 @@ publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: 2775d59be589ba7f19f9ea6af2919e05e98e6069686220e2ede1e28d0f757d4f
 updated:      2026-11-19
-protocols_read_sha: 3a7579ee5d380d6851dd48646bf9abb5d4eec792
+protocols_read_sha: de5a6bef7f7f5b79bd0e8574de2d3eac0e7448bb
 ---
 # Dust Bunnies Renew — status
 
