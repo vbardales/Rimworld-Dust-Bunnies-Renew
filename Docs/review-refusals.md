@@ -1,0 +1,1 @@
+French 'Fait de mouton' (dust bunny description) | ChatGPT proposed 'lapin' instead of 'mouton' | 'mouton' is the deliberate pun on dust bunny and sheep wool, see the XML comment in French/DefInjected | 2026-11-15

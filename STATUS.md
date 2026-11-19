@@ -14,7 +14,7 @@ visibility_at: Steam API GetPublishedFileDetails 2026-10-14 (visibility 0 = publ
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: shootGallery[1.1.0]
+workflow_stage: mountPreview[1.1.0]
 tested_1_7:   yes
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
@@ -26,21 +26,53 @@ dependencies: none required; optional integrations with SamBucher.ADogSaidAnimal
 showcase:     complete
 tested_on:    2026-11-07 pickle 55f7f90 (1.7, English: 02 and 03 green, c546 3/3); 2026-10-15 pickle 46b4758 (1.6, non-regression 2 to 7 green). Earlier: re-audited 2026-10-02 against AUDIT.md transition 9 (all criteria met, see the audit entry below); 2026-09-24 and 25, seven in-game Pickle runs: all eight features played and green in some run (07 in its pass, 08 in its own); three defects found and fixed, each re-run green; ADS category 1 confirmed and no new game needed (Virginie, 2026-09-25); French capture (ticket 8015) opened and read on 2026-09-26: no clipping, raw key or fallback
 workshop:     3806760430
+ecosystem_line: 1.1
+upstream_synced: 2026-11-19 csharp-rimworld-dust-bunnies@012eff6
+workshop_required_items: n/a, no mandatory Workshop dependency (About.xml has none)
 remaining:
-  - "unverified: [prepublished gate] CHANGELOG.md needs a dated `## [1.0.0]` section before the publish: the CI dry-run does not catch its absence (template check piped into head, no pipefail), and the release job then fails after the Steam upload."
-  - "unverified: the Workshop page of item 3806760430 still carries the description frozen at creation (butchering about 18 dust, dust the worst insulator in the game; it is about 6, and the worst of any material a garment can be made from). `publish.config.json` makes `PUBLICATION.md` the description source: check that the 1.0.0 dispatch updates the description (update_description) and, after it, that the Steam page reads as `PUBLICATION.md`. No manual correction planned."
-code_review_sha: d3b6b26aeeb251bf28eb36595cca08abee1790ef
+  - "open 10.a and 10.a bis: echo_review_sha stale (Art/Gallery images 1 to 4 changed since 8bd0da68); decide echo keep or redo, then Preview-source keep or redo (preview_source_decision), then re-render Preview (10.c) and check it (10.d)"
+  - "open 10.e: root closed list (french-review-english.json and scripts/ deletions committed 2026-11-19; Docs/PROTOCOLS-READ.md and Docs/runs/status-journal-2026-10-10.md to delete by the AGENTS.md migration; TESTING.md still links the deleted scripts/TEST_SCENARIOS.md)"
+  - "defect (script, for Audit): Check-Textures reports Dust_Bunny_north and _south missing for the DustBunny multi graphic (only _east shipped, the game falls back to it, every Pickle run green)"
+  - "open 11.e: PUBLICATION.md Gallery order text for images 1 and 2 and its State paragraph still describe the old sweep and carry scenes (Nelim now stands still, Dust drawn x3.5)"
+  - "unverified: sync-nsb-npt warns (NSB changed 2026-11-17, NPT steps 2026-11-19): run before any scenario replay"
+  - "later, at publication: supportedVersions 1.7, version 1.1.0, CHANGELOG 1.1.0 section, Preview redo"
+code_review_sha: 6beab6ac407beedc1718dd4d76e7fa6657b19304
 publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: 2775d59be589ba7f19f9ea6af2919e05e98e6069686220e2ede1e28d0f757d4f
-updated:      2026-10-14
-protocols_read_sha: ea648c4cf17b534e70d252d3f18e9fe57d4a8e2d
+updated:      2026-11-19
+protocols_read_sha: 3a7579ee5d380d6851dd48646bf9abb5d4eec792
 ---
 # Dust Bunnies Renew — status
 
 ## Current state
 
-Defs and source unchanged since `5e55d2a` (About.xml, ATTRIBUTION.md, Preview changed since, text and image only). Workshop item 3806760430 stays private until Virginie switches it. CHANGELOG still needs dated `## [1.0.0]` section, made in commit sent to dry-run (AUDIT.md 12.e). Earlier sections (Sanctuary move, dust seam fix, integrations, upstream PR #1): `docs/runs/status-journal-2026-10-10.md`.
+Published 1.0.0 on 2026-10-14, public. Version 1.1.0 in preparation: Simplified Chinese added, 1.7 English green, gallery of 1.1.0 done (images 1 to 4 story scenes, 5 to 7 interface windows, subtitles burnt). Code review 2026-11-19 (8.m): diff d3b6b26..HEAD over Mod and Source holds only the four new Mod/Languages/ChineseSimplified/DefInjected files (display texts), Check-Translations and Check-DefInjected green: revue du diff : images et texte seuls, code_review_sha moved to HEAD. Workshop description synced by the 1.0.0 dispatch (CHANGELOG has the dated 1.0.0 section).
+
+## Settings audit
+
+settings_audit: not_applicable (verified 2026-11-19, first recorded in the audit of 2026-10-10). Inventory: no ModSettings, no Mod subclass, no settings page, no MainButtons entry; Source holds DustBunnies.csproj, DustBunniesDefOf.cs, Recipe_SpawnDustBunny.cs only. Decision: no useful setting (one recipe, one animal, fixed values from the original); no empty page and no shortcut exist.
+
+## Translation audit
+
+English source texts in Defs (11 keys), French and ChineseSimplified DefInjected (RecipeDef, PawnKindDef, ThingDef x2, 11 keys each), no Keyed. Check-Translations PASS (11 source texts) and Check-DefInjected 0 errors on 2026-11-19. French: no tu, no vous, no gender agreement needed (jobStrings third person). Review: ChatGPT page 1 of 1 on 2026-11-15, one applied (zh Dust.description), one rejected (French 'Fait de mouton', Docs/review-refusals.md); French and Chinese review validated by Virginie 2026-11-16 at revision f8dc154. Chinese written with Claude, not native-checked (stated in PUBLICATION.md Languages). In-game raw keys, fallback text and clipping checked by ticket 8015 (2026-09-26, French) and 6-labels-fr, 10-french-dialogs green.
+
+## Gallery 1.1.0 (9.c, 9.e)
+
+Order justified: 1 leads (the heap and Nelim sweeping: the one image that says what the mod does, readable at 268 px); 2 the price (a hundred dust); 3 the payoff (the bunny walks); 4 the night (Nocturnal Animals, it stays awake); 5 to 7 interface windows (cost, stats, dust). Subtitles burnt on 1 to 4.
+
+| index | file | scene | opened 2026-11-19 |
+|---|---|---|---|
+| 0 | 0-preview.png | copy of Mod/About/Preview.png (cmp identical) | yes |
+| 1 | 1-sweep.jpg | terrace 8 h, Nelim by two big dust piles | yes, candidate |
+| 2 | 2-armful.jpg | terrace 11 h, Nelim by the pile, pot in frame | yes, candidate |
+| 3 | 3-first-steps.jpg | terrace 18 h, the bunny walking | yes, candidate |
+| 4 | 4-night-shift.jpg | sleeping-nook 23 h, Nelim asleep, bunny awake | yes, candidate |
+| 5 | 5-bill-dialog.png | Make a dust bunny bill dialog, 1600 x 900 | yes |
+| 6 | 6-dust-bunny-card.png | dust bunny info card, 1200 x 1080 | yes |
+| 7 | 7-dust-card.png | Dust info card, 1200 x 1080 | yes |
+
+Originals without subtitle in Art/Gallery-clean (1 to 4, jpg under 2 MB). Run proof: Tests/Pickle/Evidence/2026-11-18-gallery-final12-fullres.
 
 ## Public — 2026-10-14 (AUDIT.md 13.b, 13.c, 13.f)
 
@@ -103,3 +135,18 @@ Decision 2026-11-16 (Virginie: 'choisis pour les images 1 et 2'): images 1 and 2
 Resume 2026-11-18 (DuB): protocols read 113f53ea, registered with TM. Ticket `2c6b` read (2/2 passed, 44fc framing, Nelim still, Dust x3.5): captures opened, both usable candidates as Virginie chose (heap readable, decor in frame, understanding about 3.5). But evidence was already minified to 1280 x 720 jpg (`Evidence/2026-11-16-gallery-final12`), no full-size original. Refiled same scenes as `20261118-181930-288-b70f` (`wsl-deps.gallery.map`, English, 1.6, evidence `Tests/Pickle/Inbox/2026-11-18-gallery-final12-fullres`) to get 1920 x 1080 originals. Keep `Mod/` and `Tests/` still until RUN_DONE. On RUN_DONE: copy the two PNGs to `Art/Gallery-clean/` under final names (`1-...`, `2-...`, no `candidate` prefix, GALLERY.md 2026-11-15), rename the two scene 3 and 4 candidates likewise (scene 4 under 2 MB), then ask Virginie to run `/mod-workflow:rate-gallery` (subtitles). Open warns: nsb-sync, npt-sync (run sync-nsb-npt), upstream-sync, STATUS.md 54 KB (journal to docs/runs/). Gallery change reopens mountPreview (AUDIT 10, 2026-11-18).
 Ecosystem 2026-11-18 (PiI, protocols commit ae30fb0): `ecosystem-links` block added to `docs/inventory/ecosystem-steam/DustBunniesRenew.md`. Parent 2659958183 (Dust Bunnies, original), linked 3480725900 (Crows' Dust Bunnies). Translations of the original: none (registry empty, Steam searches of 2026-11-13 found none; not re-searched, Chrome extension offline). Nothing to integrate at `localize`; no patch or retexture row.
 Resume 2026-11-19 (DuB): protocols read ea648c4c. Run `b70f` GREEN 2/2 (1920 x 1080 originals) read, captures opened: images 1 and 2 kept as candidates (Virginie's choice 2026-11-16, Nelim still, heap readable, decor in frame, understanding about 3.5), 3 and 4 candidates as before. Final names in `Art/Gallery-clean/` (`1-sweep`, `2-armful`, `3-first-steps`, `4-night-shift`, jpg, under 2 MB, same names in `Art/Gallery/` with the "Gallery subtitles" lines of `PUBLICATION.md` burnt by `Add-Subtitle.ps1`, image 1 opened: line readable, hides nothing); menu images reindexed to 5 (`5-bill-dialog.png`), 6 (`6-dust-bunny-card.png`), 7 (`7-dust-card.png`). Evidence `2026-11-18-gallery-final12-fullres` kept with `RELEASE.md`; superseded `2026-11-16-gallery-final12` and REDO `2026-11-14-gallery-dust-gesture2` deleted; Inbox empty. STATUS.md trimmed (old dated journal removed, git keeps it). Gallery done: next is mountPreview (stage change by replay-audit only).
+
+## Gallery 1.1.0 (AUDIT 9.c, 9.d, 9.e; 2026-11-19, session)
+
+| Index | File (clean original in `Art/Gallery-clean/` for 1 to 4) | Scene | Opened and judged 2026-11-19 |
+|---|---|---|---|
+| 0 | `0-preview.png` | copy of `Mod/About/Preview.png`, redone at mountPreview | not part of this pass |
+| 1 | `1-sweep.jpg` | terrace 8 h: two heaps of Dust beside Nelim (run `b70f`) | candidate: heap reads at 268 px, decor in frame, Nelim still (Virginie's choice 2026-11-16) |
+| 2 | `2-armful.jpg` | terrace 11 h: the hundred dust, Nelim walks toward it | candidate: heap whole, pot and piano in frame, same Nelim still |
+| 3 | `3-first-steps.jpg` | terrace 18 h: the first bunny walking | candidate: bunny readable on the brick, clear of Nelim |
+| 4 | `4-night-shift.jpg` | sleeping-nook 23 h: Nelim asleep, bunny awake | candidate: asleep Nelim, awake bunny |
+| 5 | `5-bill-dialog.png` | bill dialog "Make a dust bunny" (interface, no subtitle) | kept (accepted 2026-10-13), recipe and 100x dust readable |
+| 6 | `6-dust-bunny-card.png` | information card of the dust bunny (interface, no subtitle) | kept, stats readable |
+| 7 | `7-dust-card.png` | information card of Dust (interface, no subtitle) | kept, stats readable |
+
+Order (9.c): the story runs in the day's order (opening sets the place and the dust, closing is the night), so the most demonstrative image, the heap, opens on the Workshop page; the three interface windows close the series, as in 1.0.0. Contiguous 0 to 7, no hole, no duplicate. Subtitles of 1 to 4 burnt from `Art/Gallery-clean/` with the lines of `PUBLICATION.md` ("Gallery subtitles"); 5 to 7 carry none (interface). Known and accepted: images 1 and 2 show Nelim standing still (gesture steps put the carried Dust over her face, 2026-11-14); the information card of image 6 shows the raw stat "Leather amount 18" (the game's card, not the butchering yield of about 6 that the description computes).

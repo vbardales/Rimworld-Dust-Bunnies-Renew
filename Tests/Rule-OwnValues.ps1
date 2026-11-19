@@ -1,38 +1,22 @@
 <#
 .SYNOPSIS
-  The claims this mod makes about itself, checked against the XML and the game's own data.
-
+  Rule-OwnValues: every fact this mod states about itself (description, docs), checked against the XML and the game's data.
 .DESCRIPTION
-  Not a check that the XML is well formed or that its references resolve: Check-XmlFields, Check-DefRefs and
-  Check-DefInjected do that. This one asserts the few facts the public description and the docs state, and that
-  have already been wrong once:
-
-    1. Both recipes are offered at the crafting spot and nowhere else.
-    2. MakeDustBunny declares no <products>. That is the trigger, not a detail: a recipe without products cannot be
-       counted, so "do until you have X" is refused by the game with a message. The mod's part is having none.
-    3. Wildness is a stat under statBases and no def of the mod still writes it as a field of <race>. The old form
-       loads without a word and leaves the stat at its default of -1, clamped to 0.
-    4. Dust is the worst cold insulator of every material a garment can be made from, and no more flammable as a
-       stuff than cloth. "A garment can be made from" is READ from the game: the union of the stuffCategories of
-       every apparel def, not a list copied here. Materials are resolved through ParentName before comparing,
-       because most inherit the stat, and one that states none counts as the stat's default, 0.
-    5. The butchering yield the description gives. It is computed the way the game does: the base body size times
-       the body size factor of the ONLY life stage the race declares, times LeatherAmount, run through the stat's
-       postProcessCurve. Read off the def instead, it comes out at 18 - the figure the description once claimed,
-       and wrong by a factor of three, because a def has no life stage.
-
-  Numbers are parsed with the invariant culture: on a French machine "2.5" is not a number to a default parse.
-
-  Each claim was seen to fail: a copy of Mod/ outside the repository was mutated once per claim, and the check
-  exited 1 on every one and 0 on the untouched mod. See the mutation list in scripts/checks/README.md.
-
-.EXAMPLE
-  pwsh -NoProfile -File scripts/checks/Check-Claims.ps1 -ModPath Mod -GameData "C:\...\RimWorld\Data"
+  The mod's one own-values rule (AGENTS.md, "Local scripts and tests"). Generic checks (XML, references, patch targets, textures)
+  live in the shared scripts that Tests/Test-Mod.ps1 runs first. Called by Test-Mod.ps1 with -ModRoot and -SharedDir.
+  Needs the game's Data folder (GameData, default Steam path or $env:RIMWORLD_DATA): without it the rule SKIPS loudly and exits 0
+  (a CI runner has no game), every local run plays it.
+  Claims: 1 both recipes at the crafting spot only; 2 MakeDustBunny has no products; 3 wildness is a stat, never a race field;
+  4 Dust is the worst cold insulator of the materials a garment can be made from; 5 butchering yield computed as the game does;
+  6 ADS 2 patch and Nocturnal Animals extension stay optional (MayRequire, no hard dependency).
 #>
 param(
-    [Parameter(Mandatory)][string]$ModPath,
-    [Parameter(Mandatory)][string]$GameData
+    [Parameter(Mandatory)][string]$ModRoot,
+    [string]$SharedDir
 )
+$ModPath = Join-Path $ModRoot 'Mod'
+$GameData = if ($env:RIMWORLD_DATA) { $env:RIMWORLD_DATA } else { 'C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Data' }
+if (-not (Test-Path -LiteralPath $GameData)) { Write-Host "WARNING Rule-OwnValues: game Data not found ($GameData): SKIPPED, not passed" -ForegroundColor Yellow; exit 0 }
 $ErrorActionPreference = 'Stop'
 $inv = [Globalization.CultureInfo]::InvariantCulture
 $script:failures = 0

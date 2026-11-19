@@ -2,6 +2,12 @@
 
 All notable changes to this mod are documented here.
 
+## [Unreleased]
+
+### Added
+
+- Simplified Chinese translation (`Languages/ChineseSimplified`, 11 keys: the dust, the dust bunny and the recipe). Written with Claude and reviewed with ChatGPT, with no native-speaker review.
+
 ## [1.0.0] - 2026-10-14
 
 First public version. The `0.1.0` below only created the private Workshop item.
