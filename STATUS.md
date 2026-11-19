@@ -30,6 +30,7 @@ ecosystem_line: 1.1
 upstream_synced: 2026-11-19 csharp-rimworld-dust-bunnies@012eff6
 workshop_required_items: n/a, no mandatory Workshop dependency (About.xml has none)
 remaining:
+  - "decision Virginie 2026-11-20: one single Dust (new heap sprite, dirt tones, a/b/c), from swept Dirt (story only until she says mechanism); when testing, Dust Bunnies Renew must work with Ashes 2958504184, Vanilla Recycling Expanded 3155781848 and Craftable Dirt 3032092572 loaded together (Pickle map, no defName collision, no error, Dust usable). Mod/ texture change reopens code review and playTests; idea of colour per filth and real sweeping: BACKLOG 1.2.0"
   - "before mountPreview: ATTRIBUTION.md has no \"Gallery set\" section: credit every third-party mod of Tests/Pickle/wsl-deps.gallery.map by name, author and Workshop id (GALLERY-PROPS.md rule 2026-11-20, Check-Status gallery-credits)"
   - "waits for Virginie: explicit oui to move to mountPreview (AGENTS.md rule 2026-11-19); gallery 1 to 7 ready, replay ledger 2026-11-19 reaches 10.a; Check-Textures ERROR on Dust_Bunny_north and _south (Audit: ship copies of _east in Mod/Textures, reopens code review and playTests, needs her decision)"
   - "open 10.a and 10.a bis: echo_review_sha stale (Art/Gallery images 1 to 4 changed since 8bd0da68); decide echo keep or redo, then Preview-source keep or redo (preview_source_decision), then re-render Preview (10.c) and check it (10.d)"
