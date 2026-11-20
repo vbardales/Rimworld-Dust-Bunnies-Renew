@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Sweeping a dirt filth leaves one Dust (DustBunnies.Filth_DirtDust). Filth_Dirt carries no thingClass of its own
+       (it inherits Filth from BaseFilth), so the class is inserted before graphicData. If another mod has already
+       given Filth_Dirt a thingClass, nothing is changed and nothing is logged. -->
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="Filth_Dirt"]/thingClass</xpath>
+    <nomatch Class="PatchOperationInsert">
+      <xpath>Defs/ThingDef[defName="Filth_Dirt"]/graphicData</xpath>
+      <order>Prepend</order>
+      <value>
+        <thingClass>DustBunnies.Filth_DirtDust</thingClass>
+      </value>
+    </nomatch>
+  </Operation>
+</Patch>

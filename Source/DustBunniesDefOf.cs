@@ -15,6 +15,7 @@ namespace DustBunnies
     public static class DustBunniesDefOf
     {
         public static PawnKindDef DustBunny;
+        public static ThingDef Dust;
 
         static DustBunniesDefOf()
         {
