@@ -1,0 +1,13 @@
+# Pass "compat-filth": Dust Bunnies Renew beside the mods that also touch filth or dirt (owner, 2026-11-20: required for 1.1.0, BACKLOG 0b).
+# Ashes 2958504184, Vanilla Recycling Expanded 3155781848, Craftable Dirt 3032092572, Useful Filth 3015573813, with what they require
+# (Harmony 2009463077, Bunny Framework 3015333853, Vanilla Framework Expanded Core 2023507013, Biotech is a DLC). Plus ColonistRace and
+# StageDecor for the sweep scenario (feature 14). The mod under test loads last, as the staging always does.
+brrainz.harmony 2009463077
+romyashi.bunnyframework 3015333853
+OskarPotocki.VanillaFactionsExpanded.Core 2023507013
+Romyashi.Ashes 2958504184
+VanillaExpanded.Recycling 3155781848
+Patchnote.CraftableDirt 3032092572
+Romyashi.UsefulFilth 3015573813
+nelim.pickletools.colonistrace path:PickleTools/ColonistRace/Mod
+nelim.pickletools.stagedecor path:PickleTools/StageDecor/Mod
