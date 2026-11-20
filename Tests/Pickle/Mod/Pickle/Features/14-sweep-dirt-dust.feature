@@ -4,7 +4,7 @@
 # the bench cell of 02; one swept cell gives exactly one Dust. The colonist's Cleaning priority is 1, so the cleaning work giver sweeps it
 # on its own (the cells must be in the home area of the fixture: if the colonist never moves, that is the first thing to read).
 # The wait is PickleTools' step with explicit stop rules: it ends when a Dust appears and logs why it stopped.
-@slow @timeout:1200 @requires:nelim.pickletools.colonistrace
+@slow @timeout:1200 @requires:nelim.pickletools.colonistrace @requires:nelim.pickletools.stagedecor
 Feature: sweeping a dirt filth leaves dust
 
   Background:

@@ -1,0 +1,5 @@
+# Pass "sweep": feature 14 (sweeping a Filth_Dirt leaves one Dust). Same as "bills17" (ColonistRace: the colonist and PickleTools' wait step
+# with explicit stop rules) plus StageDecor, whose step "the filth {string} is spread from (...) to (...)" spawns the dirt. Ticket a3cd, staged
+# with bills17 only, failed 2026-11-20 with "Undefined step" for that step (PiT: it lives in StageDecor, not the core DLL).
+nelim.pickletools.colonistrace path:PickleTools/ColonistRace/Mod
+nelim.pickletools.stagedecor path:PickleTools/StageDecor/Mod
