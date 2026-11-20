@@ -6,9 +6,9 @@ Work decided or proposed, not done. Nothing here in published mod. Newest first.
 
 Look at how big Dust is: sprite and `drawSize` (64 px, 0.75 today), size on screen in the gallery, stack sizes against the new heap sprites (a, b, c). Not decided, no work yet.
 
-## 0b. Must work together with Useful Filth - required for the release in preparation (Virginie, 2026-11-20)
+## 0b. Must work together with Useful Filth - required for 1.1.0 (Virginie, 2026-11-20)
 
-Useful Filth, Workshop 3015573813 (`Romyashi.UsefulFilth`, needs Bunny Framework 3015333853 and Harmony 2009463077, on disk), swaps the `thingClass` of vanilla filths by XML patch and drops loot when they are destroyed. It patches `Filth_RubbleRock`, `SlagRubble` and `Filth_MachineBits`, not `Filth_Dirt`, so our swap on `Filth_Dirt` (`DustBunnies.Filth_DirtDust`, `Patches/FilthDirtDust.xml`) should not collide. Not proven: Bunny Framework may patch more filths at runtime. To prove at `playTests`: a Pickle map with Useful Filth, Bunny Framework and Harmony plus the mod, no error, `Filth_Dirt` still swept into Dust, rubble still dropping its loot. Virginie wrote "1.0.0": the release in preparation is 1.1.0, so it is taken as that one.
+Useful Filth, Workshop 3015573813 (`Romyashi.UsefulFilth`, needs Bunny Framework 3015333853 and Harmony 2009463077, on disk), swaps the `thingClass` of vanilla filths by XML patch and drops loot when they are destroyed. It patches `Filth_RubbleRock`, `SlagRubble` and `Filth_MachineBits`, not `Filth_Dirt`, so our swap on `Filth_Dirt` (`DustBunnies.Filth_DirtDust`, `Patches/FilthDirtDust.xml`) should not collide. Not proven: Bunny Framework may patch more filths at runtime. To prove at `playTests`: a Pickle map with Useful Filth, Bunny Framework and Harmony plus the mod, no error, `Filth_Dirt` still swept into Dust, rubble still dropping its loot. Confirmed by Virginie 2026-11-20: this is 1.1.0.
 
 ## 1. Nocturnal Animals (Continued) - done and played green on 2026-09-25
 
