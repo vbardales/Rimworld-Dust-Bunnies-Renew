@@ -17,7 +17,7 @@ Sweep dust off the floor, pile up a hundred of it, and craft yourself a live dus
 
 Two recipes at the crafting spot, one resource and one animal:
 
-- Gather dust - 250 work, makes 10 dust. No ingredients: it comes off the floor.
+- Gather dust - 250 work, makes 10 dust. No ingredients: it comes off the floor. Sweeping a patch of dirt with the Clean job also leaves one dust.
 - Make a dust bunny - 800 work, eats 100 dust, and a dust bunny walks off the spot. It is tame the moment it exists, because it is made rather than caught.
 
 The bunny is a tiny grey thing, base body size 0.2 (0.04 in play, because it never leaves the baby life stage), trainable to Advanced, and it never eats - its hunger rate is zero. It lives about a year. It is comfortable down to -55 C, it never turns manhunter, and butchering one gives back about 6 dust, which is a stuff you can build and tailor with: fabric category, as flammable as wood, and the worst insulator of any material from which clothes can be made. A dust parka is not a parka. The loop loses heavily on purpose - a hundred dust in, about six back out - so nobody farms dust through bunnies.

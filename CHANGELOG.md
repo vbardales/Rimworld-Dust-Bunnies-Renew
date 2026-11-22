@@ -6,6 +6,8 @@ All notable changes to this mod are documented here.
 
 ### Added
 
+- Sweeping a patch of dirt now leaves one `Dust` (`Filth_DirtDust`, a `Filth` subclass reached by a guarded patch on `Filth_Dirt`): a colonist who runs the Clean job on dirt gets one dust from it. Gathering dust at the crafting spot is unchanged. Tested with Ashes, Vanilla Recycling Expanded, Craftable Dirt and Useful Filth loaded together.
+- New `Dust` heap graphic (`Dust_a/b/c.png`, 128 x 128, three grey cone heaps in the bunny's grey, replacing the faint speck).
 - Simplified Chinese translation (`Languages/ChineseSimplified`, 11 keys: the dust, the dust bunny and the recipe). Written with Claude and reviewed with ChatGPT, with no native-speaker review.
 
 ## [1.0.0] - 2026-10-14
