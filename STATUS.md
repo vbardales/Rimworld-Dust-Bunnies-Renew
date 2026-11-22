@@ -14,7 +14,7 @@ visibility_at: Steam API GetPublishedFileDetails 2026-10-14 (visibility 0 = publ
 local_path:   C:\Users\nelim\Documents\rimworld\DustBunniesRenew
 detached:     yes
 maintainer:   Codex and Claude Code sessions, whichever holds the mod; each audit entry below names its author
-workflow_stage: shootGallery[1.1.0]
+workflow_stage: code[1.1.0]
 tested_1_7:   yes
 licence:      silent
 licence_at:   original files, About, Steam description and all 9 comments, GitHub tree and README checked 2026-09-12
@@ -30,6 +30,7 @@ ecosystem_line: 1.1
 upstream_synced: 2026-11-19 csharp-rimworld-dust-bunnies@012eff6
 workshop_required_items: n/a, no mandatory Workshop dependency (About.xml has none)
 remaining:
+  - "REPLAY 2026-11-23 (Virginie typed it): first open 3.a (new Dust sprite not made, only drafts) and 3.c (CHANGELOG [Unreleased] has no line for the sweep mechanism 479fd49); stage back to code[1.1.0]. Then 3.d, code review (code_review_sha stale), playTests, gallery images 1 and 2 replay, mountPreview with her oui"
   - "ticket 6b02 GREEN 2026-11-20 (map wsl-deps.compat-filth.map: Harmony, Bunny Framework, VFE Core, Ashes, VRE, Craftable Dirt, Useful Filth, ColonistRace, StageDecor; filter 01-loads, 02-gather-dust, 14-sweep-dirt-dust; label at 398dd65; evidence Tests/Pickle/Inbox/2026-11-20-compat-filth) (read 2026-11-23, 3 of 3 passed, no error, evidence copied to Tests/Pickle/Evidence/2026-11-20-compat-filth, Inbox emptied): Dust works with Ashes, VRE, Craftable Dirt, Useful Filth; still to do: tell Cat to free VRE and Craftable Dirt; green = no defName collision, no error, Dust usable with those mods. Then: tell Cat (local_6835c260-c4dc-4c9d-a6ce-6a3e72054838) to free VRE 3155781848 and Craftable Dirt 3032092572 (Cat was told to keep them until then); triage the Inbox folder (green: copy junit/summary to Evidence, delete from Inbox)."
   - "ticket 7c10 GREEN 2026-11-20 (refile of a3cd: map wsl-deps.sweep.map = ColonistRace + StageDecor, feature 14 tagged @requires stagedecor; a3cd had failed Undefined step because StageDecor was not staged): 1 of 1 passed, exit passed, 26 s, evidence Tests/Pickle/Evidence/2026-11-20-sweep-dust. Mechanism 479fd49 proven in game on 1.6 (sweep of one Filth_Dirt gives one Dust). Not yet played: Ashes + VRE + Craftable Dirt together."
   - "RESUME NOTES 2026-11-20 (before sleep): (1) ticket a3cd (feature 14, sweep dirt gives Dust, map bills17, evidence Tests/Pickle/Inbox/2026-11-20-sweep-dust) waiting, tree kept still until RUN_DONE; read summary.json and junit.xml; if red check first that cell (141,151) is in the home area. (2) New Dust sprite: drafts only in the session scratchpad (...\scratchpad\make_dust6.py, output dust-draft6\sheet.png, 3 cone heaps a/b/c 128 px, drawn by the session, no third-party art); Virginie wants a cone-cluster look like her reference, tint of the CURRENT Dust (sample Mod/Textures/DustBunny/Item/Resource/Dust/Dust_c.png), softer flanks, small cones overlapping the big one, ground shadow, grains; show her before touching Mod/Textures. (3) Waiting on peers: PiI (ecosystem DELTA report, exact Filth_Dirt operations of Realistic Rooms, RimScent, Painterly Rim, Advanced Combo), Cat+PiT ticket ad3f (reference shots of Core filths, VRE Trash, Craftable Dirt), PiI keeps VRE, Craftable Dirt, Ashes protected until playTests map pins them. (4) Stage stays shootGallery[1.1.0] until Virginie says oui to mountPreview (she said non/pas encore 2026-11-20); Check-Textures north/south still open for her decision."
@@ -50,8 +51,8 @@ code_review_sha: 6beab6ac407beedc1718dd4d76e7fa6657b19304
 publication_changelog_review_sha: 46b475822f7d1cbb1902422969e649ab93d81417
 echo_review_sha: 8bd0da688ce2576d1d8e3e9ed60a95a57bb16300
 social_preview_sha256: 2775d59be589ba7f19f9ea6af2919e05e98e6069686220e2ede1e28d0f757d4f
-updated:      2026-11-19
-protocols_read_sha: daa56318a9ef38a6cb27ce271f4fceeeb14e50d9
+updated:      2026-11-23
+protocols_read_sha: 652598e087540d366b34f1a1030a1f4664d1cfa4
 ---
 # Dust Bunnies Renew — status
 
